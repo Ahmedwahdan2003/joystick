@@ -74,12 +74,16 @@ namespace joystick {
 			// 
 			// textBox1
 			// 
-			this->textBox1->BackColor = System::Drawing::SystemColors::InfoText;
-			this->textBox1->ForeColor = System::Drawing::Color::Transparent;
+			this->textBox1->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::Suggest;
+			this->textBox1->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::FileSystem;
+			this->textBox1->BackColor = System::Drawing::Color::White;
+			this->textBox1->ForeColor = System::Drawing::Color::Black;
 			this->textBox1->Location = System::Drawing::Point(403, 309);
 			this->textBox1->Name = L"textBox1";
+			this->textBox1->PasswordChar = '*';
 			this->textBox1->Size = System::Drawing::Size(543, 22);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// MyForm
 			// 
@@ -101,11 +105,14 @@ namespace joystick {
 		}
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 	
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		String^value = textBox1->Text;
 		MessageBox::Show(value);
+	}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
