@@ -67,6 +67,7 @@ namespace joystick {
 		}
 #pragma endregion
 	private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
+		
 	}
 	};
 }
