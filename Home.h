@@ -382,7 +382,7 @@ namespace joystick {
             this->time_lb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->time_lb->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-            this->time_lb->Location = System::Drawing::Point(528, 467);
+            this->time_lb->Location = System::Drawing::Point(532, 467);
             this->time_lb->Name = L"time_lb";
             this->time_lb->Size = System::Drawing::Size(241, 60);
             this->time_lb->TabIndex = 17;

@@ -78,8 +78,8 @@ namespace joystick {
 			this->password_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->password_txt->ForeColor = System::Drawing::Color::Black;
-			this->password_txt->Location = System::Drawing::Point(378, 343);
-			this->password_txt->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->password_txt->Location = System::Drawing::Point(373, 344);
+			this->password_txt->Margin = System::Windows::Forms::Padding(2);
 			this->password_txt->Name = L"password_txt";
 			this->password_txt->PasswordChar = '*';
 			this->password_txt->Size = System::Drawing::Size(539, 28);
@@ -100,7 +100,7 @@ namespace joystick {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->login_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->login_btn->Location = System::Drawing::Point(531, 405);
-			this->login_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->login_btn->Margin = System::Windows::Forms::Padding(2);
 			this->login_btn->Name = L"login_btn";
 			this->login_btn->Size = System::Drawing::Size(220, 52);
 			this->login_btn->TabIndex = 2;
@@ -142,7 +142,7 @@ namespace joystick {
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"login";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Login";
@@ -163,15 +163,18 @@ namespace joystick {
     public: String^ user_pass ="1234";
 
 	private: System::Void login_btnn(System::Object^ sender, System::EventArgs^ e) {
-		if (password_txt->Text == user_pass) {
-			
+		if (password_txt->Text->Length >= 0) { MessageBox::Show("Please Enter The Password"); }
+		else if (password_txt->Text == user_pass) 
+		{
 			
 			Home^ home = gcnew Home();
 			home->Show();
             this->Hide();
            
 		}
-		else { MessageBox::Show("Wrong Password"); }
+		else {
+			   MessageBox::Show("Wrong Password");
+		     }
 		
 
 
