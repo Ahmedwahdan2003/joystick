@@ -21,6 +21,13 @@ namespace joystick {
 			//
 			//TODO: Add the constructor code here
 			//
+            Timer^ timer = gcnew Timer();
+            timer->Interval = 1000; // 1000 milliseconds = 1 second
+
+            // Attach an event handler for the Timer tick even
+
+            // Start the Timer
+            timer->Start();
 		}
 
 	protected:
@@ -49,12 +56,15 @@ namespace joystick {
     private: System::Windows::Forms::Button^ reports_btn;
     private: System::Windows::Forms::Button^ storage_btn;
     private: System::Windows::Forms::Button^ exit_btn;
+    private: System::Windows::Forms::Label^ time_lb;
+    private: System::Windows::Forms::Timer^ timer1;
+    private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -63,6 +73,7 @@ namespace joystick {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+            this->components = (gcnew System::ComponentModel::Container());
             System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Home::typeid));
             this->Room2_btn = (gcnew System::Windows::Forms::Button());
             this->Room1_btn = (gcnew System::Windows::Forms::Button());
@@ -78,6 +89,8 @@ namespace joystick {
             this->reports_btn = (gcnew System::Windows::Forms::Button());
             this->storage_btn = (gcnew System::Windows::Forms::Button());
             this->exit_btn = (gcnew System::Windows::Forms::Button());
+            this->time_lb = (gcnew System::Windows::Forms::Label());
+            this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
             this->SuspendLayout();
             // 
             // Room2_btn
@@ -361,12 +374,33 @@ namespace joystick {
             this->exit_btn->UseVisualStyleBackColor = false;
             this->exit_btn->Click += gcnew System::EventHandler(this, &Home::exit_btn_Click);
             // 
+            // time_lb
+            // 
+            this->time_lb->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+                static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->time_lb->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->time_lb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->time_lb->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+            this->time_lb->Location = System::Drawing::Point(528, 467);
+            this->time_lb->Name = L"time_lb";
+            this->time_lb->Size = System::Drawing::Size(241, 60);
+            this->time_lb->TabIndex = 17;
+            this->time_lb->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // timer1
+            // 
+            this->timer1->Enabled = true;
+            this->timer1->Interval = 1000;
+            this->timer1->Tick += gcnew System::EventHandler(this, &Home::timer1_Tick);
+            // 
             // Home
             // 
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
             this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
             this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->ClientSize = System::Drawing::Size(1280, 720);
+            this->Controls->Add(this->time_lb);
             this->Controls->Add(this->exit_btn);
             this->Controls->Add(this->storage_btn);
             this->Controls->Add(this->reports_btn);
@@ -397,5 +431,13 @@ namespace joystick {
     private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
         Application::Exit();
     }
+private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+    DateTime currentTime = DateTime::Now;
+
+
+    time_lb->Text = currentTime.ToString("hh:mm:ss tt");
+
+}
 };
 }
