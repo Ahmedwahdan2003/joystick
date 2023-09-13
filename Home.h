@@ -359,6 +359,7 @@ namespace joystick {
             this->exit_btn->Size = System::Drawing::Size(64, 63);
             this->exit_btn->TabIndex = 16;
             this->exit_btn->UseVisualStyleBackColor = false;
+            this->exit_btn->Click += gcnew System::EventHandler(this, &Home::exit_btn_Click);
             // 
             // Home
             // 
@@ -393,5 +394,8 @@ namespace joystick {
 	private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
 		
 	}
-	};
+    private: System::Void exit_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+        Application::Exit();
+    }
+};
 }
