@@ -22,11 +22,9 @@ namespace joystick {
 			//TODO: Add the constructor code here
 			//
             Timer^ timer = gcnew Timer();
-            timer->Interval = 1000; // 1000 milliseconds = 1 second
+            timer->Interval = 1000; 
 
-            // Attach an event handler for the Timer tick even
 
-            // Start the Timer
             timer->Start();
 		}
 
