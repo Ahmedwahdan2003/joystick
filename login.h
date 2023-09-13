@@ -78,11 +78,11 @@ namespace joystick {
 			this->password_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->password_txt->ForeColor = System::Drawing::Color::Black;
-			this->password_txt->Location = System::Drawing::Point(364, 340);
-			this->password_txt->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->password_txt->Location = System::Drawing::Point(378, 343);
+			this->password_txt->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->password_txt->Name = L"password_txt";
 			this->password_txt->PasswordChar = '*';
-			this->password_txt->Size = System::Drawing::Size(556, 34);
+			this->password_txt->Size = System::Drawing::Size(539, 28);
 			this->password_txt->TabIndex = 1;
 			this->password_txt->TextChanged += gcnew System::EventHandler(this, &login::textBox1_TextChanged);
 			// 
@@ -99,10 +99,10 @@ namespace joystick {
 			this->login_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->login_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->login_btn->Location = System::Drawing::Point(538, 405);
-			this->login_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->login_btn->Location = System::Drawing::Point(531, 405);
+			this->login_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->login_btn->Name = L"login_btn";
-			this->login_btn->Size = System::Drawing::Size(199, 48);
+			this->login_btn->Size = System::Drawing::Size(220, 52);
 			this->login_btn->TabIndex = 2;
 			this->login_btn->UseVisualStyleBackColor = false;
 			this->login_btn->Click += gcnew System::EventHandler(this, &login::login_btnn);
@@ -120,10 +120,9 @@ namespace joystick {
 			this->exit_bt->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->exit_bt->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->exit_bt->Location = System::Drawing::Point(1203, 13);
-			this->exit_bt->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->exit_bt->Location = System::Drawing::Point(902, 11);
 			this->exit_bt->Name = L"exit_bt";
-			this->exit_bt->Size = System::Drawing::Size(64, 52);
+			this->exit_bt->Size = System::Drawing::Size(48, 42);
 			this->exit_bt->TabIndex = 3;
 			this->exit_bt->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->exit_bt->UseVisualStyleBackColor = false;
@@ -131,7 +130,7 @@ namespace joystick {
 			// 
 			// login
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -143,7 +142,7 @@ namespace joystick {
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"login";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Login";
@@ -165,9 +164,11 @@ namespace joystick {
 
 	private: System::Void login_btnn(System::Object^ sender, System::EventArgs^ e) {
 		if (password_txt->Text == user_pass) {
-			this->Hide();
-			joystick::Home home;
-			home.Show();
+			
+			
+			Home^ home = gcnew Home();
+			home->Show();
+            this->Hide();
            
 		}
 		else { MessageBox::Show("Wrong Password"); }
