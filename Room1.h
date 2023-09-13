@@ -34,9 +34,9 @@ namespace joystick {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+
 	protected:
-	private: System::Windows::Forms::Button^ button2;
+
 
 	private:
 		/// <summary>
@@ -51,8 +51,6 @@ namespace joystick {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -75,12 +73,11 @@ namespace joystick {
 			// 
 			// Room1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1280, 720);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Room1";
 			this->Text = L"Room1";
 			this->Load += gcnew System::EventHandler(this, &Room1::Room1_Load);
