@@ -161,9 +161,12 @@ namespace joystick {
 
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (textBox1->Text == user_pass) {
-			this->Close();
-			joystick::Home home;
-			Application::Run(% home);
+			Home^ home = gcnew Home();
+			home->Show();
+			this->Hide();
+			
+			
+			
            
 		}
 		else { MessageBox::Show("Wrong Password"); }
