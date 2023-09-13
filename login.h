@@ -142,6 +142,7 @@ namespace joystick {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"login";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Login";
 			this->Load += gcnew System::EventHandler(this, &login::MyForm_Load);
 			this->ResumeLayout(false);
