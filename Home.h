@@ -1,5 +1,7 @@
 #pragma once
 #include"used_classes.h"
+#include"Room1.h"
+#include"room2.h"
 namespace joystick {
 
 	using namespace System;
@@ -23,8 +25,10 @@ namespace joystick {
 			//
             Timer^ timer = gcnew Timer();
             timer->Interval = 1000; 
-
-
+            room2->TopLevel = false;
+            room1->TopLevel = false;
+            room1_pnl->Controls->Add(room1);
+            room2_pnl->Controls->Add(room2);
             timer->Start();
 		}
 
@@ -56,6 +60,14 @@ namespace joystick {
     private: System::Windows::Forms::Button^ exit_btn;
     private: System::Windows::Forms::Label^ time_lb;
     private: System::Windows::Forms::Timer^ timer1;
+    private: System::Windows::Forms::Panel^ room1_pnl;
+    private: System::Windows::Forms::Panel^ room2_pnl;
+
+           
+    private:Room1^ room1 = gcnew Room1();
+    private:Room2^ room2 = gcnew Room2();
+
+
     private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -89,6 +101,8 @@ namespace joystick {
             this->exit_btn = (gcnew System::Windows::Forms::Button());
             this->time_lb = (gcnew System::Windows::Forms::Label());
             this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+            this->room1_pnl = (gcnew System::Windows::Forms::Panel());
+            this->room2_pnl = (gcnew System::Windows::Forms::Panel());
             this->SuspendLayout();
             // 
             // Room2_btn
@@ -110,6 +124,7 @@ namespace joystick {
             this->Room2_btn->Size = System::Drawing::Size(243, 137);
             this->Room2_btn->TabIndex = 3;
             this->Room2_btn->UseVisualStyleBackColor = false;
+            this->Room2_btn->Click += gcnew System::EventHandler(this, &Home::Room2_btn_Click);
             // 
             // Room1_btn
             // 
@@ -130,6 +145,7 @@ namespace joystick {
             this->Room1_btn->Size = System::Drawing::Size(243, 137);
             this->Room1_btn->TabIndex = 4;
             this->Room1_btn->UseVisualStyleBackColor = false;
+            this->Room1_btn->Click += gcnew System::EventHandler(this, &Home::Room1_btn_Click);
             // 
             // Room3_btn
             // 
@@ -392,12 +408,30 @@ namespace joystick {
             this->timer1->Interval = 1000;
             this->timer1->Tick += gcnew System::EventHandler(this, &Home::timer1_Tick);
             // 
+            // room1_pnl
+            // 
+            this->room1_pnl->Location = System::Drawing::Point(684, 64);
+            this->room1_pnl->Name = L"room1_pnl";
+            this->room1_pnl->Size = System::Drawing::Size(640, 615);
+            this->room1_pnl->TabIndex = 18;
+            this->room1_pnl->Visible = false;
+            // 
+            // room2_pnl
+            // 
+            this->room2_pnl->Location = System::Drawing::Point(684, 61);
+            this->room2_pnl->Name = L"room2_pnl";
+            this->room2_pnl->Size = System::Drawing::Size(640, 615);
+            this->room2_pnl->TabIndex = 19;
+            this->room2_pnl->Visible = false;
+            // 
             // Home
             // 
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
             this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
             this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->ClientSize = System::Drawing::Size(1280, 720);
+            this->Controls->Add(this->room2_pnl);
+            this->Controls->Add(this->room1_pnl);
             this->Controls->Add(this->time_lb);
             this->Controls->Add(this->exit_btn);
             this->Controls->Add(this->storage_btn);
@@ -436,6 +470,20 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 
     time_lb->Text = currentTime.ToString("hh:mm:ss tt");
 
+}
+private: System::Void Room1_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    
+    room1_pnl->Visible = true;
+    room2_pnl->Visible = false;
+    room1->Show();
+    
+}
+private: System::Void Room2_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    
+    
+    room2_pnl->Visible = true;
+    room1_pnl->Visible = false;
+    room2->Show();
 }
 };
 }

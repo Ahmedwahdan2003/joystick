@@ -168,6 +168,7 @@ namespace joystick {
 {
 			
 			Home^ home = gcnew Home();
+			
 			home->Show();
             this->Hide();
            

@@ -12,10 +12,10 @@ namespace joystick {
 	/// <summary>
 	/// Summary for Room1
 	/// </summary>
-	public ref class Room1 : public System::Windows::Forms::Form
+	public ref class Room2 : public System::Windows::Forms::Form
 	{
 	public:
-		Room1(void)
+		Room2(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace joystick {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Room1()
+		~Room2()
 		{
 			if (components)
 			{
@@ -42,7 +42,7 @@ namespace joystick {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -57,23 +57,23 @@ namespace joystick {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(194, 99);
+			this->button1->Location = System::Drawing::Point(84, 99);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(831, 222);
+			this->button1->Size = System::Drawing::Size(185, 321);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Room1";
+			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(194, 410);
+			this->button2->Location = System::Drawing::Point(298, 98);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(831, 176);
+			this->button2->Size = System::Drawing::Size(735, 346);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"button2";
+			this->button2->Text = L"Room2";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
-			// Room1
+			// Room2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -81,14 +81,14 @@ namespace joystick {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Name = L"Room1";
+			this->Name = L"Room2";
 			this->Text = L"Room1";
-			this->Load += gcnew System::EventHandler(this, &Room1::Room1_Load);
+			this->Load += gcnew System::EventHandler(this, &Room2::Room2_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void Room1_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Room2_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
