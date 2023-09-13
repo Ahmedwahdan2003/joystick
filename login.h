@@ -63,15 +63,20 @@ namespace joystick {
 			// 
 			// textBox1
 			// 
+			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->textBox1->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::Suggest;
 			this->textBox1->AutoCompleteSource = System::Windows::Forms::AutoCompleteSource::FileSystem;
 			this->textBox1->BackColor = System::Drawing::Color::White;
 			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->textBox1->CausesValidation = false;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::Color::Black;
-			this->textBox1->Location = System::Drawing::Point(359, 326);
+			this->textBox1->Location = System::Drawing::Point(367, 326);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->PasswordChar = '*';
-			this->textBox1->Size = System::Drawing::Size(543, 15);
+			this->textBox1->Size = System::Drawing::Size(543, 24);
 			this->textBox1->TabIndex = 1;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &login::textBox1_TextChanged);
 			// 
@@ -81,23 +86,25 @@ namespace joystick {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button2->FlatAppearance->BorderSize = 0;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Location = System::Drawing::Point(539, 383);
+			this->button2->Location = System::Drawing::Point(404, 311);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(177, 38);
+			this->button2->Size = System::Drawing::Size(133, 31);
 			this->button2->TabIndex = 2;
 			this->button2->UseVisualStyleBackColor = false;
 			// 
 			// login
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1262, 673);
+			this->ClientSize = System::Drawing::Size(1264, 681);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBox1);
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"login";
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &login::MyForm_Load);
