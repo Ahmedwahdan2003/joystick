@@ -44,7 +44,8 @@ namespace joystick {
 
 
 
-	private: System::Windows::Forms::Button^ exit_bt;
+
+	private: System::Windows::Forms::Button^ button1;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -66,7 +67,7 @@ namespace joystick {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(login::typeid));
 			this->password_txt = (gcnew System::Windows::Forms::TextBox());
 			this->login_btn = (gcnew System::Windows::Forms::Button());
-			this->exit_bt = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// password_txt
@@ -107,26 +108,25 @@ namespace joystick {
 			this->login_btn->UseVisualStyleBackColor = false;
 			this->login_btn->Click += gcnew System::EventHandler(this, &login::login_btnn);
 			// 
-			// exit_bt
+			// button1
 			// 
-			this->exit_bt->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->exit_bt->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->exit_bt->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->exit_bt->FlatAppearance->BorderSize = 0;
-			this->exit_bt->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->exit_bt->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->button1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->exit_bt->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->exit_bt->Location = System::Drawing::Point(902, 11);
-			this->exit_bt->Name = L"exit_bt";
-			this->exit_bt->Size = System::Drawing::Size(48, 42);
-			this->exit_bt->TabIndex = 3;
-			this->exit_bt->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
-			this->exit_bt->UseVisualStyleBackColor = false;
-			this->exit_bt->Click += gcnew System::EventHandler(this, &login::exit_bt_Click);
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(1208, 13);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(48, 53);
+			this->button1->TabIndex = 4;
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &login::button1_Click);
 			// 
 			// login
 			// 
@@ -135,7 +135,7 @@ namespace joystick {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1280, 720);
-			this->Controls->Add(this->exit_bt);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->login_btn);
 			this->Controls->Add(this->password_txt);
 			this->DoubleBuffered = true;
@@ -163,9 +163,9 @@ namespace joystick {
     public: String^ user_pass ="1234";
 
 	private: System::Void login_btnn(System::Object^ sender, System::EventArgs^ e) {
-		if (password_txt->Text->Length >= 0) { MessageBox::Show("Please Enter The Password"); }
+		if (password_txt->Text->Length <= 0) { MessageBox::Show("Please Enter The Password"); }
 		else if (password_txt->Text == user_pass) 
-		{
+{
 			
 			Home^ home = gcnew Home();
 			home->Show();
@@ -180,8 +180,9 @@ namespace joystick {
 
 
 	}
-private: System::Void exit_bt_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+Application::Exit();
 }
 };
 }
