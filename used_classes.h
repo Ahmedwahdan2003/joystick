@@ -6,7 +6,6 @@
 #include <thread>
 #include <windows.h>
  
-
 class Products {
 private:
     std::map<std::string, double> productPrices;
