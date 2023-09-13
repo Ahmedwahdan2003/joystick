@@ -75,11 +75,11 @@ namespace joystick {
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::Color::Black;
-			this->textBox1->Location = System::Drawing::Point(367, 343);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
+			this->textBox1->Location = System::Drawing::Point(378, 341);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->PasswordChar = '*';
-			this->textBox1->Size = System::Drawing::Size(552, 28);
+			this->textBox1->Size = System::Drawing::Size(530, 34);
 			this->textBox1->TabIndex = 1;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &login::textBox1_TextChanged);
 			// 
@@ -96,10 +96,10 @@ namespace joystick {
 			this->button2->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Location = System::Drawing::Point(536, 410);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Location = System::Drawing::Point(715, 505);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(208, 47);
+			this->button2->Size = System::Drawing::Size(277, 58);
 			this->button2->TabIndex = 2;
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &login::button2_Click);
@@ -117,9 +117,10 @@ namespace joystick {
 			this->exit_bt->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->exit_bt->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->exit_bt->Location = System::Drawing::Point(1207, 13);
+			this->exit_bt->Location = System::Drawing::Point(1609, 16);
+			this->exit_bt->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->exit_bt->Name = L"exit_bt";
-			this->exit_bt->Size = System::Drawing::Size(52, 46);
+			this->exit_bt->Size = System::Drawing::Size(69, 57);
 			this->exit_bt->TabIndex = 3;
 			this->exit_bt->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->exit_bt->UseVisualStyleBackColor = false;
@@ -127,7 +128,7 @@ namespace joystick {
 			// 
 			// login
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -139,7 +140,7 @@ namespace joystick {
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"login";
 			this->Text = L"Login";
 			this->Load += gcnew System::EventHandler(this, &login::MyForm_Load);

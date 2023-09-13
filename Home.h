@@ -61,9 +61,12 @@ namespace joystick {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Home";
 			this->Text = L"Home";
+			this->Load += gcnew System::EventHandler(this, &Home::Home_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }
