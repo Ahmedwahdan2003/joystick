@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="login.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="used_classes.h">

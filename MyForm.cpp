@@ -1,4 +1,4 @@
-#include "MyForm.h"
+#include "login.h"
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace joystick;
@@ -7,7 +7,7 @@ void main(array<String^>^ args)
 {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    joystick::MyForm f1;
+    joystick::login f1;
     Application::Run(% f1);
 }
 

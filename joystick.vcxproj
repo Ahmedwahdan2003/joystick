@@ -125,13 +125,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="used_classes.h" />
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="login.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

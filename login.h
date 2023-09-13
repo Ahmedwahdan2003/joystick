@@ -12,10 +12,10 @@ namespace joystick {
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
-	public ref class MyForm : public System::Windows::Forms::Form
+	public ref class login : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		login(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace joystick {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm()
+		~login()
 		{
 			if (components)
 			{
@@ -55,7 +55,7 @@ namespace joystick {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(login::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
@@ -70,7 +70,7 @@ namespace joystick {
 			this->button1->Size = System::Drawing::Size(126, 43);
 			this->button1->TabIndex = 0;
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_1);
+			this->button1->Click += gcnew System::EventHandler(this, &login::button1_Click_1);
 			// 
 			// textBox1
 			// 
@@ -83,7 +83,7 @@ namespace joystick {
 			this->textBox1->PasswordChar = '*';
 			this->textBox1->Size = System::Drawing::Size(543, 22);
 			this->textBox1->TabIndex = 1;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &login::textBox1_TextChanged);
 			// 
 			// MyForm
 			// 
@@ -98,7 +98,7 @@ namespace joystick {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->Load += gcnew System::EventHandler(this, &login::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
