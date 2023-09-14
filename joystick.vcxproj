@@ -136,10 +136,10 @@
     <ClInclude Include="Home.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Room1.h">
+    <ClInclude Include="Rooms.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="room2.h">
+    <ClInclude Include="reports.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="used_classes.h" />
@@ -154,11 +154,11 @@
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Room1.resx">
-      <DependentUpon>Room1.h</DependentUpon>
+    <EmbeddedResource Include="Rooms.resx">
+      <DependentUpon>Rooms.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="room2.resx">
-      <DependentUpon>room2.h</DependentUpon>
+    <EmbeddedResource Include="reports.resx">
+      <DependentUpon>reports.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -38,10 +38,10 @@
     <ClInclude Include="Home.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Room1.h">
+    <ClInclude Include="Rooms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="room2.h">
+    <ClInclude Include="reports.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
