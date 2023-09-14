@@ -2,7 +2,9 @@
 #include"used_classes.h"
 #include"Rooms.h"
 #include"reports.h"
-
+#include"storage.h"
+#include"Settings.h"
+#include"EndDay.h"
 namespace joystick {
 
 	using namespace System;
@@ -21,16 +23,18 @@ namespace joystick {
 		Home(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
             Timer^ timer = gcnew Timer();
             timer->Interval = 1000; 
-            rooms->TopLevel = false;
-            report->TopLevel = false;
-            Rooms_pnl->Controls->Add(rooms);
-            report_pnl->Controls->Add(report);
             timer->Start();
+            Rooms_pnl->Visible = false;
+            /*rooms->TopLevel = false;
+            report->TopLevel = false;
+            rooms->Parent = Rooms_pnl;
+            report->Parent = Rooms_pnl;
+            rooms->Dock = DockStyle::Fill;
+            report->Dock = DockStyle::Fill;
+            //Rooms_pnl->Controls->Add(rooms);
+            //report_pnl->Controls->Add(report);*/
 		}
 
 	protected:
@@ -55,6 +59,9 @@ namespace joystick {
            
     private:Rooms^ rooms = gcnew Rooms();
     private:reports^ report = gcnew reports();
+    private:storage^ Storage = gcnew storage();
+    private:EndDay^ endday = gcnew EndDay();
+    private:Settings^ settings = gcnew Settings();
     private: System::Windows::Forms::Button^ Rooms_btn;
     private: System::Windows::Forms::Button^ settings_btn;
     private: System::Windows::Forms::Button^ report_btn;
@@ -67,7 +74,7 @@ namespace joystick {
     private: System::Windows::Forms::Panel^ panel1;
     private: System::Windows::Forms::Panel^ panel2;
     private: System::Windows::Forms::Panel^ Rooms_pnl;
-    private: System::Windows::Forms::Panel^ report_pnl;
+
 
 
 
@@ -99,10 +106,8 @@ namespace joystick {
             this->panel1 = (gcnew System::Windows::Forms::Panel());
             this->panel2 = (gcnew System::Windows::Forms::Panel());
             this->Rooms_pnl = (gcnew System::Windows::Forms::Panel());
-            this->report_pnl = (gcnew System::Windows::Forms::Panel());
             this->panel1->SuspendLayout();
             this->panel2->SuspendLayout();
-            this->Rooms_pnl->SuspendLayout();
             this->SuspendLayout();
             // 
             // timer1
@@ -124,7 +129,7 @@ namespace joystick {
             this->Rooms_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->Rooms_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->Rooms_btn->Location = System::Drawing::Point(11, 141);
+            this->Rooms_btn->Location = System::Drawing::Point(12, 157);
             this->Rooms_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->Rooms_btn->Name = L"Rooms_btn";
             this->Rooms_btn->Size = System::Drawing::Size(165, 45);
@@ -145,12 +150,13 @@ namespace joystick {
             this->settings_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->settings_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->settings_btn->Location = System::Drawing::Point(11, 206);
+            this->settings_btn->Location = System::Drawing::Point(12, 216);
             this->settings_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->settings_btn->Name = L"settings_btn";
             this->settings_btn->Size = System::Drawing::Size(165, 45);
             this->settings_btn->TabIndex = 4;
             this->settings_btn->UseVisualStyleBackColor = false;
+            this->settings_btn->Click += gcnew System::EventHandler(this, &Home::settings_btn_Click);
             // 
             // report_btn
             // 
@@ -165,7 +171,7 @@ namespace joystick {
             this->report_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->report_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->report_btn->Location = System::Drawing::Point(11, 276);
+            this->report_btn->Location = System::Drawing::Point(12, 290);
             this->report_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->report_btn->Name = L"report_btn";
             this->report_btn->Size = System::Drawing::Size(165, 45);
@@ -186,12 +192,13 @@ namespace joystick {
             this->storage_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->storage_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->storage_btn->Location = System::Drawing::Point(11, 339);
+            this->storage_btn->Location = System::Drawing::Point(12, 354);
             this->storage_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->storage_btn->Name = L"storage_btn";
             this->storage_btn->Size = System::Drawing::Size(165, 45);
             this->storage_btn->TabIndex = 6;
             this->storage_btn->UseVisualStyleBackColor = false;
+            this->storage_btn->Click += gcnew System::EventHandler(this, &Home::storage_btn_Click);
             // 
             // end_day_btn
             // 
@@ -206,12 +213,13 @@ namespace joystick {
             this->end_day_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->end_day_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->end_day_btn->Location = System::Drawing::Point(11, 537);
+            this->end_day_btn->Location = System::Drawing::Point(12, 553);
             this->end_day_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->end_day_btn->Name = L"end_day_btn";
             this->end_day_btn->Size = System::Drawing::Size(165, 45);
             this->end_day_btn->TabIndex = 7;
             this->end_day_btn->UseVisualStyleBackColor = false;
+            this->end_day_btn->Click += gcnew System::EventHandler(this, &Home::end_day_btn_Click);
             // 
             // exit_home_btn
             // 
@@ -256,8 +264,9 @@ namespace joystick {
             this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
             this->panel1->Location = System::Drawing::Point(0, 0);
             this->panel1->Name = L"panel1";
-            this->panel1->Size = System::Drawing::Size(1298, 78);
+            this->panel1->Size = System::Drawing::Size(1298, 72);
             this->panel1->TabIndex = 10;
+            this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Home::panel1_Paint);
             // 
             // panel2
             // 
@@ -269,31 +278,20 @@ namespace joystick {
             this->panel2->Controls->Add(this->report_btn);
             this->panel2->Controls->Add(this->storage_btn);
             this->panel2->Dock = System::Windows::Forms::DockStyle::Left;
-            this->panel2->Location = System::Drawing::Point(0, 78);
+            this->panel2->Location = System::Drawing::Point(0, 72);
             this->panel2->Name = L"panel2";
-            this->panel2->Size = System::Drawing::Size(209, 642);
+            this->panel2->Size = System::Drawing::Size(203, 648);
             this->panel2->TabIndex = 11;
             // 
             // Rooms_pnl
             // 
             this->Rooms_pnl->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->Rooms_pnl->Controls->Add(this->report_pnl);
             this->Rooms_pnl->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->Rooms_pnl->Location = System::Drawing::Point(209, 78);
+            this->Rooms_pnl->Location = System::Drawing::Point(203, 72);
             this->Rooms_pnl->Name = L"Rooms_pnl";
-            this->Rooms_pnl->Size = System::Drawing::Size(1089, 642);
+            this->Rooms_pnl->Size = System::Drawing::Size(1095, 648);
             this->Rooms_pnl->TabIndex = 10;
             this->Rooms_pnl->Visible = false;
-            // 
-            // report_pnl
-            // 
-            this->report_pnl->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->report_pnl->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->report_pnl->Location = System::Drawing::Point(0, 0);
-            this->report_pnl->Name = L"report_pnl";
-            this->report_pnl->Size = System::Drawing::Size(1089, 642);
-            this->report_pnl->TabIndex = 11;
-            this->report_pnl->Visible = false;
             // 
             // Home
             // 
@@ -313,7 +311,6 @@ namespace joystick {
             this->panel1->ResumeLayout(false);
             this->panel1->PerformLayout();
             this->panel2->ResumeLayout(false);
-            this->Rooms_pnl->ResumeLayout(false);
             this->ResumeLayout(false);
 
         }
@@ -336,23 +333,66 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 }
 private: System::Void Rooms_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
-    if (!Rooms_pnl->Visible) {
-        Rooms_pnl->Visible = true;
-        report_pnl->Visible = false;
-        rooms->Show();
-    }
+    //report->Hide();
+    Rooms_pnl->Visible = true;
+    rooms->TopLevel = false;
+    rooms->Dock = DockStyle::Fill;
+    Rooms_pnl->Controls->Clear();
+    Rooms_pnl->Controls->Add(rooms);
+   // rooms->Visible = true;
+    rooms->Show();
+    
     
 }
 private: System::Void Reports_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
-    if (!report_pnl->Visible) {
-        Rooms_pnl->Visible = false;
-        report_pnl->Visible = true;
-        report->Show();
-    }
+    //rooms->Hide();
+    Rooms_pnl->Visible = true;
+    report->TopLevel = false;
+    report->Dock = DockStyle::Fill;
+    Rooms_pnl->Controls->Clear();
+    Rooms_pnl->Controls->Add(report);
+    //report->Visible = true;
+    report->Show();
+    
+   
 }
 private: System::Void exit_home_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     Application::Exit();
+}
+private: System::Void report_pnl_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+private: System::Void storage_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    Rooms_pnl->Visible = true;
+    Storage->TopLevel = false;
+    Storage->Dock = DockStyle::Fill;
+    Rooms_pnl->Controls->Clear();
+    Rooms_pnl->Controls->Add(Storage);
+    //report->Visible = true;
+    Storage->Show();
+
+}
+private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+private: System::Void settings_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    Rooms_pnl->Visible = true;
+    settings->TopLevel = false;
+    settings->Dock = DockStyle::Fill;
+    Rooms_pnl->Controls->Clear();
+    Rooms_pnl->Controls->Add(settings);
+    //report->Visible = true;
+    settings->Show();
+
+}
+private: System::Void end_day_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    Rooms_pnl->Visible = true;
+    endday->TopLevel = false;
+    endday->Dock = DockStyle::Fill;
+    Rooms_pnl->Controls->Clear();
+    Rooms_pnl->Controls->Add(endday);
+    //report->Visible = true;
+    endday->Show();
+
 }
 };
 }

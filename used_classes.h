@@ -34,7 +34,7 @@ public:
         stopTimer();
 
         // Display a notification message box
-        MessageBox(NULL, TEXT("Room rental is finished."), TEXT("Room Finished"), MB_ICONINFORMATION | MB_OK);
+        //MessageBox(NULL, TEXT("Room rental is finished."), TEXT("Room Finished"), MB_ICONINFORMATION | MB_OK);
         //Beep(300, 20000);
     }
 
