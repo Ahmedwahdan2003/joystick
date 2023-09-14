@@ -64,9 +64,6 @@ namespace joystick {
     private: System::Windows::Forms::Panel^ room2_pnl;
 
            
-    private:Room1^ room1 = gcnew Room1();
-    private:Room2^ room2 = gcnew Room2();
-
 
     private: System::ComponentModel::IContainer^ components;
 
@@ -327,26 +324,6 @@ namespace joystick {
             this->home_btn->TabIndex = 13;
             this->home_btn->UseVisualStyleBackColor = false;
             // 
-            // reports_btn
-            // 
-            this->reports_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-            this->reports_btn->Cursor = System::Windows::Forms::Cursors::Hand;
-            this->reports_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-            this->reports_btn->FlatAppearance->BorderSize = 0;
-            this->reports_btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-            this->reports_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-            this->reports_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->reports_btn->Location = System::Drawing::Point(675, 11);
-            this->reports_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->reports_btn->Name = L"reports_btn";
-            this->reports_btn->Size = System::Drawing::Size(174, 48);
-            this->reports_btn->TabIndex = 14;
-            this->reports_btn->UseVisualStyleBackColor = false;
-            // 
             // storage_btn
             // 
             this->storage_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
@@ -478,7 +455,6 @@ private: System::Void Room1_btn_Click(System::Object^ sender, System::EventArgs^
     room1->Show();
     
 }
-private: System::Void Room2_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
     
     room2_pnl->Visible = true;
