@@ -8,7 +8,6 @@
  
 
 
-class GameRoom {
 public:
     int RoomId;
     float Total;
@@ -37,19 +36,6 @@ public:
         //MessageBox(NULL, TEXT("Room rental is finished."), TEXT("Room Finished"), MB_ICONINFORMATION | MB_OK);
         //Beep(300, 20000);
     }
-
-    
-
-    void calculateCost() {
-        std::chrono::duration<double> elapsed = endTime - startTime;
-        double timeInHours = elapsed.count() / 3600.0;
-
-        double roomCost = timeInHours * 50.0;
-
-        //database query
-
-        Total = static_cast<float>(roomCost);
-        //return roomCost;
     }
 };
 
