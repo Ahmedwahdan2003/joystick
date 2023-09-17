@@ -6,36 +6,60 @@
 #include <thread>
 #include <windows.h>
  
+using namespace System;
+using namespace System::Collections::Generic;
 
+public ref class SharedData {
+private:
+    static SharedData^ instance;
+    Dictionary<String^, double>^ roomTimes; // Dictionary to store room times
+    double totalAllRoomsCost;
 
 public:
-    int RoomId;
-    float Total;
-    float Total_hours;
-    bool available;
-    std::chrono::steady_clock::time_point startTime;
-    std::chrono::steady_clock::time_point endTime;
-   
-
-    GameRoom(int roomId) : RoomId(roomId), Total(0) {}
-
-    void startTimer() {
-        startTime = std::chrono::steady_clock::now();
+    static property SharedData^ Instance {
+        SharedData^ get() {
+            if (instance == nullptr) {
+                instance = gcnew SharedData();
+            }
+            return instance;
+        }
     }
 
-    void stopTimer() {
-        endTime = std::chrono::steady_clock::now();
+    // Constructor
+    SharedData() {
+        roomTimes = gcnew Dictionary<String^, double>();
     }
 
-    void rentForFixedTime(double hours) {
-        startTimer();
-        std::this_thread::sleep_for(std::chrono::hours(static_cast<int>(hours)));
-        stopTimer();
-
-        // Display a notification message box
-        //MessageBox(NULL, TEXT("Room rental is finished."), TEXT("Room Finished"), MB_ICONINFORMATION | MB_OK);
-        //Beep(300, 20000);
+    // Method to set room time
+    void SetRoomTime(String^ roomName, double time) {
+        roomTimes[roomName] = time;
     }
+
+    // Method to get room time
+    double GetRoomTime(String^ roomName) {
+        if (roomTimes->ContainsKey(roomName)) {
+            return roomTimes[roomName];
+        }
+        return 0.0; // Default value if room time is not found
+    }
+
+    // Property to get the total of all room costs
+    property double TotalAllRoomsCost {
+        double get() {
+            return totalAllRoomsCost;
+        }
+        void set(double value) {
+            totalAllRoomsCost = value;
+        }
+    }
+    void AddHoursToRoomTime(String^ roomName, double hoursToAdd) {
+        if (roomTimes->ContainsKey(roomName)) {
+            // If the room already exists in the dictionary, add the hours to the existing value
+            roomTimes[roomName] += hoursToAdd;
+        }
+        else {
+            // If the room doesn't exist, create a new entry with the specified hours
+            roomTimes->Add(roomName, hoursToAdd);
+        }
     }
 };
-

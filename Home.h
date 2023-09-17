@@ -27,6 +27,7 @@ namespace joystick {
             timer->Interval = 1000; 
             timer->Start();
             Rooms_pnl->Visible = false;
+            
             /*rooms->TopLevel = false;
             report->TopLevel = false;
             rooms->Parent = Rooms_pnl;
@@ -74,6 +75,13 @@ namespace joystick {
     private: System::Windows::Forms::Panel^ panel1;
     private: System::Windows::Forms::Panel^ panel2;
     private: System::Windows::Forms::Panel^ Rooms_pnl;
+    private: System::Windows::Forms::Label^ room1_status;
+    private: System::Windows::Forms::Label^ room3_status;
+
+    private: System::Windows::Forms::Label^ room2_status;
+    private: System::Windows::Forms::Label^ room5_status;
+    private: System::Windows::Forms::Label^ room4_status;
+
 
 
 
@@ -104,8 +112,13 @@ namespace joystick {
             this->exit_home_btn = (gcnew System::Windows::Forms::Button());
             this->time_lb = (gcnew System::Windows::Forms::Label());
             this->panel1 = (gcnew System::Windows::Forms::Panel());
+            this->room3_status = (gcnew System::Windows::Forms::Label());
+            this->room2_status = (gcnew System::Windows::Forms::Label());
+            this->room1_status = (gcnew System::Windows::Forms::Label());
             this->panel2 = (gcnew System::Windows::Forms::Panel());
             this->Rooms_pnl = (gcnew System::Windows::Forms::Panel());
+            this->room4_status = (gcnew System::Windows::Forms::Label());
+            this->room5_status = (gcnew System::Windows::Forms::Label());
             this->panel1->SuspendLayout();
             this->panel2->SuspendLayout();
             this->SuspendLayout();
@@ -259,6 +272,11 @@ namespace joystick {
             // 
             this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->panel1->Controls->Add(this->room5_status);
+            this->panel1->Controls->Add(this->room4_status);
+            this->panel1->Controls->Add(this->room3_status);
+            this->panel1->Controls->Add(this->room2_status);
+            this->panel1->Controls->Add(this->room1_status);
             this->panel1->Controls->Add(this->exit_home_btn);
             this->panel1->Controls->Add(this->time_lb);
             this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
@@ -267,6 +285,42 @@ namespace joystick {
             this->panel1->Size = System::Drawing::Size(1298, 72);
             this->panel1->TabIndex = 10;
             this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Home::panel1_Paint);
+            // 
+            // room3_status
+            // 
+            this->room3_status->AutoSize = true;
+            this->room3_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->room3_status->ForeColor = System::Drawing::Color::Green;
+            this->room3_status->Location = System::Drawing::Point(717, 18);
+            this->room3_status->Name = L"room3_status";
+            this->room3_status->Size = System::Drawing::Size(33, 36);
+            this->room3_status->TabIndex = 12;
+            this->room3_status->Text = L"0";
+            // 
+            // room2_status
+            // 
+            this->room2_status->AutoSize = true;
+            this->room2_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->room2_status->ForeColor = System::Drawing::Color::Green;
+            this->room2_status->Location = System::Drawing::Point(534, 18);
+            this->room2_status->Name = L"room2_status";
+            this->room2_status->Size = System::Drawing::Size(33, 36);
+            this->room2_status->TabIndex = 11;
+            this->room2_status->Text = L"0";
+            // 
+            // room1_status
+            // 
+            this->room1_status->AutoSize = true;
+            this->room1_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->room1_status->ForeColor = System::Drawing::Color::Green;
+            this->room1_status->Location = System::Drawing::Point(333, 18);
+            this->room1_status->Name = L"room1_status";
+            this->room1_status->Size = System::Drawing::Size(33, 36);
+            this->room1_status->TabIndex = 10;
+            this->room1_status->Text = L"0";
             // 
             // panel2
             // 
@@ -285,6 +339,7 @@ namespace joystick {
             // 
             // Rooms_pnl
             // 
+            this->Rooms_pnl->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Rooms_pnl.BackgroundImage")));
             this->Rooms_pnl->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->Rooms_pnl->Dock = System::Windows::Forms::DockStyle::Fill;
             this->Rooms_pnl->Location = System::Drawing::Point(203, 72);
@@ -292,6 +347,30 @@ namespace joystick {
             this->Rooms_pnl->Size = System::Drawing::Size(1095, 648);
             this->Rooms_pnl->TabIndex = 10;
             this->Rooms_pnl->Visible = false;
+            // 
+            // room4_status
+            // 
+            this->room4_status->AutoSize = true;
+            this->room4_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->room4_status->ForeColor = System::Drawing::Color::Green;
+            this->room4_status->Location = System::Drawing::Point(901, 18);
+            this->room4_status->Name = L"room4_status";
+            this->room4_status->Size = System::Drawing::Size(33, 36);
+            this->room4_status->TabIndex = 13;
+            this->room4_status->Text = L"0";
+            // 
+            // room5_status
+            // 
+            this->room5_status->AutoSize = true;
+            this->room5_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->room5_status->ForeColor = System::Drawing::Color::Green;
+            this->room5_status->Location = System::Drawing::Point(1094, 18);
+            this->room5_status->Name = L"room5_status";
+            this->room5_status->Size = System::Drawing::Size(33, 36);
+            this->room5_status->TabIndex = 14;
+            this->room5_status->Text = L"0";
             // 
             // Home
             // 
@@ -316,7 +395,7 @@ namespace joystick {
         }
 #pragma endregion
 
-   
+  
 	private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
 		
 	}
@@ -324,6 +403,39 @@ namespace joystick {
         Application::Exit();
     }
 private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+
+    if (rooms->room1_available == true) {
+        room1_status->ForeColor = System::Drawing::Color::Green;
+    }
+    else {
+        room1_status->ForeColor = System::Drawing::Color::Red;
+    }
+    if (rooms->room2_available == true) {
+        room2_status->ForeColor = System::Drawing::Color::Green;
+    }
+    else {
+        room2_status->ForeColor = System::Drawing::Color::Red;
+    }
+    if (rooms->room3_available == true) {
+        room3_status->ForeColor = System::Drawing::Color::Green;
+    }
+    else {
+        room3_status->ForeColor = System::Drawing::Color::Red;
+    }
+    if (rooms->room4_available == true) {
+        room4_status->ForeColor = System::Drawing::Color::Green;
+    }
+    else {
+        room4_status->ForeColor = System::Drawing::Color::Red;
+    }
+    if (rooms->room5_available == true) {
+        room5_status->ForeColor = System::Drawing::Color::Green;
+    }
+    else {
+        room5_status->ForeColor = System::Drawing::Color::Red;
+    }
+    
 
     DateTime currentTime = DateTime::Now;
 
@@ -333,10 +445,11 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 }
 private: System::Void Rooms_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
+    
     //report->Hide();
     Rooms_pnl->Visible = true;
     rooms->TopLevel = false;
-    rooms->Dock = DockStyle::Fill;
+    //rooms->Dock = DockStyle::Fill;
     Rooms_pnl->Controls->Clear();
     Rooms_pnl->Controls->Add(rooms);
    // rooms->Visible = true;
