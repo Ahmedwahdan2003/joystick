@@ -53,24 +53,7 @@ namespace joystick {
 		{
 			this->SuspendLayout();
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(194, 99);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(831, 222);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Room1";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(194, 410);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(831, 176);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"button2";
-			this->button2->UseVisualStyleBackColor = true;
-			// 
+	
 			// Room1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
