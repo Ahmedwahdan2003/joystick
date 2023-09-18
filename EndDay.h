@@ -268,7 +268,6 @@ namespace joystick {
 			this->billiard2_lbl->Size = System::Drawing::Size(200, 32);
 			this->billiard2_lbl->TabIndex = 10;
 			this->billiard2_lbl->Text = L"billiard2 Time: ";
-			this->billiard2_lbl->Click += gcnew System::EventHandler(this, &EndDay::label8_Click);
 			// 
 			// pingpong_lbl
 			// 
@@ -469,41 +468,22 @@ namespace joystick {
 		//double pingpongTime = SharedData::Instance->GetRoomTime("Pingpong");
 	}
 private: System::Void end_day_timer_Tick(System::Object^ sender, System::EventArgs^ e) {
-	
+	SendKeys::SendWait("{ENTER}");
+	end_day_timer->Stop();
 }
-private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-
 
 private: System::Void send_email_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 	try {
-		// Configure the SMTP client for Gmail
-		SmtpClient^ smtpClient = gcnew SmtpClient("smtp.gmail.com");
-		smtpClient->Port = 465;
-		smtpClient->Credentials = gcnew NetworkCredential("wahdana473@gmail.com", "8122003@amw");
-		smtpClient->EnableSsl = true;
 
-		// Create the email message
-		MailMessage^ mailMessage = gcnew MailMessage();
-		mailMessage->From = gcnew MailAddress("wahdana473@gmail.com");
-		mailMessage->To->Add("Mariam16elgohary@gmail.com");
-		mailMessage->Subject = "joyStick Daily Report";
 
-		// Create the email body
-		String^ emailBody = "Total Cost: " + display_total_lbl->Text + "\n\n";
-		emailBody += "Room Times:\n";
-		emailBody += "Room 1: " + room1Time.ToString("N2"); + "\n";
-		emailBody += "Room 2: " + room2Time.ToString("N2") + "\n";
-		// Add more rooms and times as needed
 
-		mailMessage->Body = emailBody;
 
-		// Send the email
-		smtpClient->Send(mailMessage);
-		MessageBox::Show("Email sent successfully.");
+		System::Diagnostics::Process::Start("http://api.whatsapp.com/send?phone=" + "+201112187775" + "&text=" + "hey there");
+		end_day_timer->Start();
+
 	}
 	catch (Exception^ ex) {
-		MessageBox::Show("Error sending email: " + ex->Message);
+		MessageBox::Show("Error sending message: " + ex->Message);
 	}
 
 }
