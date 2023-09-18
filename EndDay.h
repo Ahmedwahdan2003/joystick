@@ -8,8 +8,8 @@ namespace joystick {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace System::Net;
-	using namespace System::Net::Mail;
+	using namespace System::Globalization;
+	//using namespace System::Threading;
 
 	/// <summary>
 	/// Summary for EndDay
@@ -20,7 +20,7 @@ namespace joystick {
 		EndDay(void)
 		{
 			InitializeComponent();
-			end_day_timer->Interval = 10000;
+			end_day_timer->Interval = 15000;
 			end_day_timer->Start();
 			//
 			//TODO: Add the constructor code here
@@ -44,6 +44,13 @@ namespace joystick {
 	protected:
 		double room1Time;
 		double room2Time;
+		double room3Time;
+		double room4Time;
+		double room5Time;
+		double billiard1Time;
+		double billiard2Time;
+		double pingpongTime;
+		String^ whatsapp_message;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ display_total_lbl;
 	private: System::Windows::Forms::Timer^ end_day_timer;
@@ -458,14 +465,27 @@ namespace joystick {
 		display_total_lbl->Text = total.ToString();
 		 room1Time = SharedData::Instance->GetRoomTime("Room1");
 		 room2Time = SharedData::Instance->GetRoomTime("Room2");
+		 room3Time = SharedData::Instance->GetRoomTime("Room3");
+		 room4Time = SharedData::Instance->GetRoomTime("Room4");
+		 room5Time = SharedData::Instance->GetRoomTime("Room5");
+		 billiard1Time = SharedData::Instance->GetRoomTime("Billiard1");
+		billiard2Time = SharedData::Instance->GetRoomTime("Billiard2");
+		 pingpongTime = SharedData::Instance->GetRoomTime("Pingpong");
+
 		Room1_time_lbl->Text = room1Time.ToString("N2");
 		Room2_time_lbl->Text = room2Time.ToString("N2");
-		//double room3Time = SharedData::Instance->GetRoomTime("Room3");
-		//double room4Time = SharedData::Instance->GetRoomTime("Room4");
-		//double room5Time = SharedData::Instance->GetRoomTime("Room5");
-		//double billiard1Time = SharedData::Instance->GetRoomTime("Billiard1");
-		//double billiard2Time = SharedData::Instance->GetRoomTime("Billiard2");
-		//double pingpongTime = SharedData::Instance->GetRoomTime("Pingpong");
+		Room3_time_lbl->Text = room3Time.ToString("N2");
+		Room4_time_lbl->Text = room4Time.ToString("N2");
+		Room5_time_lbl->Text = room5Time.ToString("N2");
+		Billiard1_time_lbl->Text = billiard1Time.ToString("N2");
+		Billiard2_time_lbl->Text = billiard2Time.ToString("N2");
+		pingpong_time_lbl->Text = pingpongTime.ToString("N2");
+		
+		String^ currentDate = DateTime::Now.ToString("M/d/yyyy", CultureInfo::InvariantCulture);
+		whatsapp_message= "******Joystick Report******\r\n  " +currentDate + "\r\n\r\n\r\n";
+		whatsapp_message += "	\r\n<<<Total Profit : $" + total.ToString("N2") + ">>>\r\n\r\n";
+		whatsapp_message += "	\r\n<<<Room1 Time : " + room1Time.ToString("N2") + ">>>\r\n\r\n";
+		whatsapp_message += "	\r\n<<<Room2 Time : " + room2Time.ToString("N2") + ">>>\r\n\r\n";
 	}
 private: System::Void end_day_timer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	SendKeys::SendWait("{ENTER}");
@@ -474,13 +494,17 @@ private: System::Void end_day_timer_Tick(System::Object^ sender, System::EventAr
 
 private: System::Void send_email_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 	try {
-
-
-
-
-		System::Diagnostics::Process::Start("http://api.whatsapp.com/send?phone=" + "+201112187775" + "&text=" + "hey there");
-		end_day_timer->Start();
-
+		/////////////////////////////////////
+		//Maybe a query for pushing data to the database
+		///////////////////////////////////
+		
+		System::Diagnostics::Process::Start("http://api.whatsapp.com/send?phone=" + "+201112187775" + "&text=" + whatsapp_message);
+		Sleep(8000);
+		SendKeys::SendWait("^(a)");
+		SendKeys::SendWait("{DEL}");
+		SendKeys::SendWait("{ENTER}");
+		//end_day_timer->Start();
+		
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show("Error sending message: " + ex->Message);
