@@ -9,8 +9,10 @@ namespace joystick {
     using namespace System::Collections;
     using namespace System::Windows::Forms;
     using namespace System::Data;
+    using namespace System::Data::SqlClient;
     using namespace System::Drawing;
     using namespace System::Collections::Generic;
+
     
 
     /// <summary>
@@ -43,15 +45,63 @@ namespace joystick {
             stopwatch_timer8->Interval = 1000;
             //FetchItemPricesFromDatabase();      (method to get the items and their prices from the database)
             this->DoubleBuffered = true;
-            itemPrices->Add("pepsi", 10);
-            itemPrices->Add("indomy", 10);
-            itemPrices->Add("fury", 15);
             
+            //
+
+            data_combobox();
            
         
 
         }
+        void data_combobox() {
+            try
+            {
+                room1_combobox->Items->Clear();
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
 
+                String^ query = "SELECT name FROM items WHERE quantity <> 0";
+                SqlCommand^ command = gcnew SqlCommand(query, sqlConn);
+                SqlDataReader^ reader = command->ExecuteReader();
+
+                while (reader->Read())
+                {
+                    String^ value = reader->GetString(0);
+                    bool isValuePresent = false;
+
+                    for each (String ^ item in room1_combobox->Items)
+                    {
+                        if (item == value)
+                        {
+                            isValuePresent = true;
+                            break;
+                        }
+                    }
+
+                    if (!isValuePresent)
+                    {
+                        room1_combobox->Items->Add(value);
+                        room2_order_cmbx->Items->Add(value);
+                        room3_order_cmbx->Items->Add(value);
+                        room4_order_cmbx->Items->Add(value);
+                        room5_orders_cmbx->Items->Add(value);
+                        room6_orders_cmbx->Items->Add(value);
+                        room7_orders_cmbx->Items->Add(value);
+                        room8_orders_cmbx->Items->Add(value);
+                    }
+                }
+
+                reader->Close();
+            }
+            catch (Exception^ e)
+            {
+                MessageBox::Show("Failed to retrieve data from the database.");
+            }
+        
+        
+        
+        }
     protected:
         /// <summary>
         /// Clean up any resources being used.
@@ -3549,21 +3599,46 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selected = room8_orders_cmbx->SelectedItem->ToString();
-            if (!String::IsNullOrEmpty(selected)) {
-                AddItemToPanel1(selected, room8_orders_pnl);
-                if (room8_orders_map->ContainsKey(selected)) {
-                    room8_orders_map[selected]++;
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ selectedItem = room8_orders_cmbx->SelectedItem->ToString();
+                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room8_orders_cmbx->SelectedItem->ToString();
+                if (!String::IsNullOrEmpty(selected)) {
+                    AddItemToPanel1(selected, room8_orders_pnl);
+                    if (room8_orders_map->ContainsKey(selected)) {
+                        room8_orders_map[selected]++;
+                    }
+                    else {
+                        room8_orders_map[selected] = 1;
+                    }
                 }
-                else {
-                    room8_orders_map[selected] = 1;
-                }
+                MessageBox::Show("item added successfully.");
+                room8_orders_cmbx->SelectedIndex = -1;
+                data_combobox();
             }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to add item: " + ex->Message);
+            }
+
+          
         }
     }
     else {
         MessageBox::Show("room has to start first", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
+    
+
+   
 }
 private: System::Void room8_remove_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room8_startTime_btn_click == true) {
