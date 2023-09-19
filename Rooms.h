@@ -3953,7 +3953,6 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
                         room8_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
                 room8_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
@@ -3980,6 +3979,25 @@ private: System::Void room8_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room8_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room8_orders_pnl, room8_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room8_order_cmbx->SelectedItem->ToString();
+                room8_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to dellet item: " + ex->Message);
+            }
         }
     }
     else {
