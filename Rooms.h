@@ -370,6 +370,8 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Rooms::typeid));
             this->Rooms_tabs = (gcnew System::Windows::Forms::TabControl());
             this->room1_tab = (gcnew System::Windows::Forms::TabPage());
+            this->label1 = (gcnew System::Windows::Forms::Label());
+            this->room1_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room1_recipt_pnl = (gcnew System::Windows::Forms::FlowLayoutPanel());
             this->room1_orders_pnl = (gcnew System::Windows::Forms::FlowLayoutPanel());
             this->timeremaining1_lbl = (gcnew System::Windows::Forms::Label());
@@ -383,6 +385,8 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->Room1_starttime_btn = (gcnew System::Windows::Forms::Button());
             this->room1_close_btn = (gcnew System::Windows::Forms::Button());
             this->room2_tab = (gcnew System::Windows::Forms::TabPage());
+            this->label2 = (gcnew System::Windows::Forms::Label());
+            this->room2_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room2_timeremaining_lbl = (gcnew System::Windows::Forms::Label());
             this->room2_timer_lbl = (gcnew System::Windows::Forms::Label());
             this->room2_timestarted_lbl = (gcnew System::Windows::Forms::Label());
@@ -396,6 +400,8 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_closeroom_btn = (gcnew System::Windows::Forms::Button());
             this->room2_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room3_tab = (gcnew System::Windows::Forms::TabPage());
+            this->label3 = (gcnew System::Windows::Forms::Label());
+            this->room3_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room3_recipt_pnl = (gcnew System::Windows::Forms::FlowLayoutPanel());
             this->room3_orders_pnl = (gcnew System::Windows::Forms::FlowLayoutPanel());
             this->room3_close_btn = (gcnew System::Windows::Forms::Button());
@@ -409,6 +415,8 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_timer_lbl = (gcnew System::Windows::Forms::Label());
             this->room3_timestarted_lbl = (gcnew System::Windows::Forms::Label());
             this->troom4_tab = (gcnew System::Windows::Forms::TabPage());
+            this->label4 = (gcnew System::Windows::Forms::Label());
+            this->room4_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room4_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room4_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room4_close_btn = (gcnew System::Windows::Forms::Button());
@@ -422,6 +430,8 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_timer_lbl = (gcnew System::Windows::Forms::Label());
             this->room4_timestarted_lbl = (gcnew System::Windows::Forms::Label());
             this->room5_tab = (gcnew System::Windows::Forms::TabPage());
+            this->label5 = (gcnew System::Windows::Forms::Label());
+            this->room5_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room5_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room5_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room5_close_btn = (gcnew System::Windows::Forms::Button());
@@ -489,16 +499,6 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->stopwatch_timer7 = (gcnew System::Windows::Forms::Timer(this->components));
             this->countdown_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->stopwatch_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
-            this->room1_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
-            this->label1 = (gcnew System::Windows::Forms::Label());
-            this->room2_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
-            this->label2 = (gcnew System::Windows::Forms::Label());
-            this->room3_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
-            this->label3 = (gcnew System::Windows::Forms::Label());
-            this->room4_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
-            this->label4 = (gcnew System::Windows::Forms::Label());
-            this->room5_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
-            this->label5 = (gcnew System::Windows::Forms::Label());
             this->Rooms_tabs->SuspendLayout();
             this->room1_tab->SuspendLayout();
             this->room2_tab->SuspendLayout();
@@ -556,6 +556,29 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_tab->Text = L"ROOM1";
             this->room1_tab->UseVisualStyleBackColor = true;
             this->room1_tab->Click += gcnew System::EventHandler(this, &Rooms::room1_tab_Click);
+            // 
+            // label1
+            // 
+            this->label1->AutoSize = true;
+            this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label1->ForeColor = System::Drawing::Color::White;
+            this->label1->Location = System::Drawing::Point(522, 135);
+            this->label1->Name = L"label1";
+            this->label1->Size = System::Drawing::Size(210, 41);
+            this->label1->TabIndex = 19;
+            this->label1->Text = L"Choose Mode";
+            // 
+            // room1_mode_cmbx
+            // 
+            this->room1_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room1_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room1_mode_cmbx->FormattingEnabled = true;
+            this->room1_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room1_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room1_mode_cmbx->Name = L"room1_mode_cmbx";
+            this->room1_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room1_mode_cmbx->TabIndex = 18;
             // 
             // room1_recipt_pnl
             // 
@@ -776,6 +799,29 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_tab->UseVisualStyleBackColor = true;
             this->room2_tab->Click += gcnew System::EventHandler(this, &Rooms::room2_tab_Click);
             // 
+            // label2
+            // 
+            this->label2->AutoSize = true;
+            this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label2->ForeColor = System::Drawing::Color::White;
+            this->label2->Location = System::Drawing::Point(522, 135);
+            this->label2->Name = L"label2";
+            this->label2->Size = System::Drawing::Size(210, 41);
+            this->label2->TabIndex = 27;
+            this->label2->Text = L"Choose Mode";
+            // 
+            // room2_mode_cmbx
+            // 
+            this->room2_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room2_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room2_mode_cmbx->FormattingEnabled = true;
+            this->room2_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room2_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room2_mode_cmbx->Name = L"room2_mode_cmbx";
+            this->room2_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room2_mode_cmbx->TabIndex = 26;
+            // 
             // room2_timeremaining_lbl
             // 
             this->room2_timeremaining_lbl->AutoSize = true;
@@ -991,6 +1037,29 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_tab->TabIndex = 2;
             this->room3_tab->Text = L"ROOM3";
             this->room3_tab->UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this->label3->AutoSize = true;
+            this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label3->ForeColor = System::Drawing::Color::White;
+            this->label3->Location = System::Drawing::Point(522, 135);
+            this->label3->Name = L"label3";
+            this->label3->Size = System::Drawing::Size(210, 41);
+            this->label3->TabIndex = 37;
+            this->label3->Text = L"Choose Mode";
+            // 
+            // room3_mode_cmbx
+            // 
+            this->room3_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room3_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room3_mode_cmbx->FormattingEnabled = true;
+            this->room3_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room3_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room3_mode_cmbx->Name = L"room3_mode_cmbx";
+            this->room3_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room3_mode_cmbx->TabIndex = 36;
             // 
             // room3_recipt_pnl
             // 
@@ -1210,6 +1279,29 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->troom4_tab->Text = L"ROOM4";
             this->troom4_tab->UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this->label4->AutoSize = true;
+            this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label4->ForeColor = System::Drawing::Color::White;
+            this->label4->Location = System::Drawing::Point(522, 135);
+            this->label4->Name = L"label4";
+            this->label4->Size = System::Drawing::Size(210, 41);
+            this->label4->TabIndex = 44;
+            this->label4->Text = L"Choose Mode";
+            // 
+            // room4_mode_cmbx
+            // 
+            this->room4_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room4_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room4_mode_cmbx->FormattingEnabled = true;
+            this->room4_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room4_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room4_mode_cmbx->Name = L"room4_mode_cmbx";
+            this->room4_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room4_mode_cmbx->TabIndex = 43;
+            // 
             // room4_order_cmbx
             // 
             this->room4_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -1428,6 +1520,29 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_tab->TabIndex = 4;
             this->room5_tab->Text = L"ROOM5";
             this->room5_tab->UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this->label5->AutoSize = true;
+            this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label5->ForeColor = System::Drawing::Color::White;
+            this->label5->Location = System::Drawing::Point(522, 135);
+            this->label5->Name = L"label5";
+            this->label5->Size = System::Drawing::Size(210, 41);
+            this->label5->TabIndex = 46;
+            this->label5->Text = L"Choose Mode";
+            // 
+            // room5_mode_cmbx
+            // 
+            this->room5_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room5_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room5_mode_cmbx->FormattingEnabled = true;
+            this->room5_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room5_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room5_mode_cmbx->Name = L"room5_mode_cmbx";
+            this->room5_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room5_mode_cmbx->TabIndex = 45;
             // 
             // room5_order_cmbx
             // 
@@ -2337,121 +2452,6 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             // stopwatch_timer8
             // 
             this->stopwatch_timer8->Tick += gcnew System::EventHandler(this, &Rooms::stopwatch_timer8_Tick);
-            // 
-            // room1_mode_cmbx
-            // 
-            this->room1_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_mode_cmbx->ForeColor = System::Drawing::Color::Black;
-            this->room1_mode_cmbx->FormattingEnabled = true;
-            this->room1_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room1_mode_cmbx->Location = System::Drawing::Point(529, 198);
-            this->room1_mode_cmbx->Name = L"room1_mode_cmbx";
-            this->room1_mode_cmbx->Size = System::Drawing::Size(190, 35);
-            this->room1_mode_cmbx->TabIndex = 18;
-            // 
-            // label1
-            // 
-            this->label1->AutoSize = true;
-            this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->label1->ForeColor = System::Drawing::Color::White;
-            this->label1->Location = System::Drawing::Point(522, 135);
-            this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(210, 41);
-            this->label1->TabIndex = 19;
-            this->label1->Text = L"Choose Mode";
-            // 
-            // room2_mode_cmbx
-            // 
-            this->room2_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_mode_cmbx->ForeColor = System::Drawing::Color::Black;
-            this->room2_mode_cmbx->FormattingEnabled = true;
-            this->room2_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room2_mode_cmbx->Location = System::Drawing::Point(529, 198);
-            this->room2_mode_cmbx->Name = L"room2_mode_cmbx";
-            this->room2_mode_cmbx->Size = System::Drawing::Size(190, 35);
-            this->room2_mode_cmbx->TabIndex = 26;
-            // 
-            // label2
-            // 
-            this->label2->AutoSize = true;
-            this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->label2->ForeColor = System::Drawing::Color::White;
-            this->label2->Location = System::Drawing::Point(522, 135);
-            this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(210, 41);
-            this->label2->TabIndex = 27;
-            this->label2->Text = L"Choose Mode";
-            // 
-            // room3_mode_cmbx
-            // 
-            this->room3_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_mode_cmbx->ForeColor = System::Drawing::Color::Black;
-            this->room3_mode_cmbx->FormattingEnabled = true;
-            this->room3_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room3_mode_cmbx->Location = System::Drawing::Point(529, 198);
-            this->room3_mode_cmbx->Name = L"room3_mode_cmbx";
-            this->room3_mode_cmbx->Size = System::Drawing::Size(190, 35);
-            this->room3_mode_cmbx->TabIndex = 36;
-            // 
-            // label3
-            // 
-            this->label3->AutoSize = true;
-            this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->label3->ForeColor = System::Drawing::Color::White;
-            this->label3->Location = System::Drawing::Point(522, 135);
-            this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(210, 41);
-            this->label3->TabIndex = 37;
-            this->label3->Text = L"Choose Mode";
-            // 
-            // room4_mode_cmbx
-            // 
-            this->room4_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_mode_cmbx->ForeColor = System::Drawing::Color::Black;
-            this->room4_mode_cmbx->FormattingEnabled = true;
-            this->room4_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room4_mode_cmbx->Location = System::Drawing::Point(529, 198);
-            this->room4_mode_cmbx->Name = L"room4_mode_cmbx";
-            this->room4_mode_cmbx->Size = System::Drawing::Size(190, 35);
-            this->room4_mode_cmbx->TabIndex = 43;
-            // 
-            // label4
-            // 
-            this->label4->AutoSize = true;
-            this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->label4->ForeColor = System::Drawing::Color::White;
-            this->label4->Location = System::Drawing::Point(522, 135);
-            this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(210, 41);
-            this->label4->TabIndex = 44;
-            this->label4->Text = L"Choose Mode";
-            // 
-            // room5_mode_cmbx
-            // 
-            this->room5_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_mode_cmbx->ForeColor = System::Drawing::Color::Black;
-            this->room5_mode_cmbx->FormattingEnabled = true;
-            this->room5_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room5_mode_cmbx->Location = System::Drawing::Point(529, 198);
-            this->room5_mode_cmbx->Name = L"room5_mode_cmbx";
-            this->room5_mode_cmbx->Size = System::Drawing::Size(190, 35);
-            this->room5_mode_cmbx->TabIndex = 45;
-            // 
-            // label5
-            // 
-            this->label5->AutoSize = true;
-            this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->label5->ForeColor = System::Drawing::Color::White;
-            this->label5->Location = System::Drawing::Point(522, 135);
-            this->label5->Name = L"label5";
-            this->label5->Size = System::Drawing::Size(210, 41);
-            this->label5->TabIndex = 46;
-            this->label5->Text = L"Choose Mode";
             // 
             // Rooms
             // 
