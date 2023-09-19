@@ -127,19 +127,31 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EndDay.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Room1.cpp" />
     <ClCompile Include="room2.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="storage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EndDay.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Home.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Room1.h">
+    <ClInclude Include="Rooms.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="room2.h">
+    <ClInclude Include="reports.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="storage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="used_classes.h" />
@@ -148,17 +160,26 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EndDay.resx">
+      <DependentUpon>EndDay.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Room1.resx">
-      <DependentUpon>Room1.h</DependentUpon>
+    <EmbeddedResource Include="Rooms.resx">
+      <DependentUpon>Rooms.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="room2.resx">
-      <DependentUpon>room2.h</DependentUpon>
+    <EmbeddedResource Include="reports.resx">
+      <DependentUpon>reports.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="storage.resx">
+      <DependentUpon>storage.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -27,6 +27,15 @@
     <ClCompile Include="room2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndDay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="login.h">
@@ -38,10 +47,19 @@
     <ClInclude Include="Home.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Room1.h">
+    <ClInclude Include="Rooms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="room2.h">
+    <ClInclude Include="reports.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndDay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
