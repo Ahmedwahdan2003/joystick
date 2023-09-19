@@ -56,7 +56,7 @@ namespace joystick {
         void data_combobox() {
             try
             {
-                room1_combobox->Items->Clear();
+                room1_order_cmbx->Items->Clear();
                 String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
@@ -70,7 +70,7 @@ namespace joystick {
                     String^ value = reader->GetString(0);
                     bool isValuePresent = false;
 
-                    for each (String ^ item in room1_combobox->Items)
+                    for each (String ^ item in room1_order_cmbx->Items)
                     {
                         if (item == value)
                         {
@@ -81,14 +81,14 @@ namespace joystick {
 
                     if (!isValuePresent)
                     {
-                        room1_combobox->Items->Add(value);
+                        room1_order_cmbx->Items->Add(value);
                         room2_order_cmbx->Items->Add(value);
                         room3_order_cmbx->Items->Add(value);
                         room4_order_cmbx->Items->Add(value);
-                        room5_orders_cmbx->Items->Add(value);
-                        room6_orders_cmbx->Items->Add(value);
-                        room7_orders_cmbx->Items->Add(value);
-                        room8_orders_cmbx->Items->Add(value);
+                        room5_order_cmbx->Items->Add(value);
+                        room6_order_cmbx->Items->Add(value);
+                        room7_order_cmbx->Items->Add(value);
+                        room8_order_cmbx->Items->Add(value);
                     }
                 }
 
@@ -135,8 +135,9 @@ namespace joystick {
     private: System::Windows::Forms::TabPage^ pingpong_tab;
 
     private: System::Windows::Forms::TextBox^ textBoxHours1;
+private: System::Windows::Forms::ComboBox^ room1_order_cmbx;
 
-    private: System::Windows::Forms::ComboBox^ room1_combobox;
+
     private: System::Windows::Forms::Button^ room1_remove_btn;
     private: System::Windows::Forms::Button^ room1_add_btn;
     private: System::Windows::Forms::Button^ room1_endtime_btn;
@@ -263,7 +264,8 @@ private: System::Windows::Forms::Label^ room4_timeremaining_lbl;
 private: System::Windows::Forms::Label^ room4_timer_lbl;
 
 private: System::Windows::Forms::Label^ room4_timestarted_lbl;
-private: System::Windows::Forms::ComboBox^ room5_orders_cmbx;
+private: System::Windows::Forms::ComboBox^ room5_order_cmbx;
+
 private: System::Windows::Forms::TextBox^ room5_userinput_time;
 private: System::Windows::Forms::Button^ room5_close_btn;
 private: System::Windows::Forms::Button^ room5_add_btn;
@@ -275,7 +277,8 @@ private: System::Windows::Forms::FlowLayoutPanel^ room5_orders_pnl;
 private: System::Windows::Forms::Label^ room5_timeremaining_lbl;
 private: System::Windows::Forms::Label^ room5_timer_lbl;
 private: System::Windows::Forms::Label^ room5_timestarted_lbl;
-private: System::Windows::Forms::ComboBox^ room6_orders_cmbx;
+private: System::Windows::Forms::ComboBox^ room6_order_cmbx;
+
 private: System::Windows::Forms::TextBox^ room6_userinput_time;
 private: System::Windows::Forms::Button^ room6_close_btn;
 private: System::Windows::Forms::Button^ room6_add_btn;
@@ -287,7 +290,8 @@ private: System::Windows::Forms::FlowLayoutPanel^ room6_orders_pnl;
 private: System::Windows::Forms::Label^ room6_timeremaining_lbl;
 private: System::Windows::Forms::Label^ room6_timer_lbl;
 private: System::Windows::Forms::Label^ room6_timestarted_lbl;
-private: System::Windows::Forms::ComboBox^ room7_orders_cmbx;
+private: System::Windows::Forms::ComboBox^ room7_order_cmbx;
+
 private: System::Windows::Forms::TextBox^ room7_userinput_time;
 private: System::Windows::Forms::Button^ room7_close_btn;
 private: System::Windows::Forms::Button^ room7_remove_btn;
@@ -304,7 +308,8 @@ private: System::Windows::Forms::Button^ room8_add_btn;
 private: System::Windows::Forms::Button^ room8_remove_btn;
 private: System::Windows::Forms::Button^ room8_end_btn;
 private: System::Windows::Forms::Button^ room8_start_btn;
-private: System::Windows::Forms::ComboBox^ room8_orders_cmbx;
+private: System::Windows::Forms::ComboBox^ room8_order_cmbx;
+
 private: System::Windows::Forms::TextBox^ room8_userinput_time;
 
 private: System::Windows::Forms::FlowLayoutPanel^ room8_recipt_pnl;
@@ -324,6 +329,21 @@ private: System::Windows::Forms::Timer^ countdown_timer7;
 private: System::Windows::Forms::Timer^ stopwatch_timer7;
 private: System::Windows::Forms::Timer^ countdown_timer8;
 private: System::Windows::Forms::Timer^ stopwatch_timer8;
+private: System::Windows::Forms::Label^ label1;
+private: System::Windows::Forms::ComboBox^ room1_mode_cmbx;
+
+private: System::Windows::Forms::Label^ label2;
+private: System::Windows::Forms::ComboBox^ room2_mode_cmbx;
+
+private: System::Windows::Forms::Label^ label3;
+private: System::Windows::Forms::ComboBox^ room3_mode_cmbx;
+
+private: System::Windows::Forms::Label^ label4;
+private: System::Windows::Forms::ComboBox^ room4_mode_cmbx;
+
+private: System::Windows::Forms::Label^ label5;
+private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
+
 
 
 
@@ -356,7 +376,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->timer1_lbl = (gcnew System::Windows::Forms::Label());
             this->timestarted1_lbl = (gcnew System::Windows::Forms::Label());
             this->textBoxHours1 = (gcnew System::Windows::Forms::TextBox());
-            this->room1_combobox = (gcnew System::Windows::Forms::ComboBox());
+            this->room1_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room1_remove_btn = (gcnew System::Windows::Forms::Button());
             this->room1_add_btn = (gcnew System::Windows::Forms::Button());
             this->room1_endtime_btn = (gcnew System::Windows::Forms::Button());
@@ -402,7 +422,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->room4_timer_lbl = (gcnew System::Windows::Forms::Label());
             this->room4_timestarted_lbl = (gcnew System::Windows::Forms::Label());
             this->room5_tab = (gcnew System::Windows::Forms::TabPage());
-            this->room5_orders_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->room5_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room5_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room5_close_btn = (gcnew System::Windows::Forms::Button());
             this->room5_add_btn = (gcnew System::Windows::Forms::Button());
@@ -415,7 +435,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->room5_timer_lbl = (gcnew System::Windows::Forms::Label());
             this->room5_timestarted_lbl = (gcnew System::Windows::Forms::Label());
             this->billiard1_tab = (gcnew System::Windows::Forms::TabPage());
-            this->room6_orders_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->room6_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room6_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room6_close_btn = (gcnew System::Windows::Forms::Button());
             this->room6_add_btn = (gcnew System::Windows::Forms::Button());
@@ -428,7 +448,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->room6_timer_lbl = (gcnew System::Windows::Forms::Label());
             this->room6_timestarted_lbl = (gcnew System::Windows::Forms::Label());
             this->billiard2_tab = (gcnew System::Windows::Forms::TabPage());
-            this->room7_orders_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->room7_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room7_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room7_close_btn = (gcnew System::Windows::Forms::Button());
             this->room7_remove_btn = (gcnew System::Windows::Forms::Button());
@@ -446,7 +466,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->room8_remove_btn = (gcnew System::Windows::Forms::Button());
             this->room8_end_btn = (gcnew System::Windows::Forms::Button());
             this->room8_start_btn = (gcnew System::Windows::Forms::Button());
-            this->room8_orders_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->room8_order_cmbx = (gcnew System::Windows::Forms::ComboBox());
             this->room8_userinput_time = (gcnew System::Windows::Forms::TextBox());
             this->room8_recipt_pnl = (gcnew System::Windows::Forms::FlowLayoutPanel());
             this->room8_orders_pnl = (gcnew System::Windows::Forms::FlowLayoutPanel());
@@ -469,6 +489,16 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->stopwatch_timer7 = (gcnew System::Windows::Forms::Timer(this->components));
             this->countdown_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->stopwatch_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
+            this->room1_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->label1 = (gcnew System::Windows::Forms::Label());
+            this->room2_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->label2 = (gcnew System::Windows::Forms::Label());
+            this->room3_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->label3 = (gcnew System::Windows::Forms::Label());
+            this->room4_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->label4 = (gcnew System::Windows::Forms::Label());
+            this->room5_mode_cmbx = (gcnew System::Windows::Forms::ComboBox());
+            this->label5 = (gcnew System::Windows::Forms::Label());
             this->Rooms_tabs->SuspendLayout();
             this->room1_tab->SuspendLayout();
             this->room2_tab->SuspendLayout();
@@ -504,13 +534,15 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->room1_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room1_tab.BackgroundImage")));
             this->room1_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->room1_tab->Controls->Add(this->label1);
+            this->room1_tab->Controls->Add(this->room1_mode_cmbx);
             this->room1_tab->Controls->Add(this->room1_recipt_pnl);
             this->room1_tab->Controls->Add(this->room1_orders_pnl);
             this->room1_tab->Controls->Add(this->timeremaining1_lbl);
             this->room1_tab->Controls->Add(this->timer1_lbl);
             this->room1_tab->Controls->Add(this->timestarted1_lbl);
             this->room1_tab->Controls->Add(this->textBoxHours1);
-            this->room1_tab->Controls->Add(this->room1_combobox);
+            this->room1_tab->Controls->Add(this->room1_order_cmbx);
             this->room1_tab->Controls->Add(this->room1_remove_btn);
             this->room1_tab->Controls->Add(this->room1_add_btn);
             this->room1_tab->Controls->Add(this->room1_endtime_btn);
@@ -586,16 +618,16 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->textBoxHours1->TabIndex = 10;
             this->textBoxHours1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::textBoxHours1_KeyPress);
             // 
-            // room1_combobox
+            // room1_order_cmbx
             // 
-            this->room1_combobox->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_combobox->ForeColor = System::Drawing::Color::Black;
-            this->room1_combobox->FormattingEnabled = true;
-            this->room1_combobox->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room1_combobox->Location = System::Drawing::Point(1003, 402);
-            this->room1_combobox->Name = L"room1_combobox";
-            this->room1_combobox->Size = System::Drawing::Size(350, 35);
-            this->room1_combobox->TabIndex = 9;
+            this->room1_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room1_order_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room1_order_cmbx->FormattingEnabled = true;
+            this->room1_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room1_order_cmbx->Location = System::Drawing::Point(1003, 402);
+            this->room1_order_cmbx->Name = L"room1_order_cmbx";
+            this->room1_order_cmbx->Size = System::Drawing::Size(350, 35);
+            this->room1_order_cmbx->TabIndex = 9;
             // 
             // room1_remove_btn
             // 
@@ -721,6 +753,8 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->room2_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room2_tab.BackgroundImage")));
             this->room2_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->room2_tab->Controls->Add(this->label2);
+            this->room2_tab->Controls->Add(this->room2_mode_cmbx);
             this->room2_tab->Controls->Add(this->room2_timeremaining_lbl);
             this->room2_tab->Controls->Add(this->room2_timer_lbl);
             this->room2_tab->Controls->Add(this->room2_timestarted_lbl);
@@ -936,6 +970,8 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->room3_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room3_tab.BackgroundImage")));
             this->room3_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->room3_tab->Controls->Add(this->label3);
+            this->room3_tab->Controls->Add(this->room3_mode_cmbx);
             this->room3_tab->Controls->Add(this->room3_recipt_pnl);
             this->room3_tab->Controls->Add(this->room3_orders_pnl);
             this->room3_tab->Controls->Add(this->room3_close_btn);
@@ -1152,6 +1188,8 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->troom4_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"troom4_tab.BackgroundImage")));
             this->troom4_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->troom4_tab->Controls->Add(this->label4);
+            this->troom4_tab->Controls->Add(this->room4_mode_cmbx);
             this->troom4_tab->Controls->Add(this->room4_order_cmbx);
             this->troom4_tab->Controls->Add(this->room4_userinput_time);
             this->troom4_tab->Controls->Add(this->room4_close_btn);
@@ -1369,7 +1407,9 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->room5_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room5_tab.BackgroundImage")));
             this->room5_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->room5_tab->Controls->Add(this->room5_orders_cmbx);
+            this->room5_tab->Controls->Add(this->label5);
+            this->room5_tab->Controls->Add(this->room5_mode_cmbx);
+            this->room5_tab->Controls->Add(this->room5_order_cmbx);
             this->room5_tab->Controls->Add(this->room5_userinput_time);
             this->room5_tab->Controls->Add(this->room5_close_btn);
             this->room5_tab->Controls->Add(this->room5_add_btn);
@@ -1389,15 +1429,15 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->room5_tab->Text = L"ROOM5";
             this->room5_tab->UseVisualStyleBackColor = true;
             // 
-            // room5_orders_cmbx
+            // room5_order_cmbx
             // 
-            this->room5_orders_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_orders_cmbx->FormattingEnabled = true;
-            this->room5_orders_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room5_orders_cmbx->Location = System::Drawing::Point(994, 406);
-            this->room5_orders_cmbx->Name = L"room5_orders_cmbx";
-            this->room5_orders_cmbx->Size = System::Drawing::Size(356, 35);
-            this->room5_orders_cmbx->TabIndex = 44;
+            this->room5_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room5_order_cmbx->FormattingEnabled = true;
+            this->room5_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room5_order_cmbx->Location = System::Drawing::Point(994, 406);
+            this->room5_order_cmbx->Name = L"room5_order_cmbx";
+            this->room5_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room5_order_cmbx->TabIndex = 44;
             // 
             // room5_userinput_time
             // 
@@ -1586,7 +1626,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->billiard1_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"billiard1_tab.BackgroundImage")));
             this->billiard1_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->billiard1_tab->Controls->Add(this->room6_orders_cmbx);
+            this->billiard1_tab->Controls->Add(this->room6_order_cmbx);
             this->billiard1_tab->Controls->Add(this->room6_userinput_time);
             this->billiard1_tab->Controls->Add(this->room6_close_btn);
             this->billiard1_tab->Controls->Add(this->room6_add_btn);
@@ -1606,15 +1646,15 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->billiard1_tab->Text = L"Billiard1";
             this->billiard1_tab->UseVisualStyleBackColor = true;
             // 
-            // room6_orders_cmbx
+            // room6_order_cmbx
             // 
-            this->room6_orders_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_orders_cmbx->FormattingEnabled = true;
-            this->room6_orders_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room6_orders_cmbx->Location = System::Drawing::Point(997, 403);
-            this->room6_orders_cmbx->Name = L"room6_orders_cmbx";
-            this->room6_orders_cmbx->Size = System::Drawing::Size(356, 35);
-            this->room6_orders_cmbx->TabIndex = 45;
+            this->room6_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room6_order_cmbx->FormattingEnabled = true;
+            this->room6_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room6_order_cmbx->Location = System::Drawing::Point(997, 403);
+            this->room6_order_cmbx->Name = L"room6_order_cmbx";
+            this->room6_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room6_order_cmbx->TabIndex = 45;
             // 
             // room6_userinput_time
             // 
@@ -1803,7 +1843,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // 
             this->billiard2_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"billiard2_tab.BackgroundImage")));
             this->billiard2_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->billiard2_tab->Controls->Add(this->room7_orders_cmbx);
+            this->billiard2_tab->Controls->Add(this->room7_order_cmbx);
             this->billiard2_tab->Controls->Add(this->room7_userinput_time);
             this->billiard2_tab->Controls->Add(this->room7_close_btn);
             this->billiard2_tab->Controls->Add(this->room7_remove_btn);
@@ -1823,15 +1863,15 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->billiard2_tab->Text = L"Billiard2";
             this->billiard2_tab->UseVisualStyleBackColor = true;
             // 
-            // room7_orders_cmbx
+            // room7_order_cmbx
             // 
-            this->room7_orders_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_orders_cmbx->FormattingEnabled = true;
-            this->room7_orders_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room7_orders_cmbx->Location = System::Drawing::Point(1004, 401);
-            this->room7_orders_cmbx->Name = L"room7_orders_cmbx";
-            this->room7_orders_cmbx->Size = System::Drawing::Size(356, 35);
-            this->room7_orders_cmbx->TabIndex = 46;
+            this->room7_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room7_order_cmbx->FormattingEnabled = true;
+            this->room7_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room7_order_cmbx->Location = System::Drawing::Point(1004, 401);
+            this->room7_order_cmbx->Name = L"room7_order_cmbx";
+            this->room7_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room7_order_cmbx->TabIndex = 46;
             // 
             // room7_userinput_time
             // 
@@ -2025,7 +2065,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->pingpong_tab->Controls->Add(this->room8_remove_btn);
             this->pingpong_tab->Controls->Add(this->room8_end_btn);
             this->pingpong_tab->Controls->Add(this->room8_start_btn);
-            this->pingpong_tab->Controls->Add(this->room8_orders_cmbx);
+            this->pingpong_tab->Controls->Add(this->room8_order_cmbx);
             this->pingpong_tab->Controls->Add(this->room8_userinput_time);
             this->pingpong_tab->Controls->Add(this->room8_recipt_pnl);
             this->pingpong_tab->Controls->Add(this->room8_orders_pnl);
@@ -2039,6 +2079,7 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->pingpong_tab->TabIndex = 7;
             this->pingpong_tab->Text = L"PING PONG";
             this->pingpong_tab->UseVisualStyleBackColor = true;
+            this->pingpong_tab->Click += gcnew System::EventHandler(this, &Rooms::pingpong_tab_Click);
             // 
             // room8_close_btn
             // 
@@ -2160,15 +2201,15 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             this->room8_start_btn->UseVisualStyleBackColor = false;
             this->room8_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_start_btn_Click);
             // 
-            // room8_orders_cmbx
+            // room8_order_cmbx
             // 
-            this->room8_orders_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_orders_cmbx->FormattingEnabled = true;
-            this->room8_orders_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room8_orders_cmbx->Location = System::Drawing::Point(998, 402);
-            this->room8_orders_cmbx->Name = L"room8_orders_cmbx";
-            this->room8_orders_cmbx->Size = System::Drawing::Size(356, 35);
-            this->room8_orders_cmbx->TabIndex = 47;
+            this->room8_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room8_order_cmbx->FormattingEnabled = true;
+            this->room8_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room8_order_cmbx->Location = System::Drawing::Point(998, 402);
+            this->room8_order_cmbx->Name = L"room8_order_cmbx";
+            this->room8_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room8_order_cmbx->TabIndex = 47;
             // 
             // room8_userinput_time
             // 
@@ -2296,6 +2337,121 @@ private: System::Windows::Forms::Timer^ stopwatch_timer8;
             // stopwatch_timer8
             // 
             this->stopwatch_timer8->Tick += gcnew System::EventHandler(this, &Rooms::stopwatch_timer8_Tick);
+            // 
+            // room1_mode_cmbx
+            // 
+            this->room1_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room1_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room1_mode_cmbx->FormattingEnabled = true;
+            this->room1_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room1_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room1_mode_cmbx->Name = L"room1_mode_cmbx";
+            this->room1_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room1_mode_cmbx->TabIndex = 18;
+            // 
+            // label1
+            // 
+            this->label1->AutoSize = true;
+            this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label1->ForeColor = System::Drawing::Color::White;
+            this->label1->Location = System::Drawing::Point(522, 135);
+            this->label1->Name = L"label1";
+            this->label1->Size = System::Drawing::Size(210, 41);
+            this->label1->TabIndex = 19;
+            this->label1->Text = L"Choose Mode";
+            // 
+            // room2_mode_cmbx
+            // 
+            this->room2_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room2_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room2_mode_cmbx->FormattingEnabled = true;
+            this->room2_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room2_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room2_mode_cmbx->Name = L"room2_mode_cmbx";
+            this->room2_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room2_mode_cmbx->TabIndex = 26;
+            // 
+            // label2
+            // 
+            this->label2->AutoSize = true;
+            this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label2->ForeColor = System::Drawing::Color::White;
+            this->label2->Location = System::Drawing::Point(522, 135);
+            this->label2->Name = L"label2";
+            this->label2->Size = System::Drawing::Size(210, 41);
+            this->label2->TabIndex = 27;
+            this->label2->Text = L"Choose Mode";
+            // 
+            // room3_mode_cmbx
+            // 
+            this->room3_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room3_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room3_mode_cmbx->FormattingEnabled = true;
+            this->room3_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room3_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room3_mode_cmbx->Name = L"room3_mode_cmbx";
+            this->room3_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room3_mode_cmbx->TabIndex = 36;
+            // 
+            // label3
+            // 
+            this->label3->AutoSize = true;
+            this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label3->ForeColor = System::Drawing::Color::White;
+            this->label3->Location = System::Drawing::Point(522, 135);
+            this->label3->Name = L"label3";
+            this->label3->Size = System::Drawing::Size(210, 41);
+            this->label3->TabIndex = 37;
+            this->label3->Text = L"Choose Mode";
+            // 
+            // room4_mode_cmbx
+            // 
+            this->room4_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room4_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room4_mode_cmbx->FormattingEnabled = true;
+            this->room4_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room4_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room4_mode_cmbx->Name = L"room4_mode_cmbx";
+            this->room4_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room4_mode_cmbx->TabIndex = 43;
+            // 
+            // label4
+            // 
+            this->label4->AutoSize = true;
+            this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label4->ForeColor = System::Drawing::Color::White;
+            this->label4->Location = System::Drawing::Point(522, 135);
+            this->label4->Name = L"label4";
+            this->label4->Size = System::Drawing::Size(210, 41);
+            this->label4->TabIndex = 44;
+            this->label4->Text = L"Choose Mode";
+            // 
+            // room5_mode_cmbx
+            // 
+            this->room5_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room5_mode_cmbx->ForeColor = System::Drawing::Color::Black;
+            this->room5_mode_cmbx->FormattingEnabled = true;
+            this->room5_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
+            this->room5_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room5_mode_cmbx->Name = L"room5_mode_cmbx";
+            this->room5_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room5_mode_cmbx->TabIndex = 45;
+            // 
+            // label5
+            // 
+            this->label5->AutoSize = true;
+            this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label5->ForeColor = System::Drawing::Color::White;
+            this->label5->Location = System::Drawing::Point(522, 135);
+            this->label5->Name = L"label5";
+            this->label5->Size = System::Drawing::Size(210, 41);
+            this->label5->TabIndex = 46;
+            this->label5->Text = L"Choose Mode";
             // 
             // Rooms
             // 
@@ -2425,11 +2581,11 @@ private: System::Void stopwatch_timer1_Tick(System::Object^ sender, System::Even
 private: System::Void room1_remove_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
     if (room1_startTime_btn_click == true) {
-        if (room1_combobox->SelectedIndex == -1) {
+        if (room1_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selectedItem = room1_combobox->SelectedItem->ToString();
+            String^ selectedItem = room1_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room1_orders_pnl, room1_orders_map);
         }
     }
@@ -2440,11 +2596,11 @@ private: System::Void room1_remove_btn_Click(System::Object^ sender, System::Eve
 
 private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room1_startTime_btn_click == true) {
-        if (room1_combobox->SelectedIndex == -1) {
+        if (room1_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selected = room1_combobox->SelectedItem->ToString();
+            String^ selected = room1_order_cmbx->SelectedItem->ToString();
             if (!String::IsNullOrEmpty(selected)) {
                 AddItemToPanel1(selected, room1_orders_pnl);
                 if (room1_orders_map->ContainsKey(selected)) {
@@ -3135,11 +3291,11 @@ private: System::Void room5_end_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room5_add_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room5_startTime_btn_click == true) {
-        if (room5_orders_cmbx->SelectedIndex == -1) {
+        if (room5_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selected = room5_orders_cmbx->SelectedItem->ToString();
+            String^ selected = room5_order_cmbx->SelectedItem->ToString();
             if (!String::IsNullOrEmpty(selected)) {
                 AddItemToPanel1(selected, room5_orders_pnl);
                 if (room5_orders_map->ContainsKey(selected)) {
@@ -3158,11 +3314,11 @@ private: System::Void room5_add_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room5_remove_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room5_startTime_btn_click == true) {
-        if (room5_orders_cmbx->SelectedIndex == -1) {
+        if (room5_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selectedItem = room5_orders_cmbx->SelectedItem->ToString();
+            String^ selectedItem = room5_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room5_orders_pnl, room5_orders_map);
         }
     }
@@ -3288,11 +3444,11 @@ private: System::Void room6_end_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room6_add_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room6_startTime_btn_click == true) {
-        if (room6_orders_cmbx->SelectedIndex == -1) {
+        if (room6_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selected = room6_orders_cmbx->SelectedItem->ToString();
+            String^ selected = room6_order_cmbx->SelectedItem->ToString();
             if (!String::IsNullOrEmpty(selected)) {
                 AddItemToPanel1(selected, room6_orders_pnl);
                 if (room6_orders_map->ContainsKey(selected)) {
@@ -3311,11 +3467,11 @@ private: System::Void room6_add_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room6_remove_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room6_startTime_btn_click == true) {
-        if (room6_orders_cmbx->SelectedIndex == -1) {
+        if (room6_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selectedItem = room6_orders_cmbx->SelectedItem->ToString();
+            String^ selectedItem = room6_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room6_orders_pnl, room6_orders_map);
         }
     }
@@ -3440,11 +3596,11 @@ private: System::Void room7_end_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room7_add_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room7_startTime_btn_click == true) {
-        if (room7_orders_cmbx->SelectedIndex == -1) {
+        if (room7_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selected = room7_orders_cmbx->SelectedItem->ToString();
+            String^ selected = room7_order_cmbx->SelectedItem->ToString();
             if (!String::IsNullOrEmpty(selected)) {
                 AddItemToPanel1(selected, room7_orders_pnl);
                 if (room7_orders_map->ContainsKey(selected)) {
@@ -3462,11 +3618,11 @@ private: System::Void room7_add_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room7_remove_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room7_startTime_btn_click == true) {
-        if (room7_orders_cmbx->SelectedIndex == -1) {
+        if (room7_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selectedItem = room7_orders_cmbx->SelectedItem->ToString();
+            String^ selectedItem = room7_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room7_orders_pnl, room7_orders_map);
         }
     }
@@ -3595,7 +3751,7 @@ private: System::Void room8_end_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room8_startTime_btn_click == true) {
-        if (room8_orders_cmbx->SelectedIndex == -1) {
+        if (room8_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
@@ -3605,13 +3761,13 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ selectedItem = room8_orders_cmbx->SelectedItem->ToString();
+                String^ selectedItem = room8_order_cmbx->SelectedItem->ToString();
                 String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
                 updateCommand->ExecuteNonQuery();
-                String^ selected = room8_orders_cmbx->SelectedItem->ToString();
+                String^ selected = room8_order_cmbx->SelectedItem->ToString();
                 if (!String::IsNullOrEmpty(selected)) {
                     AddItemToPanel1(selected, room8_orders_pnl);
                     if (room8_orders_map->ContainsKey(selected)) {
@@ -3622,7 +3778,7 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
                     }
                 }
                 MessageBox::Show("item added successfully.");
-                room8_orders_cmbx->SelectedIndex = -1;
+                room8_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
             catch (Exception^ ex)
@@ -3642,11 +3798,11 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
 }
 private: System::Void room8_remove_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (room8_startTime_btn_click == true) {
-        if (room8_orders_cmbx->SelectedIndex == -1) {
+        if (room8_order_cmbx->SelectedIndex == -1) {
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ selectedItem = room8_orders_cmbx->SelectedItem->ToString();
+            String^ selectedItem = room8_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room8_orders_pnl, room8_orders_map);
         }
     }
@@ -3715,6 +3871,8 @@ private: System::Void troom8_userinput_time_KeyPress(System::Object^ sender, Sys
         // Block the input by setting e->Handled to true
         e->Handled = true;
     }
+}
+private: System::Void pingpong_tab_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
