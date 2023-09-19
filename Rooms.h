@@ -2622,6 +2622,25 @@ private: System::Void room1_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room1_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room1_orders_pnl, room1_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room1_order_cmbx->SelectedItem->ToString();
+                room1_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -2916,6 +2935,25 @@ private: System::Void room2_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room2_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room2_orders_pnl, room2_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room2_order_cmbx->SelectedItem->ToString();
+                room2_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -3108,6 +3146,25 @@ private: System::Void room3_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room3_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room3_orders_pnl, room3_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room3_order_cmbx->SelectedItem->ToString();
+                room3_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -3280,6 +3337,25 @@ private: System::Void room4_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room4_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room4_orders_pnl, room4_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room4_order_cmbx->SelectedItem->ToString();
+                room4_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -3455,6 +3531,25 @@ private: System::Void room5_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room5_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room5_orders_pnl, room5_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room5_order_cmbx->SelectedItem->ToString();
+                room5_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -3628,6 +3723,25 @@ private: System::Void room6_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room6_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room6_orders_pnl, room6_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room6_order_cmbx->SelectedItem->ToString();
+                room6_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -3800,6 +3914,25 @@ private: System::Void room7_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room7_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room7_orders_pnl, room7_orders_map);
+            try
+            {
+                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                sqlConn->Open();
+
+                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+
+                SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+                updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+                updateCommand->ExecuteNonQuery();
+                String^ selected = room7_order_cmbx->SelectedItem->ToString();
+                room7_order_cmbx->SelectedIndex = -1;
+                data_combobox();
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
         }
     }
     else {
@@ -3996,7 +4129,7 @@ private: System::Void room8_remove_btn_Click(System::Object^ sender, System::Eve
             }
             catch (Exception^ ex)
             {
-                MessageBox::Show("Failed to dellet item: " + ex->Message);
+                MessageBox::Show("Failed to delete item: " + ex->Message);
             }
         }
     }
