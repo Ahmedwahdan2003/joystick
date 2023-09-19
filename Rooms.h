@@ -2701,8 +2701,8 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
        
 private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<String^, int>^ itemprices,DateTime startTime,DateTime endTime, FlowLayoutPanel^ panel_name,String^ room_id) {
            double totalCost = 0.0;
-           double elapsedHours;
-           double timeCost;
+           double elapsedHours=0.0;
+           double timeCost=0.0;
            int int_time_cost;
            // Clear the existing controls in the flow layout panel
            panel_name->Controls->Clear();
