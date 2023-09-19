@@ -123,13 +123,13 @@ namespace joystick {
             this->exit_home_btn = (gcnew System::Windows::Forms::Button());
             this->time_lb = (gcnew System::Windows::Forms::Label());
             this->panel1 = (gcnew System::Windows::Forms::Panel());
+            this->room5_status = (gcnew System::Windows::Forms::Label());
+            this->room4_status = (gcnew System::Windows::Forms::Label());
+            this->room3_status = (gcnew System::Windows::Forms::Label());
+            this->room2_status = (gcnew System::Windows::Forms::Label());
             this->room1_status = (gcnew System::Windows::Forms::Label());
             this->panel2 = (gcnew System::Windows::Forms::Panel());
             this->Rooms_pnl = (gcnew System::Windows::Forms::Panel());
-            this->room2_status = (gcnew System::Windows::Forms::Label());
-            this->room3_status = (gcnew System::Windows::Forms::Label());
-            this->room4_status = (gcnew System::Windows::Forms::Label());
-            this->room5_status = (gcnew System::Windows::Forms::Label());
             this->panel1->SuspendLayout();
             this->panel2->SuspendLayout();
             this->SuspendLayout();
@@ -272,11 +272,11 @@ namespace joystick {
             this->time_lb->AutoSize = true;
             this->time_lb->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-            this->time_lb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->time_lb->Location = System::Drawing::Point(3, 7);
+            this->time_lb->Font = (gcnew System::Drawing::Font(L"Carter One", 18));
+            this->time_lb->ForeColor = System::Drawing::SystemColors::Control;
+            this->time_lb->Location = System::Drawing::Point(1, 18);
             this->time_lb->Name = L"time_lb";
-            this->time_lb->Size = System::Drawing::Size(90, 25);
+            this->time_lb->Size = System::Drawing::Size(147, 37);
             this->time_lb->TabIndex = 9;
             this->time_lb->Text = L"00:00:00";
             // 
@@ -284,19 +284,79 @@ namespace joystick {
             // 
             this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->panel1->Controls->Add(this->room1_status);
             this->panel1->Controls->Add(this->room5_status);
             this->panel1->Controls->Add(this->room4_status);
             this->panel1->Controls->Add(this->room3_status);
             this->panel1->Controls->Add(this->room2_status);
-            this->panel1->Controls->Add(this->room1_status);
-            this->panel1->Controls->Add(this->exit_home_btn);
             this->panel1->Controls->Add(this->time_lb);
+            this->panel1->Controls->Add(this->exit_home_btn);
             this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
             this->panel1->Location = System::Drawing::Point(0, 0);
             this->panel1->Name = L"panel1";
-            this->panel1->Size = System::Drawing::Size(1298, 74);
+            this->panel1->Size = System::Drawing::Size(1280, 74);
             this->panel1->TabIndex = 10;
             this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Home::panel1_Paint);
+            // 
+            // room5_status
+            // 
+            this->room5_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+                | System::Windows::Forms::AnchorStyles::Left)
+                | System::Windows::Forms::AnchorStyles::Right));
+            this->room5_status->AutoSize = true;
+            this->room5_status->BackColor = System::Drawing::Color::Transparent;
+            this->room5_status->Font = (gcnew System::Drawing::Font(L"Carter One", 28));
+            this->room5_status->ForeColor = System::Drawing::Color::Transparent;
+            this->room5_status->Location = System::Drawing::Point(933, 8);
+            this->room5_status->Name = L"room5_status";
+            this->room5_status->Size = System::Drawing::Size(163, 59);
+            this->room5_status->TabIndex = 18;
+            this->room5_status->Text = L"ROOM5";
+            // 
+            // room4_status
+            // 
+            this->room4_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+                | System::Windows::Forms::AnchorStyles::Left)
+                | System::Windows::Forms::AnchorStyles::Right));
+            this->room4_status->AutoSize = true;
+            this->room4_status->BackColor = System::Drawing::Color::Transparent;
+            this->room4_status->Font = (gcnew System::Drawing::Font(L"Carter One", 28));
+            this->room4_status->ForeColor = System::Drawing::Color::Transparent;
+            this->room4_status->Location = System::Drawing::Point(740, 8);
+            this->room4_status->Name = L"room4_status";
+            this->room4_status->Size = System::Drawing::Size(168, 59);
+            this->room4_status->TabIndex = 17;
+            this->room4_status->Text = L"ROOM4";
+            // 
+            // room3_status
+            // 
+            this->room3_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+                | System::Windows::Forms::AnchorStyles::Left)
+                | System::Windows::Forms::AnchorStyles::Right));
+            this->room3_status->AutoSize = true;
+            this->room3_status->BackColor = System::Drawing::Color::Transparent;
+            this->room3_status->Font = (gcnew System::Drawing::Font(L"Carter One", 28));
+            this->room3_status->ForeColor = System::Drawing::Color::Transparent;
+            this->room3_status->Location = System::Drawing::Point(560, 8);
+            this->room3_status->Name = L"room3_status";
+            this->room3_status->Size = System::Drawing::Size(164, 59);
+            this->room3_status->TabIndex = 16;
+            this->room3_status->Text = L"ROOM3";
+            // 
+            // room2_status
+            // 
+            this->room2_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+                | System::Windows::Forms::AnchorStyles::Left)
+                | System::Windows::Forms::AnchorStyles::Right));
+            this->room2_status->AutoSize = true;
+            this->room2_status->BackColor = System::Drawing::Color::Transparent;
+            this->room2_status->Font = (gcnew System::Drawing::Font(L"Carter One", 28));
+            this->room2_status->ForeColor = System::Drawing::Color::Transparent;
+            this->room2_status->Location = System::Drawing::Point(374, 8);
+            this->room2_status->Name = L"room2_status";
+            this->room2_status->Size = System::Drawing::Size(164, 59);
+            this->room2_status->TabIndex = 15;
+            this->room2_status->Text = L"ROOM2";
             // 
             // room1_status
             // 
@@ -305,13 +365,11 @@ namespace joystick {
                 | System::Windows::Forms::AnchorStyles::Right));
             this->room1_status->AutoSize = true;
             this->room1_status->BackColor = System::Drawing::Color::Transparent;
-            this->room1_status->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
+            this->room1_status->Font = (gcnew System::Drawing::Font(L"Carter One", 28));
             this->room1_status->ForeColor = System::Drawing::Color::Transparent;
-            this->room1_status->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room1_status.Image")));
-            this->room1_status->Location = System::Drawing::Point(179, 9);
+            this->room1_status->Location = System::Drawing::Point(190, 8);
             this->room1_status->Name = L"room1_status";
-            this->room1_status->Size = System::Drawing::Size(182, 52);
+            this->room1_status->Size = System::Drawing::Size(156, 59);
             this->room1_status->TabIndex = 10;
             this->room1_status->Text = L"ROOM1";
             // 
@@ -337,85 +395,17 @@ namespace joystick {
             this->Rooms_pnl->Dock = System::Windows::Forms::DockStyle::Fill;
             this->Rooms_pnl->Location = System::Drawing::Point(197, 74);
             this->Rooms_pnl->Name = L"Rooms_pnl";
-            this->Rooms_pnl->Size = System::Drawing::Size(1101, 646);
+            this->Rooms_pnl->Size = System::Drawing::Size(1083, 646);
             this->Rooms_pnl->TabIndex = 10;
             this->Rooms_pnl->Visible = false;
             this->Rooms_pnl->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Home::Rooms_pnl_Paint);
-            // 
-            // room2_status
-            // 
-            this->room2_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-                | System::Windows::Forms::AnchorStyles::Left)
-                | System::Windows::Forms::AnchorStyles::Right));
-            this->room2_status->AutoSize = true;
-            this->room2_status->BackColor = System::Drawing::Color::Transparent;
-            this->room2_status->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room2_status->ForeColor = System::Drawing::Color::Transparent;
-            this->room2_status->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room2_status.Image")));
-            this->room2_status->Location = System::Drawing::Point(367, 9);
-            this->room2_status->Name = L"room2_status";
-            this->room2_status->Size = System::Drawing::Size(182, 52);
-            this->room2_status->TabIndex = 15;
-            this->room2_status->Text = L"ROOM2";
-            // 
-            // room3_status
-            // 
-            this->room3_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-                | System::Windows::Forms::AnchorStyles::Left)
-                | System::Windows::Forms::AnchorStyles::Right));
-            this->room3_status->AutoSize = true;
-            this->room3_status->BackColor = System::Drawing::Color::Transparent;
-            this->room3_status->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room3_status->ForeColor = System::Drawing::Color::Transparent;
-            this->room3_status->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room3_status.Image")));
-            this->room3_status->Location = System::Drawing::Point(555, 12);
-            this->room3_status->Name = L"room3_status";
-            this->room3_status->Size = System::Drawing::Size(182, 52);
-            this->room3_status->TabIndex = 16;
-            this->room3_status->Text = L"ROOM3";
-            // 
-            // room4_status
-            // 
-            this->room4_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-                | System::Windows::Forms::AnchorStyles::Left)
-                | System::Windows::Forms::AnchorStyles::Right));
-            this->room4_status->AutoSize = true;
-            this->room4_status->BackColor = System::Drawing::Color::Transparent;
-            this->room4_status->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room4_status->ForeColor = System::Drawing::Color::Transparent;
-            this->room4_status->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room4_status.Image")));
-            this->room4_status->Location = System::Drawing::Point(752, 9);
-            this->room4_status->Name = L"room4_status";
-            this->room4_status->Size = System::Drawing::Size(182, 52);
-            this->room4_status->TabIndex = 17;
-            this->room4_status->Text = L"ROOM4";
-            // 
-            // room5_status
-            // 
-            this->room5_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-                | System::Windows::Forms::AnchorStyles::Left)
-                | System::Windows::Forms::AnchorStyles::Right));
-            this->room5_status->AutoSize = true;
-            this->room5_status->BackColor = System::Drawing::Color::Transparent;
-            this->room5_status->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room5_status->ForeColor = System::Drawing::Color::Transparent;
-            this->room5_status->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room5_status.Image")));
-            this->room5_status->Location = System::Drawing::Point(940, 9);
-            this->room5_status->Name = L"room5_status";
-            this->room5_status->Size = System::Drawing::Size(182, 52);
-            this->room5_status->TabIndex = 18;
-            this->room5_status->Text = L"ROOM5";
             // 
             // Home
             // 
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
             this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
             this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->ClientSize = System::Drawing::Size(1298, 720);
+            this->ClientSize = System::Drawing::Size(1280, 720);
             this->Controls->Add(this->Rooms_pnl);
             this->Controls->Add(this->panel2);
             this->Controls->Add(this->panel1);
