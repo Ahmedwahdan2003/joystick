@@ -38,6 +38,12 @@ namespace joystick {
 	protected:
 
 
+	private:String^ password = "12345";
+
+
+	protected:
+
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -69,5 +75,15 @@ namespace joystick {
 
 		}
 #pragma endregion
-	};
+	private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+
+
+}
+};
 }

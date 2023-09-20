@@ -59,7 +59,8 @@ namespace joystick {
 
 
 
-           
+    public: String^ password ="12345";
+    private: bool setting_pass_confirmed=false;
     private:Rooms^ rooms = gcnew Rooms();
     private:reports^ report = gcnew reports();
     private:storage^ Storage = gcnew storage();
@@ -86,6 +87,10 @@ namespace joystick {
 
 
     private: System::Windows::Forms::Label^ room2_status;
+
+
+
+
 
 
 
@@ -516,13 +521,15 @@ private: System::Void storage_btn_Click(System::Object^ sender, System::EventArg
 private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
 private: System::Void settings_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-    Rooms_pnl->Visible = true;
-    settings->TopLevel = false;
-    settings->Dock = DockStyle::Fill;
-    Rooms_pnl->Controls->Clear();
-    Rooms_pnl->Controls->Add(settings);
-    //report->Visible = true;
-    settings->Show();
+    
+      
+        Rooms_pnl->Visible = true;
+        settings->TopLevel = false;
+        settings->Dock = DockStyle::Fill;
+        Rooms_pnl->Controls->Clear();
+        Rooms_pnl->Controls->Add(settings);
+        settings->Show();
+   
 
 }
 private: System::Void end_day_btn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -537,5 +544,7 @@ private: System::Void end_day_btn_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void Rooms_pnl_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
+
+
 };
 }
