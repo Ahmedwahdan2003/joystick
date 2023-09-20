@@ -44,8 +44,32 @@ namespace joystick {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Button^ save_btn;
+
+	private:String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+	private:
+		SqlConnection^ dbConnection;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+		   DataSet^ dataSet;
+	protected:
+		
+
+			// Refresh the DataGridView when the form is activated
+		
+
+		void RefreshDataGridView()
+		{
+			// Rebind the DataGridView to update with the latest data
+			DataTable^ dataTable = gcnew DataTable();
+			SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT * FROM items", connString);
+			SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
+
+			adapter->Fill(dataTable);
+			dataGridView1->DataSource = dataTable;
+		}
+
+
 	protected:
 
 	protected:
@@ -70,69 +94,122 @@ namespace joystick {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(storage::typeid));
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->save_btn = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(0, 3);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(825, 631);
+			this->dataGridView1->TabIndex = 0;
+			// 
+			// save_btn
+			// 
+			this->save_btn->AutoSize = true;
+			this->save_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->save_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"save_btn.BackgroundImage")));
+			this->save_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->save_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->save_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->save_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->save_btn->Location = System::Drawing::Point(863, 534);
+			this->save_btn->Name = L"save_btn";
+			this->save_btn->Size = System::Drawing::Size(208, 100);
+			this->save_btn->TabIndex = 2;
+			this->save_btn->Text = L"Save";
+			this->save_btn->UseVisualStyleBackColor = false;
+			this->save_btn->Click += gcnew System::EventHandler(this, &storage::save_btn_Click);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(501, 540);
+			this->button1->AutoSize = true;
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->button1->Location = System::Drawing::Point(939, 12);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(195, 23);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Connect to database ";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Size = System::Drawing::Size(132, 47);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"Refresh";
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &storage::button1_Click);
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(540, 413);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 21);
-			this->comboBox1->TabIndex = 1;
 			// 
 			// storage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1280, 720);
-			this->Controls->Add(this->comboBox1);
+			this->ClientSize = System::Drawing::Size(1083, 646);
 			this->Controls->Add(this->button1);
+			this->Controls->Add(this->save_btn);
+			this->Controls->Add(this->dataGridView1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"storage";
 			this->Text = L"storage";
 			this->Load += gcnew System::EventHandler(this, &storage::storage_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void storage_Load(System::Object^ sender, System::EventArgs^ e) {
+		dbConnection = gcnew SqlConnection(connString);
+		dbConnection->Open();
+		DataTable^ dataTable = gcnew DataTable();
+		SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT * FROM items", connString); // Use "connString" here
+		SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
+
+		adapter->Fill(dataTable);
+		dataGridView1->DataSource = dataTable;
+
+		// Enable adding and deleting rows
+		dataGridView1->AllowUserToAddRows = true;
+		dataGridView1->AllowUserToDeleteRows = true;
 	}
 	private: System::Void Rooms_pnl_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 
+
+	private: System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
-			String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-			SqlConnection^ sqlConn = gcnew SqlConnection(connString);
-			sqlConn->Open();
-			MessageBox::Show("Connected to the database.");
+			// Get the original SqlDataAdapter used to fill the DataTable
+			SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT * FROM items", connString);
 
+			// Use the original SqlDataAdapter to update changes in the DataTable
+			SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
+			adapter->Update(dynamic_cast<DataTable^>(dataGridView1->DataSource));
 
-			sqlConn->Close();
+			MessageBox::Show("Changes saved successfully.");
 		}
-		catch (Exception^ e)
+		catch (Exception^ ex)
 		{
-			MessageBox::Show("Failed to connect to the database.");
+			MessageBox::Show("Error: " + ex->Message);
 		}
-
-
 	}
-	};
+	
+	
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	RefreshDataGridView();
+}
+};
 }

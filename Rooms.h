@@ -46,7 +46,7 @@ namespace joystick {
             //FetchItemPricesFromDatabase();      (method to get the items and their prices from the database)
             this->DoubleBuffered = true;
             
-            //
+            
             try
             {
                 room1_order_cmbx->Items->Clear();
