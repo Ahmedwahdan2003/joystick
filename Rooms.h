@@ -2536,7 +2536,6 @@ private: System::Windows::Forms::Label^ label6;
             this->label6->Size = System::Drawing::Size(170, 32);
             this->label6->TabIndex = 20;
             this->label6->Text = L"Choose Mode";
-            this->label6->Click += gcnew System::EventHandler(this, &Rooms::label6_Click);
             // 
             // Rooms
             // 
