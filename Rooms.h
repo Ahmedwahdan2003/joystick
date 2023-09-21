@@ -45,49 +45,9 @@ namespace joystick {
             stopwatch_timer8->Interval = 1000;
             //FetchItemPricesFromDatabase();      (method to get the items and their prices from the database)
             this->DoubleBuffered = true;
+            data_combobox();
             
-            
-            try
-            {
-                room1_order_cmbx->Items->Clear();
-                room2_order_cmbx->Items->Clear();
-                room3_order_cmbx->Items->Clear();
-                room4_order_cmbx->Items->Clear();
-                room5_order_cmbx->Items->Clear();
-                room6_order_cmbx->Items->Clear();
-                room7_order_cmbx->Items->Clear();
-                room8_order_cmbx->Items->Clear();
-
-
-                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
-                sqlConn->Open();
-
-                String^ query = "SELECT name FROM items WHERE quantity > 0";
-                SqlCommand^ command = gcnew SqlCommand(query, sqlConn);
-                SqlDataReader^ reader = command->ExecuteReader();
-
-                while (reader->Read())
-                {
-                    String^ value = reader->GetString(0);
-                   
-                        room1_order_cmbx->Items->Add(value);
-                        room2_order_cmbx->Items->Add(value);
-                        room3_order_cmbx->Items->Add(value);
-                        room4_order_cmbx->Items->Add(value);
-                        room5_order_cmbx->Items->Add(value);
-                        room6_order_cmbx->Items->Add(value);
-                        room7_order_cmbx->Items->Add(value);
-                        room8_order_cmbx->Items->Add(value);
-                    
-                }
-
-                reader->Close();
-            }
-            catch (Exception^ e)
-            {
-                MessageBox::Show("Failed to retrieve data from the database.");
-            }
+         
             
            
         
@@ -378,6 +338,7 @@ private: System::Windows::Forms::ComboBox^ room4_mode_cmbx;
 
 private: System::Windows::Forms::Label^ label5;
 private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
+private: System::Windows::Forms::Label^ label6;
 
 
 
@@ -534,6 +495,7 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->stopwatch_timer7 = (gcnew System::Windows::Forms::Timer(this->components));
             this->countdown_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->stopwatch_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
+            this->label6 = (gcnew System::Windows::Forms::Label());
             this->Rooms_tabs->SuspendLayout();
             this->room1_tab->SuspendLayout();
             this->room2_tab->SuspendLayout();
@@ -559,9 +521,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->Rooms_tabs->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->Rooms_tabs->Location = System::Drawing::Point(0, 0);
+            this->Rooms_tabs->Margin = System::Windows::Forms::Padding(2);
             this->Rooms_tabs->Name = L"Rooms_tabs";
             this->Rooms_tabs->SelectedIndex = 0;
-            this->Rooms_tabs->Size = System::Drawing::Size(1400, 780);
+            this->Rooms_tabs->Size = System::Drawing::Size(1050, 634);
             this->Rooms_tabs->TabIndex = 0;
             this->Rooms_tabs->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::Rooms_tabs_KeyPress);
             // 
@@ -569,6 +532,7 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             // 
             this->room1_tab->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"room1_tab.BackgroundImage")));
             this->room1_tab->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->room1_tab->Controls->Add(this->label6);
             this->room1_tab->Controls->Add(this->label1);
             this->room1_tab->Controls->Add(this->room1_mode_cmbx);
             this->room1_tab->Controls->Add(this->room1_recipt_pnl);
@@ -583,10 +547,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_tab->Controls->Add(this->room1_endtime_btn);
             this->room1_tab->Controls->Add(this->Room1_starttime_btn);
             this->room1_tab->Controls->Add(this->room1_close_btn);
-            this->room1_tab->Location = System::Drawing::Point(4, 36);
+            this->room1_tab->Location = System::Drawing::Point(4, 31);
+            this->room1_tab->Margin = System::Windows::Forms::Padding(2);
             this->room1_tab->Name = L"room1_tab";
-            this->room1_tab->Padding = System::Windows::Forms::Padding(3);
-            this->room1_tab->Size = System::Drawing::Size(1392, 740);
+            this->room1_tab->Padding = System::Windows::Forms::Padding(2);
+            this->room1_tab->Size = System::Drawing::Size(1042, 599);
             this->room1_tab->TabIndex = 0;
             this->room1_tab->Text = L"ROOM1";
             this->room1_tab->UseVisualStyleBackColor = true;
@@ -598,21 +563,23 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label1->ForeColor = System::Drawing::Color::White;
-            this->label1->Location = System::Drawing::Point(522, 135);
+            this->label1->Location = System::Drawing::Point(417, 81);
+            this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(210, 41);
+            this->label1->Size = System::Drawing::Size(170, 32);
             this->label1->TabIndex = 19;
             this->label1->Text = L"Choose Mode";
             // 
             // room1_mode_cmbx
             // 
             this->room1_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room1_mode_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
             this->room1_mode_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room1_mode_cmbx->FormattingEnabled = true;
-            this->room1_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room1_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room1_mode_cmbx->Location = System::Drawing::Point(428, 115);
+            this->room1_mode_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room1_mode_cmbx->Name = L"room1_mode_cmbx";
-            this->room1_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room1_mode_cmbx->Size = System::Drawing::Size(144, 39);
             this->room1_mode_cmbx->TabIndex = 18;
             // 
             // room1_recipt_pnl
@@ -620,71 +587,78 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room1_recipt_pnl->ForeColor = System::Drawing::Color::White;
-            this->room1_recipt_pnl->Location = System::Drawing::Point(764, 98);
+            this->room1_recipt_pnl->Location = System::Drawing::Point(619, 81);
+            this->room1_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room1_recipt_pnl->Name = L"room1_recipt_pnl";
-            this->room1_recipt_pnl->Size = System::Drawing::Size(529, 227);
+            this->room1_recipt_pnl->Size = System::Drawing::Size(397, 184);
             this->room1_recipt_pnl->TabIndex = 17;
             // 
             // room1_orders_pnl
             // 
-            this->room1_orders_pnl->Location = System::Drawing::Point(8, 333);
+            this->room1_orders_pnl->Location = System::Drawing::Point(6, 271);
+            this->room1_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room1_orders_pnl->Name = L"room1_orders_pnl";
-            this->room1_orders_pnl->Size = System::Drawing::Size(397, 383);
+            this->room1_orders_pnl->Size = System::Drawing::Size(298, 311);
             this->room1_orders_pnl->TabIndex = 16;
             // 
             // timeremaining1_lbl
             // 
             this->timeremaining1_lbl->AutoSize = true;
-            this->timeremaining1_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->timeremaining1_lbl->Location = System::Drawing::Point(248, 199);
+            this->timeremaining1_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F));
+            this->timeremaining1_lbl->ForeColor = System::Drawing::Color::White;
+            this->timeremaining1_lbl->Location = System::Drawing::Point(183, 161);
+            this->timeremaining1_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->timeremaining1_lbl->Name = L"timeremaining1_lbl";
-            this->timeremaining1_lbl->Size = System::Drawing::Size(135, 37);
+            this->timeremaining1_lbl->Size = System::Drawing::Size(130, 32);
             this->timeremaining1_lbl->TabIndex = 15;
             this->timeremaining1_lbl->Text = L"00:00:00";
             // 
             // timer1_lbl
             // 
             this->timer1_lbl->AutoSize = true;
-            this->timer1_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->timer1_lbl->Location = System::Drawing::Point(248, 138);
+            this->timer1_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F));
+            this->timer1_lbl->ForeColor = System::Drawing::Color::White;
+            this->timer1_lbl->Location = System::Drawing::Point(183, 111);
+            this->timer1_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->timer1_lbl->Name = L"timer1_lbl";
-            this->timer1_lbl->Size = System::Drawing::Size(135, 37);
+            this->timer1_lbl->Size = System::Drawing::Size(130, 32);
             this->timer1_lbl->TabIndex = 14;
             this->timer1_lbl->Text = L"00:00:00";
             // 
             // timestarted1_lbl
             // 
             this->timestarted1_lbl->AutoSize = true;
-            this->timestarted1_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->timestarted1_lbl->Location = System::Drawing::Point(248, 78);
+            this->timestarted1_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F));
+            this->timestarted1_lbl->ForeColor = System::Drawing::Color::White;
+            this->timestarted1_lbl->Location = System::Drawing::Point(183, 62);
+            this->timestarted1_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->timestarted1_lbl->Name = L"timestarted1_lbl";
-            this->timestarted1_lbl->Size = System::Drawing::Size(135, 37);
+            this->timestarted1_lbl->Size = System::Drawing::Size(130, 32);
             this->timestarted1_lbl->TabIndex = 13;
             this->timestarted1_lbl->Text = L"00:00:00";
             // 
             // textBoxHours1
             // 
             this->textBoxHours1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-            this->textBoxHours1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->textBoxHours1->Location = System::Drawing::Point(592, 408);
+            this->textBoxHours1->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->textBoxHours1->Location = System::Drawing::Point(445, 326);
+            this->textBoxHours1->Margin = System::Windows::Forms::Padding(2);
             this->textBoxHours1->Name = L"textBoxHours1";
-            this->textBoxHours1->Size = System::Drawing::Size(148, 22);
+            this->textBoxHours1->Size = System::Drawing::Size(111, 31);
             this->textBoxHours1->TabIndex = 10;
+            this->textBoxHours1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->textBoxHours1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::textBoxHours1_KeyPress);
             // 
             // room1_order_cmbx
             // 
             this->room1_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room1_order_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 12));
             this->room1_order_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room1_order_cmbx->FormattingEnabled = true;
-            this->room1_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room1_order_cmbx->Location = System::Drawing::Point(1003, 402);
+            this->room1_order_cmbx->Location = System::Drawing::Point(752, 325);
+            this->room1_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room1_order_cmbx->Name = L"room1_order_cmbx";
-            this->room1_order_cmbx->Size = System::Drawing::Size(350, 35);
+            this->room1_order_cmbx->Size = System::Drawing::Size(264, 33);
             this->room1_order_cmbx->TabIndex = 9;
             // 
             // room1_remove_btn
@@ -703,10 +677,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_remove_btn->Location = System::Drawing::Point(1056, 574);
-            this->room1_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_remove_btn->Location = System::Drawing::Point(792, 466);
+            this->room1_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room1_remove_btn->Name = L"room1_remove_btn";
-            this->room1_remove_btn->Size = System::Drawing::Size(237, 56);
+            this->room1_remove_btn->Size = System::Drawing::Size(178, 46);
             this->room1_remove_btn->TabIndex = 8;
             this->room1_remove_btn->UseVisualStyleBackColor = false;
             this->room1_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_remove_btn_Click);
@@ -727,10 +701,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_add_btn->Location = System::Drawing::Point(1069, 483);
-            this->room1_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_add_btn->Location = System::Drawing::Point(802, 392);
+            this->room1_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room1_add_btn->Name = L"room1_add_btn";
-            this->room1_add_btn->Size = System::Drawing::Size(224, 60);
+            this->room1_add_btn->Size = System::Drawing::Size(168, 49);
             this->room1_add_btn->TabIndex = 7;
             this->room1_add_btn->UseVisualStyleBackColor = false;
             this->room1_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_add_btn_Click);
@@ -751,10 +725,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_endtime_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_endtime_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_endtime_btn->Location = System::Drawing::Point(578, 584);
-            this->room1_endtime_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_endtime_btn->Location = System::Drawing::Point(434, 474);
+            this->room1_endtime_btn->Margin = System::Windows::Forms::Padding(2);
             this->room1_endtime_btn->Name = L"room1_endtime_btn";
-            this->room1_endtime_btn->Size = System::Drawing::Size(177, 46);
+            this->room1_endtime_btn->Size = System::Drawing::Size(133, 37);
             this->room1_endtime_btn->TabIndex = 6;
             this->room1_endtime_btn->UseVisualStyleBackColor = false;
             this->room1_endtime_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_endtime_btn_Click);
@@ -775,10 +749,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->Room1_starttime_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->Room1_starttime_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->Room1_starttime_btn->Location = System::Drawing::Point(578, 483);
-            this->Room1_starttime_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Room1_starttime_btn->Location = System::Drawing::Point(434, 392);
+            this->Room1_starttime_btn->Margin = System::Windows::Forms::Padding(2);
             this->Room1_starttime_btn->Name = L"Room1_starttime_btn";
-            this->Room1_starttime_btn->Size = System::Drawing::Size(163, 60);
+            this->Room1_starttime_btn->Size = System::Drawing::Size(122, 49);
             this->Room1_starttime_btn->TabIndex = 5;
             this->Room1_starttime_btn->UseVisualStyleBackColor = false;
             this->Room1_starttime_btn->Click += gcnew System::EventHandler(this, &Rooms::Room1_starttime_btn_Click);
@@ -799,10 +773,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room1_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_close_btn->Location = System::Drawing::Point(1172, 17);
-            this->room1_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_close_btn->Location = System::Drawing::Point(879, 14);
+            this->room1_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room1_close_btn->Name = L"room1_close_btn";
-            this->room1_close_btn->Size = System::Drawing::Size(181, 49);
+            this->room1_close_btn->Size = System::Drawing::Size(136, 40);
             this->room1_close_btn->TabIndex = 4;
             this->room1_close_btn->UseVisualStyleBackColor = false;
             this->room1_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_close_btn_Click);
@@ -825,10 +799,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_tab->Controls->Add(this->room2_order_cmbx);
             this->room2_tab->Controls->Add(this->room2_closeroom_btn);
             this->room2_tab->Controls->Add(this->room2_userinput_time);
-            this->room2_tab->Location = System::Drawing::Point(4, 36);
+            this->room2_tab->Location = System::Drawing::Point(4, 31);
+            this->room2_tab->Margin = System::Windows::Forms::Padding(2);
             this->room2_tab->Name = L"room2_tab";
-            this->room2_tab->Padding = System::Windows::Forms::Padding(3);
-            this->room2_tab->Size = System::Drawing::Size(1392, 740);
+            this->room2_tab->Padding = System::Windows::Forms::Padding(2);
+            this->room2_tab->Size = System::Drawing::Size(1042, 599);
             this->room2_tab->TabIndex = 1;
             this->room2_tab->Text = L"ROOM2";
             this->room2_tab->UseVisualStyleBackColor = true;
@@ -840,53 +815,59 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label2->ForeColor = System::Drawing::Color::White;
-            this->label2->Location = System::Drawing::Point(522, 135);
+            this->label2->Location = System::Drawing::Point(411, 105);
+            this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(210, 41);
+            this->label2->Size = System::Drawing::Size(170, 32);
             this->label2->TabIndex = 27;
             this->label2->Text = L"Choose Mode";
             // 
             // room2_mode_cmbx
             // 
             this->room2_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room2_mode_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
             this->room2_mode_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room2_mode_cmbx->FormattingEnabled = true;
-            this->room2_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room2_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room2_mode_cmbx->Location = System::Drawing::Point(422, 141);
+            this->room2_mode_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room2_mode_cmbx->Name = L"room2_mode_cmbx";
-            this->room2_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room2_mode_cmbx->Size = System::Drawing::Size(144, 39);
             this->room2_mode_cmbx->TabIndex = 26;
             // 
             // room2_timeremaining_lbl
             // 
             this->room2_timeremaining_lbl->AutoSize = true;
-            this->room2_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room2_timeremaining_lbl->Location = System::Drawing::Point(246, 198);
+            this->room2_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F));
+            this->room2_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
+            this->room2_timeremaining_lbl->Location = System::Drawing::Point(183, 159);
+            this->room2_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room2_timeremaining_lbl->Name = L"room2_timeremaining_lbl";
-            this->room2_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room2_timeremaining_lbl->Size = System::Drawing::Size(130, 32);
             this->room2_timeremaining_lbl->TabIndex = 25;
             this->room2_timeremaining_lbl->Text = L"00:00:00";
             // 
             // room2_timer_lbl
             // 
             this->room2_timer_lbl->AutoSize = true;
-            this->room2_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room2_timer_lbl->Location = System::Drawing::Point(246, 139);
+            this->room2_timer_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F));
+            this->room2_timer_lbl->ForeColor = System::Drawing::Color::White;
+            this->room2_timer_lbl->Location = System::Drawing::Point(183, 110);
+            this->room2_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room2_timer_lbl->Name = L"room2_timer_lbl";
-            this->room2_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room2_timer_lbl->Size = System::Drawing::Size(130, 32);
             this->room2_timer_lbl->TabIndex = 24;
             this->room2_timer_lbl->Text = L"00:00:00";
             // 
             // room2_timestarted_lbl
             // 
             this->room2_timestarted_lbl->AutoSize = true;
-            this->room2_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room2_timestarted_lbl->Location = System::Drawing::Point(246, 80);
+            this->room2_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->room2_timestarted_lbl->ForeColor = System::Drawing::Color::White;
+            this->room2_timestarted_lbl->Location = System::Drawing::Point(183, 62);
+            this->room2_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room2_timestarted_lbl->Name = L"room2_timestarted_lbl";
-            this->room2_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room2_timestarted_lbl->Size = System::Drawing::Size(130, 32);
             this->room2_timestarted_lbl->TabIndex = 23;
             this->room2_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -895,17 +876,19 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room2_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room2_recipt_pnl->Location = System::Drawing::Point(755, 92);
+            this->room2_recipt_pnl->Location = System::Drawing::Point(628, 75);
+            this->room2_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room2_recipt_pnl->Name = L"room2_recipt_pnl";
-            this->room2_recipt_pnl->Size = System::Drawing::Size(518, 241);
+            this->room2_recipt_pnl->Size = System::Drawing::Size(388, 196);
             this->room2_recipt_pnl->TabIndex = 17;
             // 
             // room2_orders_pnl
             // 
             this->room2_orders_pnl->AutoScroll = true;
-            this->room2_orders_pnl->Location = System::Drawing::Point(8, 335);
+            this->room2_orders_pnl->Location = System::Drawing::Point(6, 272);
+            this->room2_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room2_orders_pnl->Name = L"room2_orders_pnl";
-            this->room2_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room2_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room2_orders_pnl->TabIndex = 22;
             // 
             // room2_add_btn
@@ -924,10 +907,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_add_btn->Location = System::Drawing::Point(1062, 495);
-            this->room2_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_add_btn->Location = System::Drawing::Point(796, 402);
+            this->room2_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room2_add_btn->Name = L"room2_add_btn";
-            this->room2_add_btn->Size = System::Drawing::Size(225, 41);
+            this->room2_add_btn->Size = System::Drawing::Size(169, 33);
             this->room2_add_btn->TabIndex = 21;
             this->room2_add_btn->UseVisualStyleBackColor = false;
             this->room2_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_add_btn_Click);
@@ -948,10 +931,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_remove_btn->Location = System::Drawing::Point(1072, 582);
-            this->room2_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_remove_btn->Location = System::Drawing::Point(804, 473);
+            this->room2_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room2_remove_btn->Name = L"room2_remove_btn";
-            this->room2_remove_btn->Size = System::Drawing::Size(201, 41);
+            this->room2_remove_btn->Size = System::Drawing::Size(151, 33);
             this->room2_remove_btn->TabIndex = 20;
             this->room2_remove_btn->UseVisualStyleBackColor = false;
             this->room2_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_remove_btn_Click);
@@ -972,10 +955,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_end_btn->Location = System::Drawing::Point(575, 577);
-            this->room2_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_end_btn->Location = System::Drawing::Point(431, 469);
+            this->room2_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room2_end_btn->Name = L"room2_end_btn";
-            this->room2_end_btn->Size = System::Drawing::Size(176, 51);
+            this->room2_end_btn->Size = System::Drawing::Size(132, 41);
             this->room2_end_btn->TabIndex = 19;
             this->room2_end_btn->UseVisualStyleBackColor = false;
             this->room2_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_end_btn_Click);
@@ -996,10 +979,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_start_btn->Location = System::Drawing::Point(575, 495);
-            this->room2_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_start_btn->Location = System::Drawing::Point(431, 402);
+            this->room2_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room2_start_btn->Name = L"room2_start_btn";
-            this->room2_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room2_start_btn->Size = System::Drawing::Size(132, 33);
             this->room2_start_btn->TabIndex = 18;
             this->room2_start_btn->UseVisualStyleBackColor = false;
             this->room2_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_start_btn_Click);
@@ -1007,11 +990,12 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             // room2_order_cmbx
             // 
             this->room2_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room2_order_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 11));
             this->room2_order_cmbx->FormattingEnabled = true;
-            this->room2_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room2_order_cmbx->Location = System::Drawing::Point(999, 405);
+            this->room2_order_cmbx->Location = System::Drawing::Point(749, 325);
+            this->room2_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room2_order_cmbx->Name = L"room2_order_cmbx";
-            this->room2_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room2_order_cmbx->Size = System::Drawing::Size(268, 32);
             this->room2_order_cmbx->TabIndex = 17;
             // 
             // room2_closeroom_btn
@@ -1027,10 +1011,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room2_closeroom_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_closeroom_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_closeroom_btn->Location = System::Drawing::Point(1176, 23);
-            this->room2_closeroom_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_closeroom_btn->Location = System::Drawing::Point(882, 19);
+            this->room2_closeroom_btn->Margin = System::Windows::Forms::Padding(2);
             this->room2_closeroom_btn->Name = L"room2_closeroom_btn";
-            this->room2_closeroom_btn->Size = System::Drawing::Size(179, 39);
+            this->room2_closeroom_btn->Size = System::Drawing::Size(134, 32);
             this->room2_closeroom_btn->TabIndex = 16;
             this->room2_closeroom_btn->UseVisualStyleBackColor = false;
             this->room2_closeroom_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_closeroom_btn_Click);
@@ -1038,12 +1022,13 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             // room2_userinput_time
             // 
             this->room2_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
-            this->room2_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room2_userinput_time->Location = System::Drawing::Point(598, 405);
+            this->room2_userinput_time->Font = (gcnew System::Drawing::Font(L"Carter One", 15.75F));
+            this->room2_userinput_time->Location = System::Drawing::Point(448, 326);
+            this->room2_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room2_userinput_time->Name = L"room2_userinput_time";
-            this->room2_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room2_userinput_time->Size = System::Drawing::Size(102, 33);
             this->room2_userinput_time->TabIndex = 11;
+            this->room2_userinput_time->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->room2_userinput_time->TextChanged += gcnew System::EventHandler(this, &Rooms::room2_user_time_TextChanged);
             this->room2_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room2_userinput_time_KeyPress);
             // 
@@ -1065,10 +1050,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_tab->Controls->Add(this->room3_timeremaining_lbl);
             this->room3_tab->Controls->Add(this->room3_timer_lbl);
             this->room3_tab->Controls->Add(this->room3_timestarted_lbl);
-            this->room3_tab->Location = System::Drawing::Point(4, 36);
+            this->room3_tab->Location = System::Drawing::Point(4, 31);
+            this->room3_tab->Margin = System::Windows::Forms::Padding(2);
             this->room3_tab->Name = L"room3_tab";
-            this->room3_tab->Padding = System::Windows::Forms::Padding(3);
-            this->room3_tab->Size = System::Drawing::Size(1392, 740);
+            this->room3_tab->Padding = System::Windows::Forms::Padding(2);
+            this->room3_tab->Size = System::Drawing::Size(1042, 599);
             this->room3_tab->TabIndex = 2;
             this->room3_tab->Text = L"ROOM3";
             this->room3_tab->UseVisualStyleBackColor = true;
@@ -1079,21 +1065,23 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label3->ForeColor = System::Drawing::Color::White;
-            this->label3->Location = System::Drawing::Point(522, 135);
+            this->label3->Location = System::Drawing::Point(423, 111);
+            this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(210, 41);
+            this->label3->Size = System::Drawing::Size(170, 32);
             this->label3->TabIndex = 37;
             this->label3->Text = L"Choose Mode";
             // 
             // room3_mode_cmbx
             // 
             this->room3_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room3_mode_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 11));
             this->room3_mode_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room3_mode_cmbx->FormattingEnabled = true;
-            this->room3_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room3_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room3_mode_cmbx->Location = System::Drawing::Point(431, 161);
+            this->room3_mode_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room3_mode_cmbx->Name = L"room3_mode_cmbx";
-            this->room3_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room3_mode_cmbx->Size = System::Drawing::Size(144, 32);
             this->room3_mode_cmbx->TabIndex = 36;
             // 
             // room3_recipt_pnl
@@ -1102,17 +1090,19 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room3_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room3_recipt_pnl->Location = System::Drawing::Point(744, 95);
+            this->room3_recipt_pnl->Location = System::Drawing::Point(580, 77);
+            this->room3_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room3_recipt_pnl->Name = L"room3_recipt_pnl";
-            this->room3_recipt_pnl->Size = System::Drawing::Size(588, 243);
+            this->room3_recipt_pnl->Size = System::Drawing::Size(441, 197);
             this->room3_recipt_pnl->TabIndex = 35;
             // 
             // room3_orders_pnl
             // 
             this->room3_orders_pnl->AutoScroll = true;
-            this->room3_orders_pnl->Location = System::Drawing::Point(8, 337);
+            this->room3_orders_pnl->Location = System::Drawing::Point(6, 274);
+            this->room3_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room3_orders_pnl->Name = L"room3_orders_pnl";
-            this->room3_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room3_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room3_orders_pnl->TabIndex = 34;
             // 
             // room3_close_btn
@@ -1131,10 +1121,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_close_btn->Location = System::Drawing::Point(1167, 18);
-            this->room3_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_close_btn->Location = System::Drawing::Point(875, 15);
+            this->room3_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room3_close_btn->Name = L"room3_close_btn";
-            this->room3_close_btn->Size = System::Drawing::Size(195, 51);
+            this->room3_close_btn->Size = System::Drawing::Size(146, 41);
             this->room3_close_btn->TabIndex = 33;
             this->room3_close_btn->UseVisualStyleBackColor = false;
             this->room3_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_close_btn_Click);
@@ -1155,10 +1145,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_add_btn->Location = System::Drawing::Point(1071, 494);
-            this->room3_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_add_btn->Location = System::Drawing::Point(803, 401);
+            this->room3_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room3_add_btn->Name = L"room3_add_btn";
-            this->room3_add_btn->Size = System::Drawing::Size(219, 41);
+            this->room3_add_btn->Size = System::Drawing::Size(164, 33);
             this->room3_add_btn->TabIndex = 32;
             this->room3_add_btn->UseVisualStyleBackColor = false;
             this->room3_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_add_btn_Click);
@@ -1179,10 +1169,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_remove_btn->Location = System::Drawing::Point(1071, 582);
-            this->room3_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_remove_btn->Location = System::Drawing::Point(803, 473);
+            this->room3_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room3_remove_btn->Name = L"room3_remove_btn";
-            this->room3_remove_btn->Size = System::Drawing::Size(212, 41);
+            this->room3_remove_btn->Size = System::Drawing::Size(159, 33);
             this->room3_remove_btn->TabIndex = 31;
             this->room3_remove_btn->UseVisualStyleBackColor = false;
             this->room3_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_remove_btn_Click);
@@ -1203,10 +1193,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_end_btn->Location = System::Drawing::Point(576, 582);
-            this->room3_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_end_btn->Location = System::Drawing::Point(432, 473);
+            this->room3_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room3_end_btn->Name = L"room3_end_btn";
-            this->room3_end_btn->Size = System::Drawing::Size(176, 41);
+            this->room3_end_btn->Size = System::Drawing::Size(132, 33);
             this->room3_end_btn->TabIndex = 30;
             this->room3_end_btn->UseVisualStyleBackColor = false;
             this->room3_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_end_btn_Click);
@@ -1227,10 +1217,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room3_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_start_btn->Location = System::Drawing::Point(576, 494);
-            this->room3_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_start_btn->Location = System::Drawing::Point(432, 401);
+            this->room3_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room3_start_btn->Name = L"room3_start_btn";
-            this->room3_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room3_start_btn->Size = System::Drawing::Size(132, 33);
             this->room3_start_btn->TabIndex = 29;
             this->room3_start_btn->UseVisualStyleBackColor = false;
             this->room3_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_start_btn_Click);
@@ -1238,53 +1228,57 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             // room3_order_cmbx
             // 
             this->room3_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room3_order_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 12));
             this->room3_order_cmbx->FormattingEnabled = true;
-            this->room3_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room3_order_cmbx->Location = System::Drawing::Point(997, 405);
+            this->room3_order_cmbx->Location = System::Drawing::Point(748, 325);
+            this->room3_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room3_order_cmbx->Name = L"room3_order_cmbx";
-            this->room3_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room3_order_cmbx->Size = System::Drawing::Size(268, 33);
             this->room3_order_cmbx->TabIndex = 28;
             // 
             // room3_userinput_time
             // 
             this->room3_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
-            this->room3_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room3_userinput_time->Location = System::Drawing::Point(599, 405);
+            this->room3_userinput_time->Font = (gcnew System::Drawing::Font(L"Carter One", 12));
+            this->room3_userinput_time->Location = System::Drawing::Point(449, 329);
+            this->room3_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room3_userinput_time->Name = L"room3_userinput_time";
-            this->room3_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room3_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room3_userinput_time->TabIndex = 27;
             // 
             // room3_timeremaining_lbl
             // 
             this->room3_timeremaining_lbl->AutoSize = true;
-            this->room3_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room3_timeremaining_lbl->Location = System::Drawing::Point(248, 196);
+            this->room3_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->room3_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
+            this->room3_timeremaining_lbl->Location = System::Drawing::Point(186, 159);
+            this->room3_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room3_timeremaining_lbl->Name = L"room3_timeremaining_lbl";
-            this->room3_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room3_timeremaining_lbl->Size = System::Drawing::Size(124, 31);
             this->room3_timeremaining_lbl->TabIndex = 26;
             this->room3_timeremaining_lbl->Text = L"00:00:00";
             // 
             // room3_timer_lbl
             // 
             this->room3_timer_lbl->AutoSize = true;
-            this->room3_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room3_timer_lbl->Location = System::Drawing::Point(248, 140);
+            this->room3_timer_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->room3_timer_lbl->ForeColor = System::Drawing::Color::White;
+            this->room3_timer_lbl->Location = System::Drawing::Point(185, 111);
+            this->room3_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room3_timer_lbl->Name = L"room3_timer_lbl";
-            this->room3_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room3_timer_lbl->Size = System::Drawing::Size(124, 31);
             this->room3_timer_lbl->TabIndex = 25;
             this->room3_timer_lbl->Text = L"00:00:00";
             // 
             // room3_timestarted_lbl
             // 
             this->room3_timestarted_lbl->AutoSize = true;
-            this->room3_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room3_timestarted_lbl->Location = System::Drawing::Point(248, 77);
+            this->room3_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->room3_timestarted_lbl->ForeColor = System::Drawing::Color::White;
+            this->room3_timestarted_lbl->Location = System::Drawing::Point(184, 62);
+            this->room3_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room3_timestarted_lbl->Name = L"room3_timestarted_lbl";
-            this->room3_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room3_timestarted_lbl->Size = System::Drawing::Size(124, 31);
             this->room3_timestarted_lbl->TabIndex = 24;
             this->room3_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -1306,10 +1300,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->troom4_tab->Controls->Add(this->room4_timeremaining_lbl);
             this->troom4_tab->Controls->Add(this->room4_timer_lbl);
             this->troom4_tab->Controls->Add(this->room4_timestarted_lbl);
-            this->troom4_tab->Location = System::Drawing::Point(4, 36);
+            this->troom4_tab->Location = System::Drawing::Point(4, 31);
+            this->troom4_tab->Margin = System::Windows::Forms::Padding(2);
             this->troom4_tab->Name = L"troom4_tab";
-            this->troom4_tab->Padding = System::Windows::Forms::Padding(3);
-            this->troom4_tab->Size = System::Drawing::Size(1392, 740);
+            this->troom4_tab->Padding = System::Windows::Forms::Padding(2);
+            this->troom4_tab->Size = System::Drawing::Size(1042, 599);
             this->troom4_tab->TabIndex = 3;
             this->troom4_tab->Text = L"ROOM4";
             this->troom4_tab->UseVisualStyleBackColor = true;
@@ -1320,9 +1315,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label4->ForeColor = System::Drawing::Color::White;
-            this->label4->Location = System::Drawing::Point(522, 135);
+            this->label4->Location = System::Drawing::Point(422, 109);
+            this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(210, 41);
+            this->label4->Size = System::Drawing::Size(170, 32);
             this->label4->TabIndex = 44;
             this->label4->Text = L"Choose Mode";
             // 
@@ -1331,30 +1327,31 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_mode_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room4_mode_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room4_mode_cmbx->FormattingEnabled = true;
-            this->room4_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room4_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room4_mode_cmbx->Location = System::Drawing::Point(432, 163);
+            this->room4_mode_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room4_mode_cmbx->Name = L"room4_mode_cmbx";
-            this->room4_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room4_mode_cmbx->Size = System::Drawing::Size(144, 30);
             this->room4_mode_cmbx->TabIndex = 43;
             // 
             // room4_order_cmbx
             // 
             this->room4_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->room4_order_cmbx->Font = (gcnew System::Drawing::Font(L"Carter One", 12));
             this->room4_order_cmbx->FormattingEnabled = true;
-            this->room4_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room4_order_cmbx->Location = System::Drawing::Point(1000, 405);
+            this->room4_order_cmbx->Location = System::Drawing::Point(747, 326);
+            this->room4_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room4_order_cmbx->Name = L"room4_order_cmbx";
-            this->room4_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room4_order_cmbx->Size = System::Drawing::Size(268, 33);
             this->room4_order_cmbx->TabIndex = 42;
             // 
             // room4_userinput_time
             // 
             this->room4_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
-            this->room4_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->room4_userinput_time->Location = System::Drawing::Point(597, 405);
+            this->room4_userinput_time->Font = (gcnew System::Drawing::Font(L"Carter One", 12));
+            this->room4_userinput_time->Location = System::Drawing::Point(448, 329);
+            this->room4_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room4_userinput_time->Name = L"room4_userinput_time";
-            this->room4_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room4_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room4_userinput_time->TabIndex = 41;
             this->room4_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room4_userinput_time_KeyPress);
             // 
@@ -1374,10 +1371,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_close_btn->Location = System::Drawing::Point(1167, 22);
-            this->room4_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_close_btn->Location = System::Drawing::Point(875, 18);
+            this->room4_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room4_close_btn->Name = L"room4_close_btn";
-            this->room4_close_btn->Size = System::Drawing::Size(189, 41);
+            this->room4_close_btn->Size = System::Drawing::Size(142, 33);
             this->room4_close_btn->TabIndex = 40;
             this->room4_close_btn->UseVisualStyleBackColor = false;
             this->room4_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_close_btn_Click);
@@ -1398,10 +1395,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_add_btn->Location = System::Drawing::Point(1068, 494);
-            this->room4_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_add_btn->Location = System::Drawing::Point(801, 401);
+            this->room4_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room4_add_btn->Name = L"room4_add_btn";
-            this->room4_add_btn->Size = System::Drawing::Size(219, 41);
+            this->room4_add_btn->Size = System::Drawing::Size(164, 33);
             this->room4_add_btn->TabIndex = 39;
             this->room4_add_btn->UseVisualStyleBackColor = false;
             this->room4_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_add_btn_Click);
@@ -1422,10 +1419,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_remove_btn->Location = System::Drawing::Point(1068, 580);
-            this->room4_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_remove_btn->Location = System::Drawing::Point(801, 471);
+            this->room4_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room4_remove_btn->Name = L"room4_remove_btn";
-            this->room4_remove_btn->Size = System::Drawing::Size(214, 41);
+            this->room4_remove_btn->Size = System::Drawing::Size(160, 33);
             this->room4_remove_btn->TabIndex = 38;
             this->room4_remove_btn->UseVisualStyleBackColor = false;
             this->room4_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_remove_btn_Click);
@@ -1446,10 +1443,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_end_btn->Location = System::Drawing::Point(576, 580);
-            this->room4_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_end_btn->Location = System::Drawing::Point(432, 471);
+            this->room4_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room4_end_btn->Name = L"room4_end_btn";
-            this->room4_end_btn->Size = System::Drawing::Size(176, 41);
+            this->room4_end_btn->Size = System::Drawing::Size(132, 33);
             this->room4_end_btn->TabIndex = 37;
             this->room4_end_btn->UseVisualStyleBackColor = false;
             this->room4_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_end_btn_Click);
@@ -1470,10 +1467,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_start_btn->Location = System::Drawing::Point(576, 494);
-            this->room4_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_start_btn->Location = System::Drawing::Point(432, 401);
+            this->room4_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room4_start_btn->Name = L"room4_start_btn";
-            this->room4_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room4_start_btn->Size = System::Drawing::Size(132, 33);
             this->room4_start_btn->TabIndex = 36;
             this->room4_start_btn->UseVisualStyleBackColor = false;
             this->room4_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_start_btn_Click);
@@ -1484,49 +1481,54 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room4_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room4_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room4_recipt_pnl->Location = System::Drawing::Point(765, 108);
+            this->room4_recipt_pnl->Location = System::Drawing::Point(608, 89);
+            this->room4_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room4_recipt_pnl->Name = L"room4_recipt_pnl";
-            this->room4_recipt_pnl->Size = System::Drawing::Size(546, 227);
+            this->room4_recipt_pnl->Size = System::Drawing::Size(410, 184);
             this->room4_recipt_pnl->TabIndex = 35;
             // 
             // room4_orders_pnl
             // 
             this->room4_orders_pnl->AutoScroll = true;
-            this->room4_orders_pnl->Location = System::Drawing::Point(17, 337);
+            this->room4_orders_pnl->Location = System::Drawing::Point(13, 274);
+            this->room4_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room4_orders_pnl->Name = L"room4_orders_pnl";
-            this->room4_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room4_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room4_orders_pnl->TabIndex = 35;
             // 
             // room4_timeremaining_lbl
             // 
             this->room4_timeremaining_lbl->AutoSize = true;
-            this->room4_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room4_timeremaining_lbl->Location = System::Drawing::Point(246, 197);
+            this->room4_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->room4_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
+            this->room4_timeremaining_lbl->Location = System::Drawing::Point(184, 161);
+            this->room4_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room4_timeremaining_lbl->Name = L"room4_timeremaining_lbl";
-            this->room4_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room4_timeremaining_lbl->Size = System::Drawing::Size(124, 31);
             this->room4_timeremaining_lbl->TabIndex = 27;
             this->room4_timeremaining_lbl->Text = L"00:00:00";
             // 
             // room4_timer_lbl
             // 
             this->room4_timer_lbl->AutoSize = true;
-            this->room4_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room4_timer_lbl->Location = System::Drawing::Point(246, 139);
+            this->room4_timer_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->room4_timer_lbl->ForeColor = System::Drawing::Color::White;
+            this->room4_timer_lbl->Location = System::Drawing::Point(184, 111);
+            this->room4_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room4_timer_lbl->Name = L"room4_timer_lbl";
-            this->room4_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room4_timer_lbl->Size = System::Drawing::Size(124, 31);
             this->room4_timer_lbl->TabIndex = 26;
             this->room4_timer_lbl->Text = L"00:00:00";
             // 
             // room4_timestarted_lbl
             // 
             this->room4_timestarted_lbl->AutoSize = true;
-            this->room4_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room4_timestarted_lbl->Location = System::Drawing::Point(246, 78);
+            this->room4_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Carter One", 15));
+            this->room4_timestarted_lbl->ForeColor = System::Drawing::Color::White;
+            this->room4_timestarted_lbl->Location = System::Drawing::Point(184, 63);
+            this->room4_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room4_timestarted_lbl->Name = L"room4_timestarted_lbl";
-            this->room4_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room4_timestarted_lbl->Size = System::Drawing::Size(124, 31);
             this->room4_timestarted_lbl->TabIndex = 25;
             this->room4_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -1548,10 +1550,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_tab->Controls->Add(this->room5_timeremaining_lbl);
             this->room5_tab->Controls->Add(this->room5_timer_lbl);
             this->room5_tab->Controls->Add(this->room5_timestarted_lbl);
-            this->room5_tab->Location = System::Drawing::Point(4, 36);
+            this->room5_tab->Location = System::Drawing::Point(4, 31);
+            this->room5_tab->Margin = System::Windows::Forms::Padding(2);
             this->room5_tab->Name = L"room5_tab";
-            this->room5_tab->Padding = System::Windows::Forms::Padding(3);
-            this->room5_tab->Size = System::Drawing::Size(1392, 740);
+            this->room5_tab->Padding = System::Windows::Forms::Padding(2);
+            this->room5_tab->Size = System::Drawing::Size(1042, 599);
             this->room5_tab->TabIndex = 4;
             this->room5_tab->Text = L"ROOM5";
             this->room5_tab->UseVisualStyleBackColor = true;
@@ -1562,9 +1565,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label5->ForeColor = System::Drawing::Color::White;
-            this->label5->Location = System::Drawing::Point(522, 135);
+            this->label5->Location = System::Drawing::Point(392, 110);
+            this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label5->Name = L"label5";
-            this->label5->Size = System::Drawing::Size(210, 41);
+            this->label5->Size = System::Drawing::Size(170, 32);
             this->label5->TabIndex = 46;
             this->label5->Text = L"Choose Mode";
             // 
@@ -1574,9 +1578,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_mode_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room5_mode_cmbx->FormattingEnabled = true;
             this->room5_mode_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room5_mode_cmbx->Location = System::Drawing::Point(529, 198);
+            this->room5_mode_cmbx->Location = System::Drawing::Point(397, 161);
+            this->room5_mode_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room5_mode_cmbx->Name = L"room5_mode_cmbx";
-            this->room5_mode_cmbx->Size = System::Drawing::Size(190, 35);
+            this->room5_mode_cmbx->Size = System::Drawing::Size(144, 30);
             this->room5_mode_cmbx->TabIndex = 45;
             // 
             // room5_order_cmbx
@@ -1584,9 +1589,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room5_order_cmbx->FormattingEnabled = true;
             this->room5_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room5_order_cmbx->Location = System::Drawing::Point(994, 406);
+            this->room5_order_cmbx->Location = System::Drawing::Point(746, 330);
+            this->room5_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room5_order_cmbx->Name = L"room5_order_cmbx";
-            this->room5_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room5_order_cmbx->Size = System::Drawing::Size(268, 30);
             this->room5_order_cmbx->TabIndex = 44;
             // 
             // room5_userinput_time
@@ -1594,9 +1600,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room5_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room5_userinput_time->Location = System::Drawing::Point(599, 406);
+            this->room5_userinput_time->Location = System::Drawing::Point(449, 330);
+            this->room5_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room5_userinput_time->Name = L"room5_userinput_time";
-            this->room5_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room5_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room5_userinput_time->TabIndex = 43;
             this->room5_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room5_userinput_time_KeyPress);
             // 
@@ -1616,10 +1623,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_close_btn->Location = System::Drawing::Point(1167, 21);
-            this->room5_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_close_btn->Location = System::Drawing::Point(875, 17);
+            this->room5_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room5_close_btn->Name = L"room5_close_btn";
-            this->room5_close_btn->Size = System::Drawing::Size(194, 45);
+            this->room5_close_btn->Size = System::Drawing::Size(146, 37);
             this->room5_close_btn->TabIndex = 42;
             this->room5_close_btn->UseVisualStyleBackColor = false;
             this->room5_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_close_btn_Click);
@@ -1640,10 +1647,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_add_btn->Location = System::Drawing::Point(1064, 494);
-            this->room5_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_add_btn->Location = System::Drawing::Point(798, 401);
+            this->room5_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room5_add_btn->Name = L"room5_add_btn";
-            this->room5_add_btn->Size = System::Drawing::Size(228, 41);
+            this->room5_add_btn->Size = System::Drawing::Size(171, 33);
             this->room5_add_btn->TabIndex = 41;
             this->room5_add_btn->UseVisualStyleBackColor = false;
             this->room5_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_add_btn_Click);
@@ -1664,10 +1671,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_remove_btn->Location = System::Drawing::Point(1064, 583);
-            this->room5_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_remove_btn->Location = System::Drawing::Point(798, 474);
+            this->room5_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room5_remove_btn->Name = L"room5_remove_btn";
-            this->room5_remove_btn->Size = System::Drawing::Size(218, 41);
+            this->room5_remove_btn->Size = System::Drawing::Size(164, 33);
             this->room5_remove_btn->TabIndex = 40;
             this->room5_remove_btn->UseVisualStyleBackColor = false;
             this->room5_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_remove_btn_Click);
@@ -1688,10 +1695,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_end_btn->Location = System::Drawing::Point(578, 583);
-            this->room5_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_end_btn->Location = System::Drawing::Point(434, 474);
+            this->room5_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room5_end_btn->Name = L"room5_end_btn";
-            this->room5_end_btn->Size = System::Drawing::Size(176, 41);
+            this->room5_end_btn->Size = System::Drawing::Size(132, 33);
             this->room5_end_btn->TabIndex = 39;
             this->room5_end_btn->UseVisualStyleBackColor = false;
             this->room5_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_end_btn_Click);
@@ -1712,10 +1719,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_start_btn->Location = System::Drawing::Point(578, 494);
-            this->room5_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_start_btn->Location = System::Drawing::Point(434, 401);
+            this->room5_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room5_start_btn->Name = L"room5_start_btn";
-            this->room5_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room5_start_btn->Size = System::Drawing::Size(132, 33);
             this->room5_start_btn->TabIndex = 38;
             this->room5_start_btn->UseVisualStyleBackColor = false;
             this->room5_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_start_btn_Click);
@@ -1726,17 +1733,19 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room5_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room5_recipt_pnl->Location = System::Drawing::Point(754, 99);
+            this->room5_recipt_pnl->Location = System::Drawing::Point(566, 80);
+            this->room5_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room5_recipt_pnl->Name = L"room5_recipt_pnl";
-            this->room5_recipt_pnl->Size = System::Drawing::Size(583, 249);
+            this->room5_recipt_pnl->Size = System::Drawing::Size(437, 202);
             this->room5_recipt_pnl->TabIndex = 37;
             // 
             // room5_orders_pnl
             // 
             this->room5_orders_pnl->AutoScroll = true;
-            this->room5_orders_pnl->Location = System::Drawing::Point(8, 339);
+            this->room5_orders_pnl->Location = System::Drawing::Point(6, 275);
+            this->room5_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room5_orders_pnl->Name = L"room5_orders_pnl";
-            this->room5_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room5_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room5_orders_pnl->TabIndex = 36;
             // 
             // room5_timeremaining_lbl
@@ -1744,9 +1753,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_timeremaining_lbl->AutoSize = true;
             this->room5_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room5_timeremaining_lbl->Location = System::Drawing::Point(237, 198);
+            this->room5_timeremaining_lbl->Location = System::Drawing::Point(178, 161);
+            this->room5_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room5_timeremaining_lbl->Name = L"room5_timeremaining_lbl";
-            this->room5_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room5_timeremaining_lbl->Size = System::Drawing::Size(109, 30);
             this->room5_timeremaining_lbl->TabIndex = 28;
             this->room5_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -1755,9 +1765,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_timer_lbl->AutoSize = true;
             this->room5_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room5_timer_lbl->Location = System::Drawing::Point(237, 135);
+            this->room5_timer_lbl->Location = System::Drawing::Point(178, 110);
+            this->room5_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room5_timer_lbl->Name = L"room5_timer_lbl";
-            this->room5_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room5_timer_lbl->Size = System::Drawing::Size(109, 30);
             this->room5_timer_lbl->TabIndex = 27;
             this->room5_timer_lbl->Text = L"00:00:00";
             // 
@@ -1766,9 +1777,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room5_timestarted_lbl->AutoSize = true;
             this->room5_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room5_timestarted_lbl->Location = System::Drawing::Point(237, 76);
+            this->room5_timestarted_lbl->Location = System::Drawing::Point(178, 62);
+            this->room5_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room5_timestarted_lbl->Name = L"room5_timestarted_lbl";
-            this->room5_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room5_timestarted_lbl->Size = System::Drawing::Size(109, 30);
             this->room5_timestarted_lbl->TabIndex = 26;
             this->room5_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -1788,10 +1800,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->billiard1_tab->Controls->Add(this->room6_timeremaining_lbl);
             this->billiard1_tab->Controls->Add(this->room6_timer_lbl);
             this->billiard1_tab->Controls->Add(this->room6_timestarted_lbl);
-            this->billiard1_tab->Location = System::Drawing::Point(4, 36);
+            this->billiard1_tab->Location = System::Drawing::Point(4, 31);
+            this->billiard1_tab->Margin = System::Windows::Forms::Padding(2);
             this->billiard1_tab->Name = L"billiard1_tab";
-            this->billiard1_tab->Padding = System::Windows::Forms::Padding(3);
-            this->billiard1_tab->Size = System::Drawing::Size(1392, 740);
+            this->billiard1_tab->Padding = System::Windows::Forms::Padding(2);
+            this->billiard1_tab->Size = System::Drawing::Size(1042, 599);
             this->billiard1_tab->TabIndex = 5;
             this->billiard1_tab->Text = L"Billiard1";
             this->billiard1_tab->UseVisualStyleBackColor = true;
@@ -1801,9 +1814,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room6_order_cmbx->FormattingEnabled = true;
             this->room6_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room6_order_cmbx->Location = System::Drawing::Point(997, 403);
+            this->room6_order_cmbx->Location = System::Drawing::Point(748, 327);
+            this->room6_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room6_order_cmbx->Name = L"room6_order_cmbx";
-            this->room6_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room6_order_cmbx->Size = System::Drawing::Size(268, 30);
             this->room6_order_cmbx->TabIndex = 45;
             // 
             // room6_userinput_time
@@ -1811,9 +1825,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room6_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room6_userinput_time->Location = System::Drawing::Point(599, 407);
+            this->room6_userinput_time->Location = System::Drawing::Point(449, 331);
+            this->room6_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room6_userinput_time->Name = L"room6_userinput_time";
-            this->room6_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room6_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room6_userinput_time->TabIndex = 44;
             this->room6_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room6_userinput_time_KeyPress);
             // 
@@ -1833,10 +1848,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_close_btn->Location = System::Drawing::Point(1166, 20);
-            this->room6_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_close_btn->Location = System::Drawing::Point(874, 16);
+            this->room6_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room6_close_btn->Name = L"room6_close_btn";
-            this->room6_close_btn->Size = System::Drawing::Size(197, 41);
+            this->room6_close_btn->Size = System::Drawing::Size(148, 33);
             this->room6_close_btn->TabIndex = 43;
             this->room6_close_btn->UseVisualStyleBackColor = false;
             this->room6_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_close_btn_Click);
@@ -1857,10 +1872,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_add_btn->Location = System::Drawing::Point(1067, 494);
-            this->room6_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_add_btn->Location = System::Drawing::Point(800, 401);
+            this->room6_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room6_add_btn->Name = L"room6_add_btn";
-            this->room6_add_btn->Size = System::Drawing::Size(220, 41);
+            this->room6_add_btn->Size = System::Drawing::Size(165, 33);
             this->room6_add_btn->TabIndex = 42;
             this->room6_add_btn->UseVisualStyleBackColor = false;
             this->room6_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_add_btn_Click);
@@ -1881,10 +1896,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_remove_btn->Location = System::Drawing::Point(1067, 582);
-            this->room6_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_remove_btn->Location = System::Drawing::Point(800, 473);
+            this->room6_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room6_remove_btn->Name = L"room6_remove_btn";
-            this->room6_remove_btn->Size = System::Drawing::Size(220, 41);
+            this->room6_remove_btn->Size = System::Drawing::Size(165, 33);
             this->room6_remove_btn->TabIndex = 41;
             this->room6_remove_btn->UseVisualStyleBackColor = false;
             this->room6_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_remove_btn_Click);
@@ -1905,10 +1920,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_end_btn->Location = System::Drawing::Point(576, 582);
-            this->room6_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_end_btn->Location = System::Drawing::Point(432, 473);
+            this->room6_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room6_end_btn->Name = L"room6_end_btn";
-            this->room6_end_btn->Size = System::Drawing::Size(176, 41);
+            this->room6_end_btn->Size = System::Drawing::Size(132, 33);
             this->room6_end_btn->TabIndex = 40;
             this->room6_end_btn->UseVisualStyleBackColor = false;
             this->room6_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_end_btn_Click);
@@ -1929,10 +1944,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_start_btn->Location = System::Drawing::Point(576, 494);
-            this->room6_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_start_btn->Location = System::Drawing::Point(432, 401);
+            this->room6_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room6_start_btn->Name = L"room6_start_btn";
-            this->room6_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room6_start_btn->Size = System::Drawing::Size(132, 33);
             this->room6_start_btn->TabIndex = 39;
             this->room6_start_btn->UseVisualStyleBackColor = false;
             this->room6_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_start_btn_Click);
@@ -1943,17 +1958,19 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room6_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room6_recipt_pnl->Location = System::Drawing::Point(763, 102);
+            this->room6_recipt_pnl->Location = System::Drawing::Point(572, 83);
+            this->room6_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room6_recipt_pnl->Name = L"room6_recipt_pnl";
-            this->room6_recipt_pnl->Size = System::Drawing::Size(524, 235);
+            this->room6_recipt_pnl->Size = System::Drawing::Size(393, 191);
             this->room6_recipt_pnl->TabIndex = 38;
             // 
             // room6_orders_pnl
             // 
             this->room6_orders_pnl->AutoScroll = true;
-            this->room6_orders_pnl->Location = System::Drawing::Point(8, 340);
+            this->room6_orders_pnl->Location = System::Drawing::Point(6, 276);
+            this->room6_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room6_orders_pnl->Name = L"room6_orders_pnl";
-            this->room6_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room6_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room6_orders_pnl->TabIndex = 37;
             // 
             // room6_timeremaining_lbl
@@ -1961,9 +1978,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_timeremaining_lbl->AutoSize = true;
             this->room6_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room6_timeremaining_lbl->Location = System::Drawing::Point(235, 197);
+            this->room6_timeremaining_lbl->Location = System::Drawing::Point(176, 160);
+            this->room6_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room6_timeremaining_lbl->Name = L"room6_timeremaining_lbl";
-            this->room6_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room6_timeremaining_lbl->Size = System::Drawing::Size(109, 30);
             this->room6_timeremaining_lbl->TabIndex = 29;
             this->room6_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -1972,9 +1990,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_timer_lbl->AutoSize = true;
             this->room6_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room6_timer_lbl->Location = System::Drawing::Point(235, 136);
+            this->room6_timer_lbl->Location = System::Drawing::Point(176, 110);
+            this->room6_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room6_timer_lbl->Name = L"room6_timer_lbl";
-            this->room6_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room6_timer_lbl->Size = System::Drawing::Size(109, 30);
             this->room6_timer_lbl->TabIndex = 28;
             this->room6_timer_lbl->Text = L"00:00:00";
             // 
@@ -1983,9 +2002,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room6_timestarted_lbl->AutoSize = true;
             this->room6_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room6_timestarted_lbl->Location = System::Drawing::Point(235, 75);
+            this->room6_timestarted_lbl->Location = System::Drawing::Point(176, 61);
+            this->room6_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room6_timestarted_lbl->Name = L"room6_timestarted_lbl";
-            this->room6_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room6_timestarted_lbl->Size = System::Drawing::Size(109, 30);
             this->room6_timestarted_lbl->TabIndex = 27;
             this->room6_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -2005,10 +2025,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->billiard2_tab->Controls->Add(this->room7_timeremaining_lbl);
             this->billiard2_tab->Controls->Add(this->room7_timer_lbl);
             this->billiard2_tab->Controls->Add(this->room7_timestarted_lbl);
-            this->billiard2_tab->Location = System::Drawing::Point(4, 36);
+            this->billiard2_tab->Location = System::Drawing::Point(4, 31);
+            this->billiard2_tab->Margin = System::Windows::Forms::Padding(2);
             this->billiard2_tab->Name = L"billiard2_tab";
-            this->billiard2_tab->Padding = System::Windows::Forms::Padding(3);
-            this->billiard2_tab->Size = System::Drawing::Size(1392, 740);
+            this->billiard2_tab->Padding = System::Windows::Forms::Padding(2);
+            this->billiard2_tab->Size = System::Drawing::Size(1042, 599);
             this->billiard2_tab->TabIndex = 6;
             this->billiard2_tab->Text = L"Billiard2";
             this->billiard2_tab->UseVisualStyleBackColor = true;
@@ -2018,9 +2039,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room7_order_cmbx->FormattingEnabled = true;
             this->room7_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room7_order_cmbx->Location = System::Drawing::Point(1004, 401);
+            this->room7_order_cmbx->Location = System::Drawing::Point(753, 326);
+            this->room7_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room7_order_cmbx->Name = L"room7_order_cmbx";
-            this->room7_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room7_order_cmbx->Size = System::Drawing::Size(268, 30);
             this->room7_order_cmbx->TabIndex = 46;
             // 
             // room7_userinput_time
@@ -2028,9 +2050,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room7_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room7_userinput_time->Location = System::Drawing::Point(598, 405);
+            this->room7_userinput_time->Location = System::Drawing::Point(448, 329);
+            this->room7_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room7_userinput_time->Name = L"room7_userinput_time";
-            this->room7_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room7_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room7_userinput_time->TabIndex = 45;
             this->room7_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room7_userinput_time_KeyPress);
             // 
@@ -2050,10 +2073,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_close_btn->Location = System::Drawing::Point(1167, 20);
-            this->room7_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_close_btn->Location = System::Drawing::Point(875, 16);
+            this->room7_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room7_close_btn->Name = L"room7_close_btn";
-            this->room7_close_btn->Size = System::Drawing::Size(193, 46);
+            this->room7_close_btn->Size = System::Drawing::Size(145, 37);
             this->room7_close_btn->TabIndex = 44;
             this->room7_close_btn->UseVisualStyleBackColor = false;
             this->room7_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_close_btn_Click);
@@ -2074,10 +2097,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_remove_btn->Location = System::Drawing::Point(1070, 582);
-            this->room7_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_remove_btn->Location = System::Drawing::Point(802, 473);
+            this->room7_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room7_remove_btn->Name = L"room7_remove_btn";
-            this->room7_remove_btn->Size = System::Drawing::Size(218, 41);
+            this->room7_remove_btn->Size = System::Drawing::Size(164, 33);
             this->room7_remove_btn->TabIndex = 43;
             this->room7_remove_btn->UseVisualStyleBackColor = false;
             this->room7_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_remove_btn_Click);
@@ -2098,10 +2121,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_add_btn->Location = System::Drawing::Point(1070, 494);
-            this->room7_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_add_btn->Location = System::Drawing::Point(802, 401);
+            this->room7_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room7_add_btn->Name = L"room7_add_btn";
-            this->room7_add_btn->Size = System::Drawing::Size(218, 41);
+            this->room7_add_btn->Size = System::Drawing::Size(164, 33);
             this->room7_add_btn->TabIndex = 42;
             this->room7_add_btn->UseVisualStyleBackColor = false;
             this->room7_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_add_btn_Click);
@@ -2122,10 +2145,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_end_btn->Location = System::Drawing::Point(579, 582);
-            this->room7_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_end_btn->Location = System::Drawing::Point(434, 473);
+            this->room7_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room7_end_btn->Name = L"room7_end_btn";
-            this->room7_end_btn->Size = System::Drawing::Size(176, 41);
+            this->room7_end_btn->Size = System::Drawing::Size(132, 33);
             this->room7_end_btn->TabIndex = 41;
             this->room7_end_btn->UseVisualStyleBackColor = false;
             this->room7_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_end_btn_Click);
@@ -2146,10 +2169,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_start_btn->Location = System::Drawing::Point(579, 494);
-            this->room7_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_start_btn->Location = System::Drawing::Point(434, 401);
+            this->room7_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room7_start_btn->Name = L"room7_start_btn";
-            this->room7_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room7_start_btn->Size = System::Drawing::Size(132, 33);
             this->room7_start_btn->TabIndex = 40;
             this->room7_start_btn->UseVisualStyleBackColor = false;
             this->room7_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_start_btn_Click);
@@ -2160,17 +2183,19 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room7_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room7_recipt_pnl->Location = System::Drawing::Point(770, 94);
+            this->room7_recipt_pnl->Location = System::Drawing::Point(578, 76);
+            this->room7_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room7_recipt_pnl->Name = L"room7_recipt_pnl";
-            this->room7_recipt_pnl->Size = System::Drawing::Size(553, 238);
+            this->room7_recipt_pnl->Size = System::Drawing::Size(415, 193);
             this->room7_recipt_pnl->TabIndex = 39;
             // 
             // room7_orders_pnl
             // 
             this->room7_orders_pnl->AutoScroll = true;
-            this->room7_orders_pnl->Location = System::Drawing::Point(8, 339);
+            this->room7_orders_pnl->Location = System::Drawing::Point(6, 275);
+            this->room7_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room7_orders_pnl->Name = L"room7_orders_pnl";
-            this->room7_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room7_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room7_orders_pnl->TabIndex = 38;
             // 
             // room7_timeremaining_lbl
@@ -2178,9 +2203,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_timeremaining_lbl->AutoSize = true;
             this->room7_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room7_timeremaining_lbl->Location = System::Drawing::Point(248, 196);
+            this->room7_timeremaining_lbl->Location = System::Drawing::Point(186, 159);
+            this->room7_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room7_timeremaining_lbl->Name = L"room7_timeremaining_lbl";
-            this->room7_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room7_timeremaining_lbl->Size = System::Drawing::Size(109, 30);
             this->room7_timeremaining_lbl->TabIndex = 30;
             this->room7_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -2189,9 +2215,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_timer_lbl->AutoSize = true;
             this->room7_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room7_timer_lbl->Location = System::Drawing::Point(248, 139);
+            this->room7_timer_lbl->Location = System::Drawing::Point(186, 113);
+            this->room7_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room7_timer_lbl->Name = L"room7_timer_lbl";
-            this->room7_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room7_timer_lbl->Size = System::Drawing::Size(109, 30);
             this->room7_timer_lbl->TabIndex = 29;
             this->room7_timer_lbl->Text = L"00:00:00";
             // 
@@ -2200,9 +2227,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room7_timestarted_lbl->AutoSize = true;
             this->room7_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room7_timestarted_lbl->Location = System::Drawing::Point(248, 82);
+            this->room7_timestarted_lbl->Location = System::Drawing::Point(186, 67);
+            this->room7_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room7_timestarted_lbl->Name = L"room7_timestarted_lbl";
-            this->room7_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room7_timestarted_lbl->Size = System::Drawing::Size(109, 30);
             this->room7_timestarted_lbl->TabIndex = 28;
             this->room7_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -2222,10 +2250,11 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->pingpong_tab->Controls->Add(this->room8_timeremaining_lbl);
             this->pingpong_tab->Controls->Add(this->room8_timer_lbl);
             this->pingpong_tab->Controls->Add(this->room8_timestarted_lbl);
-            this->pingpong_tab->Location = System::Drawing::Point(4, 36);
+            this->pingpong_tab->Location = System::Drawing::Point(4, 31);
+            this->pingpong_tab->Margin = System::Windows::Forms::Padding(2);
             this->pingpong_tab->Name = L"pingpong_tab";
-            this->pingpong_tab->Padding = System::Windows::Forms::Padding(3);
-            this->pingpong_tab->Size = System::Drawing::Size(1392, 740);
+            this->pingpong_tab->Padding = System::Windows::Forms::Padding(2);
+            this->pingpong_tab->Size = System::Drawing::Size(1042, 599);
             this->pingpong_tab->TabIndex = 7;
             this->pingpong_tab->Text = L"PING PONG";
             this->pingpong_tab->UseVisualStyleBackColor = true;
@@ -2247,10 +2276,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_close_btn->Location = System::Drawing::Point(1168, 20);
-            this->room8_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_close_btn->Location = System::Drawing::Point(876, 16);
+            this->room8_close_btn->Margin = System::Windows::Forms::Padding(2);
             this->room8_close_btn->Name = L"room8_close_btn";
-            this->room8_close_btn->Size = System::Drawing::Size(192, 44);
+            this->room8_close_btn->Size = System::Drawing::Size(144, 36);
             this->room8_close_btn->TabIndex = 52;
             this->room8_close_btn->UseVisualStyleBackColor = false;
             this->room8_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_close_btn_Click);
@@ -2271,10 +2300,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_add_btn->Location = System::Drawing::Point(1057, 494);
-            this->room8_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_add_btn->Location = System::Drawing::Point(793, 401);
+            this->room8_add_btn->Margin = System::Windows::Forms::Padding(2);
             this->room8_add_btn->Name = L"room8_add_btn";
-            this->room8_add_btn->Size = System::Drawing::Size(232, 41);
+            this->room8_add_btn->Size = System::Drawing::Size(174, 33);
             this->room8_add_btn->TabIndex = 51;
             this->room8_add_btn->UseVisualStyleBackColor = false;
             this->room8_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_add_btn_Click);
@@ -2295,10 +2324,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_remove_btn->Location = System::Drawing::Point(1057, 583);
-            this->room8_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_remove_btn->Location = System::Drawing::Point(793, 474);
+            this->room8_remove_btn->Margin = System::Windows::Forms::Padding(2);
             this->room8_remove_btn->Name = L"room8_remove_btn";
-            this->room8_remove_btn->Size = System::Drawing::Size(232, 41);
+            this->room8_remove_btn->Size = System::Drawing::Size(174, 33);
             this->room8_remove_btn->TabIndex = 50;
             this->room8_remove_btn->UseVisualStyleBackColor = false;
             this->room8_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_remove_btn_Click);
@@ -2319,10 +2348,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_end_btn->Location = System::Drawing::Point(576, 583);
-            this->room8_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_end_btn->Location = System::Drawing::Point(432, 474);
+            this->room8_end_btn->Margin = System::Windows::Forms::Padding(2);
             this->room8_end_btn->Name = L"room8_end_btn";
-            this->room8_end_btn->Size = System::Drawing::Size(176, 41);
+            this->room8_end_btn->Size = System::Drawing::Size(132, 33);
             this->room8_end_btn->TabIndex = 49;
             this->room8_end_btn->UseVisualStyleBackColor = false;
             this->room8_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_end_btn_Click);
@@ -2343,10 +2372,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_start_btn->Location = System::Drawing::Point(576, 494);
-            this->room8_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_start_btn->Location = System::Drawing::Point(432, 401);
+            this->room8_start_btn->Margin = System::Windows::Forms::Padding(2);
             this->room8_start_btn->Name = L"room8_start_btn";
-            this->room8_start_btn->Size = System::Drawing::Size(176, 41);
+            this->room8_start_btn->Size = System::Drawing::Size(132, 33);
             this->room8_start_btn->TabIndex = 48;
             this->room8_start_btn->UseVisualStyleBackColor = false;
             this->room8_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_start_btn_Click);
@@ -2356,9 +2385,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room8_order_cmbx->FormattingEnabled = true;
             this->room8_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room8_order_cmbx->Location = System::Drawing::Point(998, 402);
+            this->room8_order_cmbx->Location = System::Drawing::Point(748, 327);
+            this->room8_order_cmbx->Margin = System::Windows::Forms::Padding(2);
             this->room8_order_cmbx->Name = L"room8_order_cmbx";
-            this->room8_order_cmbx->Size = System::Drawing::Size(356, 35);
+            this->room8_order_cmbx->Size = System::Drawing::Size(268, 30);
             this->room8_order_cmbx->TabIndex = 47;
             // 
             // room8_userinput_time
@@ -2366,9 +2396,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room8_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room8_userinput_time->Location = System::Drawing::Point(600, 406);
+            this->room8_userinput_time->Location = System::Drawing::Point(450, 330);
+            this->room8_userinput_time->Margin = System::Windows::Forms::Padding(2);
             this->room8_userinput_time->Name = L"room8_userinput_time";
-            this->room8_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room8_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room8_userinput_time->TabIndex = 46;
             this->room8_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::troom8_userinput_time_KeyPress);
             // 
@@ -2378,17 +2409,19 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room8_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room8_recipt_pnl->Location = System::Drawing::Point(754, 99);
+            this->room8_recipt_pnl->Location = System::Drawing::Point(566, 80);
+            this->room8_recipt_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room8_recipt_pnl->Name = L"room8_recipt_pnl";
-            this->room8_recipt_pnl->Size = System::Drawing::Size(579, 239);
+            this->room8_recipt_pnl->Size = System::Drawing::Size(434, 194);
             this->room8_recipt_pnl->TabIndex = 40;
             // 
             // room8_orders_pnl
             // 
             this->room8_orders_pnl->AutoScroll = true;
-            this->room8_orders_pnl->Location = System::Drawing::Point(8, 340);
+            this->room8_orders_pnl->Location = System::Drawing::Point(6, 276);
+            this->room8_orders_pnl->Margin = System::Windows::Forms::Padding(2);
             this->room8_orders_pnl->Name = L"room8_orders_pnl";
-            this->room8_orders_pnl->Size = System::Drawing::Size(397, 377);
+            this->room8_orders_pnl->Size = System::Drawing::Size(298, 306);
             this->room8_orders_pnl->TabIndex = 39;
             // 
             // room8_timeremaining_lbl
@@ -2396,9 +2429,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_timeremaining_lbl->AutoSize = true;
             this->room8_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room8_timeremaining_lbl->Location = System::Drawing::Point(236, 197);
+            this->room8_timeremaining_lbl->Location = System::Drawing::Point(177, 160);
+            this->room8_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room8_timeremaining_lbl->Name = L"room8_timeremaining_lbl";
-            this->room8_timeremaining_lbl->Size = System::Drawing::Size(135, 37);
+            this->room8_timeremaining_lbl->Size = System::Drawing::Size(109, 30);
             this->room8_timeremaining_lbl->TabIndex = 31;
             this->room8_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -2407,9 +2441,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_timer_lbl->AutoSize = true;
             this->room8_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room8_timer_lbl->Location = System::Drawing::Point(236, 140);
+            this->room8_timer_lbl->Location = System::Drawing::Point(177, 114);
+            this->room8_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room8_timer_lbl->Name = L"room8_timer_lbl";
-            this->room8_timer_lbl->Size = System::Drawing::Size(135, 37);
+            this->room8_timer_lbl->Size = System::Drawing::Size(109, 30);
             this->room8_timer_lbl->TabIndex = 30;
             this->room8_timer_lbl->Text = L"00:00:00";
             // 
@@ -2418,9 +2453,10 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             this->room8_timestarted_lbl->AutoSize = true;
             this->room8_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->room8_timestarted_lbl->Location = System::Drawing::Point(236, 78);
+            this->room8_timestarted_lbl->Location = System::Drawing::Point(177, 63);
+            this->room8_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room8_timestarted_lbl->Name = L"room8_timestarted_lbl";
-            this->room8_timestarted_lbl->Size = System::Drawing::Size(135, 37);
+            this->room8_timestarted_lbl->Size = System::Drawing::Size(109, 30);
             this->room8_timestarted_lbl->TabIndex = 29;
             this->room8_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -2488,19 +2524,33 @@ private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
             // 
             this->stopwatch_timer8->Tick += gcnew System::EventHandler(this, &Rooms::stopwatch_timer8_Tick);
             // 
+            // label6
+            // 
+            this->label6->AutoSize = true;
+            this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label6->ForeColor = System::Drawing::Color::White;
+            this->label6->Location = System::Drawing::Point(417, 176);
+            this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label6->Name = L"label6";
+            this->label6->Size = System::Drawing::Size(170, 32);
+            this->label6->TabIndex = 20;
+            this->label6->Text = L"Choose Mode";
+            this->label6->Click += gcnew System::EventHandler(this, &Rooms::label6_Click);
+            // 
             // Rooms
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
             this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->ClientSize = System::Drawing::Size(1400, 780);
+            this->ClientSize = System::Drawing::Size(1050, 634);
             this->Controls->Add(this->Rooms_tabs);
             this->DoubleBuffered = true;
             this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Margin = System::Windows::Forms::Padding(2);
             this->Name = L"Rooms";
             this->Text = L"Room1";
             this->Load += gcnew System::EventHandler(this, &Rooms::Room1_Load);
@@ -4201,5 +4251,6 @@ private: System::Void troom8_userinput_time_KeyPress(System::Object^ sender, Sys
 }
 private: System::Void pingpong_tab_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
 };
 }

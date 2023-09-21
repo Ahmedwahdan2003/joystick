@@ -114,6 +114,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="Bunifu.Dataviz.WinForms">
+      <HintPath>C:\Users\Mr.fox\Downloads\Bunifu_Dataviz_v2.1.4_Downloadly.ir\Bunifu Dataviz v2.1.4\Bunifu.Dataviz.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -181,6 +184,9 @@
     <EmbeddedResource Include="storage.resx">
       <DependentUpon>storage.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="licenses.licx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

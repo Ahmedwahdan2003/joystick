@@ -247,7 +247,6 @@ namespace joystick {
             this->end_day_btn->Name = L"end_day_btn";
             this->end_day_btn->Size = System::Drawing::Size(165, 45);
             this->end_day_btn->TabIndex = 7;
-            this->end_day_btn->Text = L"s";
             this->end_day_btn->UseVisualStyleBackColor = false;
             this->end_day_btn->Click += gcnew System::EventHandler(this, &Home::end_day_btn_Click);
             // 
@@ -281,7 +280,7 @@ namespace joystick {
             this->time_lb->ForeColor = System::Drawing::SystemColors::Control;
             this->time_lb->Location = System::Drawing::Point(1, 18);
             this->time_lb->Name = L"time_lb";
-            this->time_lb->Size = System::Drawing::Size(133, 36);
+            this->time_lb->Size = System::Drawing::Size(103, 29);
             this->time_lb->TabIndex = 9;
             this->time_lb->Text = L"00:00:00";
             // 
@@ -310,11 +309,12 @@ namespace joystick {
                 | System::Windows::Forms::AnchorStyles::Right));
             this->room1_status->AutoSize = true;
             this->room1_status->BackColor = System::Drawing::Color::Transparent;
-            this->room1_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
+            this->room1_status->Font = (gcnew System::Drawing::Font(L"Carter One", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
             this->room1_status->ForeColor = System::Drawing::Color::Transparent;
             this->room1_status->Location = System::Drawing::Point(190, 8);
             this->room1_status->Name = L"room1_status";
-            this->room1_status->Size = System::Drawing::Size(196, 54);
+            this->room1_status->Size = System::Drawing::Size(152, 57);
             this->room1_status->TabIndex = 10;
             this->room1_status->Text = L"ROOM1";
             // 
@@ -325,11 +325,11 @@ namespace joystick {
                 | System::Windows::Forms::AnchorStyles::Right));
             this->room5_status->AutoSize = true;
             this->room5_status->BackColor = System::Drawing::Color::Transparent;
-            this->room5_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
+            this->room5_status->Font = (gcnew System::Drawing::Font(L"Carter One", 27.75F));
             this->room5_status->ForeColor = System::Drawing::Color::Transparent;
             this->room5_status->Location = System::Drawing::Point(933, 8);
             this->room5_status->Name = L"room5_status";
-            this->room5_status->Size = System::Drawing::Size(196, 54);
+            this->room5_status->Size = System::Drawing::Size(160, 57);
             this->room5_status->TabIndex = 18;
             this->room5_status->Text = L"ROOM5";
             // 
@@ -340,11 +340,11 @@ namespace joystick {
                 | System::Windows::Forms::AnchorStyles::Right));
             this->room4_status->AutoSize = true;
             this->room4_status->BackColor = System::Drawing::Color::Transparent;
-            this->room4_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
+            this->room4_status->Font = (gcnew System::Drawing::Font(L"Carter One", 27.75F));
             this->room4_status->ForeColor = System::Drawing::Color::Transparent;
             this->room4_status->Location = System::Drawing::Point(740, 8);
             this->room4_status->Name = L"room4_status";
-            this->room4_status->Size = System::Drawing::Size(196, 54);
+            this->room4_status->Size = System::Drawing::Size(164, 57);
             this->room4_status->TabIndex = 17;
             this->room4_status->Text = L"ROOM4";
             // 
@@ -355,11 +355,11 @@ namespace joystick {
                 | System::Windows::Forms::AnchorStyles::Right));
             this->room3_status->AutoSize = true;
             this->room3_status->BackColor = System::Drawing::Color::Transparent;
-            this->room3_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
+            this->room3_status->Font = (gcnew System::Drawing::Font(L"Carter One", 27.75F));
             this->room3_status->ForeColor = System::Drawing::Color::Transparent;
             this->room3_status->Location = System::Drawing::Point(560, 8);
             this->room3_status->Name = L"room3_status";
-            this->room3_status->Size = System::Drawing::Size(196, 54);
+            this->room3_status->Size = System::Drawing::Size(160, 57);
             this->room3_status->TabIndex = 16;
             this->room3_status->Text = L"ROOM3";
             // 
@@ -370,11 +370,11 @@ namespace joystick {
                 | System::Windows::Forms::AnchorStyles::Right));
             this->room2_status->AutoSize = true;
             this->room2_status->BackColor = System::Drawing::Color::Transparent;
-            this->room2_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
+            this->room2_status->Font = (gcnew System::Drawing::Font(L"Carter One", 27.75F));
             this->room2_status->ForeColor = System::Drawing::Color::Transparent;
             this->room2_status->Location = System::Drawing::Point(374, 8);
             this->room2_status->Name = L"room2_status";
-            this->room2_status->Size = System::Drawing::Size(196, 54);
+            this->room2_status->Size = System::Drawing::Size(160, 57);
             this->room2_status->TabIndex = 15;
             this->room2_status->Text = L"ROOM2";
             // 
