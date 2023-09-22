@@ -133,6 +133,7 @@
     <ClCompile Include="EndDay.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="password.cpp" />
     <ClCompile Include="Room1.cpp" />
     <ClCompile Include="room2.cpp" />
     <ClCompile Include="Settings.cpp" />
@@ -143,6 +144,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Home.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="password.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Rooms.h">
@@ -171,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="password.resx">
+      <DependentUpon>password.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rooms.resx">
       <DependentUpon>Rooms.h</DependentUpon>

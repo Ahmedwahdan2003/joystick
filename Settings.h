@@ -135,21 +135,23 @@ namespace joystick {
 			this->save_bt->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->save_bt->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->save_bt->Location = System::Drawing::Point(1076, 517);
+			this->save_bt->Location = System::Drawing::Point(1435, 636);
+			this->save_bt->Margin = System::Windows::Forms::Padding(4);
 			this->save_bt->Name = L"save_bt";
-			this->save_bt->Size = System::Drawing::Size(164, 47);
+			this->save_bt->Size = System::Drawing::Size(219, 58);
 			this->save_bt->TabIndex = 0;
 			this->save_bt->UseVisualStyleBackColor = false;
 			// 
 			// user_cmx
 			// 
 			this->user_cmx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->user_cmx->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->user_cmx->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->user_cmx->FormattingEnabled = true;
-			this->user_cmx->Location = System::Drawing::Point(297, 104);
+			this->user_cmx->Location = System::Drawing::Point(292, 105);
+			this->user_cmx->Margin = System::Windows::Forms::Padding(4);
 			this->user_cmx->Name = L"user_cmx";
-			this->user_cmx->Size = System::Drawing::Size(248, 53);
+			this->user_cmx->Size = System::Drawing::Size(260, 48);
 			this->user_cmx->TabIndex = 1;
 			this->user_cmx->SelectedIndexChanged += gcnew System::EventHandler(this, &Settings::user_cmx_SelectedIndexChanged);
 			// 
@@ -157,13 +159,14 @@ namespace joystick {
 			// 
 			this->password_tb->BackColor = System::Drawing::SystemColors::Window;
 			this->password_tb->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->password_tb->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->password_tb->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->password_tb->Location = System::Drawing::Point(297, 183);
+			this->password_tb->Location = System::Drawing::Point(292, 185);
+			this->password_tb->Margin = System::Windows::Forms::Padding(4);
 			this->password_tb->Name = L"password_tb";
 			this->password_tb->PasswordChar = '*';
 			this->password_tb->ShortcutsEnabled = false;
-			this->password_tb->Size = System::Drawing::Size(248, 45);
+			this->password_tb->Size = System::Drawing::Size(260, 42);
 			this->password_tb->TabIndex = 6;
 			// 
 			// back_tb
@@ -179,9 +182,10 @@ namespace joystick {
 			this->back_tb->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->back_tb->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->back_tb->Location = System::Drawing::Point(36, 22);
+			this->back_tb->Location = System::Drawing::Point(45, 26);
+			this->back_tb->Margin = System::Windows::Forms::Padding(4);
 			this->back_tb->Name = L"back_tb";
-			this->back_tb->Size = System::Drawing::Size(135, 47);
+			this->back_tb->Size = System::Drawing::Size(119, 36);
 			this->back_tb->TabIndex = 7;
 			this->back_tb->UseVisualStyleBackColor = false;
 			this->back_tb->Click += gcnew System::EventHandler(this, &Settings::back_tb_Click);
@@ -190,101 +194,109 @@ namespace joystick {
 			// 
 			this->r1_ps4_singel->BackColor = System::Drawing::SystemColors::Window;
 			this->r1_ps4_singel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->r1_ps4_singel->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->r1_ps4_singel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->r1_ps4_singel->Location = System::Drawing::Point(326, 370);
+			this->r1_ps4_singel->Location = System::Drawing::Point(318, 373);
+			this->r1_ps4_singel->Margin = System::Windows::Forms::Padding(4);
 			this->r1_ps4_singel->Name = L"r1_ps4_singel";
 			this->r1_ps4_singel->ShortcutsEnabled = false;
-			this->r1_ps4_singel->Size = System::Drawing::Size(98, 45);
+			this->r1_ps4_singel->Size = System::Drawing::Size(112, 42);
 			this->r1_ps4_singel->TabIndex = 8;
 			// 
 			// r2_ps4_singel
 			// 
 			this->r2_ps4_singel->BackColor = System::Drawing::SystemColors::Window;
 			this->r2_ps4_singel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->r2_ps4_singel->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->r2_ps4_singel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->r2_ps4_singel->Location = System::Drawing::Point(326, 446);
+			this->r2_ps4_singel->Location = System::Drawing::Point(318, 448);
+			this->r2_ps4_singel->Margin = System::Windows::Forms::Padding(4);
 			this->r2_ps4_singel->Name = L"r2_ps4_singel";
 			this->r2_ps4_singel->ShortcutsEnabled = false;
-			this->r2_ps4_singel->Size = System::Drawing::Size(98, 45);
+			this->r2_ps4_singel->Size = System::Drawing::Size(112, 42);
 			this->r2_ps4_singel->TabIndex = 9;
 			// 
 			// r3_ps4_singel
 			// 
 			this->r3_ps4_singel->BackColor = System::Drawing::SystemColors::Window;
 			this->r3_ps4_singel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->r3_ps4_singel->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->r3_ps4_singel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->r3_ps4_singel->Location = System::Drawing::Point(326, 519);
+			this->r3_ps4_singel->Location = System::Drawing::Point(318, 522);
+			this->r3_ps4_singel->Margin = System::Windows::Forms::Padding(4);
 			this->r3_ps4_singel->Name = L"r3_ps4_singel";
 			this->r3_ps4_singel->ShortcutsEnabled = false;
-			this->r3_ps4_singel->Size = System::Drawing::Size(98, 45);
+			this->r3_ps4_singel->Size = System::Drawing::Size(112, 42);
 			this->r3_ps4_singel->TabIndex = 10;
 			// 
 			// r4_ps4_singel
 			// 
 			this->r4_ps4_singel->BackColor = System::Drawing::SystemColors::Window;
 			this->r4_ps4_singel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->r4_ps4_singel->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->r4_ps4_singel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->r4_ps4_singel->Location = System::Drawing::Point(326, 590);
+			this->r4_ps4_singel->Location = System::Drawing::Point(435, 726);
+			this->r4_ps4_singel->Margin = System::Windows::Forms::Padding(4);
 			this->r4_ps4_singel->Name = L"r4_ps4_singel";
 			this->r4_ps4_singel->ShortcutsEnabled = false;
-			this->r4_ps4_singel->Size = System::Drawing::Size(98, 45);
+			this->r4_ps4_singel->Size = System::Drawing::Size(131, 42);
 			this->r4_ps4_singel->TabIndex = 11;
 			// 
 			// r5_ps4_singel
 			// 
 			this->r5_ps4_singel->BackColor = System::Drawing::SystemColors::Window;
 			this->r5_ps4_singel->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->r5_ps4_singel->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->r5_ps4_singel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->r5_ps4_singel->Location = System::Drawing::Point(326, 663);
+			this->r5_ps4_singel->Location = System::Drawing::Point(435, 816);
+			this->r5_ps4_singel->Margin = System::Windows::Forms::Padding(4);
 			this->r5_ps4_singel->Name = L"r5_ps4_singel";
 			this->r5_ps4_singel->ShortcutsEnabled = false;
-			this->r5_ps4_singel->Size = System::Drawing::Size(98, 45);
+			this->r5_ps4_singel->Size = System::Drawing::Size(131, 42);
 			this->r5_ps4_singel->TabIndex = 12;
 			// 
 			// billiard1_bt
 			// 
 			this->billiard1_bt->BackColor = System::Drawing::SystemColors::Window;
 			this->billiard1_bt->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->billiard1_bt->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->billiard1_bt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->billiard1_bt->Location = System::Drawing::Point(1012, 107);
+			this->billiard1_bt->Location = System::Drawing::Point(1349, 132);
+			this->billiard1_bt->Margin = System::Windows::Forms::Padding(4);
 			this->billiard1_bt->Name = L"billiard1_bt";
 			this->billiard1_bt->ShortcutsEnabled = false;
-			this->billiard1_bt->Size = System::Drawing::Size(243, 45);
+			this->billiard1_bt->Size = System::Drawing::Size(324, 42);
 			this->billiard1_bt->TabIndex = 13;
 			// 
 			// billiard2_bt
 			// 
 			this->billiard2_bt->BackColor = System::Drawing::SystemColors::Window;
 			this->billiard2_bt->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->billiard2_bt->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->billiard2_bt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->billiard2_bt->Location = System::Drawing::Point(1012, 179);
+			this->billiard2_bt->Location = System::Drawing::Point(1349, 220);
+			this->billiard2_bt->Margin = System::Windows::Forms::Padding(4);
 			this->billiard2_bt->Name = L"billiard2_bt";
 			this->billiard2_bt->ShortcutsEnabled = false;
-			this->billiard2_bt->Size = System::Drawing::Size(243, 45);
+			this->billiard2_bt->Size = System::Drawing::Size(324, 42);
 			this->billiard2_bt->TabIndex = 14;
 			// 
 			// ping_pong
 			// 
 			this->ping_pong->BackColor = System::Drawing::SystemColors::Window;
 			this->ping_pong->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->ping_pong->Font = (gcnew System::Drawing::Font(L"Carter One", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->ping_pong->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ping_pong->Location = System::Drawing::Point(1012, 253);
+			this->ping_pong->Location = System::Drawing::Point(1349, 311);
+			this->ping_pong->Margin = System::Windows::Forms::Padding(4);
 			this->ping_pong->Name = L"ping_pong";
 			this->ping_pong->ShortcutsEnabled = false;
-			this->ping_pong->Size = System::Drawing::Size(243, 45);
+			this->ping_pong->Size = System::Drawing::Size(324, 42);
 			this->ping_pong->TabIndex = 15;
 			// 
 			// Settings
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -303,8 +315,9 @@ namespace joystick {
 			this->Controls->Add(this->save_bt);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"Settings";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Settings";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -360,7 +373,7 @@ private: System::Void user_cmx_SelectedIndexChanged(System::Object^ sender, Syst
 
 }
 private: System::Void back_tb_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
+	this->Hide();
 }
 };
 }

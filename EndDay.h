@@ -71,6 +71,7 @@ namespace joystick {
 	private: System::Windows::Forms::Label^ Billiard2_time_lbl;
 	private: System::Windows::Forms::Label^ pingpong_time_lbl;
 	private: System::Windows::Forms::Button^ send_email_btn;
+	private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -125,6 +126,7 @@ namespace joystick {
 			this->Billiard2_time_lbl = (gcnew System::Windows::Forms::Label());
 			this->pingpong_time_lbl = (gcnew System::Windows::Forms::Label());
 			this->send_email_btn = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// display_total_btn
@@ -420,6 +422,24 @@ namespace joystick {
 			this->send_email_btn->UseVisualStyleBackColor = false;
 			this->send_email_btn->Click += gcnew System::EventHandler(this, &EndDay::send_email_btn_Click);
 			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->button1->Location = System::Drawing::Point(8, 8);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(128, 40);
+			this->button1->TabIndex = 21;
+			this->button1->Text = L"BACK";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &EndDay::button1_Click);
+			// 
 			// EndDay
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -427,6 +447,7 @@ namespace joystick {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1095, 648);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->send_email_btn);
 			this->Controls->Add(this->pingpong_time_lbl);
 			this->Controls->Add(this->Billiard2_time_lbl);
@@ -450,6 +471,7 @@ namespace joystick {
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"EndDay";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"EndDay";
 			this->Load += gcnew System::EventHandler(this, &EndDay::EndDay_Load);
 			this->ResumeLayout(false);
@@ -510,6 +532,9 @@ private: System::Void send_email_btn_Click(System::Object^ sender, System::Event
 		MessageBox::Show("Error sending message: " + ex->Message);
 	}
 
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Hide();
 }
 };
 }
