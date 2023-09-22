@@ -55,6 +55,7 @@ namespace joystick {
 		SqlConnection^ dbConnection;
 
 	private: System::Windows::Forms::Button^ rooms_back_btn;
+	private: System::Windows::Forms::Panel^ panel1;
 
 		   DataSet^ dataSet;
 	protected:
@@ -104,7 +105,9 @@ namespace joystick {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->save_btn = (gcnew System::Windows::Forms::Button());
 			this->rooms_back_btn = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -118,7 +121,7 @@ namespace joystick {
 			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->BackgroundColor = System::Drawing::Color::Black;
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::WhiteSmoke;
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
 			this->dataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
@@ -133,12 +136,13 @@ namespace joystick {
 			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
-			this->dataGridView1->Location = System::Drawing::Point(47, 96);
+			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView1->Location = System::Drawing::Point(0, 0);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(878, 596);
+			this->dataGridView1->Size = System::Drawing::Size(882, 602);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// save_btn
@@ -183,6 +187,16 @@ namespace joystick {
 			this->rooms_back_btn->UseVisualStyleBackColor = true;
 			this->rooms_back_btn->Click += gcnew System::EventHandler(this, &storage::rooms_back_btn_Click);
 			// 
+			// panel1
+			// 
+			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
+			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->panel1->Controls->Add(this->dataGridView1);
+			this->panel1->Location = System::Drawing::Point(47, 95);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(882, 602);
+			this->panel1->TabIndex = 5;
+			// 
 			// storage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -190,9 +204,9 @@ namespace joystick {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1279, 720);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->rooms_back_btn);
 			this->Controls->Add(this->save_btn);
-			this->Controls->Add(this->dataGridView1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -202,6 +216,7 @@ namespace joystick {
 			this->TransparencyKey = System::Drawing::Color::Aqua;
 			this->Load += gcnew System::EventHandler(this, &storage::storage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->panel1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

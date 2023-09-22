@@ -46,7 +46,7 @@ namespace joystick {
             //FetchItemPricesFromDatabase();      (method to get the items and their prices from the database)
             this->DoubleBuffered = true;
             data_combobox();
-            //FetchItemData();
+            FetchItemData();
          
             
            
@@ -108,7 +108,7 @@ namespace joystick {
                 delete components;
             }
         }
-    private:Dictionary<String^, int>^ itemPrices = gcnew Dictionary<String^, int>();
+    private:Dictionary<String^, double>^ itemPrices = gcnew Dictionary<String^, double>();
     private:Dictionary<String^, int>^ room1_orders_map = gcnew Dictionary<String^, int>();
     private:Dictionary<String^, int>^ room2_orders_map = gcnew Dictionary<String^, int>();
     private:Dictionary<String^, int>^ room3_orders_map = gcnew Dictionary<String^, int>();
@@ -2552,7 +2552,7 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
 #pragma endregion
 
 
-        void FetchItemData()
+    private: System::Void FetchItemData()
         {
             // Connection string to your SQL Server database
             String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
@@ -2579,23 +2579,20 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
                 {
                     // Convert data to C++/CLI types
                     String^ itemName = reader->GetString(0);
-                    int price = reader->GetInt32(1);
+                    double price = reader->GetDouble(1);
 
                     // Add item name and price to the predefined dictionary
                     itemPrices[itemName] = price;
+
                 }
+                reader->Close();
                 MessageBox::Show("item prices fetched from database");
                 // Close the SqlDataReader
-                reader->Close();
+              
             }
             catch (Exception^ ex)
             {
-                MessageBox::Show("error ");
-            }
-            finally
-            {
-                // Close the database connection
-                //connection->Close();
+                MessageBox::Show("error retrieving data from database : "+ex->Message);
             }
         }
 
@@ -2822,13 +2819,14 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
     ////////////////////////////////////////////////////////////
 
 
+
         if (timestarted1_lbl->Text == "00:00:00")
         {
             MessageBox::Show("The Room is empty ya ahbal", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
     if (room1_endtime_btn_click == true) {
-            DisplayReceipt(room1_orders_map, itemPrices, startTime1, finalTime1, room1_recipt_pnl,"Room1");
+            DisplayReceipt(room1_orders_map, itemPrices, startTime1, finalTime1, room1_recipt_pnl,"Room1",1);
             MessageBox::Show("Done?", "Countdown Notification");
             room1_recipt_pnl->Controls->Clear();
             room1_orders_pnl->Controls->Clear();
@@ -2846,13 +2844,49 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
     }
     }
 }
+       void InsertOrderData(int room_id, DateTime startTime, DateTime endTime, DateTime date, String^ itemName, float room_total, int quantity)
+       {
+           String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+           SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
+           try
+           {
+               connection->Open();
+
+               // SQL query to insert data into the "orders" table
+               String^ query = "INSERT INTO orders (room_id, startTime, endTime, date, item_name, room_total, quantity) "
+                   "VALUES (@room_id, @startTime, @endTime, @date, @itemName, @roomTotal, @quantity)";
+
+               SqlCommand^ command = gcnew SqlCommand(query, connection);
+
+               // Add parameters to the query to prevent SQL injection
+               command->Parameters->AddWithValue("@room_id", room_id);
+               command->Parameters->AddWithValue("@startTime", startTime);
+               command->Parameters->AddWithValue("@endTime", endTime);
+               command->Parameters->AddWithValue("@date", date);
+               command->Parameters->AddWithValue("@itemName", itemName);
+               command->Parameters->AddWithValue("@roomTotal", room_total);
+               command->Parameters->AddWithValue("@quantity", quantity);
+
+               command->ExecuteNonQuery();
+               MessageBox::Show("Order data inserted into the database");
+           }
+           catch (Exception^ ex)
+           {
+               MessageBox::Show("Error inserting data into the database: " + ex->Message);
+           }
+           finally
+           {
+               connection->Close();
+           }
+       }
        
-private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<String^, int>^ itemprices,DateTime startTime,DateTime endTime, FlowLayoutPanel^ panel_name,String^ room_id) {
+private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<String^, double>^ itemprices,DateTime startTime,DateTime endTime, FlowLayoutPanel^ panel_name,String^ room_id,int roomid) {
            double totalCost = 0.0;
            double elapsedHours=0.0;
            double timeCost=0.0;
-           int int_time_cost;
+           int int_time_cost=0;
+
            // Clear the existing controls in the flow layout panel
            panel_name->Controls->Clear();
            
@@ -2878,7 +2912,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
                if (itemprices->ContainsKey(itemName)) {
                    double itemprice = itemprices[itemName];
                    totalCost += itemprice * quantity;
-
+                   //InsertOrderData()
                    // Create a label to display the item details
                    Label^ labelItem = gcnew Label();
                    labelItem->AutoSize = true;
@@ -3047,7 +3081,7 @@ private: System::Void room2_closeroom_btn_Click(System::Object^ sender, System::
         }
         else {
     if (room2_endtime_btn_click == true) {
-            DisplayReceipt(room2_orders_map, itemPrices, startTime2, finalTime2, room2_recipt_pnl,"Room2");
+            DisplayReceipt(room2_orders_map, itemPrices, startTime2, finalTime2, room2_recipt_pnl,"Room2",2);
             MessageBox::Show("Done?", "Countdown Notification");
             room2_recipt_pnl->Controls->Clear();
             room2_orders_pnl->Controls->Clear();
@@ -3254,7 +3288,7 @@ private: System::Void room3_close_btn_Click(System::Object^ sender, System::Even
     }
     else {
         if (room3_endtime_btn_click == true) {
-            DisplayReceipt(room3_orders_map, itemPrices, startTime3, finalTime3, room3_recipt_pnl, "Room3");
+            DisplayReceipt(room3_orders_map, itemPrices, startTime3, finalTime3, room3_recipt_pnl, "Room3",3);
             MessageBox::Show("Done?", "Countdown Notification");
             room3_recipt_pnl->Controls->Clear();
             room3_orders_pnl->Controls->Clear();
@@ -3444,7 +3478,7 @@ private: System::Void room4_close_btn_Click(System::Object^ sender, System::Even
     }
     else {
         if (room4_endtime_btn_click == true) {
-            DisplayReceipt(room4_orders_map, itemPrices, startTime4, finalTime4, room4_recipt_pnl, "Room4");
+            DisplayReceipt(room4_orders_map, itemPrices, startTime4, finalTime4, room4_recipt_pnl, "Room4",4);
             MessageBox::Show("Done?", "Countdown Notification");
             room4_recipt_pnl->Controls->Clear();
             room4_orders_pnl->Controls->Clear();
@@ -3639,7 +3673,7 @@ private: System::Void room5_close_btn_Click(System::Object^ sender, System::Even
     }
     else {
         if (room5_endtime_btn_click == true) {
-            DisplayReceipt(room5_orders_map, itemPrices, startTime5, finalTime5, room5_recipt_pnl, "Room5");
+            DisplayReceipt(room5_orders_map, itemPrices, startTime5, finalTime5, room5_recipt_pnl, "Room5",5);
             MessageBox::Show("Done?", "Countdown Notification");
             room5_recipt_pnl->Controls->Clear();
             room5_orders_pnl->Controls->Clear();
@@ -3831,7 +3865,7 @@ private: System::Void room6_close_btn_Click(System::Object^ sender, System::Even
     }
     else {
         if (room6_endtime_btn_click == true) {
-            DisplayReceipt(room6_orders_map, itemPrices, startTime6, finalTime6, room6_recipt_pnl, "Billiard1");
+            DisplayReceipt(room6_orders_map, itemPrices, startTime6, finalTime6, room6_recipt_pnl, "Billiard1",6);
             MessageBox::Show("Done?", "Countdown Notification");
             room6_recipt_pnl->Controls->Clear();
             room6_orders_pnl->Controls->Clear();
@@ -4022,7 +4056,7 @@ private: System::Void room7_close_btn_Click(System::Object^ sender, System::Even
     }
     else {
         if (room7_endtime_btn_click == true) {
-            DisplayReceipt(room7_orders_map, itemPrices, startTime7, finalTime7, room7_recipt_pnl, "Billiard2");
+            DisplayReceipt(room7_orders_map, itemPrices, startTime7, finalTime7, room7_recipt_pnl, "Billiard2",7);
             MessageBox::Show("Done?", "Countdown Notification");
             room7_recipt_pnl->Controls->Clear();
             room7_orders_pnl->Controls->Clear();
@@ -4220,7 +4254,7 @@ private: System::Void room8_close_btn_Click(System::Object^ sender, System::Even
     }
     else {
         if (room8_endtime_btn_click == true) {
-            DisplayReceipt(room8_orders_map, itemPrices, startTime8, finalTime8, room8_recipt_pnl, "Pingpong");
+            DisplayReceipt(room8_orders_map, itemPrices, startTime8, finalTime8, room8_recipt_pnl, "Pingpong",8);
             MessageBox::Show("Done?", "Countdown Notification");
             room8_recipt_pnl->Controls->Clear();
             room8_orders_pnl->Controls->Clear();

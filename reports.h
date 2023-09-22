@@ -57,7 +57,7 @@ namespace joystick {
 
 	private: System::Windows::Forms::Timer^ stopwatch;
 	private: System::Windows::Forms::Timer^ TTimer;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
 	private: System::Windows::Forms::Label^ label1;
@@ -83,14 +83,12 @@ namespace joystick {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(reports::typeid));
 			this->stopwatch = (gcnew System::Windows::Forms::Timer(this->components));
 			this->TTimer = (gcnew System::Windows::Forms::Timer(this->components));
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->Room1_starttime_btn = (gcnew System::Windows::Forms::Button());
 			this->send_email_btn = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// stopwatch
@@ -101,27 +99,16 @@ namespace joystick {
 			// 
 			this->TTimer->Tick += gcnew System::EventHandler(this, &reports::Timer_Tick);
 			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->BackgroundColor = System::Drawing::Color::DimGray;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(-1, 1);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(798, 707);
-			this->dataGridView1->TabIndex = 0;
-			// 
 			// dateTimePicker1
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(803, 406);
+			this->dateTimePicker1->Location = System::Drawing::Point(192, 203);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
 			this->dateTimePicker1->Size = System::Drawing::Size(237, 22);
 			this->dateTimePicker1->TabIndex = 1;
 			// 
 			// dateTimePicker2
 			// 
-			this->dateTimePicker2->Location = System::Drawing::Point(1071, 406);
+			this->dateTimePicker2->Location = System::Drawing::Point(677, 203);
 			this->dateTimePicker2->Name = L"dateTimePicker2";
 			this->dateTimePicker2->Size = System::Drawing::Size(197, 22);
 			this->dateTimePicker2->TabIndex = 2;
@@ -135,7 +122,7 @@ namespace joystick {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label1->Location = System::Drawing::Point(803, 361);
+			this->label1->Location = System::Drawing::Point(255, 149);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(98, 22);
 			this->label1->TabIndex = 3;
@@ -150,7 +137,7 @@ namespace joystick {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label2->Location = System::Drawing::Point(1067, 361);
+			this->label2->Location = System::Drawing::Point(742, 159);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(90, 22);
 			this->label2->TabIndex = 4;
@@ -176,7 +163,7 @@ namespace joystick {
 			this->Room1_starttime_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Room1_starttime_btn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->Room1_starttime_btn->Location = System::Drawing::Point(983, 478);
+			this->Room1_starttime_btn->Location = System::Drawing::Point(1132, 556);
 			this->Room1_starttime_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Room1_starttime_btn->Name = L"Room1_starttime_btn";
 			this->Room1_starttime_btn->Size = System::Drawing::Size(120, 132);
@@ -215,14 +202,12 @@ namespace joystick {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dateTimePicker2);
 			this->Controls->Add(this->dateTimePicker1);
-			this->Controls->Add(this->dataGridView1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"reports";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Room1";
 			this->Load += gcnew System::EventHandler(this, &reports::Room2_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
