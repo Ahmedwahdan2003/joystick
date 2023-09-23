@@ -72,6 +72,8 @@ namespace joystick {
 	private: System::Windows::Forms::Label^ pingpong_time_lbl;
 	private: System::Windows::Forms::Button^ send_email_btn;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::TextBox^ number_txt;
+	private: System::Windows::Forms::Label^ label2;
 
 
 
@@ -127,6 +129,8 @@ namespace joystick {
 			this->pingpong_time_lbl = (gcnew System::Windows::Forms::Label());
 			this->send_email_btn = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->number_txt = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// display_total_btn
@@ -440,6 +444,31 @@ namespace joystick {
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &EndDay::button1_Click);
 			// 
+			// number_txt
+			// 
+			this->number_txt->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->number_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->number_txt->Location = System::Drawing::Point(808, 129);
+			this->number_txt->Name = L"number_txt";
+			this->number_txt->Size = System::Drawing::Size(257, 31);
+			this->number_txt->TabIndex = 22;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label2->Location = System::Drawing::Point(803, 97);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(177, 29);
+			this->label2->TabIndex = 23;
+			this->label2->Text = L"Enter number:";
+			// 
 			// EndDay
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -447,6 +476,8 @@ namespace joystick {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1095, 648);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->number_txt);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->send_email_btn);
 			this->Controls->Add(this->pingpong_time_lbl);
@@ -519,19 +550,26 @@ private: System::Void send_email_btn_Click(System::Object^ sender, System::Event
 		/////////////////////////////////////
 		//Maybe a query for pushing data to the database
 		///////////////////////////////////
-		
-		System::Diagnostics::Process::Start("http://api.whatsapp.com/send?phone=" + "+201112187775" + "&text=" + whatsapp_message);
-		Sleep(8000);
-		SendKeys::SendWait("^(a)");
-		SendKeys::SendWait("{DEL}");
-		SendKeys::SendWait("{ENTER}");
-		//end_day_timer->Start();
-		
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Error sending message: " + ex->Message);
-	}
+		String^ number = "+2";
+		if (number_txt->Text->Length <= 0)
+			MessageBox::Show("please Enter number to Send To");
+		else {
 
+			number += number_txt->Text->ToString();
+
+			number_txt->Text = "";
+			System::Diagnostics::Process::Start("http://api.whatsapp.com/send?phone=" + number + "&text=" + whatsapp_message);
+			Sleep(8000);
+
+			SendKeys::SendWait("{ENTER}");
+			//end_day_timer->Start();
+
+		}
+	}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error sending message: " + ex->Message);
+		}
+	
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Hide();

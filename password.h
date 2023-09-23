@@ -6,8 +6,10 @@ namespace joystick {
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
-	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data;
+	using namespace System::Data::SqlClient;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Summary for password
@@ -18,6 +20,7 @@ namespace joystick {
 		password(void)
 		{
 			InitializeComponent();
+			RetrieveAdminPassword(adminPasswordd);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -34,6 +37,7 @@ namespace joystick {
 				delete components;
 			}
 		}
+	private:String^ adminPasswordd;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ pass_txt;
 	protected:
@@ -138,6 +142,7 @@ namespace joystick {
 			this->Name = L"password";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"password";
+			this->Load += gcnew System::EventHandler(this, &password::password_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -146,7 +151,7 @@ namespace joystick {
 	private: System::Void submit_pass_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (pass_txt->Text->Length <= 0) { MessageBox::Show("Please Enter The Password"); }
 		
-		else if (pass_txt->Text == "1234") {
+		else if (pass_txt->Text == adminPasswordd) {
 			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			pass_txt->Text = "";
 			this->Close();
@@ -161,9 +166,47 @@ namespace joystick {
 
 
 	}
+		   private: System::Void RetrieveAdminPassword(String^% adminPassword) {
+			   // Connection string to your SQL Server database
+			   String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+
+			   // Create a SqlConnection
+			   SqlConnection^ connection = gcnew SqlConnection(connectionString);
+
+			   try {
+				   connection->Open();
+
+				   // SQL query to retrieve the password of the "admin" username
+				   String^ query = "SELECT password FROM Users WHERE username = 'admin'";
+
+				   // Create a SqlCommand
+				   SqlCommand^ command = gcnew SqlCommand(query, connection);
+
+				   // Execute the query and retrieve the password
+				   Object^ result = command->ExecuteScalar();
+
+				   // Check if a result was retrieved
+				   if (result != nullptr) {
+					   adminPassword = result->ToString();
+				   }
+				   else {
+					   // Admin username not found or password is NULL
+					   adminPassword = nullptr;
+				   }
+			   }
+			   catch (Exception^ ex) {
+				   MessageBox::Show("Error retrieving admin password: " + ex->Message);
+				   adminPassword = nullptr;
+			   }
+			   finally {
+				   connection->Close();
+			   }
+		   }
 private: System::Void cancel_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->DialogResult = System::Windows::Forms::DialogResult::Cancel;
 	this->Close();
+}
+private: System::Void password_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

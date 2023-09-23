@@ -43,7 +43,6 @@ namespace joystick {
             stopwatch_timer7->Interval = 1000;
             countdown_timer8->Interval = 1000;
             stopwatch_timer8->Interval = 1000;
-            //FetchItemPricesFromDatabase();      (method to get the items and their prices from the database)
             this->DoubleBuffered = true;
             data_combobox();
             FetchItemData();
@@ -2734,10 +2733,11 @@ private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
+            String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+            SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
-                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                
                 sqlConn->Open();
 
                 String^ selectedItem = room1_order_cmbx->SelectedItem->ToString();
@@ -2763,6 +2763,9 @@ private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventA
             catch (Exception^ ex)
             {
                 MessageBox::Show("Failed to add item: " + ex->Message);
+            }
+            finally {
+                sqlConn->Close();
             }
         }
     }
@@ -3006,10 +3009,11 @@ private: System::Void room2_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
+            String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+            SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
-                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+               
                 sqlConn->Open();
 
                 String^ selectedItem = room2_order_cmbx->SelectedItem->ToString();
@@ -3036,6 +3040,10 @@ private: System::Void room2_add_btn_Click(System::Object^ sender, System::EventA
             {
                 MessageBox::Show("Failed to add item: " + ex->Message);
             }
+            finally {
+
+                sqlConn->Close();
+            }
         }
     }
     else {
@@ -3050,10 +3058,11 @@ private: System::Void room2_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room2_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room2_orders_pnl, room2_orders_map);
+            String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+            SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
-                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+                
                 sqlConn->Open();
 
                 String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
@@ -3068,6 +3077,9 @@ private: System::Void room2_remove_btn_Click(System::Object^ sender, System::Eve
             catch (Exception^ ex)
             {
                 MessageBox::Show("Failed to delete item: " + ex->Message);
+            }
+            finally {
+                sqlConn->Close();
             }
         }
     }

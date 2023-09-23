@@ -214,6 +214,7 @@ namespace joystick {
    
 
 	private: System::Void login_btnn(System::Object^ sender, System::EventArgs^ e) {
+		bool flag = false;
 		if (password_txt->Text->Length <= 0) {
 			MessageBox::Show("Please Enter The Password");
 		}
@@ -225,12 +226,15 @@ namespace joystick {
 					Home^ home = gcnew Home();
 					home->Show();
 					this->Hide();
+					flag = true;
 					break;
 				}
 				else {
-				       MessageBox::Show("Wrong Password");
+					continue;
 			         }
 			}
+			if(flag==false)
+			MessageBox::Show("Wrong password");
 			
 		}
 	}
