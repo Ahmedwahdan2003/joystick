@@ -54,6 +54,10 @@ namespace joystick {
 
         }
         void data_combobox() {
+
+            String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+            SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+
             try
             {
                 room1_order_cmbx->Items->Clear();
@@ -64,8 +68,7 @@ namespace joystick {
                 room6_order_cmbx->Items->Clear();
                 room7_order_cmbx->Items->Clear();
                 room8_order_cmbx->Items->Clear();
-                String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-                SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+               
                 sqlConn->Open();
 
                 String^ query = "SELECT name FROM items WHERE quantity > 0";
@@ -93,7 +96,9 @@ namespace joystick {
             {
                 MessageBox::Show("Failed to retrieve data from the database.");
             }
-        
+            finally {
+                sqlConn->Close();
+        }
         
         
         }
@@ -2586,13 +2591,16 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
 
                 }
                 reader->Close();
-                MessageBox::Show("item prices fetched from database");
+                //MessageBox::Show("item prices fetched from database");
                 // Close the SqlDataReader
               
             }
             catch (Exception^ ex)
             {
                 MessageBox::Show("error retrieving data from database : "+ex->Message);
+            }
+            finally {
+                connection->Close();
             }
         }
 
@@ -2748,7 +2756,7 @@ private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventA
                         room1_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
+                //MessageBox::Show("item added successfully.");
                 room1_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
@@ -2795,23 +2803,6 @@ private: System::Void RemoveItemFromPanel(String^ itemName,FlowLayoutPanel^ pnl_
                }
            }
        }
-private: System::Void Rooms::FetchItemPricesFromDatabase() {
-           // Execute your database query to fetch item prices and update the itemPrices map
-           // ...
-
-           // Update the itemPrices map with the fetched data
-           //itemPrices.clear(); // Clear existing data
-          // while (reader->Read()) {
-               // Parse data from the reader and update itemPrices map
-              // std::string itemName = reader->GetString(0);
-             //  double itemPrice = reader->GetDouble(1);
-             //  itemPrices[itemName] = itemPrice;
-          // }
-
-           // Close the reader and connection when done
-        //   reader->Close();
-         //  connection->Close();
-       }
 private: System::Void room1_close_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 
     ////////////////////////////////////////////////////////////
@@ -2844,42 +2835,48 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
     }
     }
 }
-       void InsertOrderData(int room_id, DateTime startTime, DateTime endTime, DateTime date, String^ itemName, float room_total, int quantity)
+       private: System::Void insert_order_data(int room_id,DateTime starttime,DateTime endtime,String^itemname,int itemquantity,double room_total)
        {
+           // Connection string to your SQL Server database
            String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+
+           // Create a SqlConnection
            SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
            try
            {
                connection->Open();
 
-               // SQL query to insert data into the "orders" table
-               String^ query = "INSERT INTO orders (room_id, startTime, endTime, date, item_name, room_total, quantity) "
-                   "VALUES (@room_id, @startTime, @endTime, @date, @itemName, @roomTotal, @quantity)";
+               // Define your SQL INSERT statement with parameters
+               String^ query = "INSERT INTO orders (room_id, start_time, end_time, date, item_name, room_total, quantity) "
+                   "VALUES (@room_id, @startTime, @endTime, @date, @item_name, @room_total, @quantity)";
 
+               // Create a SqlCommand
                SqlCommand^ command = gcnew SqlCommand(query, connection);
 
-               // Add parameters to the query to prevent SQL injection
-               command->Parameters->AddWithValue("@room_id", room_id);
-               command->Parameters->AddWithValue("@startTime", startTime);
-               command->Parameters->AddWithValue("@endTime", endTime);
-               command->Parameters->AddWithValue("@date", date);
-               command->Parameters->AddWithValue("@itemName", itemName);
-               command->Parameters->AddWithValue("@roomTotal", room_total);
-               command->Parameters->AddWithValue("@quantity", quantity);
+               // Set the parameter values
+               command->Parameters->AddWithValue("@room_id", room_id); // Replace with your room_id value
+               command->Parameters->AddWithValue("@startTime", starttime); // Replace with your startTime value
+               command->Parameters->AddWithValue("@endTime", endtime); // Replace with your endTime value
+               command->Parameters->AddWithValue("@date", DateTime::Now.ToString("MM/dd/yyyy")); // Current date in 'mm/dd/yyyy' format
+               command->Parameters->AddWithValue("@item_name", itemname); // Replace with your item_name value
+               command->Parameters->AddWithValue("@quantity", itemquantity); // Replace with your quantity value
+               command->Parameters->AddWithValue("@room_total", room_total); // Replace with your room_total value
 
+               // Execute the INSERT statement
                command->ExecuteNonQuery();
-               MessageBox::Show("Order data inserted into the database");
+
+               //MessageBox::Show("Order data inserted successfully!");
            }
            catch (Exception^ ex)
            {
-               MessageBox::Show("Error inserting data into the database: " + ex->Message);
+               MessageBox::Show("Error inserting order data: " + ex->Message);
            }
-           finally
-           {
+           finally {
                connection->Close();
            }
        }
+
        
 private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<String^, double>^ itemprices,DateTime startTime,DateTime endTime, FlowLayoutPanel^ panel_name,String^ room_id,int roomid) {
            double totalCost = 0.0;
@@ -2894,7 +2891,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
                // Calculate the elapsed time in hours
                TimeSpan elapsedTime = endTime - startTime;
                elapsedHours = elapsedTime.TotalHours;
-
+               
                timeCost = elapsedHours * 50;
              
                if (elapsedHours < 0.4)
@@ -2912,7 +2909,8 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
                if (itemprices->ContainsKey(itemName)) {
                    double itemprice = itemprices[itemName];
                    totalCost += itemprice * quantity;
-                   //InsertOrderData()
+                   
+                  // insert_order_data(roomid, startTime, endTime, itemName, quantity, )
                    // Create a label to display the item details
                    Label^ labelItem = gcnew Label();
                    labelItem->AutoSize = true;
@@ -2922,8 +2920,16 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
                    panel_name->Controls->Add(labelItem);
                }
            }
-           //MessageBox::Show("int_time_cost1: " + int_time_cost.ToString());
-           //MessageBox::Show("totalCost: " + totalCost.ToString());
+          
+           for each (KeyValuePair<String^, int> ^ order in userOrders) {
+               String^ itemName2 = order->Key;
+               int quantity2 = order->Value;
+
+               insert_order_data(roomid, startTime, endTime, itemName2, quantity2, totalCost);
+
+
+           }
+
 
            // Display the total cost
            Label^ labelTotalCost = gcnew Label();

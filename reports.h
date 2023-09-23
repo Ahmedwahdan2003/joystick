@@ -8,6 +8,9 @@ namespace joystick {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data;
+	using namespace System::Data::SqlClient;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Summary for Room1
@@ -57,13 +60,18 @@ namespace joystick {
 
 	private: System::Windows::Forms::Timer^ stopwatch;
 	private: System::Windows::Forms::Timer^ TTimer;
+	private: System::Windows::Forms::DateTimePicker^ start_date;
+	private: System::Windows::Forms::DateTimePicker^ end_date;
 
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
+
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Button^ Room1_starttime_btn;
-	private: System::Windows::Forms::Button^ send_email_btn;
+	private: System::Windows::Forms::Button^ view_data_btn;
+	private: System::Windows::Forms::Button^ back_btn;
+
+
+	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
 	private: System::ComponentModel::IContainer^ components;
 		   
 	private:
@@ -83,35 +91,36 @@ namespace joystick {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(reports::typeid));
 			this->stopwatch = (gcnew System::Windows::Forms::Timer(this->components));
 			this->TTimer = (gcnew System::Windows::Forms::Timer(this->components));
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
-			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->start_date = (gcnew System::Windows::Forms::DateTimePicker());
+			this->end_date = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->Room1_starttime_btn = (gcnew System::Windows::Forms::Button());
-			this->send_email_btn = (gcnew System::Windows::Forms::Button());
+			this->view_data_btn = (gcnew System::Windows::Forms::Button());
+			this->back_btn = (gcnew System::Windows::Forms::Button());
+			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->SuspendLayout();
 			// 
 			// stopwatch
 			// 
-			this->stopwatch->Tick += gcnew System::EventHandler(this, &reports::stopwatch_Tick);
+			
 			// 
 			// TTimer
 			// 
-			this->TTimer->Tick += gcnew System::EventHandler(this, &reports::Timer_Tick);
+			
 			// 
-			// dateTimePicker1
+			// start_date
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(192, 203);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(237, 22);
-			this->dateTimePicker1->TabIndex = 1;
+			this->start_date->Location = System::Drawing::Point(122, 118);
+			this->start_date->Name = L"start_date";
+			this->start_date->Size = System::Drawing::Size(237, 22);
+			this->start_date->TabIndex = 1;
 			// 
-			// dateTimePicker2
+			// end_date
 			// 
-			this->dateTimePicker2->Location = System::Drawing::Point(677, 203);
-			this->dateTimePicker2->Name = L"dateTimePicker2";
-			this->dateTimePicker2->Size = System::Drawing::Size(197, 22);
-			this->dateTimePicker2->TabIndex = 2;
+			this->end_date->Location = System::Drawing::Point(672, 118);
+			this->end_date->Name = L"end_date";
+			this->end_date->Size = System::Drawing::Size(197, 22);
+			this->end_date->TabIndex = 2;
 			// 
 			// label1
 			// 
@@ -122,7 +131,7 @@ namespace joystick {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label1->Location = System::Drawing::Point(255, 149);
+			this->label1->Location = System::Drawing::Point(175, 73);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(98, 22);
 			this->label1->TabIndex = 3;
@@ -137,57 +146,69 @@ namespace joystick {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label2->Location = System::Drawing::Point(742, 159);
+			this->label2->Location = System::Drawing::Point(723, 73);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(90, 22);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"End date";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// Room1_starttime_btn
+			// view_data_btn
 			// 
-			this->Room1_starttime_btn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->view_data_btn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->Room1_starttime_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->Room1_starttime_btn->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Room1_starttime_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->Room1_starttime_btn->FlatAppearance->BorderSize = 0;
-			this->Room1_starttime_btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->Room1_starttime_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->Room1_starttime_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->Room1_starttime_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->Room1_starttime_btn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->Room1_starttime_btn->Location = System::Drawing::Point(1132, 556);
-			this->Room1_starttime_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->Room1_starttime_btn->Name = L"Room1_starttime_btn";
-			this->Room1_starttime_btn->Size = System::Drawing::Size(120, 132);
-			this->Room1_starttime_btn->TabIndex = 6;
-			this->Room1_starttime_btn->Text = L"View Data";
-			this->Room1_starttime_btn->UseVisualStyleBackColor = false;
-			// 
-			// send_email_btn
-			// 
-			this->send_email_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->view_data_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->send_email_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"send_email_btn.BackgroundImage")));
-			this->send_email_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->send_email_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->send_email_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->view_data_btn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->view_data_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->view_data_btn->FlatAppearance->BorderSize = 0;
+			this->view_data_btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->view_data_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->view_data_btn->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->view_data_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->send_email_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->send_email_btn->Location = System::Drawing::Point(1101, 12);
-			this->send_email_btn->Name = L"send_email_btn";
-			this->send_email_btn->Size = System::Drawing::Size(167, 49);
-			this->send_email_btn->TabIndex = 21;
-			this->send_email_btn->Text = L"BACK";
-			this->send_email_btn->UseVisualStyleBackColor = false;
-			this->send_email_btn->Click += gcnew System::EventHandler(this, &reports::send_email_btn_Click);
+			this->view_data_btn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->view_data_btn->Location = System::Drawing::Point(1132, 556);
+			this->view_data_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->view_data_btn->Name = L"view_data_btn";
+			this->view_data_btn->Size = System::Drawing::Size(120, 132);
+			this->view_data_btn->TabIndex = 6;
+			this->view_data_btn->Text = L"View Data";
+			this->view_data_btn->UseVisualStyleBackColor = false;
+			this->view_data_btn->Click += gcnew System::EventHandler(this, &reports::view_data_btn_click);
+			// 
+			// back_btn
+			// 
+			this->back_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->back_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_btn.BackgroundImage")));
+			this->back_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->back_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->back_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->back_btn->Location = System::Drawing::Point(1101, 12);
+			this->back_btn->Name = L"back_btn";
+			this->back_btn->Size = System::Drawing::Size(167, 49);
+			this->back_btn->TabIndex = 21;
+			this->back_btn->Text = L"BACK";
+			this->back_btn->UseVisualStyleBackColor = false;
+			this->back_btn->Click += gcnew System::EventHandler(this, &reports::send_email_btn_Click);
+			// 
+			// flowLayoutPanel1
+			// 
+			this->flowLayoutPanel1->BackColor = System::Drawing::Color::Transparent;
+			this->flowLayoutPanel1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->flowLayoutPanel1->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->flowLayoutPanel1->Location = System::Drawing::Point(12, 212);
+			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
+			this->flowLayoutPanel1->Size = System::Drawing::Size(857, 496);
+			this->flowLayoutPanel1->TabIndex = 22;
 			// 
 			// reports
 			// 
@@ -196,70 +217,91 @@ namespace joystick {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1280, 720);
-			this->Controls->Add(this->send_email_btn);
-			this->Controls->Add(this->Room1_starttime_btn);
+			this->Controls->Add(this->flowLayoutPanel1);
+			this->Controls->Add(this->back_btn);
+			this->Controls->Add(this->view_data_btn);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dateTimePicker2);
-			this->Controls->Add(this->dateTimePicker1);
+			this->Controls->Add(this->end_date);
+			this->Controls->Add(this->start_date);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"reports";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Room1";
-			this->Load += gcnew System::EventHandler(this, &reports::Room2_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void Room2_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void stopwatch_Tick(System::Object^ sender, System::EventArgs^ e) {
-		elapsedTime = DateTime::Now - startTime;
-		
-		label1->Text = elapsedTime.ToString("hh\\:mm\\:ss");
-	}
-
-	private: System::Void Timer_Tick(System::Object^ sender, System::EventArgs^ e) {
-		countdownTime = countdownTime.Subtract(TimeSpan(0, 0, 1));
-		label2->Text = countdownTime.ToString("hh\\:mm\\:ss");
-		
 	
-
-	// Check if the countdown is complete
-	if (countdownTime.TotalSeconds <= 0)
-	{
-		TTimer->Stop();
-		Endtime = DateTime::Now; // Store the end time
-		for (int i = 0; i < 3; i++) { Beep(500, 1800); }
-		MessageBox::Show("Countdown is complete!", "Countdown Notification");
-	}
-}
-
-
-
-private: System::Void stop_btnn(System::Object^ sender, System::EventArgs^ e) {
-	
-	if (!stopwatch->Enabled)
-	{
-		startTime = DateTime::Now;
-		stopwatch->Start();
-	}
-	else
-	{
-		stopwatch->Stop();
-		Endtime = DateTime::Now; // Store the end time
-	}
-}
-private: System::Void timer_btnn(System::Object^ sender, System::EventArgs^ e) {
-	countdownTime = TimeSpan(0, 0, 10);
-
-	// Start the countdown timer
-	TTimer->Start();
-}
 private: System::Void send_email_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Hide();
+}
+private: System::Void view_data_btn_click(System::Object^ sender, System::EventArgs^ e) {
+
+
+	DateTime startDate = start_date->Value;
+	DateTime endDate = end_date->Value;
+
+	// Connection string to your SQL Server database
+	String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+
+	// Create a SqlConnection
+	SqlConnection^ connection = gcnew SqlConnection(connectionString);
+
+	try {
+		connection->Open();
+
+		// SQL query to retrieve item names and total quantity sold within the date range
+		String^ query = "SELECT item_name, SUM(quantity) AS total_quantity "
+			"FROM orders "
+			"WHERE date >= @startDate AND date <= @endDate "
+			"GROUP BY item_name";
+
+		// Create a SqlCommand
+		SqlCommand^ command = gcnew SqlCommand(query, connection);
+
+		// Add parameters for start date and end date
+		command->Parameters->Add(gcnew SqlParameter("@startDate", SqlDbType::Date));
+		command->Parameters["@startDate"]->Value = startDate.Date;
+		command->Parameters->Add(gcnew SqlParameter("@endDate", SqlDbType::Date));
+		command->Parameters["@endDate"]->Value = endDate.Date;
+
+		// Create a SqlDataReader to retrieve data
+		SqlDataReader^ reader = command->ExecuteReader();
+
+		// Define a dictionary to store item quantities
+		Dictionary<String^, int>^ itemQuantityDict = gcnew Dictionary<String^, int>();
+
+		// Read data from the SqlDataReader and populate the dictionary
+		while (reader->Read()) {
+			String^ itemName = reader->GetString(0);
+			int totalQuantity = reader->GetInt32(1);
+			itemQuantityDict[itemName] = totalQuantity;
+		}
+
+		reader->Close();
+
+		// Clear existing controls in the LayoutPanel
+		flowLayoutPanel1->Controls->Clear();
+
+		// Display the results in the LayoutPanel
+		for each (KeyValuePair<String^, int> item in itemQuantityDict) {
+			Label^ label = gcnew Label();
+			label->Text = item.Key + ": " + item.Value.ToString(); // Display format: ItemName: Quantity
+			label->AutoSize = true;
+
+			flowLayoutPanel1->Controls->Add(label);
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Error retrieving data from the database: " + ex->Message);
+	}
+	finally {
+		connection->Close();
+	}
+
 }
 };
 }
