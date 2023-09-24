@@ -20,8 +20,14 @@ namespace joystick {
 		EndDay(void)
 		{
 			InitializeComponent();
+			InitializeForm();
 			end_day_timer->Interval = 15000;
 			end_day_timer->Start();
+
+
+
+
+
 			//
 			//TODO: Add the constructor code here
 			//
@@ -510,20 +516,108 @@ namespace joystick {
 
 		}
 #pragma endregion
+
+		bool IsDailyTotalInitialized(DateTime currentDate, SqlConnection^ sqlConn) {
+			String^ selectQuery = "SELECT 1 FROM DailyTotals WHERE Date = @Date";
+			SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, sqlConn);
+			selectCommand->Parameters->AddWithValue("@Date", currentDate);
+
+			Object^ result = selectCommand->ExecuteScalar();
+
+			return (result != nullptr);
+		}
+
+		// Function to initialize the daily total for the given date
+		void InitializeDailyTotal(DateTime currentDate, SqlConnection^ sqlConn) {
+			String^ insertQuery = "INSERT INTO DailyTotals (Date, DailyCost) VALUES (@Date, @TotalCost)";
+			SqlCommand^ insertCommand = gcnew SqlCommand(insertQuery, sqlConn);
+			insertCommand->Parameters->AddWithValue("@Date", currentDate);
+			insertCommand->Parameters->AddWithValue("@TotalCost", 0.0); // Initialize to 0.0 or any other initial value
+
+			insertCommand->ExecuteNonQuery();
+		}
+
+		void InitializeForm() {
+			// Create an instance of SharedData
+			SharedData^ sharedData = SharedData::Instance;
+
+			// Establish a SqlConnection
+			String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234"; // Replace with your actual connection string
+			SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+
+			// Open the connection
+			sqlConn->Open();
+
+			// Get the current date
+			DateTime currentDate = DateTime::Today;
+
+			// Check if there's an entry for the current date in the DailyTotals table
+			if (!IsDailyTotalInitialized(currentDate, sqlConn)) {
+				// Initialize the daily total for the current date
+				InitializeDailyTotal(currentDate, sqlConn);
+			}
+
+			// Use the SharedData instance and perform other tasks
+
+			// Close the connection
+			sqlConn->Close();
+		}
+
+		// Other form methods and controls
+
+
+
 	private: System::Void EndDay_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void display_total_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		
-		double total = SharedData::Instance->TotalAllRoomsCost;
-		display_total_lbl->Text = total.ToString();
-		 room1Time = SharedData::Instance->GetRoomTime("Room1");
-		 room2Time = SharedData::Instance->GetRoomTime("Room2");
-		 room3Time = SharedData::Instance->GetRoomTime("Room3");
-		 room4Time = SharedData::Instance->GetRoomTime("Room4");
-		 room5Time = SharedData::Instance->GetRoomTime("Room5");
-		 billiard1Time = SharedData::Instance->GetRoomTime("Billiard1");
-		billiard2Time = SharedData::Instance->GetRoomTime("Billiard2");
-		 pingpongTime = SharedData::Instance->GetRoomTime("Pingpong");
+		
+		String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+
+		// Create a SqlConnection object
+		SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+		double dailyTotal;
+		try
+		{
+			// Open the connection
+			sqlConn->Open();
+
+			// Retrieve the total cost for the current date
+			String^ selectQuery = "SELECT DailyCost FROM DailyTotals WHERE Date = @Date";
+			SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, sqlConn);
+			selectCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+
+			Object^ result = selectCommand->ExecuteScalar();
+
+			dailyTotal = 0.0;
+
+			if (result != nullptr)
+			{
+				dailyTotal = Convert::ToDouble(result);
+			}
+
+			// Close the connection
+			sqlConn->Close();
+
+			// Now, you have the daily total in the 'dailyTotal' variable
+			// You can use it as needed in your code
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error retrieving total cost from the database: " + ex->Message);
+		}
+
+
+
+		display_total_lbl->Text = dailyTotal.ToString();
+		 room1Time = SharedData::Instance->GetRoomTime("Room 1");
+		 room2Time = SharedData::Instance->GetRoomTime("Room 2");
+		 room3Time = SharedData::Instance->GetRoomTime("Room 3");
+		 room4Time = SharedData::Instance->GetRoomTime("Room 4");
+		 room5Time = SharedData::Instance->GetRoomTime("Room 5");
+		 billiard1Time = SharedData::Instance->GetRoomTime("Billiard 1");
+		billiard2Time = SharedData::Instance->GetRoomTime("Billiard 2");
+		 pingpongTime = SharedData::Instance->GetRoomTime("ping pong");
 
 		Room1_time_lbl->Text = room1Time.ToString("N2");
 		Room2_time_lbl->Text = room2Time.ToString("N2");
@@ -534,11 +628,12 @@ namespace joystick {
 		Billiard2_time_lbl->Text = billiard2Time.ToString("N2");
 		pingpong_time_lbl->Text = pingpongTime.ToString("N2");
 		
+		double itemCost = SharedData::Instance->TotalItemCost;
+		double roomTimeCost = SharedData::Instance->TotalRoomTimeCost;
 		String^ currentDate = DateTime::Now.ToString("M/d/yyyy", CultureInfo::InvariantCulture);
-		whatsapp_message= "******Joystick Report******\r\n  " +currentDate + "\r\n\r\n\r\n";
-		whatsapp_message += "	\r\n<<<Total Profit : $" + total.ToString("N2") + ">>>\r\n\r\n";
-		whatsapp_message += "	\r\n<<<Room1 Time : " + room1Time.ToString("N2") + ">>>\r\n\r\n";
-		whatsapp_message += "	\r\n<<<Room2 Time : " + room2Time.ToString("N2") + ">>>\r\n\r\n";
+		whatsapp_message = "******Joystick Report******\r\n  " + currentDate + "\r\n\r\n\r\n";
+		whatsapp_message += "<<Drink_total: " + itemCost + "\r\n\r\n\r\n";
+		whatsapp_message += "<<Rooms_total: " + roomTimeCost + "\r\n\r\n\r\n";
 	}
 private: System::Void end_day_timer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	SendKeys::SendWait("{ENTER}");

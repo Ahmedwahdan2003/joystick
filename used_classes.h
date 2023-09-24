@@ -13,7 +13,8 @@ public ref class SharedData {
 private:
     static SharedData^ instance;
     Dictionary<String^, double>^ roomTimes; // Dictionary to store room times
-    double totalAllRoomsCost;
+    double totalItemCost; // Property to keep track of item cost
+    double totalRoomTimeCost; // Property to keep track of room time cost
 
 public:
     static property SharedData^ Instance {
@@ -28,6 +29,8 @@ public:
     // Constructor
     SharedData() {
         roomTimes = gcnew Dictionary<String^, double>();
+        totalItemCost = 0.0; // Initialize item cost to zero
+        totalRoomTimeCost = 0.0; // Initialize room time cost to zero
     }
 
     // Method to set room time
@@ -43,15 +46,30 @@ public:
         return 0.0; // Default value if room time is not found
     }
 
-    // Property to get the total of all room costs
-    property double TotalAllRoomsCost {
+    // Property to get the total item cost
+    property double TotalItemCost {
         double get() {
-            return totalAllRoomsCost;
-        }
-        void set(double value) {
-            totalAllRoomsCost = value;
+            return totalItemCost;
         }
     }
+
+    // Property to get the total room time cost
+    property double TotalRoomTimeCost {
+        double get() {
+            return totalRoomTimeCost;
+        }
+    }
+
+    // Method to add item cost
+    void AddItemCost(double cost) {
+        totalItemCost += cost;
+    }
+
+    // Method to add room time cost
+    void AddRoomTimeCost(double cost) {
+        totalRoomTimeCost += cost;
+    }
+
     void AddHoursToRoomTime(String^ roomName, double hoursToAdd) {
         if (roomTimes->ContainsKey(roomName)) {
             // If the room already exists in the dictionary, add the hours to the existing value

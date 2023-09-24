@@ -738,7 +738,7 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 	try
 	{
 
-		String^ query2 = "UPDATE rooms SET ps4_singel = @ps4_singel, ps4_multi = @ps4_multi, ps5_singel = @ps5_singel, ps5_multi = @ps5_multi WHERE name = @roomName";
+		String^ query2 = "UPDATE rooms SET ps4_single = @ps4_singel, ps4_multi = @ps4_multi, ps5_single = @ps5_singel, ps5_multi = @ps5_multi WHERE name = @roomName";
 
 		SqlCommand^ command2 = gcnew SqlCommand(query2, connection);
 		command2->Parameters->AddWithValue("@ps4_singel", ps4_singel);
@@ -837,7 +837,7 @@ private: System::Void rooms_cmx_SelectedIndexChanged(System::Object^ sender, Sys
 	{
 		connection->Open();
 
-		String^ query = "SELECT ps4_singel, ps4_multi, ps5_singel, ps5_multi FROM rooms WHERE name = @roomName";
+		String^ query = "SELECT ps4_single, ps4_multi, ps5_single, ps5_multi FROM rooms WHERE name = @roomName";
 
 		SqlCommand^ command = gcnew SqlCommand(query, connection);
 		command->Parameters->AddWithValue("@roomName", roomName);
