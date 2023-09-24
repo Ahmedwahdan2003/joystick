@@ -504,7 +504,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 
 private: System::Void back_tb_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
+	this->Close();
 }
 private: System::Void password_tb_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
