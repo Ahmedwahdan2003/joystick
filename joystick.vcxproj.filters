@@ -44,9 +44,6 @@
     <ClInclude Include="login.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="used_classes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Home.h">
       <Filter>Header Files</Filter>
     </ClInclude>

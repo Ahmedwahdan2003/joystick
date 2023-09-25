@@ -1,8 +1,7 @@
 #pragma once
-#include <string>
-#include <msclr\marshal_cppstd.h>
-#include <Windows.h>
-#include <iostream>
+
+
+
 namespace joystick {
 
 	using namespace System;

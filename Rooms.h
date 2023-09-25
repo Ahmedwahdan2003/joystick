@@ -1,7 +1,7 @@
 #pragma once
-#include"used_classes.h"
-#include<map>
-#include <vcclr.h>
+
+
+
 namespace joystick {
     
     using namespace System;
@@ -3023,7 +3023,42 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             panel_name->Controls->Add(labelItem);
         }
     }
-    SharedData::Instance->AddItemCost(totalCost);
+    String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+    SqlConnection^ connection = gcnew SqlConnection(connectionString);
+    SqlConnection^ sqlConnn = nullptr; // Declare SqlConnection outside of try block
+
+    try
+    {
+        // Connection string for SQL Server
+
+        // Create a SqlConnection object
+        sqlConnn = gcnew SqlConnection(connectionString);
+
+        // Open the connection
+        sqlConnn->Open();
+
+        // Update the TotalCost column with the new purchase amount
+        String^ updateQuery = "UPDATE DailyTotals SET item_cost = item_cost + @Newitemcost WHERE Date = @Date";
+        SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnn);
+        updateCommand->Parameters->AddWithValue("@Newitemcost", totalCost);
+        updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+        updateCommand->ExecuteNonQuery();
+
+        // No need to close the connection here; it will be closed in the finally block
+    }
+    catch (Exception^ ex)
+    {
+        MessageBox::Show("Error updating database: " + ex->Message);
+    }
+    finally
+    {
+        // Close the connection in a finally block to ensure it gets closed even if an exception occurs
+        if (sqlConnn != nullptr)
+        {
+            sqlConnn->Close();
+            delete sqlConnn; // Dispose of the SqlConnection object
+        }
+    }
 
     if (endTime != DateTime::MinValue) {
         // Calculate the elapsed time in hours
@@ -3040,7 +3075,40 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         // Add the time cost to the total cost
         totalCost += int_time_cost;
     }
-    SharedData::Instance->AddRoomTimeCost(timeCost);
+    SqlConnection^ sqlConnnn = nullptr; // Declare SqlConnection outside of try block
+
+    try
+    {
+        // Connection string for SQL Server
+
+        // Create a SqlConnection object
+        sqlConnnn = gcnew SqlConnection(connectionString);
+
+        // Open the connection
+        sqlConnnn->Open();
+
+        // Update the TotalCost column with the new purchase amount
+        String^ updateQuery = "UPDATE DailyTotals SET time_cost = time_cost + @Newtimecost WHERE Date = @Date";
+        SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnnn);
+        updateCommand->Parameters->AddWithValue("@Newtimecost", timeCost);
+        updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+        updateCommand->ExecuteNonQuery();
+
+        // No need to close the connection here; it will be closed in the finally block
+    }
+    catch (Exception^ ex)
+    {
+        MessageBox::Show("Error updating database: " + ex->Message);
+    }
+    finally
+    {
+        // Close the connection in a finally block to ensure it gets closed even if an exception occurs
+        if (sqlConnnn != nullptr)
+        {
+            sqlConnnn->Close();
+            delete sqlConnnn; // Dispose of the SqlConnection object
+        }
+    }
 
     for each (KeyValuePair<String^, int> ^ order in userOrders) {
         String^ itemName2 = order->Key;
@@ -3060,11 +3128,8 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
     labelTotalTimeCost->Text = "Time Cost: " + int_time_cost.ToString();
     labelTotalCost->Text = "Total Cost: " + totalCost.ToString();
 
-    SharedData::Instance->AddHoursToRoomTime(room_name, elapsedHours);
-
+   
     // Create a SqlConnection
-    String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
-    SqlConnection^ connection = gcnew SqlConnection(connectionString);
     SqlConnection^ sqlConn = nullptr; // Declare SqlConnection outside of try block
 
     try
@@ -3102,6 +3167,8 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
     // Add the total cost label to the flow layout panel
     panel_name->Controls->Add(labelTotalTimeCost);
     panel_name->Controls->Add(labelTotalCost);
+
+
        }
 
 
@@ -3251,13 +3318,13 @@ private: System::Void room2_closeroom_btn_Click(System::Object^ sender, System::
      //query for saving the data for the order in the data base//
      ////////////////////////////////////////////////////////////
 
-    String^ mode = room2_mode_cmbx->SelectedItem->ToString();
         if (room2_timestarted_lbl->Text == "00:00:00")
         {
             MessageBox::Show("The Room is empty ya ahbal", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
     if (room2_endtime_btn_click == true) {
+    String^ mode = room2_mode_cmbx->SelectedItem->ToString();
             DisplayReceipt(room2_orders_map, itemPrices, startTime2, finalTime2, room2_recipt_pnl,"Room 2",2,mode);
             MessageBox::Show("Done?", "Countdown Notification");
             room2_recipt_pnl->Controls->Clear();
@@ -3465,13 +3532,13 @@ private: System::Void room3_remove_btn_Click(System::Object^ sender, System::Eve
 }
 private: System::Void room3_close_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
-    String^ mode = room3_mode_cmbx->SelectedItem->ToString();
     if (room3_timestarted_lbl->Text == "00:00:00")
     {
         MessageBox::Show("The Room is empty ya ahbal", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
     else {
         if (room3_endtime_btn_click == true) {
+    String^ mode = room3_mode_cmbx->SelectedItem->ToString();
             DisplayReceipt(room3_orders_map, itemPrices, startTime3, finalTime3, room3_recipt_pnl, "Room 3",3,mode);
             MessageBox::Show("Done?", "Countdown Notification");
             room3_recipt_pnl->Controls->Clear();
@@ -3660,13 +3727,13 @@ private: System::Void room4_remove_btn_Click(System::Object^ sender, System::Eve
     }
 }
 private: System::Void room4_close_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-    String^ mode = room4_mode_cmbx->SelectedItem->ToString();
     if (room4_timestarted_lbl->Text == "00:00:00")
     {
         MessageBox::Show("The Room is empty ya ahbal", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
     else {
         if (room4_endtime_btn_click == true) {
+    String^ mode = room4_mode_cmbx->SelectedItem->ToString();
             DisplayReceipt(room4_orders_map, itemPrices, startTime4, finalTime4, room4_recipt_pnl, "Room 4",4,mode);
             MessageBox::Show("Done?", "Countdown Notification");
             room4_recipt_pnl->Controls->Clear();
@@ -3862,13 +3929,13 @@ private: System::Void room5_remove_btn_Click(System::Object^ sender, System::Eve
 }
 private: System::Void room5_close_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     
-    String^ mode = room5_mode_cmbx->SelectedItem->ToString();
     if (room5_timestarted_lbl->Text == "00:00:00")
     {
         MessageBox::Show("The Room is empty ya ahbal", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
     }
     else {
         if (room5_endtime_btn_click == true) {
+    String^ mode = room5_mode_cmbx->SelectedItem->ToString();
             DisplayReceipt(room5_orders_map, itemPrices, startTime5, finalTime5, room5_recipt_pnl, "Room 5",5,mode);
             MessageBox::Show("Done?", "Countdown Notification");
             room5_recipt_pnl->Controls->Clear();
