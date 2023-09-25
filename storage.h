@@ -26,12 +26,6 @@ namespace joystick {
 		{
 
 			InitializeComponent();
-			dataGridView1->DefaultCellStyle->BackColor = Color::Transparent;
-			dataGridView1->BorderStyle = BorderStyle::None;
-			dataGridView1->CellBorderStyle = DataGridViewCellBorderStyle::None;
-			dataGridView1->ColumnHeadersVisible = false;
-			dataGridView1->RowHeadersVisible = false;
-			dataGridView1->DefaultCellStyle->ForeColor = Color::White;
 			
 		
 		}
@@ -56,6 +50,15 @@ namespace joystick {
 
 	private: System::Windows::Forms::Button^ rooms_back_btn;
 	private: System::Windows::Forms::Panel^ panel1;
+
+
+
+
+
+
+
+
+
 
 		   DataSet^ dataSet;
 	protected:
@@ -112,6 +115,8 @@ namespace joystick {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToResizeColumns = false;
+			this->dataGridView1->AllowUserToResizeRows = false;
 			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
@@ -121,6 +126,7 @@ namespace joystick {
 			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::WhiteSmoke;
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
@@ -142,14 +148,16 @@ namespace joystick {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(882, 602);
+			this->dataGridView1->Size = System::Drawing::Size(620, 666);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &storage::dataGridView1_CellContentClick);
 			// 
 			// save_btn
 			// 
 			this->save_btn->AutoSize = true;
 			this->save_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->save_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"save_btn.BackgroundImage")));
 			this->save_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->save_btn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->save_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
@@ -168,6 +176,7 @@ namespace joystick {
 			this->save_btn->Name = L"save_btn";
 			this->save_btn->Size = System::Drawing::Size(194, 49);
 			this->save_btn->TabIndex = 2;
+			this->save_btn->Text = L"SAVE";
 			this->save_btn->UseVisualStyleBackColor = false;
 			this->save_btn->Click += gcnew System::EventHandler(this, &storage::save_btn_Click);
 			// 
@@ -192,9 +201,9 @@ namespace joystick {
 			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
 			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->panel1->Controls->Add(this->dataGridView1);
-			this->panel1->Location = System::Drawing::Point(47, 95);
+			this->panel1->Location = System::Drawing::Point(47, 31);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(882, 602);
+			this->panel1->Size = System::Drawing::Size(620, 666);
 			this->panel1->TabIndex = 5;
 			// 
 			// storage
@@ -263,6 +272,11 @@ namespace joystick {
 
 private: System::Void rooms_back_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 	this ->Close();
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+
+
 }
 };
 }
