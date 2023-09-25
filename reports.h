@@ -162,6 +162,8 @@ namespace joystick {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->view_data_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->view_data_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"view_data_btn.BackgroundImage")));
+			this->view_data_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->view_data_btn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->view_data_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));

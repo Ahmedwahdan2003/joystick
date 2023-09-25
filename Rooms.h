@@ -67,7 +67,7 @@ namespace joystick {
                 room6_order_cmbx->Items->Clear();
                 room7_order_cmbx->Items->Clear();
                 room8_order_cmbx->Items->Clear();
-               
+                comboBox1->Items->Clear();
                 sqlConn->Open();
 
                 String^ query = "SELECT name FROM items WHERE quantity > 0";
@@ -86,6 +86,7 @@ namespace joystick {
                     room6_order_cmbx->Items->Add(value);
                     room7_order_cmbx->Items->Add(value);
                     room8_order_cmbx->Items->Add(value);
+                    comboBox1->Items->Add(value);
                 }                        
 
 
@@ -344,6 +345,10 @@ private: System::Windows::Forms::Label^ label5;
 private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
 
 private: System::Windows::Forms::Button^ rooms_back_btn;
+private: System::Windows::Forms::TabPage^ tabPage1;
+private: System::Windows::Forms::ComboBox^ comboBox1;
+private: System::Windows::Forms::Label^ label6;
+private: System::Windows::Forms::Button^ back_btn;
 
 
 
@@ -501,6 +506,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->countdown_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->stopwatch_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->rooms_back_btn = (gcnew System::Windows::Forms::Button());
+            this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+            this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+            this->label6 = (gcnew System::Windows::Forms::Label());
+            this->back_btn = (gcnew System::Windows::Forms::Button());
             this->Rooms_tabs->SuspendLayout();
             this->room1_tab->SuspendLayout();
             this->room2_tab->SuspendLayout();
@@ -510,6 +519,7 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->billiard1_tab->SuspendLayout();
             this->billiard2_tab->SuspendLayout();
             this->pingpong_tab->SuspendLayout();
+            this->tabPage1->SuspendLayout();
             this->SuspendLayout();
             // 
             // Rooms_tabs
@@ -522,6 +532,7 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->Rooms_tabs->Controls->Add(this->billiard1_tab);
             this->Rooms_tabs->Controls->Add(this->billiard2_tab);
             this->Rooms_tabs->Controls->Add(this->pingpong_tab);
+            this->Rooms_tabs->Controls->Add(this->tabPage1);
             this->Rooms_tabs->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->Rooms_tabs->Location = System::Drawing::Point(0, 4);
@@ -2388,7 +2399,6 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             // 
             this->room8_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room8_order_cmbx->FormattingEnabled = true;
-            this->room8_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
             this->room8_order_cmbx->Location = System::Drawing::Point(910, 366);
             this->room8_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->room8_order_cmbx->Name = L"room8_order_cmbx";
@@ -2544,6 +2554,60 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->rooms_back_btn->UseVisualStyleBackColor = true;
             this->rooms_back_btn->Click += gcnew System::EventHandler(this, &Rooms::rooms_back_btn_Click);
             // 
+            // tabPage1
+            // 
+            this->tabPage1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"tabPage1.BackgroundImage")));
+            this->tabPage1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->tabPage1->Controls->Add(this->back_btn);
+            this->tabPage1->Controls->Add(this->label6);
+            this->tabPage1->Controls->Add(this->comboBox1);
+            this->tabPage1->Location = System::Drawing::Point(4, 36);
+            this->tabPage1->Name = L"tabPage1";
+            this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+            this->tabPage1->Size = System::Drawing::Size(1272, 676);
+            this->tabPage1->TabIndex = 8;
+            this->tabPage1->Text = L"Other";
+            this->tabPage1->UseVisualStyleBackColor = true;
+            this->tabPage1->Click += gcnew System::EventHandler(this, &Rooms::tabPage1_Click);
+            // 
+            // comboBox1
+            // 
+            this->comboBox1->FormattingEnabled = true;
+            this->comboBox1->Location = System::Drawing::Point(476, 335);
+            this->comboBox1->Name = L"comboBox1";
+            this->comboBox1->Size = System::Drawing::Size(291, 35);
+            this->comboBox1->TabIndex = 0;
+            // 
+            // label6
+            // 
+            this->label6->AutoSize = true;
+            this->label6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label6->ForeColor = System::Drawing::Color::White;
+            this->label6->Location = System::Drawing::Point(517, 265);
+            this->label6->Name = L"label6";
+            this->label6->Size = System::Drawing::Size(193, 41);
+            this->label6->TabIndex = 28;
+            this->label6->Text = L"Choose Item";
+            // 
+            // back_btn
+            // 
+            this->back_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+                static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->back_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_btn.BackgroundImage")));
+            this->back_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->back_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->back_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
+            this->back_btn->Location = System::Drawing::Point(537, 423);
+            this->back_btn->Name = L"back_btn";
+            this->back_btn->Size = System::Drawing::Size(167, 49);
+            this->back_btn->TabIndex = 29;
+            this->back_btn->Text = L"ADD";
+            this->back_btn->UseVisualStyleBackColor = false;
+            this->back_btn->Click += gcnew System::EventHandler(this, &Rooms::back_btn_Click);
+            // 
             // Rooms
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -2581,6 +2645,8 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->billiard2_tab->PerformLayout();
             this->pingpong_tab->ResumeLayout(false);
             this->pingpong_tab->PerformLayout();
+            this->tabPage1->ResumeLayout(false);
+            this->tabPage1->PerformLayout();
             this->ResumeLayout(false);
 
         }
@@ -4577,6 +4643,129 @@ private: System::Void pingpong_tab_Click(System::Object^ sender, System::EventAr
 
 private: System::Void rooms_back_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     this->Hide();
+}
+private: System::Void tabPage1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    if (comboBox1->SelectedIndex == -1) {
+        MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+    }
+    else {
+        try
+        {
+            String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+            SqlConnection^ sqlConn = gcnew SqlConnection(connString);
+            sqlConn->Open();
+
+            String^ selectedItem = comboBox1->SelectedItem->ToString();
+            String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+
+            SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+            updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
+            updateCommand->ExecuteNonQuery();
+
+            
+            
+
+
+        }
+        catch (Exception^ ex)
+        {
+            MessageBox::Show("Failed to add item: " + ex->Message);
+        }
+
+        String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+        SqlConnection^ connection = gcnew SqlConnection(connectionString);
+        try
+        {
+
+
+
+
+            connection->Open();
+
+            // Define your SQL INSERT statement with parameters
+            String^ query = "INSERT INTO orders (date, item_name,quantity) "
+                "VALUES ( @date, @item_name ,@quantity)";
+
+            // Create a SqlCommand
+            SqlCommand^ command = gcnew SqlCommand(query, connection);
+
+            // Set the parameter values
+            String^ selectedItem = comboBox1->SelectedItem->ToString();
+            command->Parameters->AddWithValue("@date", DateTime::Now.ToString("MM/dd/yyyy")); // Current date in 'mm/dd/yyyy' format
+            command->Parameters->AddWithValue("@item_name", selectedItem); // Replace with your item_name value
+            command->Parameters->AddWithValue("@quantity", 1); // Replace with your quantity value
+            command->ExecuteNonQuery();
+
+            MessageBox::Show("Done!");
+            
+            // Execute the INSERT statement
+
+            //MessageBox::Show("Order data inserted successfully!");
+        }
+        catch (Exception^ ex)
+        {
+            MessageBox::Show("Error inserting order data: " + ex->Message);
+        }
+        finally {
+            connection->Close();
+        }
+
+
+        try
+        {
+            // Connection string for SQL Server
+
+            // Create a SqlConnection object
+            SqlConnection^ sqlConnn = gcnew SqlConnection(connectionString);
+
+            // Open the connection
+            sqlConnn->Open();
+
+            // Update the TotalCost column with the new purchase amount
+            String^ updateQuery = "UPDATE DailyTotals SET item_cost = item_cost + @Newitemcost WHERE Date = @Date";
+            SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnn);
+            updateCommand->Parameters->AddWithValue("@Newitemcost", itemPrices[comboBox1->SelectedItem->ToString()]);
+            updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+            updateCommand->ExecuteNonQuery();
+
+            // No need to close the connection here; it will be closed in the finally block
+        }
+        catch (Exception^ ex)
+        {
+            MessageBox::Show("Error updating database: " + ex->Message);
+        }
+
+        try
+        {
+            // Connection string for SQL Server
+
+            // Create a SqlConnection object
+            SqlConnection^ sqlConn = gcnew SqlConnection(connectionString);
+
+            // Open the connection
+            sqlConn->Open();
+
+            // Update the TotalCost column with the new purchase amount
+            String^ updateQuery = "UPDATE DailyTotals SET DailyCost = DailyCost + @NewPurchaseAmount WHERE Date = @Date";
+            SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
+            updateCommand->Parameters->AddWithValue("@NewPurchaseAmount", itemPrices[comboBox1->SelectedItem->ToString()]);
+            updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+            updateCommand->ExecuteNonQuery();
+
+            // No need to close the connection here; it will be closed in the finally block
+        }
+        catch (Exception^ ex)
+        {
+            MessageBox::Show("Error updating database: " + ex->Message);
+        }
+
+        comboBox1->SelectedIndex = -1;
+        data_combobox();
+    }
+
+
 }
 };
 }
