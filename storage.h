@@ -68,6 +68,7 @@ namespace joystick {
 	private: System::Windows::Forms::Button^ rooms_back_btn;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ refresh_btn;
 
 
 
@@ -81,10 +82,10 @@ namespace joystick {
 
 		   DataSet^ dataSet;
 	protected:
-		
 
-			// Refresh the DataGridView when the form is activated
-		
+
+		// Refresh the DataGridView when the form is activated
+
 
 		void RefreshDataGridView()
 		{
@@ -112,7 +113,7 @@ namespace joystick {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -126,6 +127,7 @@ namespace joystick {
 			this->rooms_back_btn = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->refresh_btn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -149,10 +151,10 @@ namespace joystick {
 			this->save_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->save_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->save_btn->Location = System::Drawing::Point(826, 513);
-			this->save_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->save_btn->Location = System::Drawing::Point(1101, 631);
+			this->save_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->save_btn->Name = L"save_btn";
-			this->save_btn->Size = System::Drawing::Size(124, 40);
+			this->save_btn->Size = System::Drawing::Size(165, 49);
 			this->save_btn->TabIndex = 2;
 			this->save_btn->Text = L"SAVE";
 			this->save_btn->UseVisualStyleBackColor = false;
@@ -163,13 +165,13 @@ namespace joystick {
 			this->rooms_back_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"rooms_back_btn.BackgroundImage")));
 			this->rooms_back_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->rooms_back_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->rooms_back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->rooms_back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->rooms_back_btn->ForeColor = System::Drawing::Color::White;
-			this->rooms_back_btn->Location = System::Drawing::Point(826, 10);
-			this->rooms_back_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->rooms_back_btn->Location = System::Drawing::Point(1101, 12);
+			this->rooms_back_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->rooms_back_btn->Name = L"rooms_back_btn";
-			this->rooms_back_btn->Size = System::Drawing::Size(124, 45);
+			this->rooms_back_btn->Size = System::Drawing::Size(165, 55);
 			this->rooms_back_btn->TabIndex = 4;
 			this->rooms_back_btn->Text = L"BACK";
 			this->rooms_back_btn->UseVisualStyleBackColor = true;
@@ -180,9 +182,10 @@ namespace joystick {
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::MenuBar;
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(25, 70);
+			this->dataGridView1->Location = System::Drawing::Point(33, 86);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(783, 483);
+			this->dataGridView1->Size = System::Drawing::Size(1044, 594);
 			this->dataGridView1->TabIndex = 5;
 			// 
 			// pictureBox1
@@ -191,26 +194,56 @@ namespace joystick {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(12, 10);
+			this->pictureBox1->Location = System::Drawing::Point(16, 12);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(809, 543);
+			this->pictureBox1->Size = System::Drawing::Size(1079, 668);
 			this->pictureBox1->TabIndex = 6;
 			this->pictureBox1->TabStop = false;
 			// 
+			// refresh_btn
+			// 
+			this->refresh_btn->AutoSize = true;
+			this->refresh_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->refresh_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"refresh_btn.BackgroundImage")));
+			this->refresh_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->refresh_btn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->refresh_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->refresh_btn->FlatAppearance->BorderSize = 0;
+			this->refresh_btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->refresh_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->refresh_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->refresh_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->refresh_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->refresh_btn->Location = System::Drawing::Point(1101, 311);
+			this->refresh_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->refresh_btn->Name = L"refresh_btn";
+			this->refresh_btn->Size = System::Drawing::Size(165, 49);
+			this->refresh_btn->TabIndex = 7;
+			this->refresh_btn->Text = L"REFRESH";
+			this->refresh_btn->UseVisualStyleBackColor = false;
+			this->refresh_btn->Click += gcnew System::EventHandler(this, &storage::refresh_btn_Click);
+			// 
 			// storage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(959, 585);
+			this->ClientSize = System::Drawing::Size(1279, 720);
+			this->Controls->Add(this->refresh_btn);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->rooms_back_btn);
 			this->Controls->Add(this->save_btn);
 			this->Controls->Add(this->pictureBox1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"storage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"storage";
@@ -223,12 +256,12 @@ namespace joystick {
 
 		}
 #pragma endregion
-		
+
 	private: System::Void storage_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+
 	}
-	
-	
+
+
 
 
 	private: System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -243,7 +276,7 @@ namespace joystick {
 
 			// Update the database with changes made in the DataGridView
 			adapter->Update(dataTable);
-			
+
 			MessageBox::Show("Changes saved successfully.");
 
 		}
@@ -251,16 +284,34 @@ namespace joystick {
 			MessageBox::Show("Error saving changes: " + ex->Message);
 		}
 	}
-	
-	
-
-private: System::Void rooms_back_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	this ->Close();
-}
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 
 
 
-}
+	private: System::Void rooms_back_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+
+
+	}
+	private: System::Void refresh_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		try {
+			// Clear the existing data in the DataTable
+			dataTable->Clear();
+
+			// Fill the DataTable with fresh data from the database
+			adapter->Fill(dataTable);
+
+			// Refresh the DataGridView by rebinding it to the updated data
+			dataGridView1->DataSource = dataTable;
+
+			MessageBox::Show("Data refreshed successfully.");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error refreshing data: " + ex->Message);
+		}
+	}
 };
 }
