@@ -26,9 +26,7 @@ namespace joystick {
 		{
 
 			InitializeComponent();
-			dataGridView1->ColumnHeadersVisible = false;
-
-			dataGridView1->Columns[2]->Width = 100;
+		
 		
 		}
 
@@ -214,11 +212,14 @@ namespace joystick {
 		DataTable^ dataTable = gcnew DataTable();
 		SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
 		SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
-
+		dataGridView1->ColumnHeadersVisible = false;
 		adapter->Fill(dataTable);
 		dataGridView1->DataSource = dataTable;
+		dataGridView1->Columns["name"]->Width = 364;
+		dataGridView1->Columns["quantity"]->Width = 194;
+		dataGridView1->Columns["price"]->Width = 180;
 
-		// Enable adding and deleting rows
+
 		dataGridView1->AllowUserToAddRows = true;
 		dataGridView1->AllowUserToDeleteRows = true;
 	}
