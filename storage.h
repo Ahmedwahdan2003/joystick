@@ -26,8 +26,24 @@ namespace joystick {
 		{
 
 			InitializeComponent();
-		
-		
+			dataTable = gcnew DataTable();
+			adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
+			dbConnection = gcnew SqlConnection(connString);
+			dbConnection->Open();
+
+			SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
+			BindingSource^ bindingSource = gcnew BindingSource();
+
+			dataGridView1->ColumnHeadersVisible = false;
+			adapter->Fill(dataTable);
+			bindingSource->DataSource = dataTable;
+			dataGridView1->DataSource = bindingSource;
+			dataGridView1->Columns["name"]->Width = 364;
+			dataGridView1->Columns["quantity"]->Width = 194;
+			dataGridView1->Columns["price"]->Width = 180;
+
+			dataGridView1->AllowUserToAddRows = true;
+			dataGridView1->AllowUserToDeleteRows = true;
 		}
 
 	protected:
@@ -41,7 +57,8 @@ namespace joystick {
 				delete components;
 			}
 		}
-
+	private:DataTable^ dataTable;
+		   SqlDataAdapter^ adapter;
 	private: System::Windows::Forms::Button^ save_btn;
 
 	private:String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
@@ -206,43 +223,32 @@ namespace joystick {
 
 		}
 #pragma endregion
+		
 	private: System::Void storage_Load(System::Object^ sender, System::EventArgs^ e) {
-		dbConnection = gcnew SqlConnection(connString);
-		dbConnection->Open();
-		DataTable^ dataTable = gcnew DataTable();
-		SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
-		SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
-		dataGridView1->ColumnHeadersVisible = false;
-		adapter->Fill(dataTable);
-		dataGridView1->DataSource = dataTable;
-		dataGridView1->Columns["name"]->Width = 364;
-		dataGridView1->Columns["quantity"]->Width = 194;
-		dataGridView1->Columns["price"]->Width = 180;
-
-
-		dataGridView1->AllowUserToAddRows = true;
-		dataGridView1->AllowUserToDeleteRows = true;
+		
 	}
-	private: System::Void Rooms_pnl_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-	}
+	
 	
 
 
 	private: System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-		try
-		{
-			// Get the original SqlDataAdapter used to fill the DataTable
-			SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
+		try {
+			// Set up the UpdateCommand and its parameters
+			adapter->UpdateCommand = gcnew SqlCommand("UPDATE items SET name = @name, price = @price, quantity = @quantity WHERE name = @original_name", dbConnection);
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@name", SqlDbType::VarChar, 100, "name"));
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@price", SqlDbType::Float, 0, "price"));
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@quantity", SqlDbType::Int, 0, "quantity"));
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@original_name", SqlDbType::VarChar, 100, "name"));
+			adapter->UpdateCommand->UpdatedRowSource = UpdateRowSource::Both;
 
-			// Use the original SqlDataAdapter to update changes in the DataTable
-			SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
-			adapter->Update(dynamic_cast<DataTable^>(dataGridView1->DataSource));
-
+			// Update the database with changes made in the DataGridView
+			adapter->Update(dataTable);
+			
 			MessageBox::Show("Changes saved successfully.");
+
 		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show("Error: " + ex->Message);
+		catch (Exception^ ex) {
+			MessageBox::Show("Error saving changes: " + ex->Message);
 		}
 	}
 	

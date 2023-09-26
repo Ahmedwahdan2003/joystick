@@ -3135,7 +3135,6 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
 
         if (elapsedHours < 0.4)
             timeCost = 20.0;
-        MessageBox::Show("the rate is " + rate);
 
         int_time_cost = static_cast<int>(timeCost);
         // Add the time cost to the total cost
