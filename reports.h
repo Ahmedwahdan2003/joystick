@@ -135,7 +135,7 @@ namespace joystick {
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label1->Location = System::Drawing::Point(175, 73);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(98, 22);
+			this->label1->Size = System::Drawing::Size(81, 18);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Start date";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -150,7 +150,7 @@ namespace joystick {
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label2->Location = System::Drawing::Point(723, 73);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(90, 22);
+			this->label2->Size = System::Drawing::Size(74, 18);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"End date";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -176,10 +176,10 @@ namespace joystick {
 			this->view_data_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->view_data_btn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->view_data_btn->Location = System::Drawing::Point(1132, 556);
+			this->view_data_btn->Location = System::Drawing::Point(1034, 598);
 			this->view_data_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->view_data_btn->Name = L"view_data_btn";
-			this->view_data_btn->Size = System::Drawing::Size(120, 132);
+			this->view_data_btn->Size = System::Drawing::Size(146, 93);
 			this->view_data_btn->TabIndex = 6;
 			this->view_data_btn->Text = L"View Data";
 			this->view_data_btn->UseVisualStyleBackColor = false;
@@ -195,7 +195,7 @@ namespace joystick {
 			this->back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->back_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->back_btn->Location = System::Drawing::Point(1101, 12);
+			this->back_btn->Location = System::Drawing::Point(1013, 12);
 			this->back_btn->Name = L"back_btn";
 			this->back_btn->Size = System::Drawing::Size(167, 49);
 			this->back_btn->TabIndex = 21;
@@ -224,7 +224,7 @@ namespace joystick {
 			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label3->Location = System::Drawing::Point(642, 269);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(190, 36);
+			this->label3->Size = System::Drawing::Size(161, 29);
 			this->label3->TabIndex = 23;
 			this->label3->Text = L"Time_Total: ";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -239,7 +239,7 @@ namespace joystick {
 			this->label4->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label4->Location = System::Drawing::Point(642, 381);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(213, 36);
+			this->label4->Size = System::Drawing::Size(175, 29);
 			this->label4->TabIndex = 24;
 			this->label4->Text = L"Drinks_Total: ";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -254,7 +254,7 @@ namespace joystick {
 			this->time__total->ForeColor = System::Drawing::Color::WhiteSmoke;
 			this->time__total->Location = System::Drawing::Point(870, 269);
 			this->time__total->Name = L"time__total";
-			this->time__total->Size = System::Drawing::Size(35, 38);
+			this->time__total->Size = System::Drawing::Size(30, 31);
 			this->time__total->TabIndex = 26;
 			this->time__total->Text = L"..";
 			this->time__total->Click += gcnew System::EventHandler(this, &reports::item__cost_Click);
@@ -269,7 +269,7 @@ namespace joystick {
 			this->drinks__total->ForeColor = System::Drawing::Color::WhiteSmoke;
 			this->drinks__total->Location = System::Drawing::Point(870, 379);
 			this->drinks__total->Name = L"drinks__total";
-			this->drinks__total->Size = System::Drawing::Size(35, 38);
+			this->drinks__total->Size = System::Drawing::Size(30, 31);
 			this->drinks__total->TabIndex = 27;
 			this->drinks__total->Text = L"..";
 			// 
@@ -279,7 +279,7 @@ namespace joystick {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1280, 720);
+			this->ClientSize = System::Drawing::Size(1244, 720);
 			this->Controls->Add(this->drinks__total);
 			this->Controls->Add(this->time__total);
 			this->Controls->Add(this->label4);
@@ -304,7 +304,8 @@ namespace joystick {
 #pragma endregion
 	
 private: System::Void send_email_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
+
+	this->Close();
 }
 private: System::Void view_data_btn_click(System::Object^ sender, System::EventArgs^ e) {
 

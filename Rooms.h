@@ -3323,8 +3323,8 @@ private: System::Void room2_add_btn_Click(System::Object^ sender, System::EventA
                         room2_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
-                room8_order_cmbx->SelectedIndex = -1;
+                
+                room2_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
             catch (Exception^ ex)
@@ -3402,6 +3402,7 @@ private: System::Void room2_closeroom_btn_Click(System::Object^ sender, System::
             countdown_timer2->Stop();
             room2_startTime_btn_click = false;
             room2_endtime_btn_click = false;
+            room2_mode_cmbx->SelectedIndex = -1;
         }
     else {
         MessageBox::Show("you have to end the time first", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -3546,7 +3547,7 @@ private: System::Void room3_add_btn_Click(System::Object^ sender, System::EventA
                         room3_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
+               
                 room8_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
@@ -3616,6 +3617,7 @@ private: System::Void room3_close_btn_Click(System::Object^ sender, System::Even
             countdown_timer3->Stop();
             room3_startTime_btn_click = false;
             room3_endtime_btn_click = false;
+            room3_mode_cmbx->SelectedIndex = -1;
         }
         else {
             MessageBox::Show("you have to end the time first", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -3743,7 +3745,7 @@ private: System::Void room4_add_btn_Click(System::Object^ sender, System::EventA
                         room4_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
+               
                 room4_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
@@ -3811,6 +3813,7 @@ private: System::Void room4_close_btn_Click(System::Object^ sender, System::Even
             countdown_timer4->Stop();
             room4_startTime_btn_click = false;
             room4_endtime_btn_click = false;
+            room4_mode_cmbx->SelectedIndex = -1;
         }
         else {
             MessageBox::Show("you have to end the time first", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -3864,7 +3867,7 @@ private: System::Void countdown_timer4_Tick(System::Object^ sender, System::Even
 
 private: System::Void room5_start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     double timeInput;
-    if (room4_mode_cmbx->SelectedIndex != -1) {
+    if (room5_mode_cmbx->SelectedIndex != -1) {
         if (room5_startTime_btn_click == false) {
             room5_startTime_btn_click = true;
             //if(room2_timestarted_lbl->Text == "00:00:00")
@@ -3936,7 +3939,7 @@ private: System::Void room5_add_btn_Click(System::Object^ sender, System::EventA
                 String^ selected = room5_order_cmbx->SelectedItem->ToString();
 
                 if (!String::IsNullOrEmpty(selected)) {
-                    AddItemToPanel1(selected, room8_orders_pnl);
+                    AddItemToPanel1(selected, room5_orders_pnl);
                     if (room5_orders_map->ContainsKey(selected)) {
                         room5_orders_map[selected]++;
                     }
@@ -3944,8 +3947,7 @@ private: System::Void room5_add_btn_Click(System::Object^ sender, System::EventA
                         room5_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
-                room8_order_cmbx->SelectedIndex = -1;
+                room5_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
             catch (Exception^ ex)
@@ -4013,6 +4015,7 @@ private: System::Void room5_close_btn_Click(System::Object^ sender, System::Even
             countdown_timer5->Stop();
             room5_startTime_btn_click = false;
             room5_endtime_btn_click = false;
+            room5_mode_cmbx->SelectedIndex = -1;
         }
         else {
             MessageBox::Show("you have to end the time first", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -4138,8 +4141,8 @@ private: System::Void room6_add_btn_Click(System::Object^ sender, System::EventA
                         room6_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
-                room8_order_cmbx->SelectedIndex = -1;
+               
+                room6_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
             catch (Exception^ ex)
@@ -4329,8 +4332,8 @@ private: System::Void room7_add_btn_Click(System::Object^ sender, System::EventA
                         room7_orders_map[selected] = 1;
                     }
                 }
-                MessageBox::Show("item added successfully.");
-                room8_order_cmbx->SelectedIndex = -1;
+              
+                room7_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
             catch (Exception^ ex)
