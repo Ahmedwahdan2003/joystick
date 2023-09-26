@@ -46,7 +46,7 @@ namespace joystick {
 			}
 			catch (Exception^ e)
 			{
-				MessageBox::Show("Failed to retrieve data from the database.");
+				MessageBox::Show("Failed to retrieve data from the database."+e->Message);
 			}
 		}
 	public: String^ user_pass = "";
@@ -234,9 +234,11 @@ namespace joystick {
 					continue;
 			         }
 			}
-			if(flag==false)
-			MessageBox::Show("Wrong password");
+			if (flag == false) {
 			
+				MessageBox::Show("Wrong password");
+				password_txt->Text ="";
+			}
 		}
 	}
 

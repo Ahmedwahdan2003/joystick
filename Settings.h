@@ -57,7 +57,7 @@ namespace joystick {
 			}
 			catch (Exception^ e)
 			{
-				MessageBox::Show("Failed to retrieve data from the database.");
+				MessageBox::Show("Failed to retrieve data from the database."+e->Message);
 			}
 
 
@@ -569,7 +569,7 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 		}
 		catch (Exception^ e)
 		{
-			MessageBox::Show("Failed to retrieve data from the database.");
+			MessageBox::Show("Failed to retrieve data from the database."+e->Message);
 		}
 		
 			sqlConn->Close();
@@ -649,7 +649,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 		}
 		catch (Exception^ ex)
 		{
-			MessageBox::Show("Failed to connect to the database.");
+			MessageBox::Show("Failed to connect to the database."+ex->Message);
 		}
 	}
 }

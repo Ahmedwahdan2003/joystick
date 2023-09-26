@@ -94,7 +94,7 @@ namespace joystick {
             }
             catch (Exception^ e)
             {
-                MessageBox::Show("Failed to retrieve data from the database.");
+                MessageBox::Show("Failed to retrieve data from the database."+e->Message);
             }
             finally {
                 sqlConn->Close();
