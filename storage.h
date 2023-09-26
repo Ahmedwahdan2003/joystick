@@ -26,7 +26,9 @@ namespace joystick {
 		{
 
 			InitializeComponent();
-			
+			dataGridView1->ColumnHeadersVisible = false;
+
+			dataGridView1->Columns[2]->Width = 100;
 		
 		}
 
@@ -41,7 +43,7 @@ namespace joystick {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+
 	private: System::Windows::Forms::Button^ save_btn;
 
 	private:String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
@@ -49,7 +51,9 @@ namespace joystick {
 		SqlConnection^ dbConnection;
 
 	private: System::Windows::Forms::Button^ rooms_back_btn;
-	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 
 
@@ -71,7 +75,7 @@ namespace joystick {
 		{
 			// Rebind the DataGridView to update with the latest data
 			DataTable^ dataTable = gcnew DataTable();
-			SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT * FROM items", connString);
+			SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
 			SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
 
 			adapter->Fill(dataTable);
@@ -102,55 +106,14 @@ namespace joystick {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(storage::typeid));
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->save_btn = (gcnew System::Windows::Forms::Button());
 			this->rooms_back_btn = (gcnew System::Windows::Forms::Button());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
-			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->AllowUserToResizeColumns = false;
-			this->dataGridView1->AllowUserToResizeRows = false;
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridView1->BackgroundColor = System::Drawing::Color::WhiteSmoke;
-			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::None;
-			this->dataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->ColumnHeadersVisible = false;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle2;
-			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->dataGridView1->Location = System::Drawing::Point(0, 0);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(620, 666);
-			this->dataGridView1->TabIndex = 0;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &storage::dataGridView1_CellContentClick);
 			// 
 			// save_btn
 			// 
@@ -171,10 +134,10 @@ namespace joystick {
 			this->save_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->save_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->save_btn->Location = System::Drawing::Point(1041, 631);
-			this->save_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->save_btn->Location = System::Drawing::Point(826, 513);
+			this->save_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->save_btn->Name = L"save_btn";
-			this->save_btn->Size = System::Drawing::Size(194, 49);
+			this->save_btn->Size = System::Drawing::Size(124, 40);
 			this->save_btn->TabIndex = 2;
 			this->save_btn->Text = L"SAVE";
 			this->save_btn->UseVisualStyleBackColor = false;
@@ -188,44 +151,58 @@ namespace joystick {
 			this->rooms_back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->rooms_back_btn->ForeColor = System::Drawing::Color::White;
-			this->rooms_back_btn->Location = System::Drawing::Point(1101, 12);
+			this->rooms_back_btn->Location = System::Drawing::Point(826, 10);
+			this->rooms_back_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->rooms_back_btn->Name = L"rooms_back_btn";
-			this->rooms_back_btn->Size = System::Drawing::Size(166, 55);
+			this->rooms_back_btn->Size = System::Drawing::Size(124, 45);
 			this->rooms_back_btn->TabIndex = 4;
 			this->rooms_back_btn->Text = L"BACK";
 			this->rooms_back_btn->UseVisualStyleBackColor = true;
 			this->rooms_back_btn->Click += gcnew System::EventHandler(this, &storage::rooms_back_btn_Click);
 			// 
-			// panel1
+			// dataGridView1
 			// 
-			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
-			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->panel1->Controls->Add(this->dataGridView1);
-			this->panel1->Location = System::Drawing::Point(47, 31);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(620, 666);
-			this->panel1->TabIndex = 5;
+			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::MenuBar;
+			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(25, 70);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(783, 483);
+			this->dataGridView1->TabIndex = 5;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox1->Location = System::Drawing::Point(12, 10);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(809, 543);
+			this->pictureBox1->TabIndex = 6;
+			this->pictureBox1->TabStop = false;
 			// 
 			// storage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1279, 720);
-			this->Controls->Add(this->panel1);
+			this->ClientSize = System::Drawing::Size(959, 585);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->rooms_back_btn);
 			this->Controls->Add(this->save_btn);
+			this->Controls->Add(this->pictureBox1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"storage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"storage";
 			this->TransparencyKey = System::Drawing::Color::Aqua;
 			this->Load += gcnew System::EventHandler(this, &storage::storage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
-			this->panel1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -235,7 +212,7 @@ namespace joystick {
 		dbConnection = gcnew SqlConnection(connString);
 		dbConnection->Open();
 		DataTable^ dataTable = gcnew DataTable();
-		SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT * FROM items", connString); // Use "connString" here
+		SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
 		SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
 
 		adapter->Fill(dataTable);

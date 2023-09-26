@@ -344,6 +344,7 @@ private: System::Windows::Forms::Label^ label5;
 private: System::Windows::Forms::ComboBox^ room5_mode_cmbx;
 
 private: System::Windows::Forms::Button^ rooms_back_btn;
+private: System::Windows::Forms::TabPage^ BUY;
 
 
 
@@ -501,6 +502,7 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->countdown_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->stopwatch_timer8 = (gcnew System::Windows::Forms::Timer(this->components));
             this->rooms_back_btn = (gcnew System::Windows::Forms::Button());
+            this->BUY = (gcnew System::Windows::Forms::TabPage());
             this->Rooms_tabs->SuspendLayout();
             this->room1_tab->SuspendLayout();
             this->room2_tab->SuspendLayout();
@@ -522,13 +524,15 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->Rooms_tabs->Controls->Add(this->billiard1_tab);
             this->Rooms_tabs->Controls->Add(this->billiard2_tab);
             this->Rooms_tabs->Controls->Add(this->pingpong_tab);
+            this->Rooms_tabs->Controls->Add(this->BUY);
             this->Rooms_tabs->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->Rooms_tabs->Location = System::Drawing::Point(0, 4);
-            this->Rooms_tabs->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Rooms_tabs->Location = System::Drawing::Point(0, 3);
+            this->Rooms_tabs->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->Rooms_tabs->Multiline = true;
             this->Rooms_tabs->Name = L"Rooms_tabs";
             this->Rooms_tabs->SelectedIndex = 0;
-            this->Rooms_tabs->Size = System::Drawing::Size(1280, 716);
+            this->Rooms_tabs->Size = System::Drawing::Size(960, 582);
             this->Rooms_tabs->SizeMode = System::Windows::Forms::TabSizeMode::Fixed;
             this->Rooms_tabs->TabIndex = 0;
             this->Rooms_tabs->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::Rooms_tabs_KeyPress);
@@ -551,11 +555,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_tab->Controls->Add(this->room1_endtime_btn);
             this->room1_tab->Controls->Add(this->Room1_starttime_btn);
             this->room1_tab->Controls->Add(this->room1_close_btn);
-            this->room1_tab->Location = System::Drawing::Point(4, 36);
-            this->room1_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_tab->Location = System::Drawing::Point(4, 31);
+            this->room1_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_tab->Name = L"room1_tab";
-            this->room1_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->room1_tab->Size = System::Drawing::Size(1272, 676);
+            this->room1_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->room1_tab->Size = System::Drawing::Size(952, 547);
             this->room1_tab->TabIndex = 0;
             this->room1_tab->Text = L"ROOM1";
             this->room1_tab->UseVisualStyleBackColor = true;
@@ -567,9 +571,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label1->ForeColor = System::Drawing::Color::White;
-            this->label1->Location = System::Drawing::Point(556, 100);
+            this->label1->Location = System::Drawing::Point(417, 81);
+            this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(210, 41);
+            this->label1->Size = System::Drawing::Size(170, 32);
             this->label1->TabIndex = 19;
             this->label1->Text = L"Choose Mode";
             // 
@@ -583,10 +588,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
                 L"ps4_single", L"ps4_multi", L"ps5_single",
                     L"ps5_multi"
             });
-            this->room1_mode_cmbx->Location = System::Drawing::Point(563, 155);
-            this->room1_mode_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_mode_cmbx->Location = System::Drawing::Point(422, 126);
+            this->room1_mode_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_mode_cmbx->Name = L"room1_mode_cmbx";
-            this->room1_mode_cmbx->Size = System::Drawing::Size(191, 37);
+            this->room1_mode_cmbx->Size = System::Drawing::Size(144, 33);
             this->room1_mode_cmbx->TabIndex = 18;
             // 
             // room1_recipt_pnl
@@ -594,18 +599,18 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room1_recipt_pnl->ForeColor = System::Drawing::Color::White;
-            this->room1_recipt_pnl->Location = System::Drawing::Point(772, 73);
-            this->room1_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_recipt_pnl->Location = System::Drawing::Point(579, 59);
+            this->room1_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_recipt_pnl->Name = L"room1_recipt_pnl";
-            this->room1_recipt_pnl->Size = System::Drawing::Size(471, 245);
+            this->room1_recipt_pnl->Size = System::Drawing::Size(353, 199);
             this->room1_recipt_pnl->TabIndex = 17;
             // 
             // room1_orders_pnl
             // 
-            this->room1_orders_pnl->Location = System::Drawing::Point(8, 306);
-            this->room1_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_orders_pnl->Location = System::Drawing::Point(6, 249);
+            this->room1_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_orders_pnl->Name = L"room1_orders_pnl";
-            this->room1_orders_pnl->Size = System::Drawing::Size(364, 348);
+            this->room1_orders_pnl->Size = System::Drawing::Size(273, 283);
             this->room1_orders_pnl->TabIndex = 16;
             // 
             // timeremaining1_lbl
@@ -613,9 +618,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->timeremaining1_lbl->AutoSize = true;
             this->timeremaining1_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
             this->timeremaining1_lbl->ForeColor = System::Drawing::Color::White;
-            this->timeremaining1_lbl->Location = System::Drawing::Point(224, 182);
+            this->timeremaining1_lbl->Location = System::Drawing::Point(168, 148);
+            this->timeremaining1_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->timeremaining1_lbl->Name = L"timeremaining1_lbl";
-            this->timeremaining1_lbl->Size = System::Drawing::Size(120, 31);
+            this->timeremaining1_lbl->Size = System::Drawing::Size(96, 25);
             this->timeremaining1_lbl->TabIndex = 15;
             this->timeremaining1_lbl->Text = L"00:00:00";
             // 
@@ -624,9 +630,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->timer1_lbl->AutoSize = true;
             this->timer1_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
             this->timer1_lbl->ForeColor = System::Drawing::Color::White;
-            this->timer1_lbl->Location = System::Drawing::Point(224, 127);
+            this->timer1_lbl->Location = System::Drawing::Point(168, 103);
+            this->timer1_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->timer1_lbl->Name = L"timer1_lbl";
-            this->timer1_lbl->Size = System::Drawing::Size(120, 31);
+            this->timer1_lbl->Size = System::Drawing::Size(96, 25);
             this->timer1_lbl->TabIndex = 14;
             this->timer1_lbl->Text = L"00:00:00";
             // 
@@ -635,9 +642,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->timestarted1_lbl->AutoSize = true;
             this->timestarted1_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
             this->timestarted1_lbl->ForeColor = System::Drawing::Color::White;
-            this->timestarted1_lbl->Location = System::Drawing::Point(226, 73);
+            this->timestarted1_lbl->Location = System::Drawing::Point(170, 59);
+            this->timestarted1_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->timestarted1_lbl->Name = L"timestarted1_lbl";
-            this->timestarted1_lbl->Size = System::Drawing::Size(120, 31);
+            this->timestarted1_lbl->Size = System::Drawing::Size(96, 25);
             this->timestarted1_lbl->TabIndex = 13;
             this->timestarted1_lbl->Text = L"00:00:00";
             // 
@@ -645,10 +653,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             // 
             this->textBoxHours1->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->textBoxHours1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-            this->textBoxHours1->Location = System::Drawing::Point(539, 370);
-            this->textBoxHours1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->textBoxHours1->Location = System::Drawing::Point(404, 301);
+            this->textBoxHours1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->textBoxHours1->Name = L"textBoxHours1";
-            this->textBoxHours1->Size = System::Drawing::Size(139, 29);
+            this->textBoxHours1->Size = System::Drawing::Size(104, 23);
             this->textBoxHours1->TabIndex = 10;
             this->textBoxHours1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->textBoxHours1->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::textBoxHours1_KeyPress);
@@ -659,10 +667,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_order_cmbx->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
             this->room1_order_cmbx->ForeColor = System::Drawing::Color::Black;
             this->room1_order_cmbx->FormattingEnabled = true;
-            this->room1_order_cmbx->Location = System::Drawing::Point(913, 371);
-            this->room1_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_order_cmbx->Location = System::Drawing::Point(685, 301);
+            this->room1_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_order_cmbx->Name = L"room1_order_cmbx";
-            this->room1_order_cmbx->Size = System::Drawing::Size(330, 33);
+            this->room1_order_cmbx->Size = System::Drawing::Size(248, 28);
             this->room1_order_cmbx->TabIndex = 9;
             // 
             // room1_remove_btn
@@ -681,10 +689,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_remove_btn->Location = System::Drawing::Point(975, 526);
-            this->room1_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_remove_btn->Location = System::Drawing::Point(731, 427);
+            this->room1_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_remove_btn->Name = L"room1_remove_btn";
-            this->room1_remove_btn->Size = System::Drawing::Size(198, 48);
+            this->room1_remove_btn->Size = System::Drawing::Size(148, 39);
             this->room1_remove_btn->TabIndex = 8;
             this->room1_remove_btn->UseVisualStyleBackColor = false;
             this->room1_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_remove_btn_Click);
@@ -705,10 +713,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_add_btn->Location = System::Drawing::Point(975, 446);
-            this->room1_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_add_btn->Location = System::Drawing::Point(731, 362);
+            this->room1_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_add_btn->Name = L"room1_add_btn";
-            this->room1_add_btn->Size = System::Drawing::Size(198, 47);
+            this->room1_add_btn->Size = System::Drawing::Size(148, 38);
             this->room1_add_btn->TabIndex = 7;
             this->room1_add_btn->UseVisualStyleBackColor = false;
             this->room1_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_add_btn_Click);
@@ -729,10 +737,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_endtime_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_endtime_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_endtime_btn->Location = System::Drawing::Point(528, 526);
-            this->room1_endtime_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_endtime_btn->Location = System::Drawing::Point(396, 427);
+            this->room1_endtime_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_endtime_btn->Name = L"room1_endtime_btn";
-            this->room1_endtime_btn->Size = System::Drawing::Size(160, 48);
+            this->room1_endtime_btn->Size = System::Drawing::Size(120, 39);
             this->room1_endtime_btn->TabIndex = 6;
             this->room1_endtime_btn->UseVisualStyleBackColor = false;
             this->room1_endtime_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_endtime_btn_Click);
@@ -753,10 +761,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->Room1_starttime_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->Room1_starttime_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->Room1_starttime_btn->Location = System::Drawing::Point(528, 446);
-            this->Room1_starttime_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Room1_starttime_btn->Location = System::Drawing::Point(396, 362);
+            this->Room1_starttime_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->Room1_starttime_btn->Name = L"Room1_starttime_btn";
-            this->Room1_starttime_btn->Size = System::Drawing::Size(160, 47);
+            this->Room1_starttime_btn->Size = System::Drawing::Size(120, 38);
             this->Room1_starttime_btn->TabIndex = 5;
             this->Room1_starttime_btn->UseVisualStyleBackColor = false;
             this->Room1_starttime_btn->Click += gcnew System::EventHandler(this, &Rooms::Room1_starttime_btn_Click);
@@ -775,10 +783,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room1_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room1_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room1_close_btn->Location = System::Drawing::Point(1075, 17);
-            this->room1_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room1_close_btn->Location = System::Drawing::Point(806, 14);
+            this->room1_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room1_close_btn->Name = L"room1_close_btn";
-            this->room1_close_btn->Size = System::Drawing::Size(168, 39);
+            this->room1_close_btn->Size = System::Drawing::Size(126, 32);
             this->room1_close_btn->TabIndex = 4;
             this->room1_close_btn->UseVisualStyleBackColor = false;
             this->room1_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room1_close_btn_Click);
@@ -801,11 +809,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_tab->Controls->Add(this->room2_order_cmbx);
             this->room2_tab->Controls->Add(this->room2_closeroom_btn);
             this->room2_tab->Controls->Add(this->room2_userinput_time);
-            this->room2_tab->Location = System::Drawing::Point(4, 36);
-            this->room2_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_tab->Location = System::Drawing::Point(4, 31);
+            this->room2_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_tab->Name = L"room2_tab";
-            this->room2_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->room2_tab->Size = System::Drawing::Size(1272, 676);
+            this->room2_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->room2_tab->Size = System::Drawing::Size(952, 547);
             this->room2_tab->TabIndex = 1;
             this->room2_tab->Text = L"ROOM2";
             this->room2_tab->UseVisualStyleBackColor = true;
@@ -817,9 +825,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label2->ForeColor = System::Drawing::Color::White;
-            this->label2->Location = System::Drawing::Point(548, 129);
+            this->label2->Location = System::Drawing::Point(411, 105);
+            this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(210, 41);
+            this->label2->Size = System::Drawing::Size(170, 32);
             this->label2->TabIndex = 27;
             this->label2->Text = L"Choose Mode";
             // 
@@ -833,10 +842,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
                 L"ps4_single", L"ps4_multi", L"ps5_single",
                     L"ps5_multi"
             });
-            this->room2_mode_cmbx->Location = System::Drawing::Point(563, 174);
-            this->room2_mode_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_mode_cmbx->Location = System::Drawing::Point(422, 141);
+            this->room2_mode_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_mode_cmbx->Name = L"room2_mode_cmbx";
-            this->room2_mode_cmbx->Size = System::Drawing::Size(191, 37);
+            this->room2_mode_cmbx->Size = System::Drawing::Size(144, 33);
             this->room2_mode_cmbx->TabIndex = 26;
             // 
             // room2_timeremaining_lbl
@@ -844,9 +853,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_timeremaining_lbl->AutoSize = true;
             this->room2_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
             this->room2_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room2_timeremaining_lbl->Location = System::Drawing::Point(231, 180);
+            this->room2_timeremaining_lbl->Location = System::Drawing::Point(173, 146);
+            this->room2_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room2_timeremaining_lbl->Name = L"room2_timeremaining_lbl";
-            this->room2_timeremaining_lbl->Size = System::Drawing::Size(120, 31);
+            this->room2_timeremaining_lbl->Size = System::Drawing::Size(96, 25);
             this->room2_timeremaining_lbl->TabIndex = 25;
             this->room2_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -855,9 +865,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_timer_lbl->AutoSize = true;
             this->room2_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
             this->room2_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room2_timer_lbl->Location = System::Drawing::Point(231, 129);
+            this->room2_timer_lbl->Location = System::Drawing::Point(173, 105);
+            this->room2_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room2_timer_lbl->Name = L"room2_timer_lbl";
-            this->room2_timer_lbl->Size = System::Drawing::Size(120, 31);
+            this->room2_timer_lbl->Size = System::Drawing::Size(96, 25);
             this->room2_timer_lbl->TabIndex = 24;
             this->room2_timer_lbl->Text = L"00:00:00";
             // 
@@ -867,9 +878,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room2_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room2_timestarted_lbl->Location = System::Drawing::Point(231, 73);
+            this->room2_timestarted_lbl->Location = System::Drawing::Point(173, 59);
+            this->room2_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room2_timestarted_lbl->Name = L"room2_timestarted_lbl";
-            this->room2_timestarted_lbl->Size = System::Drawing::Size(120, 31);
+            this->room2_timestarted_lbl->Size = System::Drawing::Size(96, 25);
             this->room2_timestarted_lbl->TabIndex = 23;
             this->room2_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -878,19 +890,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room2_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room2_recipt_pnl->Location = System::Drawing::Point(796, 83);
-            this->room2_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_recipt_pnl->Location = System::Drawing::Point(597, 67);
+            this->room2_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_recipt_pnl->Name = L"room2_recipt_pnl";
-            this->room2_recipt_pnl->Size = System::Drawing::Size(470, 241);
+            this->room2_recipt_pnl->Size = System::Drawing::Size(352, 196);
             this->room2_recipt_pnl->TabIndex = 17;
             // 
             // room2_orders_pnl
             // 
             this->room2_orders_pnl->AutoScroll = true;
-            this->room2_orders_pnl->Location = System::Drawing::Point(8, 306);
-            this->room2_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_orders_pnl->Location = System::Drawing::Point(6, 249);
+            this->room2_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_orders_pnl->Name = L"room2_orders_pnl";
-            this->room2_orders_pnl->Size = System::Drawing::Size(364, 356);
+            this->room2_orders_pnl->Size = System::Drawing::Size(273, 289);
             this->room2_orders_pnl->TabIndex = 22;
             // 
             // room2_add_btn
@@ -909,10 +921,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_add_btn->Location = System::Drawing::Point(974, 444);
-            this->room2_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_add_btn->Location = System::Drawing::Point(730, 361);
+            this->room2_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_add_btn->Name = L"room2_add_btn";
-            this->room2_add_btn->Size = System::Drawing::Size(192, 51);
+            this->room2_add_btn->Size = System::Drawing::Size(144, 41);
             this->room2_add_btn->TabIndex = 21;
             this->room2_add_btn->UseVisualStyleBackColor = false;
             this->room2_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_add_btn_Click);
@@ -933,10 +945,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_remove_btn->Location = System::Drawing::Point(974, 526);
-            this->room2_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_remove_btn->Location = System::Drawing::Point(730, 427);
+            this->room2_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_remove_btn->Name = L"room2_remove_btn";
-            this->room2_remove_btn->Size = System::Drawing::Size(192, 51);
+            this->room2_remove_btn->Size = System::Drawing::Size(144, 41);
             this->room2_remove_btn->TabIndex = 20;
             this->room2_remove_btn->UseVisualStyleBackColor = false;
             this->room2_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_remove_btn_Click);
@@ -957,10 +969,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_end_btn->Location = System::Drawing::Point(533, 526);
-            this->room2_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_end_btn->Location = System::Drawing::Point(400, 427);
+            this->room2_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_end_btn->Name = L"room2_end_btn";
-            this->room2_end_btn->Size = System::Drawing::Size(153, 51);
+            this->room2_end_btn->Size = System::Drawing::Size(115, 41);
             this->room2_end_btn->TabIndex = 19;
             this->room2_end_btn->UseVisualStyleBackColor = false;
             this->room2_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_end_btn_Click);
@@ -981,10 +993,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_start_btn->Location = System::Drawing::Point(533, 444);
-            this->room2_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_start_btn->Location = System::Drawing::Point(400, 361);
+            this->room2_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_start_btn->Name = L"room2_start_btn";
-            this->room2_start_btn->Size = System::Drawing::Size(144, 51);
+            this->room2_start_btn->Size = System::Drawing::Size(108, 41);
             this->room2_start_btn->TabIndex = 18;
             this->room2_start_btn->UseVisualStyleBackColor = false;
             this->room2_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_start_btn_Click);
@@ -994,10 +1006,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room2_order_cmbx->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
             this->room2_order_cmbx->FormattingEnabled = true;
-            this->room2_order_cmbx->Location = System::Drawing::Point(898, 369);
-            this->room2_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_order_cmbx->Location = System::Drawing::Point(674, 300);
+            this->room2_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_order_cmbx->Name = L"room2_order_cmbx";
-            this->room2_order_cmbx->Size = System::Drawing::Size(340, 30);
+            this->room2_order_cmbx->Size = System::Drawing::Size(256, 26);
             this->room2_order_cmbx->TabIndex = 17;
             // 
             // room2_closeroom_btn
@@ -1013,10 +1025,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room2_closeroom_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room2_closeroom_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room2_closeroom_btn->Location = System::Drawing::Point(1059, 22);
-            this->room2_closeroom_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_closeroom_btn->Location = System::Drawing::Point(794, 18);
+            this->room2_closeroom_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_closeroom_btn->Name = L"room2_closeroom_btn";
-            this->room2_closeroom_btn->Size = System::Drawing::Size(179, 39);
+            this->room2_closeroom_btn->Size = System::Drawing::Size(134, 32);
             this->room2_closeroom_btn->TabIndex = 16;
             this->room2_closeroom_btn->UseVisualStyleBackColor = false;
             this->room2_closeroom_btn->Click += gcnew System::EventHandler(this, &Rooms::room2_closeroom_btn_Click);
@@ -1025,10 +1037,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             // 
             this->room2_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room2_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F));
-            this->room2_userinput_time->Location = System::Drawing::Point(541, 369);
-            this->room2_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room2_userinput_time->Location = System::Drawing::Point(406, 300);
+            this->room2_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room2_userinput_time->Name = L"room2_userinput_time";
-            this->room2_userinput_time->Size = System::Drawing::Size(136, 30);
+            this->room2_userinput_time->Size = System::Drawing::Size(102, 24);
             this->room2_userinput_time->TabIndex = 11;
             this->room2_userinput_time->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             this->room2_userinput_time->TextChanged += gcnew System::EventHandler(this, &Rooms::room2_user_time_TextChanged);
@@ -1052,11 +1064,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_tab->Controls->Add(this->room3_timeremaining_lbl);
             this->room3_tab->Controls->Add(this->room3_timer_lbl);
             this->room3_tab->Controls->Add(this->room3_timestarted_lbl);
-            this->room3_tab->Location = System::Drawing::Point(4, 36);
-            this->room3_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_tab->Location = System::Drawing::Point(4, 31);
+            this->room3_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_tab->Name = L"room3_tab";
-            this->room3_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->room3_tab->Size = System::Drawing::Size(1272, 676);
+            this->room3_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->room3_tab->Size = System::Drawing::Size(952, 547);
             this->room3_tab->TabIndex = 2;
             this->room3_tab->Text = L"ROOM3";
             this->room3_tab->UseVisualStyleBackColor = true;
@@ -1067,9 +1079,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label3->ForeColor = System::Drawing::Color::White;
-            this->label3->Location = System::Drawing::Point(501, 137);
+            this->label3->Location = System::Drawing::Point(376, 111);
+            this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(210, 41);
+            this->label3->Size = System::Drawing::Size(170, 32);
             this->label3->TabIndex = 37;
             this->label3->Text = L"Choose Mode";
             // 
@@ -1083,10 +1096,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
                 L"ps4_single", L"ps4_multi", L"ps5_single",
                     L"ps5_multi"
             });
-            this->room3_mode_cmbx->Location = System::Drawing::Point(508, 199);
-            this->room3_mode_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_mode_cmbx->Location = System::Drawing::Point(381, 162);
+            this->room3_mode_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_mode_cmbx->Name = L"room3_mode_cmbx";
-            this->room3_mode_cmbx->Size = System::Drawing::Size(191, 30);
+            this->room3_mode_cmbx->Size = System::Drawing::Size(144, 26);
             this->room3_mode_cmbx->TabIndex = 36;
             // 
             // room3_recipt_pnl
@@ -1095,19 +1108,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room3_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room3_recipt_pnl->Location = System::Drawing::Point(717, 87);
-            this->room3_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_recipt_pnl->Location = System::Drawing::Point(538, 71);
+            this->room3_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_recipt_pnl->Name = L"room3_recipt_pnl";
-            this->room3_recipt_pnl->Size = System::Drawing::Size(525, 224);
+            this->room3_recipt_pnl->Size = System::Drawing::Size(394, 182);
             this->room3_recipt_pnl->TabIndex = 35;
             // 
             // room3_orders_pnl
             // 
             this->room3_orders_pnl->AutoScroll = true;
-            this->room3_orders_pnl->Location = System::Drawing::Point(8, 311);
-            this->room3_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_orders_pnl->Location = System::Drawing::Point(6, 253);
+            this->room3_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_orders_pnl->Name = L"room3_orders_pnl";
-            this->room3_orders_pnl->Size = System::Drawing::Size(371, 349);
+            this->room3_orders_pnl->Size = System::Drawing::Size(278, 284);
             this->room3_orders_pnl->TabIndex = 34;
             // 
             // room3_close_btn
@@ -1126,10 +1139,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_close_btn->Location = System::Drawing::Point(1064, 17);
-            this->room3_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_close_btn->Location = System::Drawing::Point(798, 14);
+            this->room3_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_close_btn->Name = L"room3_close_btn";
-            this->room3_close_btn->Size = System::Drawing::Size(178, 44);
+            this->room3_close_btn->Size = System::Drawing::Size(134, 36);
             this->room3_close_btn->TabIndex = 33;
             this->room3_close_btn->UseVisualStyleBackColor = false;
             this->room3_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_close_btn_Click);
@@ -1150,10 +1163,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_add_btn->Location = System::Drawing::Point(978, 444);
-            this->room3_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_add_btn->Location = System::Drawing::Point(734, 361);
+            this->room3_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_add_btn->Name = L"room3_add_btn";
-            this->room3_add_btn->Size = System::Drawing::Size(192, 50);
+            this->room3_add_btn->Size = System::Drawing::Size(144, 41);
             this->room3_add_btn->TabIndex = 32;
             this->room3_add_btn->UseVisualStyleBackColor = false;
             this->room3_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_add_btn_Click);
@@ -1174,10 +1187,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_remove_btn->Location = System::Drawing::Point(978, 524);
-            this->room3_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_remove_btn->Location = System::Drawing::Point(734, 426);
+            this->room3_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_remove_btn->Name = L"room3_remove_btn";
-            this->room3_remove_btn->Size = System::Drawing::Size(192, 47);
+            this->room3_remove_btn->Size = System::Drawing::Size(144, 38);
             this->room3_remove_btn->TabIndex = 31;
             this->room3_remove_btn->UseVisualStyleBackColor = false;
             this->room3_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_remove_btn_Click);
@@ -1198,10 +1211,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_end_btn->Location = System::Drawing::Point(531, 524);
-            this->room3_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_end_btn->Location = System::Drawing::Point(398, 426);
+            this->room3_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_end_btn->Name = L"room3_end_btn";
-            this->room3_end_btn->Size = System::Drawing::Size(158, 47);
+            this->room3_end_btn->Size = System::Drawing::Size(118, 38);
             this->room3_end_btn->TabIndex = 30;
             this->room3_end_btn->UseVisualStyleBackColor = false;
             this->room3_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_end_btn_Click);
@@ -1222,10 +1235,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room3_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room3_start_btn->Location = System::Drawing::Point(531, 444);
-            this->room3_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_start_btn->Location = System::Drawing::Point(398, 361);
+            this->room3_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_start_btn->Name = L"room3_start_btn";
-            this->room3_start_btn->Size = System::Drawing::Size(158, 50);
+            this->room3_start_btn->Size = System::Drawing::Size(118, 41);
             this->room3_start_btn->TabIndex = 29;
             this->room3_start_btn->UseVisualStyleBackColor = false;
             this->room3_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room3_start_btn_Click);
@@ -1235,20 +1248,20 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room3_order_cmbx->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
             this->room3_order_cmbx->FormattingEnabled = true;
-            this->room3_order_cmbx->Location = System::Drawing::Point(910, 369);
-            this->room3_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_order_cmbx->Location = System::Drawing::Point(682, 300);
+            this->room3_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_order_cmbx->Name = L"room3_order_cmbx";
-            this->room3_order_cmbx->Size = System::Drawing::Size(332, 33);
+            this->room3_order_cmbx->Size = System::Drawing::Size(250, 28);
             this->room3_order_cmbx->TabIndex = 28;
             // 
             // room3_userinput_time
             // 
             this->room3_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room3_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-            this->room3_userinput_time->Location = System::Drawing::Point(542, 372);
-            this->room3_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room3_userinput_time->Location = System::Drawing::Point(406, 302);
+            this->room3_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room3_userinput_time->Name = L"room3_userinput_time";
-            this->room3_userinput_time->Size = System::Drawing::Size(136, 23);
+            this->room3_userinput_time->Size = System::Drawing::Size(102, 19);
             this->room3_userinput_time->TabIndex = 27;
             // 
             // room3_timeremaining_lbl
@@ -1256,9 +1269,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_timeremaining_lbl->AutoSize = true;
             this->room3_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
             this->room3_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room3_timeremaining_lbl->Location = System::Drawing::Point(227, 184);
+            this->room3_timeremaining_lbl->Location = System::Drawing::Point(170, 150);
+            this->room3_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room3_timeremaining_lbl->Name = L"room3_timeremaining_lbl";
-            this->room3_timeremaining_lbl->Size = System::Drawing::Size(111, 29);
+            this->room3_timeremaining_lbl->Size = System::Drawing::Size(90, 25);
             this->room3_timeremaining_lbl->TabIndex = 26;
             this->room3_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -1267,9 +1281,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_timer_lbl->AutoSize = true;
             this->room3_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
             this->room3_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room3_timer_lbl->Location = System::Drawing::Point(227, 126);
+            this->room3_timer_lbl->Location = System::Drawing::Point(170, 102);
+            this->room3_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room3_timer_lbl->Name = L"room3_timer_lbl";
-            this->room3_timer_lbl->Size = System::Drawing::Size(111, 29);
+            this->room3_timer_lbl->Size = System::Drawing::Size(90, 25);
             this->room3_timer_lbl->TabIndex = 25;
             this->room3_timer_lbl->Text = L"00:00:00";
             // 
@@ -1278,9 +1293,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room3_timestarted_lbl->AutoSize = true;
             this->room3_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
             this->room3_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room3_timestarted_lbl->Location = System::Drawing::Point(227, 72);
+            this->room3_timestarted_lbl->Location = System::Drawing::Point(170, 58);
+            this->room3_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room3_timestarted_lbl->Name = L"room3_timestarted_lbl";
-            this->room3_timestarted_lbl->Size = System::Drawing::Size(111, 29);
+            this->room3_timestarted_lbl->Size = System::Drawing::Size(90, 25);
             this->room3_timestarted_lbl->TabIndex = 24;
             this->room3_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -1302,11 +1318,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->troom4_tab->Controls->Add(this->room4_timeremaining_lbl);
             this->troom4_tab->Controls->Add(this->room4_timer_lbl);
             this->troom4_tab->Controls->Add(this->room4_timestarted_lbl);
-            this->troom4_tab->Location = System::Drawing::Point(4, 36);
-            this->troom4_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->troom4_tab->Location = System::Drawing::Point(4, 31);
+            this->troom4_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->troom4_tab->Name = L"troom4_tab";
-            this->troom4_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->troom4_tab->Size = System::Drawing::Size(1272, 676);
+            this->troom4_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->troom4_tab->Size = System::Drawing::Size(952, 547);
             this->troom4_tab->TabIndex = 3;
             this->troom4_tab->Text = L"ROOM4";
             this->troom4_tab->UseVisualStyleBackColor = true;
@@ -1317,9 +1333,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label4->ForeColor = System::Drawing::Color::White;
-            this->label4->Location = System::Drawing::Point(535, 123);
+            this->label4->Location = System::Drawing::Point(401, 100);
+            this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(210, 41);
+            this->label4->Size = System::Drawing::Size(170, 32);
             this->label4->TabIndex = 44;
             this->label4->Text = L"Choose Mode";
             // 
@@ -1332,10 +1349,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
                 L"ps4_single", L"ps4_multi", L"ps5_single",
                     L"ps5_multi"
             });
-            this->room4_mode_cmbx->Location = System::Drawing::Point(542, 206);
-            this->room4_mode_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_mode_cmbx->Location = System::Drawing::Point(406, 167);
+            this->room4_mode_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_mode_cmbx->Name = L"room4_mode_cmbx";
-            this->room4_mode_cmbx->Size = System::Drawing::Size(191, 35);
+            this->room4_mode_cmbx->Size = System::Drawing::Size(144, 30);
             this->room4_mode_cmbx->TabIndex = 43;
             // 
             // room4_order_cmbx
@@ -1343,20 +1360,20 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room4_order_cmbx->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
             this->room4_order_cmbx->FormattingEnabled = true;
-            this->room4_order_cmbx->Location = System::Drawing::Point(910, 370);
-            this->room4_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_order_cmbx->Location = System::Drawing::Point(682, 301);
+            this->room4_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_order_cmbx->Name = L"room4_order_cmbx";
-            this->room4_order_cmbx->Size = System::Drawing::Size(326, 33);
+            this->room4_order_cmbx->Size = System::Drawing::Size(246, 28);
             this->room4_order_cmbx->TabIndex = 42;
             // 
             // room4_userinput_time
             // 
             this->room4_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room4_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-            this->room4_userinput_time->Location = System::Drawing::Point(542, 373);
-            this->room4_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_userinput_time->Location = System::Drawing::Point(406, 303);
+            this->room4_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_userinput_time->Name = L"room4_userinput_time";
-            this->room4_userinput_time->Size = System::Drawing::Size(136, 23);
+            this->room4_userinput_time->Size = System::Drawing::Size(102, 19);
             this->room4_userinput_time->TabIndex = 41;
             this->room4_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room4_userinput_time_KeyPress);
             // 
@@ -1376,10 +1393,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_close_btn->Location = System::Drawing::Point(1071, 18);
-            this->room4_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_close_btn->Location = System::Drawing::Point(803, 15);
+            this->room4_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_close_btn->Name = L"room4_close_btn";
-            this->room4_close_btn->Size = System::Drawing::Size(165, 42);
+            this->room4_close_btn->Size = System::Drawing::Size(124, 34);
             this->room4_close_btn->TabIndex = 40;
             this->room4_close_btn->UseVisualStyleBackColor = false;
             this->room4_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_close_btn_Click);
@@ -1400,10 +1417,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_add_btn->Location = System::Drawing::Point(977, 445);
-            this->room4_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_add_btn->Location = System::Drawing::Point(733, 362);
+            this->room4_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_add_btn->Name = L"room4_add_btn";
-            this->room4_add_btn->Size = System::Drawing::Size(190, 49);
+            this->room4_add_btn->Size = System::Drawing::Size(142, 40);
             this->room4_add_btn->TabIndex = 39;
             this->room4_add_btn->UseVisualStyleBackColor = false;
             this->room4_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_add_btn_Click);
@@ -1424,10 +1441,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_remove_btn->Location = System::Drawing::Point(977, 523);
-            this->room4_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_remove_btn->Location = System::Drawing::Point(733, 425);
+            this->room4_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_remove_btn->Name = L"room4_remove_btn";
-            this->room4_remove_btn->Size = System::Drawing::Size(190, 57);
+            this->room4_remove_btn->Size = System::Drawing::Size(142, 46);
             this->room4_remove_btn->TabIndex = 38;
             this->room4_remove_btn->UseVisualStyleBackColor = false;
             this->room4_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_remove_btn_Click);
@@ -1448,10 +1465,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_end_btn->Location = System::Drawing::Point(532, 523);
-            this->room4_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_end_btn->Location = System::Drawing::Point(399, 425);
+            this->room4_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_end_btn->Name = L"room4_end_btn";
-            this->room4_end_btn->Size = System::Drawing::Size(146, 57);
+            this->room4_end_btn->Size = System::Drawing::Size(110, 46);
             this->room4_end_btn->TabIndex = 37;
             this->room4_end_btn->UseVisualStyleBackColor = false;
             this->room4_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_end_btn_Click);
@@ -1472,10 +1489,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room4_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room4_start_btn->Location = System::Drawing::Point(532, 445);
-            this->room4_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_start_btn->Location = System::Drawing::Point(399, 362);
+            this->room4_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_start_btn->Name = L"room4_start_btn";
-            this->room4_start_btn->Size = System::Drawing::Size(146, 49);
+            this->room4_start_btn->Size = System::Drawing::Size(110, 40);
             this->room4_start_btn->TabIndex = 36;
             this->room4_start_btn->UseVisualStyleBackColor = false;
             this->room4_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room4_start_btn_Click);
@@ -1486,19 +1503,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room4_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room4_recipt_pnl->Location = System::Drawing::Point(779, 89);
-            this->room4_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_recipt_pnl->Location = System::Drawing::Point(584, 72);
+            this->room4_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_recipt_pnl->Name = L"room4_recipt_pnl";
-            this->room4_recipt_pnl->Size = System::Drawing::Size(475, 216);
+            this->room4_recipt_pnl->Size = System::Drawing::Size(356, 176);
             this->room4_recipt_pnl->TabIndex = 35;
             // 
             // room4_orders_pnl
             // 
             this->room4_orders_pnl->AutoScroll = true;
-            this->room4_orders_pnl->Location = System::Drawing::Point(19, 303);
-            this->room4_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room4_orders_pnl->Location = System::Drawing::Point(14, 246);
+            this->room4_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room4_orders_pnl->Name = L"room4_orders_pnl";
-            this->room4_orders_pnl->Size = System::Drawing::Size(360, 354);
+            this->room4_orders_pnl->Size = System::Drawing::Size(270, 288);
             this->room4_orders_pnl->TabIndex = 35;
             // 
             // room4_timeremaining_lbl
@@ -1506,9 +1523,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_timeremaining_lbl->AutoSize = true;
             this->room4_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
             this->room4_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room4_timeremaining_lbl->Location = System::Drawing::Point(229, 182);
+            this->room4_timeremaining_lbl->Location = System::Drawing::Point(172, 148);
+            this->room4_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room4_timeremaining_lbl->Name = L"room4_timeremaining_lbl";
-            this->room4_timeremaining_lbl->Size = System::Drawing::Size(111, 29);
+            this->room4_timeremaining_lbl->Size = System::Drawing::Size(90, 25);
             this->room4_timeremaining_lbl->TabIndex = 27;
             this->room4_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -1517,9 +1535,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_timer_lbl->AutoSize = true;
             this->room4_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
             this->room4_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room4_timer_lbl->Location = System::Drawing::Point(229, 123);
+            this->room4_timer_lbl->Location = System::Drawing::Point(172, 100);
+            this->room4_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room4_timer_lbl->Name = L"room4_timer_lbl";
-            this->room4_timer_lbl->Size = System::Drawing::Size(111, 29);
+            this->room4_timer_lbl->Size = System::Drawing::Size(90, 25);
             this->room4_timer_lbl->TabIndex = 26;
             this->room4_timer_lbl->Text = L"00:00:00";
             // 
@@ -1528,9 +1547,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room4_timestarted_lbl->AutoSize = true;
             this->room4_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
             this->room4_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room4_timestarted_lbl->Location = System::Drawing::Point(229, 72);
+            this->room4_timestarted_lbl->Location = System::Drawing::Point(172, 58);
+            this->room4_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room4_timestarted_lbl->Name = L"room4_timestarted_lbl";
-            this->room4_timestarted_lbl->Size = System::Drawing::Size(111, 29);
+            this->room4_timestarted_lbl->Size = System::Drawing::Size(90, 25);
             this->room4_timestarted_lbl->TabIndex = 25;
             this->room4_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -1552,11 +1572,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_tab->Controls->Add(this->room5_timeremaining_lbl);
             this->room5_tab->Controls->Add(this->room5_timer_lbl);
             this->room5_tab->Controls->Add(this->room5_timestarted_lbl);
-            this->room5_tab->Location = System::Drawing::Point(4, 36);
-            this->room5_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_tab->Location = System::Drawing::Point(4, 31);
+            this->room5_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_tab->Name = L"room5_tab";
-            this->room5_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->room5_tab->Size = System::Drawing::Size(1272, 676);
+            this->room5_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->room5_tab->Size = System::Drawing::Size(952, 547);
             this->room5_tab->TabIndex = 4;
             this->room5_tab->Text = L"ROOM5";
             this->room5_tab->UseVisualStyleBackColor = true;
@@ -1567,9 +1587,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->label5->ForeColor = System::Drawing::Color::White;
-            this->label5->Location = System::Drawing::Point(523, 135);
+            this->label5->Location = System::Drawing::Point(392, 110);
+            this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label5->Name = L"label5";
-            this->label5->Size = System::Drawing::Size(210, 41);
+            this->label5->Size = System::Drawing::Size(170, 32);
             this->label5->TabIndex = 46;
             this->label5->Text = L"Choose Mode";
             // 
@@ -1582,10 +1603,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
                 L"ps4_single", L"ps4_multi", L"ps5_single",
                     L"ps5_multi"
             });
-            this->room5_mode_cmbx->Location = System::Drawing::Point(529, 198);
-            this->room5_mode_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_mode_cmbx->Location = System::Drawing::Point(397, 161);
+            this->room5_mode_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_mode_cmbx->Name = L"room5_mode_cmbx";
-            this->room5_mode_cmbx->Size = System::Drawing::Size(191, 35);
+            this->room5_mode_cmbx->Size = System::Drawing::Size(144, 30);
             this->room5_mode_cmbx->TabIndex = 45;
             // 
             // room5_order_cmbx
@@ -1593,10 +1614,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room5_order_cmbx->FormattingEnabled = true;
             this->room5_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room5_order_cmbx->Location = System::Drawing::Point(908, 367);
-            this->room5_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_order_cmbx->Location = System::Drawing::Point(681, 298);
+            this->room5_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_order_cmbx->Name = L"room5_order_cmbx";
-            this->room5_order_cmbx->Size = System::Drawing::Size(334, 35);
+            this->room5_order_cmbx->Size = System::Drawing::Size(252, 30);
             this->room5_order_cmbx->TabIndex = 44;
             // 
             // room5_userinput_time
@@ -1604,10 +1625,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room5_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room5_userinput_time->Location = System::Drawing::Point(542, 367);
-            this->room5_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_userinput_time->Location = System::Drawing::Point(406, 298);
+            this->room5_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_userinput_time->Name = L"room5_userinput_time";
-            this->room5_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room5_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room5_userinput_time->TabIndex = 43;
             this->room5_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room5_userinput_time_KeyPress);
             // 
@@ -1627,10 +1648,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_close_btn->Location = System::Drawing::Point(1070, 17);
-            this->room5_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_close_btn->Location = System::Drawing::Point(802, 14);
+            this->room5_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_close_btn->Name = L"room5_close_btn";
-            this->room5_close_btn->Size = System::Drawing::Size(169, 41);
+            this->room5_close_btn->Size = System::Drawing::Size(127, 33);
             this->room5_close_btn->TabIndex = 42;
             this->room5_close_btn->UseVisualStyleBackColor = false;
             this->room5_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_close_btn_Click);
@@ -1651,10 +1672,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_add_btn->Location = System::Drawing::Point(972, 447);
-            this->room5_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_add_btn->Location = System::Drawing::Point(729, 363);
+            this->room5_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_add_btn->Name = L"room5_add_btn";
-            this->room5_add_btn->Size = System::Drawing::Size(200, 47);
+            this->room5_add_btn->Size = System::Drawing::Size(150, 38);
             this->room5_add_btn->TabIndex = 41;
             this->room5_add_btn->UseVisualStyleBackColor = false;
             this->room5_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_add_btn_Click);
@@ -1675,10 +1696,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_remove_btn->Location = System::Drawing::Point(972, 532);
-            this->room5_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_remove_btn->Location = System::Drawing::Point(729, 432);
+            this->room5_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_remove_btn->Name = L"room5_remove_btn";
-            this->room5_remove_btn->Size = System::Drawing::Size(200, 40);
+            this->room5_remove_btn->Size = System::Drawing::Size(150, 32);
             this->room5_remove_btn->TabIndex = 40;
             this->room5_remove_btn->UseVisualStyleBackColor = false;
             this->room5_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_remove_btn_Click);
@@ -1699,10 +1720,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_end_btn->Location = System::Drawing::Point(529, 532);
-            this->room5_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_end_btn->Location = System::Drawing::Point(397, 432);
+            this->room5_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_end_btn->Name = L"room5_end_btn";
-            this->room5_end_btn->Size = System::Drawing::Size(149, 40);
+            this->room5_end_btn->Size = System::Drawing::Size(112, 32);
             this->room5_end_btn->TabIndex = 39;
             this->room5_end_btn->UseVisualStyleBackColor = false;
             this->room5_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_end_btn_Click);
@@ -1723,10 +1744,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room5_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room5_start_btn->Location = System::Drawing::Point(529, 447);
-            this->room5_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_start_btn->Location = System::Drawing::Point(397, 363);
+            this->room5_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_start_btn->Name = L"room5_start_btn";
-            this->room5_start_btn->Size = System::Drawing::Size(161, 47);
+            this->room5_start_btn->Size = System::Drawing::Size(121, 38);
             this->room5_start_btn->TabIndex = 38;
             this->room5_start_btn->UseVisualStyleBackColor = false;
             this->room5_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room5_start_btn_Click);
@@ -1737,19 +1758,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room5_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room5_recipt_pnl->Location = System::Drawing::Point(755, 98);
-            this->room5_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_recipt_pnl->Location = System::Drawing::Point(566, 80);
+            this->room5_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_recipt_pnl->Name = L"room5_recipt_pnl";
-            this->room5_recipt_pnl->Size = System::Drawing::Size(487, 221);
+            this->room5_recipt_pnl->Size = System::Drawing::Size(365, 180);
             this->room5_recipt_pnl->TabIndex = 37;
             // 
             // room5_orders_pnl
             // 
             this->room5_orders_pnl->AutoScroll = true;
-            this->room5_orders_pnl->Location = System::Drawing::Point(8, 309);
-            this->room5_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room5_orders_pnl->Location = System::Drawing::Point(6, 251);
+            this->room5_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room5_orders_pnl->Name = L"room5_orders_pnl";
-            this->room5_orders_pnl->Size = System::Drawing::Size(364, 353);
+            this->room5_orders_pnl->Size = System::Drawing::Size(273, 287);
             this->room5_orders_pnl->TabIndex = 36;
             // 
             // room5_timeremaining_lbl
@@ -1758,9 +1779,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room5_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room5_timeremaining_lbl->Location = System::Drawing::Point(227, 179);
+            this->room5_timeremaining_lbl->Location = System::Drawing::Point(170, 145);
+            this->room5_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room5_timeremaining_lbl->Name = L"room5_timeremaining_lbl";
-            this->room5_timeremaining_lbl->Size = System::Drawing::Size(111, 29);
+            this->room5_timeremaining_lbl->Size = System::Drawing::Size(90, 25);
             this->room5_timeremaining_lbl->TabIndex = 28;
             this->room5_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -1770,9 +1792,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room5_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room5_timer_lbl->Location = System::Drawing::Point(227, 124);
+            this->room5_timer_lbl->Location = System::Drawing::Point(170, 101);
+            this->room5_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room5_timer_lbl->Name = L"room5_timer_lbl";
-            this->room5_timer_lbl->Size = System::Drawing::Size(111, 29);
+            this->room5_timer_lbl->Size = System::Drawing::Size(90, 25);
             this->room5_timer_lbl->TabIndex = 27;
             this->room5_timer_lbl->Text = L"00:00:00";
             // 
@@ -1782,9 +1805,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room5_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room5_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room5_timestarted_lbl->Location = System::Drawing::Point(229, 74);
+            this->room5_timestarted_lbl->Location = System::Drawing::Point(172, 60);
+            this->room5_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room5_timestarted_lbl->Name = L"room5_timestarted_lbl";
-            this->room5_timestarted_lbl->Size = System::Drawing::Size(111, 29);
+            this->room5_timestarted_lbl->Size = System::Drawing::Size(90, 25);
             this->room5_timestarted_lbl->TabIndex = 26;
             this->room5_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -1804,11 +1828,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->billiard1_tab->Controls->Add(this->room6_timeremaining_lbl);
             this->billiard1_tab->Controls->Add(this->room6_timer_lbl);
             this->billiard1_tab->Controls->Add(this->room6_timestarted_lbl);
-            this->billiard1_tab->Location = System::Drawing::Point(4, 36);
-            this->billiard1_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->billiard1_tab->Location = System::Drawing::Point(4, 31);
+            this->billiard1_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->billiard1_tab->Name = L"billiard1_tab";
-            this->billiard1_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->billiard1_tab->Size = System::Drawing::Size(1272, 676);
+            this->billiard1_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->billiard1_tab->Size = System::Drawing::Size(952, 547);
             this->billiard1_tab->TabIndex = 5;
             this->billiard1_tab->Text = L"Billiard1";
             this->billiard1_tab->UseVisualStyleBackColor = true;
@@ -1818,10 +1842,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room6_order_cmbx->FormattingEnabled = true;
             this->room6_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room6_order_cmbx->Location = System::Drawing::Point(910, 370);
-            this->room6_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_order_cmbx->Location = System::Drawing::Point(682, 301);
+            this->room6_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_order_cmbx->Name = L"room6_order_cmbx";
-            this->room6_order_cmbx->Size = System::Drawing::Size(332, 35);
+            this->room6_order_cmbx->Size = System::Drawing::Size(250, 30);
             this->room6_order_cmbx->TabIndex = 45;
             // 
             // room6_userinput_time
@@ -1829,10 +1853,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room6_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room6_userinput_time->Location = System::Drawing::Point(543, 370);
-            this->room6_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_userinput_time->Location = System::Drawing::Point(407, 301);
+            this->room6_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_userinput_time->Name = L"room6_userinput_time";
-            this->room6_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room6_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room6_userinput_time->TabIndex = 44;
             this->room6_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room6_userinput_time_KeyPress);
             // 
@@ -1852,10 +1876,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_close_btn->Location = System::Drawing::Point(1069, 17);
-            this->room6_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_close_btn->Location = System::Drawing::Point(802, 14);
+            this->room6_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_close_btn->Name = L"room6_close_btn";
-            this->room6_close_btn->Size = System::Drawing::Size(172, 42);
+            this->room6_close_btn->Size = System::Drawing::Size(129, 34);
             this->room6_close_btn->TabIndex = 43;
             this->room6_close_btn->UseVisualStyleBackColor = false;
             this->room6_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_close_btn_Click);
@@ -1876,10 +1900,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_add_btn->Location = System::Drawing::Point(973, 446);
-            this->room6_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_add_btn->Location = System::Drawing::Point(730, 362);
+            this->room6_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_add_btn->Name = L"room6_add_btn";
-            this->room6_add_btn->Size = System::Drawing::Size(203, 48);
+            this->room6_add_btn->Size = System::Drawing::Size(152, 39);
             this->room6_add_btn->TabIndex = 42;
             this->room6_add_btn->UseVisualStyleBackColor = false;
             this->room6_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_add_btn_Click);
@@ -1900,10 +1924,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_remove_btn->Location = System::Drawing::Point(973, 529);
-            this->room6_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_remove_btn->Location = System::Drawing::Point(730, 430);
+            this->room6_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_remove_btn->Name = L"room6_remove_btn";
-            this->room6_remove_btn->Size = System::Drawing::Size(203, 41);
+            this->room6_remove_btn->Size = System::Drawing::Size(152, 33);
             this->room6_remove_btn->TabIndex = 41;
             this->room6_remove_btn->UseVisualStyleBackColor = false;
             this->room6_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_remove_btn_Click);
@@ -1924,10 +1948,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_end_btn->Location = System::Drawing::Point(533, 529);
-            this->room6_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_end_btn->Location = System::Drawing::Point(400, 430);
+            this->room6_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_end_btn->Name = L"room6_end_btn";
-            this->room6_end_btn->Size = System::Drawing::Size(146, 41);
+            this->room6_end_btn->Size = System::Drawing::Size(110, 33);
             this->room6_end_btn->TabIndex = 40;
             this->room6_end_btn->UseVisualStyleBackColor = false;
             this->room6_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_end_btn_Click);
@@ -1948,10 +1972,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room6_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room6_start_btn->Location = System::Drawing::Point(533, 446);
-            this->room6_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_start_btn->Location = System::Drawing::Point(400, 362);
+            this->room6_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_start_btn->Name = L"room6_start_btn";
-            this->room6_start_btn->Size = System::Drawing::Size(146, 48);
+            this->room6_start_btn->Size = System::Drawing::Size(110, 39);
             this->room6_start_btn->TabIndex = 39;
             this->room6_start_btn->UseVisualStyleBackColor = false;
             this->room6_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room6_start_btn_Click);
@@ -1962,19 +1986,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room6_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room6_recipt_pnl->Location = System::Drawing::Point(763, 102);
-            this->room6_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_recipt_pnl->Location = System::Drawing::Point(572, 83);
+            this->room6_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_recipt_pnl->Name = L"room6_recipt_pnl";
-            this->room6_recipt_pnl->Size = System::Drawing::Size(466, 213);
+            this->room6_recipt_pnl->Size = System::Drawing::Size(350, 173);
             this->room6_recipt_pnl->TabIndex = 38;
             // 
             // room6_orders_pnl
             // 
             this->room6_orders_pnl->AutoScroll = true;
-            this->room6_orders_pnl->Location = System::Drawing::Point(8, 307);
-            this->room6_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room6_orders_pnl->Location = System::Drawing::Point(6, 249);
+            this->room6_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room6_orders_pnl->Name = L"room6_orders_pnl";
-            this->room6_orders_pnl->Size = System::Drawing::Size(371, 354);
+            this->room6_orders_pnl->Size = System::Drawing::Size(278, 288);
             this->room6_orders_pnl->TabIndex = 37;
             // 
             // room6_timeremaining_lbl
@@ -1983,9 +2007,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room6_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room6_timeremaining_lbl->Location = System::Drawing::Point(237, 185);
+            this->room6_timeremaining_lbl->Location = System::Drawing::Point(178, 150);
+            this->room6_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room6_timeremaining_lbl->Name = L"room6_timeremaining_lbl";
-            this->room6_timeremaining_lbl->Size = System::Drawing::Size(111, 29);
+            this->room6_timeremaining_lbl->Size = System::Drawing::Size(90, 25);
             this->room6_timeremaining_lbl->TabIndex = 29;
             this->room6_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -1995,9 +2020,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room6_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room6_timer_lbl->Location = System::Drawing::Point(237, 130);
+            this->room6_timer_lbl->Location = System::Drawing::Point(178, 106);
+            this->room6_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room6_timer_lbl->Name = L"room6_timer_lbl";
-            this->room6_timer_lbl->Size = System::Drawing::Size(111, 29);
+            this->room6_timer_lbl->Size = System::Drawing::Size(90, 25);
             this->room6_timer_lbl->TabIndex = 28;
             this->room6_timer_lbl->Text = L"00:00:00";
             // 
@@ -2007,9 +2033,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room6_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room6_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room6_timestarted_lbl->Location = System::Drawing::Point(237, 76);
+            this->room6_timestarted_lbl->Location = System::Drawing::Point(178, 62);
+            this->room6_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room6_timestarted_lbl->Name = L"room6_timestarted_lbl";
-            this->room6_timestarted_lbl->Size = System::Drawing::Size(111, 29);
+            this->room6_timestarted_lbl->Size = System::Drawing::Size(90, 25);
             this->room6_timestarted_lbl->TabIndex = 27;
             this->room6_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -2029,11 +2056,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->billiard2_tab->Controls->Add(this->room7_timeremaining_lbl);
             this->billiard2_tab->Controls->Add(this->room7_timer_lbl);
             this->billiard2_tab->Controls->Add(this->room7_timestarted_lbl);
-            this->billiard2_tab->Location = System::Drawing::Point(4, 36);
-            this->billiard2_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->billiard2_tab->Location = System::Drawing::Point(4, 31);
+            this->billiard2_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->billiard2_tab->Name = L"billiard2_tab";
-            this->billiard2_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->billiard2_tab->Size = System::Drawing::Size(1272, 676);
+            this->billiard2_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->billiard2_tab->Size = System::Drawing::Size(952, 547);
             this->billiard2_tab->TabIndex = 6;
             this->billiard2_tab->Text = L"Billiard2";
             this->billiard2_tab->UseVisualStyleBackColor = true;
@@ -2043,10 +2070,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room7_order_cmbx->FormattingEnabled = true;
             this->room7_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room7_order_cmbx->Location = System::Drawing::Point(910, 369);
-            this->room7_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_order_cmbx->Location = System::Drawing::Point(682, 300);
+            this->room7_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_order_cmbx->Name = L"room7_order_cmbx";
-            this->room7_order_cmbx->Size = System::Drawing::Size(330, 35);
+            this->room7_order_cmbx->Size = System::Drawing::Size(248, 30);
             this->room7_order_cmbx->TabIndex = 46;
             // 
             // room7_userinput_time
@@ -2054,10 +2081,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room7_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room7_userinput_time->Location = System::Drawing::Point(540, 369);
-            this->room7_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_userinput_time->Location = System::Drawing::Point(405, 300);
+            this->room7_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_userinput_time->Name = L"room7_userinput_time";
-            this->room7_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room7_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room7_userinput_time->TabIndex = 45;
             this->room7_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::room7_userinput_time_KeyPress);
             // 
@@ -2077,10 +2104,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_close_btn->Location = System::Drawing::Point(1068, 16);
-            this->room7_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_close_btn->Location = System::Drawing::Point(801, 13);
+            this->room7_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_close_btn->Name = L"room7_close_btn";
-            this->room7_close_btn->Size = System::Drawing::Size(172, 43);
+            this->room7_close_btn->Size = System::Drawing::Size(129, 35);
             this->room7_close_btn->TabIndex = 44;
             this->room7_close_btn->UseVisualStyleBackColor = false;
             this->room7_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_close_btn_Click);
@@ -2101,10 +2128,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_remove_btn->Location = System::Drawing::Point(978, 527);
-            this->room7_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_remove_btn->Location = System::Drawing::Point(734, 428);
+            this->room7_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_remove_btn->Name = L"room7_remove_btn";
-            this->room7_remove_btn->Size = System::Drawing::Size(200, 44);
+            this->room7_remove_btn->Size = System::Drawing::Size(150, 36);
             this->room7_remove_btn->TabIndex = 43;
             this->room7_remove_btn->UseVisualStyleBackColor = false;
             this->room7_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_remove_btn_Click);
@@ -2125,10 +2152,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_add_btn->Location = System::Drawing::Point(978, 447);
-            this->room7_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_add_btn->Location = System::Drawing::Point(734, 363);
+            this->room7_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_add_btn->Name = L"room7_add_btn";
-            this->room7_add_btn->Size = System::Drawing::Size(190, 47);
+            this->room7_add_btn->Size = System::Drawing::Size(142, 38);
             this->room7_add_btn->TabIndex = 42;
             this->room7_add_btn->UseVisualStyleBackColor = false;
             this->room7_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_add_btn_Click);
@@ -2149,10 +2176,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_end_btn->Location = System::Drawing::Point(531, 527);
-            this->room7_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_end_btn->Location = System::Drawing::Point(398, 428);
+            this->room7_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_end_btn->Name = L"room7_end_btn";
-            this->room7_end_btn->Size = System::Drawing::Size(157, 44);
+            this->room7_end_btn->Size = System::Drawing::Size(118, 36);
             this->room7_end_btn->TabIndex = 41;
             this->room7_end_btn->UseVisualStyleBackColor = false;
             this->room7_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_end_btn_Click);
@@ -2173,10 +2200,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room7_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room7_start_btn->Location = System::Drawing::Point(531, 447);
-            this->room7_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_start_btn->Location = System::Drawing::Point(398, 363);
+            this->room7_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_start_btn->Name = L"room7_start_btn";
-            this->room7_start_btn->Size = System::Drawing::Size(157, 47);
+            this->room7_start_btn->Size = System::Drawing::Size(118, 38);
             this->room7_start_btn->TabIndex = 40;
             this->room7_start_btn->UseVisualStyleBackColor = false;
             this->room7_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room7_start_btn_Click);
@@ -2187,19 +2214,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room7_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room7_recipt_pnl->Location = System::Drawing::Point(678, 95);
-            this->room7_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_recipt_pnl->Location = System::Drawing::Point(508, 77);
+            this->room7_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_recipt_pnl->Name = L"room7_recipt_pnl";
-            this->room7_recipt_pnl->Size = System::Drawing::Size(510, 211);
+            this->room7_recipt_pnl->Size = System::Drawing::Size(382, 171);
             this->room7_recipt_pnl->TabIndex = 39;
             // 
             // room7_orders_pnl
             // 
             this->room7_orders_pnl->AutoScroll = true;
-            this->room7_orders_pnl->Location = System::Drawing::Point(3, 303);
-            this->room7_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room7_orders_pnl->Location = System::Drawing::Point(2, 246);
+            this->room7_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room7_orders_pnl->Name = L"room7_orders_pnl";
-            this->room7_orders_pnl->Size = System::Drawing::Size(369, 349);
+            this->room7_orders_pnl->Size = System::Drawing::Size(277, 284);
             this->room7_orders_pnl->TabIndex = 38;
             // 
             // room7_timeremaining_lbl
@@ -2208,9 +2235,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room7_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room7_timeremaining_lbl->Location = System::Drawing::Point(230, 182);
+            this->room7_timeremaining_lbl->Location = System::Drawing::Point(172, 148);
+            this->room7_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room7_timeremaining_lbl->Name = L"room7_timeremaining_lbl";
-            this->room7_timeremaining_lbl->Size = System::Drawing::Size(111, 29);
+            this->room7_timeremaining_lbl->Size = System::Drawing::Size(90, 25);
             this->room7_timeremaining_lbl->TabIndex = 30;
             this->room7_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -2220,9 +2248,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room7_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room7_timer_lbl->Location = System::Drawing::Point(230, 128);
+            this->room7_timer_lbl->Location = System::Drawing::Point(172, 104);
+            this->room7_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room7_timer_lbl->Name = L"room7_timer_lbl";
-            this->room7_timer_lbl->Size = System::Drawing::Size(111, 29);
+            this->room7_timer_lbl->Size = System::Drawing::Size(90, 25);
             this->room7_timer_lbl->TabIndex = 29;
             this->room7_timer_lbl->Text = L"00:00:00";
             // 
@@ -2232,9 +2261,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room7_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room7_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room7_timestarted_lbl->Location = System::Drawing::Point(230, 74);
+            this->room7_timestarted_lbl->Location = System::Drawing::Point(172, 60);
+            this->room7_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room7_timestarted_lbl->Name = L"room7_timestarted_lbl";
-            this->room7_timestarted_lbl->Size = System::Drawing::Size(111, 29);
+            this->room7_timestarted_lbl->Size = System::Drawing::Size(90, 25);
             this->room7_timestarted_lbl->TabIndex = 28;
             this->room7_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -2254,11 +2284,11 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->pingpong_tab->Controls->Add(this->room8_timeremaining_lbl);
             this->pingpong_tab->Controls->Add(this->room8_timer_lbl);
             this->pingpong_tab->Controls->Add(this->room8_timestarted_lbl);
-            this->pingpong_tab->Location = System::Drawing::Point(4, 36);
-            this->pingpong_tab->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->pingpong_tab->Location = System::Drawing::Point(4, 31);
+            this->pingpong_tab->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->pingpong_tab->Name = L"pingpong_tab";
-            this->pingpong_tab->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->pingpong_tab->Size = System::Drawing::Size(1272, 676);
+            this->pingpong_tab->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+            this->pingpong_tab->Size = System::Drawing::Size(952, 547);
             this->pingpong_tab->TabIndex = 7;
             this->pingpong_tab->Text = L"PING PONG";
             this->pingpong_tab->UseVisualStyleBackColor = true;
@@ -2280,10 +2310,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_close_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_close_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_close_btn->Location = System::Drawing::Point(1066, 16);
-            this->room8_close_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_close_btn->Location = System::Drawing::Point(800, 13);
+            this->room8_close_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_close_btn->Name = L"room8_close_btn";
-            this->room8_close_btn->Size = System::Drawing::Size(174, 43);
+            this->room8_close_btn->Size = System::Drawing::Size(130, 35);
             this->room8_close_btn->TabIndex = 52;
             this->room8_close_btn->UseVisualStyleBackColor = false;
             this->room8_close_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_close_btn_Click);
@@ -2304,10 +2334,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_add_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_add_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_add_btn->Location = System::Drawing::Point(971, 445);
-            this->room8_add_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_add_btn->Location = System::Drawing::Point(728, 362);
+            this->room8_add_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_add_btn->Name = L"room8_add_btn";
-            this->room8_add_btn->Size = System::Drawing::Size(202, 49);
+            this->room8_add_btn->Size = System::Drawing::Size(152, 40);
             this->room8_add_btn->TabIndex = 51;
             this->room8_add_btn->UseVisualStyleBackColor = false;
             this->room8_add_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_add_btn_Click);
@@ -2328,10 +2358,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_remove_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_remove_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_remove_btn->Location = System::Drawing::Point(971, 531);
-            this->room8_remove_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_remove_btn->Location = System::Drawing::Point(728, 431);
+            this->room8_remove_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_remove_btn->Name = L"room8_remove_btn";
-            this->room8_remove_btn->Size = System::Drawing::Size(202, 40);
+            this->room8_remove_btn->Size = System::Drawing::Size(152, 32);
             this->room8_remove_btn->TabIndex = 50;
             this->room8_remove_btn->UseVisualStyleBackColor = false;
             this->room8_remove_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_remove_btn_Click);
@@ -2352,10 +2382,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_end_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_end_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_end_btn->Location = System::Drawing::Point(533, 528);
-            this->room8_end_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_end_btn->Location = System::Drawing::Point(400, 429);
+            this->room8_end_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_end_btn->Name = L"room8_end_btn";
-            this->room8_end_btn->Size = System::Drawing::Size(155, 40);
+            this->room8_end_btn->Size = System::Drawing::Size(116, 32);
             this->room8_end_btn->TabIndex = 49;
             this->room8_end_btn->UseVisualStyleBackColor = false;
             this->room8_end_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_end_btn_Click);
@@ -2376,10 +2406,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_start_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->room8_start_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->room8_start_btn->Location = System::Drawing::Point(533, 445);
-            this->room8_start_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_start_btn->Location = System::Drawing::Point(400, 362);
+            this->room8_start_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_start_btn->Name = L"room8_start_btn";
-            this->room8_start_btn->Size = System::Drawing::Size(147, 49);
+            this->room8_start_btn->Size = System::Drawing::Size(110, 40);
             this->room8_start_btn->TabIndex = 48;
             this->room8_start_btn->UseVisualStyleBackColor = false;
             this->room8_start_btn->Click += gcnew System::EventHandler(this, &Rooms::room8_start_btn_Click);
@@ -2389,10 +2419,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_order_cmbx->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->room8_order_cmbx->FormattingEnabled = true;
             this->room8_order_cmbx->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"indomy", L"pepsi", L"fury" });
-            this->room8_order_cmbx->Location = System::Drawing::Point(910, 366);
-            this->room8_order_cmbx->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_order_cmbx->Location = System::Drawing::Point(682, 297);
+            this->room8_order_cmbx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_order_cmbx->Name = L"room8_order_cmbx";
-            this->room8_order_cmbx->Size = System::Drawing::Size(330, 35);
+            this->room8_order_cmbx->Size = System::Drawing::Size(248, 30);
             this->room8_order_cmbx->TabIndex = 47;
             // 
             // room8_userinput_time
@@ -2400,10 +2430,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_userinput_time->BorderStyle = System::Windows::Forms::BorderStyle::None;
             this->room8_userinput_time->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->room8_userinput_time->Location = System::Drawing::Point(544, 370);
-            this->room8_userinput_time->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_userinput_time->Location = System::Drawing::Point(408, 301);
+            this->room8_userinput_time->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_userinput_time->Name = L"room8_userinput_time";
-            this->room8_userinput_time->Size = System::Drawing::Size(136, 31);
+            this->room8_userinput_time->Size = System::Drawing::Size(102, 25);
             this->room8_userinput_time->TabIndex = 46;
             this->room8_userinput_time->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Rooms::troom8_userinput_time_KeyPress);
             // 
@@ -2413,19 +2443,19 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_recipt_pnl->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room8_recipt_pnl->ForeColor = System::Drawing::Color::WhiteSmoke;
-            this->room8_recipt_pnl->Location = System::Drawing::Point(755, 98);
-            this->room8_recipt_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_recipt_pnl->Location = System::Drawing::Point(566, 80);
+            this->room8_recipt_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_recipt_pnl->Name = L"room8_recipt_pnl";
-            this->room8_recipt_pnl->Size = System::Drawing::Size(493, 213);
+            this->room8_recipt_pnl->Size = System::Drawing::Size(370, 173);
             this->room8_recipt_pnl->TabIndex = 40;
             // 
             // room8_orders_pnl
             // 
             this->room8_orders_pnl->AutoScroll = true;
-            this->room8_orders_pnl->Location = System::Drawing::Point(8, 307);
-            this->room8_orders_pnl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->room8_orders_pnl->Location = System::Drawing::Point(6, 249);
+            this->room8_orders_pnl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->room8_orders_pnl->Name = L"room8_orders_pnl";
-            this->room8_orders_pnl->Size = System::Drawing::Size(372, 347);
+            this->room8_orders_pnl->Size = System::Drawing::Size(279, 282);
             this->room8_orders_pnl->TabIndex = 39;
             // 
             // room8_timeremaining_lbl
@@ -2434,9 +2464,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_timeremaining_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room8_timeremaining_lbl->ForeColor = System::Drawing::Color::White;
-            this->room8_timeremaining_lbl->Location = System::Drawing::Point(236, 185);
+            this->room8_timeremaining_lbl->Location = System::Drawing::Point(177, 150);
+            this->room8_timeremaining_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room8_timeremaining_lbl->Name = L"room8_timeremaining_lbl";
-            this->room8_timeremaining_lbl->Size = System::Drawing::Size(111, 29);
+            this->room8_timeremaining_lbl->Size = System::Drawing::Size(90, 25);
             this->room8_timeremaining_lbl->TabIndex = 31;
             this->room8_timeremaining_lbl->Text = L"00:00:00";
             // 
@@ -2446,9 +2477,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_timer_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->room8_timer_lbl->ForeColor = System::Drawing::Color::White;
-            this->room8_timer_lbl->Location = System::Drawing::Point(236, 129);
+            this->room8_timer_lbl->Location = System::Drawing::Point(177, 105);
+            this->room8_timer_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room8_timer_lbl->Name = L"room8_timer_lbl";
-            this->room8_timer_lbl->Size = System::Drawing::Size(111, 29);
+            this->room8_timer_lbl->Size = System::Drawing::Size(90, 25);
             this->room8_timer_lbl->TabIndex = 30;
             this->room8_timer_lbl->Text = L"00:00:00";
             // 
@@ -2458,9 +2490,10 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->room8_timestarted_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
             this->room8_timestarted_lbl->ForeColor = System::Drawing::Color::White;
-            this->room8_timestarted_lbl->Location = System::Drawing::Point(236, 78);
+            this->room8_timestarted_lbl->Location = System::Drawing::Point(177, 63);
+            this->room8_timestarted_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->room8_timestarted_lbl->Name = L"room8_timestarted_lbl";
-            this->room8_timestarted_lbl->Size = System::Drawing::Size(111, 29);
+            this->room8_timestarted_lbl->Size = System::Drawing::Size(90, 25);
             this->room8_timestarted_lbl->TabIndex = 29;
             this->room8_timestarted_lbl->Text = L"00:00:00";
             // 
@@ -2536,30 +2569,43 @@ private: System::Windows::Forms::Button^ rooms_back_btn;
             this->rooms_back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->rooms_back_btn->ForeColor = System::Drawing::Color::White;
-            this->rooms_back_btn->Location = System::Drawing::Point(1388, 12);
+            this->rooms_back_btn->Location = System::Drawing::Point(1041, 10);
+            this->rooms_back_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->rooms_back_btn->Name = L"rooms_back_btn";
-            this->rooms_back_btn->Size = System::Drawing::Size(100, 34);
+            this->rooms_back_btn->Size = System::Drawing::Size(75, 28);
             this->rooms_back_btn->TabIndex = 1;
             this->rooms_back_btn->Text = L"BACK";
             this->rooms_back_btn->UseVisualStyleBackColor = true;
             this->rooms_back_btn->Click += gcnew System::EventHandler(this, &Rooms::rooms_back_btn_Click);
             // 
+            // BUY
+            // 
+            this->BUY->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 12, static_cast<System::Drawing::FontStyle>(((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)
+                | System::Drawing::FontStyle::Strikeout)), System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+            this->BUY->Location = System::Drawing::Point(4, 31);
+            this->BUY->Name = L"BUY";
+            this->BUY->Padding = System::Windows::Forms::Padding(3);
+            this->BUY->Size = System::Drawing::Size(952, 547);
+            this->BUY->TabIndex = 8;
+            this->BUY->Text = L"BUY";
+            this->BUY->UseVisualStyleBackColor = true;
+            // 
             // Rooms
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->AutoSize = true;
             this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
             this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
             this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->ClientSize = System::Drawing::Size(1500, 800);
+            this->ClientSize = System::Drawing::Size(1125, 650);
             this->Controls->Add(this->rooms_back_btn);
             this->Controls->Add(this->Rooms_tabs);
             this->DoubleBuffered = true;
             this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
             this->Name = L"Rooms";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
             this->Text = L"Room1";
@@ -3023,7 +3069,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             panel_name->Controls->Add(labelItem);
         }
     }
-    SharedData::Instance->AddItemCost(totalCost);
+    //SharedData::Instance->AddItemCost(totalCost);
 
     if (endTime != DateTime::MinValue) {
         // Calculate the elapsed time in hours
@@ -3040,7 +3086,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         // Add the time cost to the total cost
         totalCost += int_time_cost;
     }
-    SharedData::Instance->AddRoomTimeCost(timeCost);
+    //SharedData::Instance->AddRoomTimeCost(timeCost);
 
     for each (KeyValuePair<String^, int> ^ order in userOrders) {
         String^ itemName2 = order->Key;
