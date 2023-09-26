@@ -72,6 +72,12 @@ namespace joystick {
 
 
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel1;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ time__total;
+	private: System::Windows::Forms::Label^ drinks__total;
+
+
 	private: System::ComponentModel::IContainer^ components;
 		   
 	private:
@@ -98,15 +104,11 @@ namespace joystick {
 			this->view_data_btn = (gcnew System::Windows::Forms::Button());
 			this->back_btn = (gcnew System::Windows::Forms::Button());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->time__total = (gcnew System::Windows::Forms::Label());
+			this->drinks__total = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
-			// 
-			// stopwatch
-			// 
-			
-			// 
-			// TTimer
-			// 
-			
 			// 
 			// start_date
 			// 
@@ -160,6 +162,8 @@ namespace joystick {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->view_data_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->view_data_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"view_data_btn.BackgroundImage")));
+			this->view_data_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->view_data_btn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->view_data_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
@@ -207,8 +211,67 @@ namespace joystick {
 			this->flowLayoutPanel1->ForeColor = System::Drawing::Color::WhiteSmoke;
 			this->flowLayoutPanel1->Location = System::Drawing::Point(12, 212);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(857, 496);
+			this->flowLayoutPanel1->Size = System::Drawing::Size(597, 496);
 			this->flowLayoutPanel1->TabIndex = 22;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label3->Location = System::Drawing::Point(642, 269);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(190, 36);
+			this->label3->TabIndex = 23;
+			this->label3->Text = L"Time_Total: ";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label4->Location = System::Drawing::Point(642, 381);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(213, 36);
+			this->label4->TabIndex = 24;
+			this->label4->Text = L"Drinks_Total: ";
+			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// time__total
+			// 
+			this->time__total->AutoSize = true;
+			this->time__total->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->time__total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->time__total->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->time__total->Location = System::Drawing::Point(870, 269);
+			this->time__total->Name = L"time__total";
+			this->time__total->Size = System::Drawing::Size(35, 38);
+			this->time__total->TabIndex = 26;
+			this->time__total->Text = L"..";
+			this->time__total->Click += gcnew System::EventHandler(this, &reports::item__cost_Click);
+			// 
+			// drinks__total
+			// 
+			this->drinks__total->AutoSize = true;
+			this->drinks__total->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->drinks__total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->drinks__total->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->drinks__total->Location = System::Drawing::Point(870, 379);
+			this->drinks__total->Name = L"drinks__total";
+			this->drinks__total->Size = System::Drawing::Size(35, 38);
+			this->drinks__total->TabIndex = 27;
+			this->drinks__total->Text = L"..";
 			// 
 			// reports
 			// 
@@ -217,6 +280,10 @@ namespace joystick {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1280, 720);
+			this->Controls->Add(this->drinks__total);
+			this->Controls->Add(this->time__total);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->flowLayoutPanel1);
 			this->Controls->Add(this->back_btn);
 			this->Controls->Add(this->view_data_btn);
@@ -229,6 +296,7 @@ namespace joystick {
 			this->Name = L"reports";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Room1";
+			this->Load += gcnew System::EventHandler(this, &reports::reports_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -302,6 +370,53 @@ private: System::Void view_data_btn_click(System::Object^ sender, System::EventA
 		connection->Close();
 	}
 
+
+	SqlConnection^ connectionn = gcnew SqlConnection(connectionString);
+
+	try {
+		connectionn->Open();
+
+		// SQL query to calculate the sums of item_cost and time_cost for the specified date range
+		String^ query = "SELECT SUM(item_cost) AS total_item_cost, SUM(time_cost) AS total_time_cost "
+			"FROM DailyTotals "
+			"WHERE Date >= @startDate AND Date <= @endDate";
+
+		// Create a SqlCommand
+		SqlCommand^ command = gcnew SqlCommand(query, connectionn);
+
+		// Add parameters for start date and end date
+		command->Parameters->Add(gcnew SqlParameter("@startDate", SqlDbType::Date));
+		command->Parameters["@startDate"]->Value = startDate.Date;
+		command->Parameters->Add(gcnew SqlParameter("@endDate", SqlDbType::Date));
+		command->Parameters["@endDate"]->Value = endDate.Date;
+
+		// Create a SqlDataReader to retrieve data
+		SqlDataReader^ reader = command->ExecuteReader();
+
+		// Process and display the results
+		if (reader->Read()) {
+			double totalItemCost = Convert::ToDouble(reader["total_item_cost"]);
+			double totalTimeCost = Convert::ToDouble(reader["total_time_cost"]);
+
+			time__total->Text = totalTimeCost.ToString();
+			drinks__total->Text = totalItemCost.ToString();
+		}
+
+		reader->Close();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Error retrieving data from the database: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	finally {
+		connectionn->Close();
+	}
+
+
+
+}
+private: System::Void reports_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void item__cost_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

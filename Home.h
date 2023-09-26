@@ -1,11 +1,13 @@
 #pragma once
-#include"used_classes.h"
+
 #include"Rooms.h"
-#include"reports.h"
 #include"storage.h"
 #include"Settings.h"
 #include"EndDay.h"
 #include"password.h"
+#include"reports.h"
+
+
 namespace joystick {
 
 	using namespace System;

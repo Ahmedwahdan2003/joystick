@@ -163,7 +163,6 @@
     <ClInclude Include="storage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="used_classes.h" />
     <ClInclude Include="login.h">
       <FileType>CppForm</FileType>
     </ClInclude>
