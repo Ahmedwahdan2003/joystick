@@ -43,7 +43,7 @@ namespace joystick {
 			dataGridView1->Columns["price"]->Width = 180;
 
 			dataGridView1->AllowUserToAddRows = true;
-			dataGridView1->AllowUserToDeleteRows = true;
+			dataGridView1->AllowUserToDeleteRows = false;
 		}
 
 	protected:
@@ -68,7 +68,11 @@ namespace joystick {
 	private: System::Windows::Forms::Button^ rooms_back_btn;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::Button^ refresh_btn;
+
+	private: System::Windows::Forms::Label^ room1_status;
+	private: System::Windows::Forms::TextBox^ del_txt;
+
+	private: System::Windows::Forms::Button^ del_btn;
 
 
 
@@ -89,13 +93,21 @@ namespace joystick {
 
 		void RefreshDataGridView()
 		{
-			// Rebind the DataGridView to update with the latest data
-			DataTable^ dataTable = gcnew DataTable();
-			SqlDataAdapter^ adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
-			SqlCommandBuilder^ commandBuilder = gcnew SqlCommandBuilder(adapter);
+			try {
+				// Clear the existing data in the DataTable
+				dataTable->Clear();
 
-			adapter->Fill(dataTable);
-			dataGridView1->DataSource = dataTable;
+				// Fill the DataTable with fresh data from the database
+				adapter->Fill(dataTable);
+
+				// Refresh the DataGridView by rebinding it to the updated data
+				dataGridView1->DataSource = dataTable;
+
+				
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error refreshing data: " + ex->Message);
+			}
 		}
 
 
@@ -127,7 +139,9 @@ namespace joystick {
 			this->rooms_back_btn = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->refresh_btn = (gcnew System::Windows::Forms::Button());
+			this->room1_status = (gcnew System::Windows::Forms::Label());
+			this->del_txt = (gcnew System::Windows::Forms::TextBox());
+			this->del_btn = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -151,10 +165,10 @@ namespace joystick {
 			this->save_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->save_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->save_btn->Location = System::Drawing::Point(1101, 631);
-			this->save_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->save_btn->Location = System::Drawing::Point(1041, 597);
+			this->save_btn->Margin = System::Windows::Forms::Padding(2);
 			this->save_btn->Name = L"save_btn";
-			this->save_btn->Size = System::Drawing::Size(165, 49);
+			this->save_btn->Size = System::Drawing::Size(124, 40);
 			this->save_btn->TabIndex = 2;
 			this->save_btn->Text = L"SAVE";
 			this->save_btn->UseVisualStyleBackColor = false;
@@ -168,10 +182,10 @@ namespace joystick {
 			this->rooms_back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->rooms_back_btn->ForeColor = System::Drawing::Color::White;
-			this->rooms_back_btn->Location = System::Drawing::Point(1101, 12);
-			this->rooms_back_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->rooms_back_btn->Location = System::Drawing::Point(1052, 11);
+			this->rooms_back_btn->Margin = System::Windows::Forms::Padding(2);
 			this->rooms_back_btn->Name = L"rooms_back_btn";
-			this->rooms_back_btn->Size = System::Drawing::Size(165, 55);
+			this->rooms_back_btn->Size = System::Drawing::Size(124, 45);
 			this->rooms_back_btn->TabIndex = 4;
 			this->rooms_back_btn->Text = L"BACK";
 			this->rooms_back_btn->UseVisualStyleBackColor = true;
@@ -182,10 +196,9 @@ namespace joystick {
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::MenuBar;
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(33, 86);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dataGridView1->Location = System::Drawing::Point(25, 70);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(1044, 594);
+			this->dataGridView1->Size = System::Drawing::Size(783, 483);
 			this->dataGridView1->TabIndex = 5;
 			// 
 			// pictureBox1
@@ -194,56 +207,82 @@ namespace joystick {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(16, 12);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Location = System::Drawing::Point(12, 10);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(1079, 668);
+			this->pictureBox1->Size = System::Drawing::Size(809, 543);
 			this->pictureBox1->TabIndex = 6;
 			this->pictureBox1->TabStop = false;
 			// 
-			// refresh_btn
+			// room1_status
 			// 
-			this->refresh_btn->AutoSize = true;
-			this->refresh_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->refresh_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"refresh_btn.BackgroundImage")));
-			this->refresh_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->refresh_btn->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->refresh_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->refresh_btn->FlatAppearance->BorderSize = 0;
-			this->refresh_btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->refresh_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->refresh_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->refresh_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->room1_status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->room1_status->AutoSize = true;
+			this->room1_status->BackColor = System::Drawing::Color::Transparent;
+			this->room1_status->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->refresh_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->refresh_btn->Location = System::Drawing::Point(1101, 311);
-			this->refresh_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->refresh_btn->Name = L"refresh_btn";
-			this->refresh_btn->Size = System::Drawing::Size(165, 49);
-			this->refresh_btn->TabIndex = 7;
-			this->refresh_btn->Text = L"REFRESH";
-			this->refresh_btn->UseVisualStyleBackColor = false;
-			this->refresh_btn->Click += gcnew System::EventHandler(this, &storage::refresh_btn_Click);
+			this->room1_status->ForeColor = System::Drawing::Color::Transparent;
+			this->room1_status->Location = System::Drawing::Point(5, 596);
+			this->room1_status->Name = L"room1_status";
+			this->room1_status->Size = System::Drawing::Size(317, 37);
+			this->room1_status->TabIndex = 20;
+			this->room1_status->Text = L"enter name to delete:";
+			// 
+			// del_txt
+			// 
+			this->del_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->del_txt->Location = System::Drawing::Point(318, 602);
+			this->del_txt->Name = L"del_txt";
+			this->del_txt->Size = System::Drawing::Size(274, 31);
+			this->del_txt->TabIndex = 21;
+			// 
+			// del_btn
+			// 
+			this->del_btn->AutoSize = true;
+			this->del_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->del_btn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"del_btn.BackgroundImage")));
+			this->del_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->del_btn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->del_btn->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->del_btn->FlatAppearance->BorderSize = 0;
+			this->del_btn->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->del_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->del_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->del_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->del_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
+			this->del_btn->Location = System::Drawing::Point(621, 597);
+			this->del_btn->Margin = System::Windows::Forms::Padding(2);
+			this->del_btn->Name = L"del_btn";
+			this->del_btn->Size = System::Drawing::Size(124, 40);
+			this->del_btn->TabIndex = 22;
+			this->del_btn->Text = L"DELETE";
+			this->del_btn->UseVisualStyleBackColor = false;
+			this->del_btn->Click += gcnew System::EventHandler(this, &storage::del_btn_Click);
 			// 
 			// storage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1279, 720);
-			this->Controls->Add(this->refresh_btn);
+			this->ClientSize = System::Drawing::Size(1187, 666);
+			this->Controls->Add(this->del_btn);
+			this->Controls->Add(this->del_txt);
+			this->Controls->Add(this->room1_status);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->rooms_back_btn);
 			this->Controls->Add(this->save_btn);
 			this->Controls->Add(this->pictureBox1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"storage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"storage";
@@ -262,8 +301,6 @@ namespace joystick {
 	}
 
 
-
-
 	private: System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
 			// Set up the UpdateCommand and its parameters
@@ -278,7 +315,7 @@ namespace joystick {
 			adapter->Update(dataTable);
 
 			MessageBox::Show("Changes saved successfully.");
-
+			RefreshDataGridView();
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("Error saving changes: " + ex->Message);
@@ -297,21 +334,39 @@ namespace joystick {
 	}
 	private: System::Void refresh_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 
+		RefreshDataGridView();
+	}
+private: System::Void del_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	String^ itemNameToDelete = del_txt->Text; // Replace 'itemToDeleteTextBox' with your actual input field.
+
+	if (!String::IsNullOrEmpty(itemNameToDelete)) {
 		try {
-			// Clear the existing data in the DataTable
-			dataTable->Clear();
+			// Delete the item based on the provided name from the database
+			String^ deleteQuery = "DELETE FROM items WHERE name = @name";
+			SqlCommand^ deleteCommand = gcnew SqlCommand(deleteQuery, dbConnection);
+			deleteCommand->Parameters->Add(gcnew SqlParameter("@name", SqlDbType::VarChar, 100))->Value = itemNameToDelete;
 
-			// Fill the DataTable with fresh data from the database
-			adapter->Fill(dataTable);
+			int rowsAffected = deleteCommand->ExecuteNonQuery();
 
-			// Refresh the DataGridView by rebinding it to the updated data
-			dataGridView1->DataSource = dataTable;
-
-			MessageBox::Show("Data refreshed successfully.");
+			if (rowsAffected > 0) {
+				// Deletion was successful, refresh the DataGridView
+				RefreshDataGridView();
+				MessageBox::Show("Item deleted successfully.");
+				del_txt->Text = "";
+			}
+			else {
+				MessageBox::Show("Item not found or deletion failed.");
+			}
 		}
 		catch (Exception^ ex) {
-			MessageBox::Show("Error refreshing data: " + ex->Message);
+			MessageBox::Show("Error deleting item: " + ex->Message);
 		}
 	}
+	else {
+		MessageBox::Show("Please enter the name of the item you want to delete.");
+	}
+
+}
 };
 }
