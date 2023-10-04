@@ -65,6 +65,9 @@
     <ClInclude Include="password.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="shareddate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="licenses.licx" />

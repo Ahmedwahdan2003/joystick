@@ -1,6 +1,5 @@
 #pragma once
-
-
+#include"shareddate.h"
 namespace joystick {
 
 	using namespace System;
@@ -20,7 +19,7 @@ namespace joystick {
 	public ref class EndDay : public System::Windows::Forms::Form
 	{
 	public:
-		EndDay(void)
+		EndDay()
 		{
 			InitializeComponent();
 			InitializeForm();
@@ -29,13 +28,10 @@ namespace joystick {
 
 
 
-
-
 			//
 			//TODO: Add the constructor code here
 			//
 		}
-
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -48,6 +44,7 @@ namespace joystick {
 			}
 		}
 	private: System::Windows::Forms::Button^ display_total_btn;
+	
 	protected:
 		
 	protected:
@@ -60,10 +57,10 @@ namespace joystick {
 		double billiard2Time;
 		double pingpongTime;
 		String^ whatsapp_message;
+		 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ display_total_lbl;
 	private: System::Windows::Forms::Timer^ end_day_timer;
-
 
 
 
@@ -88,6 +85,7 @@ namespace joystick {
 
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ time__cost;
+
 
 
 
@@ -147,9 +145,10 @@ namespace joystick {
 			this->display_total_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->display_total_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->display_total_btn->Location = System::Drawing::Point(857, 489);
+			this->display_total_btn->Location = System::Drawing::Point(11, 434);
+			this->display_total_btn->Margin = System::Windows::Forms::Padding(2);
 			this->display_total_btn->Name = L"display_total_btn";
-			this->display_total_btn->Size = System::Drawing::Size(208, 100);
+			this->display_total_btn->Size = System::Drawing::Size(164, 81);
 			this->display_total_btn->TabIndex = 1;
 			this->display_total_btn->Text = L"display_Total";
 			this->display_total_btn->UseVisualStyleBackColor = false;
@@ -163,9 +162,10 @@ namespace joystick {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->label1->Location = System::Drawing::Point(42, 226);
+			this->label1->Location = System::Drawing::Point(32, 184);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(179, 32);
+			this->label1->Size = System::Drawing::Size(136, 26);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Today Total: ";
 			// 
@@ -177,9 +177,10 @@ namespace joystick {
 			this->display_total_lbl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->display_total_lbl->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->display_total_lbl->Location = System::Drawing::Point(236, 226);
+			this->display_total_lbl->Location = System::Drawing::Point(177, 184);
+			this->display_total_lbl->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->display_total_lbl->Name = L"display_total_lbl";
-			this->display_total_lbl->Size = System::Drawing::Size(30, 32);
+			this->display_total_lbl->Size = System::Drawing::Size(24, 26);
 			this->display_total_lbl->TabIndex = 3;
 			this->display_total_lbl->Text = L"..";
 			// 
@@ -197,9 +198,10 @@ namespace joystick {
 			this->send_email_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->send_email_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->send_email_btn->Location = System::Drawing::Point(898, 25);
+			this->send_email_btn->Location = System::Drawing::Point(674, 20);
+			this->send_email_btn->Margin = System::Windows::Forms::Padding(2);
 			this->send_email_btn->Name = L"send_email_btn";
-			this->send_email_btn->Size = System::Drawing::Size(167, 49);
+			this->send_email_btn->Size = System::Drawing::Size(125, 40);
 			this->send_email_btn->TabIndex = 20;
 			this->send_email_btn->Text = L"Send Data";
 			this->send_email_btn->UseVisualStyleBackColor = false;
@@ -215,9 +217,10 @@ namespace joystick {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->button1->Location = System::Drawing::Point(8, 8);
+			this->button1->Location = System::Drawing::Point(6, 6);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(128, 40);
+			this->button1->Size = System::Drawing::Size(96, 32);
 			this->button1->TabIndex = 21;
 			this->button1->Text = L"BACK";
 			this->button1->UseVisualStyleBackColor = false;
@@ -228,9 +231,10 @@ namespace joystick {
 			this->number_txt->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->number_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->number_txt->Location = System::Drawing::Point(808, 129);
+			this->number_txt->Location = System::Drawing::Point(606, 105);
+			this->number_txt->Margin = System::Windows::Forms::Padding(2);
 			this->number_txt->Name = L"number_txt";
-			this->number_txt->Size = System::Drawing::Size(257, 31);
+			this->number_txt->Size = System::Drawing::Size(193, 25);
 			this->number_txt->TabIndex = 22;
 			// 
 			// label2
@@ -242,9 +246,10 @@ namespace joystick {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label2->Location = System::Drawing::Point(803, 97);
+			this->label2->Location = System::Drawing::Point(602, 79);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(177, 29);
+			this->label2->Size = System::Drawing::Size(144, 24);
 			this->label2->TabIndex = 23;
 			this->label2->Text = L"Enter number:";
 			// 
@@ -256,9 +261,10 @@ namespace joystick {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->label3->Location = System::Drawing::Point(12, 293);
+			this->label3->Location = System::Drawing::Point(9, 238);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(218, 32);
+			this->label3->Size = System::Drawing::Size(169, 26);
 			this->label3->TabIndex = 24;
 			this->label3->Text = L"Products_total:  ";
 			// 
@@ -270,9 +276,10 @@ namespace joystick {
 			this->item__cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->item__cost->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->item__cost->Location = System::Drawing::Point(236, 293);
+			this->item__cost->Location = System::Drawing::Point(177, 238);
+			this->item__cost->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->item__cost->Name = L"item__cost";
-			this->item__cost->Size = System::Drawing::Size(30, 32);
+			this->item__cost->Size = System::Drawing::Size(24, 26);
 			this->item__cost->TabIndex = 25;
 			this->item__cost->Text = L"..";
 			this->item__cost->Click += gcnew System::EventHandler(this, &EndDay::label4_Click);
@@ -285,9 +292,10 @@ namespace joystick {
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->label5->Location = System::Drawing::Point(61, 357);
+			this->label5->Location = System::Drawing::Point(46, 290);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(160, 32);
+			this->label5->Size = System::Drawing::Size(125, 26);
 			this->label5->TabIndex = 26;
 			this->label5->Text = L"time_total : ";
 			// 
@@ -299,19 +307,20 @@ namespace joystick {
 			this->time__cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->time__cost->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->time__cost->Location = System::Drawing::Point(236, 357);
+			this->time__cost->Location = System::Drawing::Point(177, 290);
+			this->time__cost->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->time__cost->Name = L"time__cost";
-			this->time__cost->Size = System::Drawing::Size(30, 32);
+			this->time__cost->Size = System::Drawing::Size(24, 26);
 			this->time__cost->TabIndex = 27;
 			this->time__cost->Text = L"..";
 			// 
 			// EndDay
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1095, 648);
+			this->ClientSize = System::Drawing::Size(821, 526);
 			this->Controls->Add(this->time__cost);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->item__cost);
@@ -325,6 +334,7 @@ namespace joystick {
 			this->Controls->Add(this->display_total_btn);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"EndDay";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"EndDay";
@@ -368,12 +378,12 @@ namespace joystick {
 			sqlConn->Open();
 
 			// Get the current date
-			DateTime currentDate = DateTime::Today;
-
+			//DateTime currentDate = DateTime::Today;
+			
 			// Check if there's an entry for the current date in the DailyTotals table
-			if (!IsDailyTotalInitialized(currentDate, sqlConn)) {
+			if (!IsDailyTotalInitialized(SharedData::SharedDateTime.Date, sqlConn)) {
 				// Initialize the daily total for the current date
-				InitializeDailyTotal(currentDate, sqlConn);
+				InitializeDailyTotal(SharedData::SharedDateTime.Date, sqlConn);
 			}
 
 			// Use the SharedData instance and perform other tasks
@@ -404,7 +414,7 @@ namespace joystick {
 			// Retrieve the total cost for the current date
 			String^ selectQuery = "SELECT DailyCost FROM DailyTotals WHERE Date = @Date";
 			SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, sqlConn);
-			selectCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+			selectCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.Date);
 
 			Object^ result = selectCommand->ExecuteScalar();
 
@@ -439,7 +449,7 @@ namespace joystick {
 			// Retrieve the total cost for the current date
 			String^ selectQuery = "SELECT item_cost FROM DailyTotals WHERE Date = @Date";
 			SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, sqlConnn);
-			selectCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+			selectCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.Date);
 
 			Object^ result = selectCommand->ExecuteScalar();
 
@@ -474,7 +484,7 @@ namespace joystick {
 			// Retrieve the total cost for the current date
 			String^ selectQuery = "SELECT time_cost FROM DailyTotals WHERE Date = @Date";
 			SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, sqlConnnn);
-			selectCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+			selectCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.Date);
 
 			Object^ result = selectCommand->ExecuteScalar();
 
@@ -505,7 +515,7 @@ namespace joystick {
 		
 		
 		
-		String^ currentDate = DateTime::Now.ToString("M/d/yyyy", CultureInfo::InvariantCulture);
+		String^ currentDate = SharedData::SharedDateTime.ToString("M/d/yyyy", CultureInfo::InvariantCulture);
 		whatsapp_message = "******Joystick Report******\r\n  " + currentDate + "\r\n\r\n\r\n";
 		whatsapp_message += "<<Drink_total: " + itemcost + "\r\n\r\n\r\n";
 		whatsapp_message += "<<Rooms_total: " + timecost + "\r\n\r\n\r\n";
@@ -546,5 +556,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+//private: System::Void End_Day_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	//SharedData::AddDay();
+	//MessageBox::Show("date = " +SharedData::SharedDateTime);
+	//MessageBox::Show("day ended successfully");
+	//InitializeForm();
+//}
 };
 }

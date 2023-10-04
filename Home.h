@@ -362,7 +362,6 @@ namespace joystick {
             this->Name = L"Home";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
             this->Text = L"Home";
-            this->Load += gcnew System::EventHandler(this, &Home::Home_Load);
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -370,9 +369,7 @@ namespace joystick {
 #pragma endregion
 
   
-	private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
-		
-	}
+	
 
 private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 

@@ -160,6 +160,7 @@
     <ClInclude Include="Settings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="shareddate.h" />
     <ClInclude Include="storage.h">
       <FileType>CppForm</FileType>
     </ClInclude>

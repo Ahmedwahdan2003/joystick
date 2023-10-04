@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include"shareddate.h"
 
 namespace joystick {
     
@@ -137,7 +137,7 @@ namespace joystick {
     private: System::Windows::Forms::TextBox^ textBoxHours1;
 private: System::Windows::Forms::ComboBox^ room1_order_cmbx;
 
-
+       private: DateTime^ date = gcnew DateTime();
     private: System::Windows::Forms::Button^ room1_remove_btn;
     private: System::Windows::Forms::Button^ room1_add_btn;
     private: System::Windows::Forms::Button^ room1_endtime_btn;
@@ -168,6 +168,8 @@ private: System::Windows::Forms::ComboBox^ room1_order_cmbx;
     private: System::Windows::Forms::Button^ room2_start_btn;
 
     private: System::Windows::Forms::Timer^ countdown_timer1;
+     
+         
     public: bool room1_available = true;
     public: bool room2_available = true;
     public: bool room3_available = true;
@@ -2955,6 +2957,7 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
 
            try
            {
+               
                connection->Open();
 
                // Define your SQL INSERT statement with parameters
@@ -2968,7 +2971,7 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
                command->Parameters->AddWithValue("@room_id", room_id); // Replace with your room_id value
                command->Parameters->AddWithValue("@startTime", starttime); // Replace with your startTime value
                command->Parameters->AddWithValue("@endTime", endtime); // Replace with your endTime value
-               command->Parameters->AddWithValue("@date", DateTime::Now.ToString("MM/dd/yyyy")); // Current date in 'mm/dd/yyyy' format
+               command->Parameters->AddWithValue("@date", SharedData::SharedDateTime.ToString("MM/dd/yyyy")); // Current date in 'mm/dd/yyyy' format
                command->Parameters->AddWithValue("@item_name", itemname); // Replace with your item_name value
                command->Parameters->AddWithValue("@quantity", itemquantity); // Replace with your quantity value
                command->Parameters->AddWithValue("@room_total", room_total); // Replace with your room_total value
@@ -3104,10 +3107,11 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         sqlConnn->Open();
 
         // Update the TotalCost column with the new purchase amount
+        MessageBox::Show("date is : " + SharedData::SharedDateTime);
         String^ updateQuery = "UPDATE DailyTotals SET item_cost = item_cost + @Newitemcost WHERE Date = @Date";
         SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnn);
         updateCommand->Parameters->AddWithValue("@Newitemcost", totalCost);
-        updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+        updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.ToString("MM/dd/yyyy"));
         updateCommand->ExecuteNonQuery();
 
         // No need to close the connection here; it will be closed in the finally block
@@ -3156,7 +3160,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         String^ updateQuery = "UPDATE DailyTotals SET time_cost = time_cost + @Newtimecost WHERE Date = @Date";
         SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnnn);
         updateCommand->Parameters->AddWithValue("@Newtimecost", timeCost);
-        updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+        updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.ToString("MM/dd/yyyy"));
         updateCommand->ExecuteNonQuery();
 
         // No need to close the connection here; it will be closed in the finally block
@@ -3211,7 +3215,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         String^ updateQuery = "UPDATE DailyTotals SET DailyCost = DailyCost + @NewPurchaseAmount WHERE Date = @Date";
         SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
         updateCommand->Parameters->AddWithValue("@NewPurchaseAmount", totalCost);
-        updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+        updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.ToString("MM/dd/yyyy"));
         updateCommand->ExecuteNonQuery();
 
         // No need to close the connection here; it will be closed in the finally block
@@ -3242,6 +3246,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
       //////////////////////////////////////////////////////
 
 private: System::Void room2_start_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+    
     double timeInput;
     if (room2_mode_cmbx->SelectedIndex != -1) {
         if (room2_startTime_btn_click == false) {
@@ -4695,7 +4700,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
 
             // Set the parameter values
             String^ selectedItem = comboBox1->SelectedItem->ToString();
-            command->Parameters->AddWithValue("@date", DateTime::Now.ToString("MM/dd/yyyy")); // Current date in 'mm/dd/yyyy' format
+            command->Parameters->AddWithValue("@date", SharedData::SharedDateTime.ToString("MM/dd/yyyy")); // Current date in 'mm/dd/yyyy' format
             command->Parameters->AddWithValue("@item_name", selectedItem); // Replace with your item_name value
             command->Parameters->AddWithValue("@quantity", 1); // Replace with your quantity value
             command->ExecuteNonQuery();
@@ -4729,7 +4734,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
             String^ updateQuery = "UPDATE DailyTotals SET item_cost = item_cost + @Newitemcost WHERE Date = @Date";
             SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnn);
             updateCommand->Parameters->AddWithValue("@Newitemcost", itemPrices[comboBox1->SelectedItem->ToString()]);
-            updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+            updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime);
             updateCommand->ExecuteNonQuery();
 
             // No need to close the connection here; it will be closed in the finally block
@@ -4753,7 +4758,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
             String^ updateQuery = "UPDATE DailyTotals SET DailyCost = DailyCost + @NewPurchaseAmount WHERE Date = @Date";
             SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
             updateCommand->Parameters->AddWithValue("@NewPurchaseAmount", itemPrices[comboBox1->SelectedItem->ToString()]);
-            updateCommand->Parameters->AddWithValue("@Date", DateTime::Today);
+            updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime);
             updateCommand->ExecuteNonQuery();
 
             // No need to close the connection here; it will be closed in the finally block
