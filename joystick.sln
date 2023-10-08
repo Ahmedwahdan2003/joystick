@@ -5,28 +5,28 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "joystick", "joystick.vcxproj", "{C71BA924-7237-4A24-9FD9-04A80821175E}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "joystick_setup", "..\joystick_setup\joystick_setup.vdproj", "{8D2DCC68-6570-46AC-924E-2E42C53643FE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C71BA924-7237-4A24-9FD9-04A80821175E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C71BA924-7237-4A24-9FD9-04A80821175E}.Debug|ARM.Build.0 = Debug|ARM
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Debug|x64.ActiveCfg = Debug|x64
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Debug|x64.Build.0 = Debug|x64
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Debug|x86.ActiveCfg = Debug|Win32
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Debug|x86.Build.0 = Debug|Win32
+		{C71BA924-7237-4A24-9FD9-04A80821175E}.Release|ARM.ActiveCfg = Release|x64
+		{C71BA924-7237-4A24-9FD9-04A80821175E}.Release|ARM.Build.0 = Release|x64
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Release|x64.ActiveCfg = Release|x64
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Release|x64.Build.0 = Release|x64
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Release|x86.ActiveCfg = Release|x64
 		{C71BA924-7237-4A24-9FD9-04A80821175E}.Release|x86.Build.0 = Release|x64
-		{8D2DCC68-6570-46AC-924E-2E42C53643FE}.Debug|x64.ActiveCfg = Debug
-		{8D2DCC68-6570-46AC-924E-2E42C53643FE}.Debug|x86.ActiveCfg = Debug
-		{8D2DCC68-6570-46AC-924E-2E42C53643FE}.Release|x64.ActiveCfg = Release
-		{8D2DCC68-6570-46AC-924E-2E42C53643FE}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

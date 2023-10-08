@@ -465,7 +465,12 @@ private: System::Void storage_btn_Click(System::Object^ sender, System::EventArg
 private: System::Void endday_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-    endday->ShowDialog();
+    System::Windows::Forms::DialogResult result = pass->ShowDialog();
+    if (result == System::Windows::Forms::DialogResult::OK)
+    {
+       endday->ShowDialog();
+
+    }
 
 }
        

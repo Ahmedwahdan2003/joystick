@@ -2997,6 +2997,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
     double timeCost = 0.0;
     int int_time_cost = 0;
     double rate = 0.0;
+    double min_rate=0.0;
     if (room_name == "Billiard 1" || room_name == "Billiard 2" || room_name == "ping pong") {
 
         try
@@ -3023,6 +3024,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             if (result != nullptr)
             {
                 rate = Convert::ToDouble(result);
+                min_rate = 20;
                 
             }
 
@@ -3063,6 +3065,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             if (result != nullptr)
             {
                 rate = Convert::ToDouble(result);
+                min_rate = 10;
             }
         }
         catch (Exception^ ex) {
@@ -3107,7 +3110,6 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         sqlConnn->Open();
 
         // Update the TotalCost column with the new purchase amount
-        MessageBox::Show("date is : " + SharedData::SharedDateTime);
         String^ updateQuery = "UPDATE DailyTotals SET item_cost = item_cost + @Newitemcost WHERE Date = @Date";
         SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnn);
         updateCommand->Parameters->AddWithValue("@Newitemcost", totalCost);
@@ -3137,10 +3139,11 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
 
         timeCost = elapsedHours * rate;
 
-        if (elapsedHours < 0.4)
-            timeCost = 20.0;
+        if (elapsedHours < 0.3)
+            timeCost = min_rate;
 
         int_time_cost = static_cast<int>(timeCost);
+        
         // Add the time cost to the total cost
         totalCost += int_time_cost;
     }
@@ -4653,6 +4656,9 @@ private: System::Void rooms_back_btn_Click(System::Object^ sender, System::Event
 }
 private: System::Void tabPage1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+       //////////////////////////////////////
+       ///////////////
+       ///////////////////////////////////////
 private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ e) {
     if (comboBox1->SelectedIndex == -1) {
         MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -4734,7 +4740,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
             String^ updateQuery = "UPDATE DailyTotals SET item_cost = item_cost + @Newitemcost WHERE Date = @Date";
             SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConnn);
             updateCommand->Parameters->AddWithValue("@Newitemcost", itemPrices[comboBox1->SelectedItem->ToString()]);
-            updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime);
+            updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.ToString("MM/dd/yyyy"));
             updateCommand->ExecuteNonQuery();
 
             // No need to close the connection here; it will be closed in the finally block
@@ -4758,7 +4764,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
             String^ updateQuery = "UPDATE DailyTotals SET DailyCost = DailyCost + @NewPurchaseAmount WHERE Date = @Date";
             SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
             updateCommand->Parameters->AddWithValue("@NewPurchaseAmount", itemPrices[comboBox1->SelectedItem->ToString()]);
-            updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime);
+            updateCommand->Parameters->AddWithValue("@Date", SharedData::SharedDateTime.ToString("MM/dd/yyyy"));
             updateCommand->ExecuteNonQuery();
 
             // No need to close the connection here; it will be closed in the finally block
