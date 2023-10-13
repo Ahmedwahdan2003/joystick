@@ -148,7 +148,7 @@ namespace joystick {
             this->time_lb->ForeColor = System::Drawing::SystemColors::Control;
             this->time_lb->Location = System::Drawing::Point(6, 13);
             this->time_lb->Name = L"time_lb";
-            this->time_lb->Size = System::Drawing::Size(133, 36);
+            this->time_lb->Size = System::Drawing::Size(103, 29);
             this->time_lb->TabIndex = 9;
             this->time_lb->Text = L"00:00:00";
             // 
@@ -164,7 +164,7 @@ namespace joystick {
             this->room2_status->ForeColor = System::Drawing::Color::Transparent;
             this->room2_status->Location = System::Drawing::Point(371, 13);
             this->room2_status->Name = L"room2_status";
-            this->room2_status->Size = System::Drawing::Size(166, 46);
+            this->room2_status->Size = System::Drawing::Size(133, 37);
             this->room2_status->TabIndex = 15;
             this->room2_status->Text = L"ROOM2";
             // 
@@ -180,7 +180,7 @@ namespace joystick {
             this->room3_status->ForeColor = System::Drawing::Color::Transparent;
             this->room3_status->Location = System::Drawing::Point(559, 13);
             this->room3_status->Name = L"room3_status";
-            this->room3_status->Size = System::Drawing::Size(166, 46);
+            this->room3_status->Size = System::Drawing::Size(133, 37);
             this->room3_status->TabIndex = 16;
             this->room3_status->Text = L"ROOM3";
             // 
@@ -196,7 +196,7 @@ namespace joystick {
             this->room4_status->ForeColor = System::Drawing::Color::Transparent;
             this->room4_status->Location = System::Drawing::Point(744, 13);
             this->room4_status->Name = L"room4_status";
-            this->room4_status->Size = System::Drawing::Size(166, 46);
+            this->room4_status->Size = System::Drawing::Size(133, 37);
             this->room4_status->TabIndex = 17;
             this->room4_status->Text = L"ROOM4";
             // 
@@ -212,7 +212,7 @@ namespace joystick {
             this->room5_status->ForeColor = System::Drawing::Color::Transparent;
             this->room5_status->Location = System::Drawing::Point(932, 13);
             this->room5_status->Name = L"room5_status";
-            this->room5_status->Size = System::Drawing::Size(166, 46);
+            this->room5_status->Size = System::Drawing::Size(133, 37);
             this->room5_status->TabIndex = 18;
             this->room5_status->Text = L"ROOM5";
             // 
@@ -228,7 +228,7 @@ namespace joystick {
             this->room1_status->ForeColor = System::Drawing::Color::Transparent;
             this->room1_status->Location = System::Drawing::Point(186, 13);
             this->room1_status->Name = L"room1_status";
-            this->room1_status->Size = System::Drawing::Size(166, 46);
+            this->room1_status->Size = System::Drawing::Size(131, 37);
             this->room1_status->TabIndex = 10;
             this->room1_status->Text = L"ROOM1";
             // 
@@ -362,6 +362,7 @@ namespace joystick {
             this->Name = L"Home";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
             this->Text = L"Home";
+            this->Load += gcnew System::EventHandler(this, &Home::Home_Load);
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -474,5 +475,7 @@ private: System::Void endday_btn_Click(System::Object^ sender, System::EventArgs
 
 }
        
+private: System::Void Home_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

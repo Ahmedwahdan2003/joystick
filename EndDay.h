@@ -371,7 +371,7 @@ namespace joystick {
 			
 
 			// Establish a SqlConnection
-			String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234"; // Replace with your actual connection string
+			String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;"; // Replace with your actual connection string
 			SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
 			// Open the connection
@@ -401,7 +401,7 @@ namespace joystick {
 	private: System::Void display_total_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		
-		String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 		// Create a SqlConnection object
 		SqlConnection^ sqlConn = gcnew SqlConnection(connString);
@@ -436,7 +436,7 @@ namespace joystick {
 			MessageBox::Show("Error retrieving total cost from the database: " + ex->Message);
 		}
 
-		String^ connnString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+		String^ connnString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 		// Create a SqlConnection object
 		SqlConnection^ sqlConnn = gcnew SqlConnection(connnString);
@@ -471,7 +471,7 @@ namespace joystick {
 			MessageBox::Show("Error retrieving total cost from the database: " + ex->Message);
 		}
 
-		String^ connnnString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+		String^ connnnString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 		// Create a SqlConnection object
 		SqlConnection^ sqlConnnn = gcnew SqlConnection(connnnString);

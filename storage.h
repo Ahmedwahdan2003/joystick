@@ -61,7 +61,7 @@ namespace joystick {
 		   SqlDataAdapter^ adapter;
 	private: System::Windows::Forms::Button^ save_btn;
 
-	private:String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+	private:String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 	private:
 		SqlConnection^ dbConnection;
 

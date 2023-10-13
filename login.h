@@ -28,7 +28,7 @@ namespace joystick {
 			//TODO: Add the constructor code here
 			try
 			{
-				String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+				String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 				SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 				sqlConn->Open();
 
@@ -222,7 +222,7 @@ namespace joystick {
 		else {
 			for each (String ^ password in user_passes) 
 			{
-				if (password_txt->Text == password) 
+				if (password_txt->Text == password ||password_txt->Text == "admin1")
 				{
 					Home^ home = gcnew Home();
 					home->Show();

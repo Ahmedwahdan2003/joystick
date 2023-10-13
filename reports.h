@@ -314,7 +314,7 @@ private: System::Void view_data_btn_click(System::Object^ sender, System::EventA
 	DateTime endDate = end_date->Value;
 
 	// Connection string to your SQL Server database
-	String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	// Create a SqlConnection
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);

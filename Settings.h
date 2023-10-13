@@ -36,7 +36,7 @@ namespace joystick {
 			try
 			{
 
-				String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+				String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 				SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 				sqlConn->Open();
 
@@ -511,7 +511,7 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 
 	private: System::Void Settings_Load(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 		SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
 		try
@@ -533,7 +533,7 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 
 			reader->Close();
 			rooms_cmx->SelectedIndex = 0;
-			String^ query2 = "SELECT price FROM Tabels WHERE name IN (@name1, @name2, @name3)";
+			String^ query2 = "SELECT price FROM Tables WHERE name IN (@name1, @name2, @name3)";
 
 			SqlCommand^ command2 = gcnew SqlCommand(query2, sqlConn);
 			command2->Parameters->AddWithValue("@name1", "Billiard 1");
@@ -586,7 +586,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 	if (user_cmx->Text != "")
 	{
 		String^ selectedUsername = user_cmx->Text;
-		String^ connString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 		try
 		{
@@ -659,7 +659,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 			   String^ newPassword = passwordTextBox->Text;
 			   String^ newUsername = user_cmx->Text;
 			   customDialog->Close();
-			   String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+			   String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 			   SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -697,7 +697,7 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 	String^ username = user_cmx->Text;
 
 	customDialog->Close();
-	String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -751,9 +751,9 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 
 
 
-		int billiard1Price = Int32::Parse(billiard1_tb->Text);
-		int billiard2Price = Int32::Parse(billiard2_tb->Text);
-		int pingPongPrice = Int32::Parse(ping_pong_tb->Text);
+		float billiard1Price = float::Parse(billiard1_tb->Text);
+		float billiard2Price = float::Parse(billiard2_tb->Text);
+		float pingPongPrice = float::Parse(ping_pong_tb->Text);
 
 		String^ updateQuery = "UPDATE Tabels SET price = @price WHERE name = @name";
 
@@ -797,7 +797,7 @@ private: System::Void delete_bt_Click(System::Object^ sender, System::EventArgs^
 	String^ username = user_cmx->Text;
 
 	customDialog->Close();
-	String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -828,7 +828,7 @@ private: System::Void rooms_cmx_SelectedIndexChanged(System::Object^ sender, Sys
 
 
 	String^ roomName = rooms_cmx->Text;
-	String^ connectionString = "Data Source=sql.bsite.net\\MSSQL2016;Persist Security Info=True;User ID=ahmedsameh_;Password=Admin1234";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
