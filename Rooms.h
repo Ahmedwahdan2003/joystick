@@ -54,7 +54,7 @@ namespace joystick {
         }
         void data_combobox() {
 
-            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
             try
@@ -70,7 +70,7 @@ namespace joystick {
                 comboBox1->Items->Clear();
                 sqlConn->Open();
 
-                String^ query = "SELECT name FROM items WHERE quantity > 0";
+                String^ query = "SELECT item_name FROM items WHERE item_quantity > 0";
                 SqlCommand^ command = gcnew SqlCommand(query, sqlConn);
                 SqlDataReader^ reader = command->ExecuteReader();
 
@@ -2658,7 +2658,7 @@ private: System::Windows::Forms::Button^ back_btn;
     private: System::Void FetchItemData()
         {
             // Connection string to your SQL Server database
-            String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
             // Create a SqlConnection
             SqlConnection^ connection = gcnew SqlConnection(connectionString);
@@ -2669,7 +2669,7 @@ private: System::Windows::Forms::Button^ back_btn;
                 connection->Open();
 
                 // SQL query to retrieve item names and prices from the database
-                String^ query = "SELECT name,price FROM items";
+                String^ query = "SELECT item_name,item_price FROM items";
 
                 // Create a SqlCommand
                 SqlCommand^ command = gcnew SqlCommand(query, connection);
@@ -2810,11 +2810,11 @@ private: System::Void room1_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room1_orders_pnl, room1_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -2840,7 +2840,7 @@ private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
@@ -2848,7 +2848,7 @@ private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventA
                 sqlConn->Open();
 
                 String^ selectedItem = room1_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -2950,7 +2950,7 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
        private: System::Void insert_order_data(int room_id,DateTime starttime,DateTime endtime,String^itemname,int itemquantity,double room_total)
        {
            // Connection string to your SQL Server database
-           String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+           String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
            // Create a SqlConnection
            SqlConnection^ connection = gcnew SqlConnection(connectionString);
@@ -2997,13 +2997,12 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
     double timeCost = 0.0;
     int int_time_cost = 0;
     double rate = 0.0;
-    double min_rate=0.0;
     if (room_name == "Billiard 1" || room_name == "Billiard 2" || room_name == "ping pong") {
 
         try
         {
             // Create a SqlConnection object with the connection string
-            SqlConnection^ sqlConn = gcnew SqlConnection("Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;");
+            SqlConnection^ sqlConn = gcnew SqlConnection("Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;");
 
             // Open the connection
             sqlConn->Open();
@@ -3024,7 +3023,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             if (result != nullptr)
             {
                 rate = Convert::ToDouble(result);
-                min_rate = 20;
+                MessageBox::Show("" + room_name + " rate is " + rate);
                 
             }
 
@@ -3039,7 +3038,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
 
     }
     else {
-        String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;"; // Replace with your actual connection string
+        String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;"; // Replace with your actual connection string
         SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
         // Open the connection
@@ -3065,7 +3064,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             if (result != nullptr)
             {
                 rate = Convert::ToDouble(result);
-                min_rate = 10;
+                MessageBox::Show("" + room_name + " rate is " + rate);
             }
         }
         catch (Exception^ ex) {
@@ -3095,7 +3094,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             panel_name->Controls->Add(labelItem);
         }
     }
-    String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+    String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
     SqlConnection^ connection = gcnew SqlConnection(connectionString);
     SqlConnection^ sqlConnn = nullptr; // Declare SqlConnection outside of try block
 
@@ -3140,6 +3139,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         timeCost = elapsedHours * rate;
 
         int_time_cost = static_cast<int>(timeCost);
+        MessageBox::Show("int_time_cost is " + int_time_cost);
 
         if (room_name == "Billiard 1" || room_name == "Billiard 2" || room_name == "ping pong"&&int_time_cost<20) {
             int_time_cost = 20;
@@ -3312,7 +3312,7 @@ private: System::Void room2_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
@@ -3320,7 +3320,7 @@ private: System::Void room2_add_btn_Click(System::Object^ sender, System::EventA
                 sqlConn->Open();
 
                 String^ selectedItem = room2_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3361,14 +3361,14 @@ private: System::Void room2_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room2_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room2_orders_pnl, room2_orders_map);
-            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
                 
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3539,12 +3539,12 @@ private: System::Void room3_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
                 String^ selectedItem = room3_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3560,7 +3560,7 @@ private: System::Void room3_add_btn_Click(System::Object^ sender, System::EventA
                     }
                 }
                
-                room8_order_cmbx->SelectedIndex = -1;
+                room3_order_cmbx->SelectedIndex = -1;
                 data_combobox();
             }
             catch (Exception^ ex)
@@ -3584,11 +3584,11 @@ private: System::Void room3_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room3_orders_pnl, room3_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3737,12 +3737,12 @@ private: System::Void room4_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
                 String^ selectedItem = room4_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3782,11 +3782,11 @@ private: System::Void room4_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room4_orders_pnl, room4_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3938,12 +3938,12 @@ private: System::Void room5_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
                 String^ selectedItem = room5_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -3983,11 +3983,11 @@ private: System::Void room5_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room5_orders_pnl, room5_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4133,12 +4133,12 @@ private: System::Void room6_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
                 String^ selectedItem = room6_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4178,11 +4178,11 @@ private: System::Void room6_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room6_orders_pnl, room6_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4324,12 +4324,12 @@ private: System::Void room7_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
                 String^ selectedItem = room7_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4369,11 +4369,11 @@ private: System::Void room7_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room7_orders_pnl, room7_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4519,12 +4519,12 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
                 String^ selectedItem = room8_order_cmbx->SelectedItem->ToString();
-                String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4567,11 +4567,11 @@ private: System::Void room8_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room8_orders_pnl, room8_orders_map);
             try
             {
-                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
-                String^ updateQuery = "UPDATE items SET quantity = quantity + 1 WHERE name = @itemName";
+                String^ updateQuery = "UPDATE items SET item_quantity = item_quantity + 1 WHERE item_name = @itemName";
 
                 SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
                 updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4670,12 +4670,12 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
     else {
         try
         {
-            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             sqlConn->Open();
 
             String^ selectedItem = comboBox1->SelectedItem->ToString();
-            String^ updateQuery = "UPDATE items SET quantity = quantity - 1 WHERE name = @itemName";
+            String^ updateQuery = "UPDATE items SET item_quantity = item_quantity - 1 WHERE item_name = @itemName";
 
             SqlCommand^ updateCommand = gcnew SqlCommand(updateQuery, sqlConn);
             updateCommand->Parameters->AddWithValue("@itemName", selectedItem);
@@ -4691,7 +4691,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
             MessageBox::Show("Failed to add item: " + ex->Message);
         }
 
-        String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+        String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
         SqlConnection^ connection = gcnew SqlConnection(connectionString);
         try
         {

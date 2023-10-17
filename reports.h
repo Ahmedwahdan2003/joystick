@@ -112,16 +112,18 @@ namespace joystick {
 			// 
 			// start_date
 			// 
-			this->start_date->Location = System::Drawing::Point(122, 118);
+			this->start_date->Location = System::Drawing::Point(92, 96);
+			this->start_date->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->start_date->Name = L"start_date";
-			this->start_date->Size = System::Drawing::Size(237, 22);
+			this->start_date->Size = System::Drawing::Size(179, 20);
 			this->start_date->TabIndex = 1;
 			// 
 			// end_date
 			// 
-			this->end_date->Location = System::Drawing::Point(672, 118);
+			this->end_date->Location = System::Drawing::Point(504, 96);
+			this->end_date->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->end_date->Name = L"end_date";
-			this->end_date->Size = System::Drawing::Size(197, 22);
+			this->end_date->Size = System::Drawing::Size(149, 20);
 			this->end_date->TabIndex = 2;
 			// 
 			// label1
@@ -133,7 +135,8 @@ namespace joystick {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label1->Location = System::Drawing::Point(175, 73);
+			this->label1->Location = System::Drawing::Point(131, 59);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(81, 18);
 			this->label1->TabIndex = 3;
@@ -148,7 +151,8 @@ namespace joystick {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label2->Location = System::Drawing::Point(723, 73);
+			this->label2->Location = System::Drawing::Point(542, 59);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(74, 18);
 			this->label2->TabIndex = 4;
@@ -176,10 +180,10 @@ namespace joystick {
 			this->view_data_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->view_data_btn->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->view_data_btn->Location = System::Drawing::Point(1034, 598);
-			this->view_data_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->view_data_btn->Location = System::Drawing::Point(776, 486);
+			this->view_data_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->view_data_btn->Name = L"view_data_btn";
-			this->view_data_btn->Size = System::Drawing::Size(146, 93);
+			this->view_data_btn->Size = System::Drawing::Size(110, 76);
 			this->view_data_btn->TabIndex = 6;
 			this->view_data_btn->Text = L"View Data";
 			this->view_data_btn->UseVisualStyleBackColor = false;
@@ -195,9 +199,10 @@ namespace joystick {
 			this->back_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->back_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->back_btn->Location = System::Drawing::Point(1013, 12);
+			this->back_btn->Location = System::Drawing::Point(760, 10);
+			this->back_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->back_btn->Name = L"back_btn";
-			this->back_btn->Size = System::Drawing::Size(167, 49);
+			this->back_btn->Size = System::Drawing::Size(125, 40);
 			this->back_btn->TabIndex = 21;
 			this->back_btn->Text = L"BACK";
 			this->back_btn->UseVisualStyleBackColor = false;
@@ -209,9 +214,10 @@ namespace joystick {
 			this->flowLayoutPanel1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei UI", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->flowLayoutPanel1->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->flowLayoutPanel1->Location = System::Drawing::Point(12, 212);
+			this->flowLayoutPanel1->Location = System::Drawing::Point(9, 172);
+			this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(597, 496);
+			this->flowLayoutPanel1->Size = System::Drawing::Size(448, 403);
 			this->flowLayoutPanel1->TabIndex = 22;
 			// 
 			// label3
@@ -222,7 +228,8 @@ namespace joystick {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label3->Location = System::Drawing::Point(642, 269);
+			this->label3->Location = System::Drawing::Point(482, 219);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(161, 29);
 			this->label3->TabIndex = 23;
@@ -237,7 +244,8 @@ namespace joystick {
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label4->Location = System::Drawing::Point(642, 381);
+			this->label4->Location = System::Drawing::Point(482, 310);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(175, 29);
 			this->label4->TabIndex = 24;
@@ -252,7 +260,8 @@ namespace joystick {
 			this->time__total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->time__total->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->time__total->Location = System::Drawing::Point(870, 269);
+			this->time__total->Location = System::Drawing::Point(652, 219);
+			this->time__total->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->time__total->Name = L"time__total";
 			this->time__total->Size = System::Drawing::Size(30, 31);
 			this->time__total->TabIndex = 26;
@@ -267,7 +276,8 @@ namespace joystick {
 			this->drinks__total->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->drinks__total->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->drinks__total->Location = System::Drawing::Point(870, 379);
+			this->drinks__total->Location = System::Drawing::Point(652, 308);
+			this->drinks__total->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->drinks__total->Name = L"drinks__total";
 			this->drinks__total->Size = System::Drawing::Size(30, 31);
 			this->drinks__total->TabIndex = 27;
@@ -275,11 +285,11 @@ namespace joystick {
 			// 
 			// reports
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1244, 720);
+			this->ClientSize = System::Drawing::Size(933, 585);
 			this->Controls->Add(this->drinks__total);
 			this->Controls->Add(this->time__total);
 			this->Controls->Add(this->label4);
@@ -293,9 +303,10 @@ namespace joystick {
 			this->Controls->Add(this->start_date);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"reports";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
-			this->Text = L"Room1";
+			this->Text = L" ";
 			this->Load += gcnew System::EventHandler(this, &reports::reports_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -314,7 +325,7 @@ private: System::Void view_data_btn_click(System::Object^ sender, System::EventA
 	DateTime endDate = end_date->Value;
 
 	// Connection string to your SQL Server database
-	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	// Create a SqlConnection
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);

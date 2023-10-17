@@ -1,8 +1,6 @@
 #pragma once
 
 
-
-
 namespace joystick {
 
 	using namespace System;
@@ -27,7 +25,7 @@ namespace joystick {
 
 			InitializeComponent();
 			dataTable = gcnew DataTable();
-			adapter = gcnew SqlDataAdapter("SELECT name, quantity, price FROM items", connString);
+			adapter = gcnew SqlDataAdapter("SELECT item_name, item_quantity, item_price FROM items", connString);
 			dbConnection = gcnew SqlConnection(connString);
 			dbConnection->Open();
 
@@ -38,9 +36,9 @@ namespace joystick {
 			adapter->Fill(dataTable);
 			bindingSource->DataSource = dataTable;
 			dataGridView1->DataSource = bindingSource;
-			dataGridView1->Columns["name"]->Width = 364;
-			dataGridView1->Columns["quantity"]->Width = 194;
-			dataGridView1->Columns["price"]->Width = 180;
+			dataGridView1->Columns["item_name"]->Width = 364;
+			dataGridView1->Columns["item_quantity"]->Width = 194;
+			dataGridView1->Columns["item_price"]->Width = 180;
 
 			dataGridView1->AllowUserToAddRows = true;
 			dataGridView1->AllowUserToDeleteRows = false;
@@ -61,7 +59,7 @@ namespace joystick {
 		   SqlDataAdapter^ adapter;
 	private: System::Windows::Forms::Button^ save_btn;
 
-	private:String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	private:String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 	private:
 		SqlConnection^ dbConnection;
 
@@ -103,7 +101,7 @@ namespace joystick {
 				// Refresh the DataGridView by rebinding it to the updated data
 				dataGridView1->DataSource = dataTable;
 
-				
+
 			}
 			catch (Exception^ ex) {
 				MessageBox::Show("Error refreshing data: " + ex->Message);
@@ -304,11 +302,11 @@ namespace joystick {
 	private: System::Void save_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
 			// Set up the UpdateCommand and its parameters
-			adapter->UpdateCommand = gcnew SqlCommand("UPDATE items SET name = @name, price = @price, quantity = @quantity WHERE name = @original_name", dbConnection);
-			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@name", SqlDbType::VarChar, 100, "name"));
-			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@price", SqlDbType::Float, 0, "price"));
-			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@quantity", SqlDbType::Int, 0, "quantity"));
-			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@original_name", SqlDbType::VarChar, 100, "name"));
+			adapter->UpdateCommand = gcnew SqlCommand("UPDATE items SET item_name = @name, item_price = @price, item_quantity = @quantity WHERE item_name = @original_name", dbConnection);
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@name", SqlDbType::VarChar, 100, "item_name"));
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@price", SqlDbType::Float, 0, "item_price"));
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@quantity", SqlDbType::Int, 0, "item_quantity"));
+			adapter->UpdateCommand->Parameters->Add(gcnew SqlParameter("@original_name", SqlDbType::VarChar, 100, "item_name"));
 			adapter->UpdateCommand->UpdatedRowSource = UpdateRowSource::Both;
 
 			// Update the database with changes made in the DataGridView
@@ -336,37 +334,39 @@ namespace joystick {
 
 		RefreshDataGridView();
 	}
-private: System::Void del_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void del_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	String^ itemNameToDelete = del_txt->Text; // Replace 'itemToDeleteTextBox' with your actual input field.
+		String^ itemNameToDelete = del_txt->Text; // Replace 'itemToDeleteTextBox' with your actual input field.
 
-	if (!String::IsNullOrEmpty(itemNameToDelete)) {
-		try {
-			// Delete the item based on the provided name from the database
-			String^ deleteQuery = "DELETE FROM items WHERE name = @name";
-			SqlCommand^ deleteCommand = gcnew SqlCommand(deleteQuery, dbConnection);
-			deleteCommand->Parameters->Add(gcnew SqlParameter("@name", SqlDbType::VarChar, 100))->Value = itemNameToDelete;
+		if (!String::IsNullOrEmpty(itemNameToDelete)) {
+			try {
+				// Delete the item based on the provided name from the database
+				String^ deleteQuery = "DELETE FROM items WHERE item_name = @name";
+				SqlCommand^ deleteCommand = gcnew SqlCommand(deleteQuery, dbConnection);
+				deleteCommand->Parameters->Add(gcnew SqlParameter("@name", SqlDbType::VarChar, 100))->Value = itemNameToDelete;
 
-			int rowsAffected = deleteCommand->ExecuteNonQuery();
+				int rowsAffected = deleteCommand->ExecuteNonQuery();
 
-			if (rowsAffected > 0) {
-				// Deletion was successful, refresh the DataGridView
-				RefreshDataGridView();
-				MessageBox::Show("Item deleted successfully.");
-				del_txt->Text = "";
+				if (rowsAffected > 0) {
+					// Deletion was successful, refresh the DataGridView
+					RefreshDataGridView();
+					MessageBox::Show("Item deleted successfully.");
+					del_txt->Text = "";
+				}
+				else {
+					MessageBox::Show("Item not found or deletion failed.");
+				}
 			}
-			else {
-				MessageBox::Show("Item not found or deletion failed.");
+			catch (Exception^ ex) {
+				MessageBox::Show("Error deleting item: " + ex->Message);
 			}
 		}
-		catch (Exception^ ex) {
-			MessageBox::Show("Error deleting item: " + ex->Message);
+		else {
+			MessageBox::Show("Please enter the name of the item you want to delete.");
 		}
-	}
-	else {
-		MessageBox::Show("Please enter the name of the item you want to delete.");
+
 	}
 
-}
+
 };
 }

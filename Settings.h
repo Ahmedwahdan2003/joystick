@@ -36,7 +36,7 @@ namespace joystick {
 			try
 			{
 
-				String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+				String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 				SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 				sqlConn->Open();
 
@@ -511,7 +511,7 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 
 	private: System::Void Settings_Load(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+		String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 		SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
 		try
@@ -533,12 +533,10 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 
 			reader->Close();
 			rooms_cmx->SelectedIndex = 0;
-			String^ query2 = "SELECT price FROM Tables WHERE name IN (@name1, @name2, @name3)";
+
+			String^ query2 = "SELECT price FROM Tables WHERE name IN ('Billiard 1', 'Billiard 2', 'ping pong')";
 
 			SqlCommand^ command2 = gcnew SqlCommand(query2, sqlConn);
-			command2->Parameters->AddWithValue("@name1", "Billiard 1");
-			command2->Parameters->AddWithValue("@name2", "Billiard 2");
-			command2->Parameters->AddWithValue("@name3", "ping pong");
 
 			SqlDataReader^ reader2 = command2->ExecuteReader();
 
@@ -546,9 +544,8 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 
 			while (reader2->Read())
 			{
-				int price = reader2->GetInt32(0);
+				double price = reader2->GetDouble(0);
 
-			
 				if (textBoxIndex == 0)
 				{
 					billiard1_tb->Text = price.ToString();
@@ -562,19 +559,16 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 					ping_pong_tb->Text = price.ToString();
 				}
 
-				textBoxIndex++; 
+				textBoxIndex++;
 			}
 
 			reader2->Close();
 		}
 		catch (Exception^ e)
 		{
-			MessageBox::Show("Failed to retrieve data from the database."+e->Message);
+			MessageBox::Show("Failed to retrieve data from the database: " + e->Message);
 		}
-		
-			sqlConn->Close();
-		
-
+		sqlConn->Close();
 	}
 TextBox^ passwordTextBox = gcnew TextBox();
 Form^ customDialog = gcnew Form();
@@ -586,7 +580,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 	if (user_cmx->Text != "")
 	{
 		String^ selectedUsername = user_cmx->Text;
-		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+		String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 		try
 		{
@@ -659,7 +653,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 			   String^ newPassword = passwordTextBox->Text;
 			   String^ newUsername = user_cmx->Text;
 			   customDialog->Close();
-			   String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+			   String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 			   SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -697,7 +691,7 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 	String^ username = user_cmx->Text;
 
 	customDialog->Close();
-	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -729,10 +723,10 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 
 
 
-	int ps4_singel = Int32::Parse(ps4_singel_tb->Text);
-	int ps4_multi = Int32::Parse(ps4_multi_tb->Text);
-	int ps5_singel = Int32::Parse(ps5_singel_tb->Text);
-	int ps5_multi = Int32::Parse(ps5_multi_tb->Text);
+	Int32 ps4_singel = Int32::Parse(ps4_singel_tb->Text);
+	Int32 ps4_multi = Int32::Parse(ps4_multi_tb->Text);
+	Int32 ps5_singel = Int32::Parse(ps5_singel_tb->Text);
+	Int32 ps5_multi = Int32::Parse(ps5_multi_tb->Text);
 
 	try
 	{
@@ -755,7 +749,7 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 		float billiard2Price = float::Parse(billiard2_tb->Text);
 		float pingPongPrice = float::Parse(ping_pong_tb->Text);
 
-		String^ updateQuery = "UPDATE Tabels SET price = @price WHERE name = @name";
+		String^ updateQuery = "UPDATE Tables SET price = @price WHERE name = @name";
 
 		SqlCommand^ updateCommand1 = gcnew SqlCommand(updateQuery, connection);
 		updateCommand1->Parameters->AddWithValue("@price", billiard1Price);
@@ -779,7 +773,7 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	catch (Exception^ ex)
 	{  
-		MessageBox::Show("Error updating price: " + ex->Message);
+		MessageBox::Show("Error updating price:    " + ex->Message);
 	}
 	finally
 	{
@@ -797,7 +791,7 @@ private: System::Void delete_bt_Click(System::Object^ sender, System::EventArgs^
 	String^ username = user_cmx->Text;
 
 	customDialog->Close();
-	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -828,7 +822,7 @@ private: System::Void rooms_cmx_SelectedIndexChanged(System::Object^ sender, Sys
 
 
 	String^ roomName = rooms_cmx->Text;
-	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 

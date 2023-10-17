@@ -74,20 +74,23 @@ namespace joystick {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->label1->Location = System::Drawing::Point(174, 194);
+			this->label1->Location = System::Drawing::Point(130, 158);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(330, 46);
+			this->label1->Size = System::Drawing::Size(267, 37);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Enter password:  ";
+			this->label1->Click += gcnew System::EventHandler(this, &password::label1_Click);
 			// 
 			// pass_txt
 			// 
 			this->pass_txt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->pass_txt->Location = System::Drawing::Point(182, 286);
+			this->pass_txt->Location = System::Drawing::Point(136, 232);
+			this->pass_txt->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pass_txt->Name = L"pass_txt";
 			this->pass_txt->PasswordChar = '*';
-			this->pass_txt->Size = System::Drawing::Size(285, 45);
+			this->pass_txt->Size = System::Drawing::Size(215, 37);
 			this->pass_txt->TabIndex = 4;
 			// 
 			// submit_pass_btn
@@ -100,9 +103,10 @@ namespace joystick {
 			this->submit_pass_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->submit_pass_btn->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->submit_pass_btn->Location = System::Drawing::Point(231, 401);
+			this->submit_pass_btn->Location = System::Drawing::Point(173, 326);
+			this->submit_pass_btn->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->submit_pass_btn->Name = L"submit_pass_btn";
-			this->submit_pass_btn->Size = System::Drawing::Size(167, 49);
+			this->submit_pass_btn->Size = System::Drawing::Size(125, 40);
 			this->submit_pass_btn->TabIndex = 21;
 			this->submit_pass_btn->Text = L"Submit";
 			this->submit_pass_btn->UseVisualStyleBackColor = false;
@@ -118,9 +122,10 @@ namespace joystick {
 			this->cancel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cancel->ForeColor = System::Drawing::Color::WhiteSmoke;
-			this->cancel->Location = System::Drawing::Point(475, 12);
+			this->cancel->Location = System::Drawing::Point(356, 10);
+			this->cancel->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->cancel->Name = L"cancel";
-			this->cancel->Size = System::Drawing::Size(167, 49);
+			this->cancel->Size = System::Drawing::Size(125, 40);
 			this->cancel->TabIndex = 22;
 			this->cancel->Text = L"BACK";
 			this->cancel->UseVisualStyleBackColor = false;
@@ -128,17 +133,18 @@ namespace joystick {
 			// 
 			// password
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(654, 584);
+			this->ClientSize = System::Drawing::Size(490, 474);
 			this->Controls->Add(this->cancel);
 			this->Controls->Add(this->submit_pass_btn);
 			this->Controls->Add(this->pass_txt);
 			this->Controls->Add(this->label1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"password";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"password";
@@ -168,7 +174,7 @@ namespace joystick {
 	}
 		   private: System::Void RetrieveAdminPassword(String^% adminPassword) {
 			   // Connection string to your SQL Server database
-			   String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+			   String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 			   // Create a SqlConnection
 			   SqlConnection^ connection = gcnew SqlConnection(connectionString);
@@ -207,6 +213,8 @@ private: System::Void cancel_Click(System::Object^ sender, System::EventArgs^ e)
 	this->Close();
 }
 private: System::Void password_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
