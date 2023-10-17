@@ -59,7 +59,7 @@ namespace joystick {
 		   SqlDataAdapter^ adapter;
 	private: System::Windows::Forms::Button^ save_btn;
 
-	private:String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	private:String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 	private:
 		SqlConnection^ dbConnection;
 

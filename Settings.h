@@ -36,7 +36,7 @@ namespace joystick {
 			try
 			{
 
-				String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+				String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 				SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 				sqlConn->Open();
 
@@ -511,7 +511,7 @@ private: System::Void password_tb_TextChanged(System::Object^ sender, System::Ev
 
 	private: System::Void Settings_Load(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 		SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
 		try
@@ -580,7 +580,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 	if (user_cmx->Text != "")
 	{
 		String^ selectedUsername = user_cmx->Text;
-		String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+		String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 		try
 		{
@@ -653,7 +653,7 @@ public: System::Void find_bt_Click(System::Object^ sender, System::EventArgs^ e)
 			   String^ newPassword = passwordTextBox->Text;
 			   String^ newUsername = user_cmx->Text;
 			   customDialog->Close();
-			   String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+			   String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 			   SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -691,7 +691,7 @@ private: System::Void save_bt_Click(System::Object^ sender, System::EventArgs^ e
 	String^ username = user_cmx->Text;
 
 	customDialog->Close();
-	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -791,7 +791,7 @@ private: System::Void delete_bt_Click(System::Object^ sender, System::EventArgs^
 	String^ username = user_cmx->Text;
 
 	customDialog->Close();
-	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
@@ -822,7 +822,7 @@ private: System::Void rooms_cmx_SelectedIndexChanged(System::Object^ sender, Sys
 
 
 	String^ roomName = rooms_cmx->Text;
-	String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+	String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 	SqlConnection^ connection = gcnew SqlConnection(connectionString);
 

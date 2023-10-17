@@ -174,7 +174,7 @@ namespace joystick {
 	}
 		   private: System::Void RetrieveAdminPassword(String^% adminPassword) {
 			   // Connection string to your SQL Server database
-			   String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+			   String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
 			   // Create a SqlConnection
 			   SqlConnection^ connection = gcnew SqlConnection(connectionString);

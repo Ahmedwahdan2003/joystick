@@ -54,7 +54,7 @@ namespace joystick {
         }
         void data_combobox() {
 
-            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
             try
@@ -2658,7 +2658,7 @@ private: System::Windows::Forms::Button^ back_btn;
     private: System::Void FetchItemData()
         {
             // Connection string to your SQL Server database
-            String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
             // Create a SqlConnection
             SqlConnection^ connection = gcnew SqlConnection(connectionString);
@@ -2810,7 +2810,7 @@ private: System::Void room1_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room1_orders_pnl, room1_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -2840,7 +2840,7 @@ private: System::Void room1_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
@@ -2950,7 +2950,7 @@ private: System::Void room1_close_btn_Click(System::Object^ sender, System::Even
        private: System::Void insert_order_data(int room_id,DateTime starttime,DateTime endtime,String^itemname,int itemquantity,double room_total)
        {
            // Connection string to your SQL Server database
-           String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+           String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
 
            // Create a SqlConnection
            SqlConnection^ connection = gcnew SqlConnection(connectionString);
@@ -3002,7 +3002,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         try
         {
             // Create a SqlConnection object with the connection string
-            SqlConnection^ sqlConn = gcnew SqlConnection("Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;");
+            SqlConnection^ sqlConn = gcnew SqlConnection("Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;");
 
             // Open the connection
             sqlConn->Open();
@@ -3023,7 +3023,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             if (result != nullptr)
             {
                 rate = Convert::ToDouble(result);
-                MessageBox::Show("" + room_name + " rate is " + rate);
+               // MessageBox::Show("" + room_name + " rate is " + rate);
                 
             }
 
@@ -3038,7 +3038,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
 
     }
     else {
-        String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;"; // Replace with your actual connection string
+        String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;"; // Replace with your actual connection string
         SqlConnection^ sqlConn = gcnew SqlConnection(connString);
 
         // Open the connection
@@ -3064,7 +3064,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             if (result != nullptr)
             {
                 rate = Convert::ToDouble(result);
-                MessageBox::Show("" + room_name + " rate is " + rate);
+                //MessageBox::Show("" + room_name + " rate is " + rate);
             }
         }
         catch (Exception^ ex) {
@@ -3094,7 +3094,7 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
             panel_name->Controls->Add(labelItem);
         }
     }
-    String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+    String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
     SqlConnection^ connection = gcnew SqlConnection(connectionString);
     SqlConnection^ sqlConnn = nullptr; // Declare SqlConnection outside of try block
 
@@ -3139,16 +3139,19 @@ private: void DisplayReceipt(Dictionary<String^, int>^ userOrders, Dictionary<St
         timeCost = elapsedHours * rate;
 
         int_time_cost = static_cast<int>(timeCost);
-        MessageBox::Show("int_time_cost is " + int_time_cost);
+       // MessageBox::Show("timecost is " + timeCost);
+        //MessageBox::Show("int_time_cost is " + int_time_cost);
+        //MessageBox::Show("hours spent is " + elapsedHours);
 
-        if (room_name == "Billiard 1" || room_name == "Billiard 2" || room_name == "ping pong"&&int_time_cost<20) {
+        if (room_name == "Billiard 1" && int_time_cost < 15 || room_name == "Billiard 2" && int_time_cost < 15 || room_name == "ping pong"&&int_time_cost<15) {
             int_time_cost = 20;
         }
-        else if (room_name == "Room 1" || room_name == "Room 2" || room_name == "Room 3" || room_name == "Room 4" || room_name == "Room 5" && int_time_cost < 10)
+        else if (room_name == "Room 1" && int_time_cost < 10 || room_name == "Room 2" && int_time_cost < 10 || room_name == "Room 3" && int_time_cost < 10 || room_name == "Room 4" && int_time_cost < 10 || room_name == "Room 5" && int_time_cost < 10)
         {
             int_time_cost = 10;
         }
         // Add the time cost to the total cost
+        //MessageBox::Show("int_time_cost after checking min  is " + int_time_cost);
         totalCost += int_time_cost;
     }
     SqlConnection^ sqlConnnn = nullptr; // Declare SqlConnection outside of try block
@@ -3312,7 +3315,7 @@ private: System::Void room2_add_btn_Click(System::Object^ sender, System::EventA
             MessageBox::Show("Please choose an item from the list first.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
         }
         else {
-            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
@@ -3361,7 +3364,7 @@ private: System::Void room2_remove_btn_Click(System::Object^ sender, System::Eve
         else {
             String^ selectedItem = room2_order_cmbx->SelectedItem->ToString();
             RemoveItemFromPanel(selectedItem, room2_orders_pnl, room2_orders_map);
-            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             try
             {
@@ -3539,7 +3542,7 @@ private: System::Void room3_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -3584,7 +3587,7 @@ private: System::Void room3_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room3_orders_pnl, room3_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -3737,7 +3740,7 @@ private: System::Void room4_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -3782,7 +3785,7 @@ private: System::Void room4_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room4_orders_pnl, room4_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -3938,7 +3941,7 @@ private: System::Void room5_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -3983,7 +3986,7 @@ private: System::Void room5_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room5_orders_pnl, room5_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4133,7 +4136,7 @@ private: System::Void room6_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4178,7 +4181,7 @@ private: System::Void room6_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room6_orders_pnl, room6_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4324,7 +4327,7 @@ private: System::Void room7_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4369,7 +4372,7 @@ private: System::Void room7_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room7_orders_pnl, room7_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4519,7 +4522,7 @@ private: System::Void room8_add_btn_Click(System::Object^ sender, System::EventA
         else {
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4567,7 +4570,7 @@ private: System::Void room8_remove_btn_Click(System::Object^ sender, System::Eve
             RemoveItemFromPanel(selectedItem, room8_orders_pnl, room8_orders_map);
             try
             {
-                String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+                String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
                 SqlConnection^ sqlConn = gcnew SqlConnection(connString);
                 sqlConn->Open();
 
@@ -4670,7 +4673,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
     else {
         try
         {
-            String^ connString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+            String^ connString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
             SqlConnection^ sqlConn = gcnew SqlConnection(connString);
             sqlConn->Open();
 
@@ -4691,7 +4694,7 @@ private: System::Void back_btn_Click(System::Object^ sender, System::EventArgs^ 
             MessageBox::Show("Failed to add item: " + ex->Message);
         }
 
-        String^ connectionString = "Server=AHMED-WAHDAN\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
+        String^ connectionString = "Server=localhost\\SQLEXPRESS;Database=joystick;Trusted_Connection=True;";
         SqlConnection^ connection = gcnew SqlConnection(connectionString);
         try
         {
